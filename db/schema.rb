@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_30_140753) do
+ActiveRecord::Schema.define(version: 2021_06_30_142808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "carotted_tasks", force: :cascade do |t|
+    t.bigint "ongoing_task_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "carotted_user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["carotted_user_id"], name: "index_carotted_tasks_on_carotted_user_id"
+    t.index ["ongoing_task_id"], name: "index_carotted_tasks_on_ongoing_task_id"
+    t.index ["user_id"], name: "index_carotted_tasks_on_user_id"
+  end
+
+  create_table "coloc_tasks", force: :cascade do |t|
+    t.integer "difficulty"
+    t.integer "points"
+    t.bigint "coloc_id", null: false
+    t.bigint "task_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["coloc_id"], name: "index_coloc_tasks_on_coloc_id"
+    t.index ["task_id"], name: "index_coloc_tasks_on_task_id"
+  end
 
   create_table "colocs", force: :cascade do |t|
     t.string "name"
@@ -22,6 +44,28 @@ ActiveRecord::Schema.define(version: 2021_06_30_140753) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["leader_id"], name: "index_colocs_on_leader_id"
+  end
+
+  create_table "helpers", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "ongoing_task_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ongoing_task_id"], name: "index_helpers_on_ongoing_task_id"
+    t.index ["user_id"], name: "index_helpers_on_user_id"
+  end
+
+  create_table "ongoing_tasks", force: :cascade do |t|
+    t.boolean "done"
+    t.datetime "finished_at"
+    t.float "points_ratio"
+    t.integer "final_points"
+    t.bigint "coloc_task_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["coloc_task_id"], name: "index_ongoing_tasks_on_coloc_task_id"
+    t.index ["user_id"], name: "index_ongoing_tasks_on_user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -50,6 +94,27 @@ ActiveRecord::Schema.define(version: 2021_06_30_140753) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.boolean "validated"
+    t.bigint "ongoing_task_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ongoing_task_id"], name: "index_votes_on_ongoing_task_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
+  end
+
+  add_foreign_key "carotted_tasks", "ongoing_tasks"
+  add_foreign_key "carotted_tasks", "users"
+  add_foreign_key "carotted_tasks", "users", column: "carotted_user_id"
+  add_foreign_key "coloc_tasks", "colocs"
+  add_foreign_key "coloc_tasks", "tasks"
   add_foreign_key "colocs", "users", column: "leader_id"
+  add_foreign_key "helpers", "ongoing_tasks"
+  add_foreign_key "helpers", "users"
+  add_foreign_key "ongoing_tasks", "coloc_tasks"
+  add_foreign_key "ongoing_tasks", "users"
   add_foreign_key "users", "colocs"
+  add_foreign_key "votes", "ongoing_tasks"
+  add_foreign_key "votes", "users"
 end
