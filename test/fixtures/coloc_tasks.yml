@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  difficulty: 1
+  points: 1
+  coloc: one
+  task: one
+
+two:
+  difficulty: 1
+  points: 1
+  coloc: two
+  task: two
