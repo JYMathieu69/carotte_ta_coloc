@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ongoing_task: one
+  user: one
+  user: one
+
+two:
+  ongoing_task: two
+  user: two
+  user: two
