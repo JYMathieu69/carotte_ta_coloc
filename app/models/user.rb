@@ -18,6 +18,6 @@ class User < ApplicationRecord
   private
 
   def set_default_avatar
-    self.photo.attach(io: File.open('app/assets/images/default_avatar.png'), filename: 'default_avatar.png', content_type: 'image/png')
+    self.avatar.attach(io: File.open('app/assets/images/default_avatar.png'), filename: 'default_avatar.png', content_type: 'image/png')
   end
 end
