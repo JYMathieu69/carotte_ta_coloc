@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_06_103458) do
+ActiveRecord::Schema.define(version: 2021_07_08_094552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,15 @@ ActiveRecord::Schema.define(version: 2021_07_06_103458) do
     t.boolean "auto_assigned"
   end
 
+  create_table "unfinished_tasks", force: :cascade do |t|
+    t.bigint "ongoing_task_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ongoing_task_id"], name: "index_unfinished_tasks_on_ongoing_task_id"
+    t.index ["user_id"], name: "index_unfinished_tasks_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -114,6 +123,8 @@ ActiveRecord::Schema.define(version: 2021_07_06_103458) do
   add_foreign_key "helpers", "users"
   add_foreign_key "ongoing_tasks", "coloc_tasks"
   add_foreign_key "ongoing_tasks", "users"
+  add_foreign_key "unfinished_tasks", "ongoing_tasks"
+  add_foreign_key "unfinished_tasks", "users"
   add_foreign_key "users", "colocs"
   add_foreign_key "votes", "ongoing_tasks"
   add_foreign_key "votes", "users"
