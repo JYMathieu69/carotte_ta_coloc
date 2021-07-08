@@ -20,7 +20,7 @@ class ColocsController < ApplicationController
 
     private
 
-    def post_params
+    def coloc_params
       params.require(:coloc).permit(:name)
     end
   
