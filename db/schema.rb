@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_08_094552) do
+ActiveRecord::Schema.define(version: 2021_07_08_095909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2021_07_08_094552) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "auto_assigned"
+    t.integer "default_difficulty"
   end
 
   create_table "unfinished_tasks", force: :cascade do |t|
