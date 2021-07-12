@@ -1,0 +1,48 @@
+require 'rails_helper'
+describe Coloc, type: :model do
+    context 'Associations' do
+         it { should have_many(:users) } 
+         it { should have_many(:coloc_tasks) } 
+         it { should have_many(:ongoing_tasks) } 
+         
+    end
+    context 'Validations' do
+        it "is valid with a name and a leader" do
+            leader = create(:leader)
+            coloc69004 = Coloc.new(name: "coloc69004", leader: leader)
+            expect(coloc69004).to be_valid
+        end
+        it "is invalid without a name" do
+            leader = create(:leader)
+            coloc69004 = Coloc.new(name: nil)
+            coloc69004.valid?
+            expect(coloc69004.errors[:name]).to include('can\'t be blank')
+        end
+        it "is invalid without a leader" do
+            leader = create(:leader)
+            coloc69004 = Coloc.new(leader: nil)
+            coloc69004.valid?
+            expect(coloc69004.errors[:leader]).to include('must exist')
+        end
+        it "is invalid if name is duplicated" do
+            coloc1 = create(:coloc, name: "SuperColoc")
+            coloc_duplicated = build(:coloc, name: "SuperColoc")
+            coloc_duplicated.valid?
+            expect(coloc_duplicated.errors[:name]).to include('has already been taken')
+        end
+        it "is invalid if leader is duplicated" do
+            leader = create(:leader)
+            coloc1 = create(:coloc, leader: leader)
+            coloc_duplicated = build(:coloc, leader: leader)
+            coloc_duplicated.valid?
+            expect(coloc_duplicated.errors[:leader]).to include('has already been taken')
+        end
+    end
+
+    context 'methods' do 
+        it "is suppose to respond to full_invite_token" do 
+          coloc = create(:coloc)
+          expect(coloc.full_invite_token).to eq("#{coloc.id}-#{coloc.invite_token}")
+        end
+    end
+end
