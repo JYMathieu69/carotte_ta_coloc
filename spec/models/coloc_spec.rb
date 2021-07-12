@@ -9,7 +9,7 @@ describe Coloc, type: :model do
     context 'Validations' do
         it "is valid with a name and a leader" do
             leader = create(:leader)
-            coloc69004 = Coloc.new(name: "coloc69004", leader: leader)
+            coloc69004 = Coloc.new(name: "Coloc69004", leader: leader)
             expect(coloc69004).to be_valid
         end
         it "is invalid without a name" do
@@ -18,6 +18,27 @@ describe Coloc, type: :model do
             coloc69004.valid?
             expect(coloc69004.errors[:name]).to include('can\'t be blank')
         end
+        it "is invalid with a name with special characters" do
+            coloc69004 = Coloc.new(name: "+*coloc69004")
+            coloc69004.valid?
+            expect(coloc69004.errors[:name]).to include('only letters and digits')
+        end
+        it "is invalid with a too short name" do
+            coloc69004 = Coloc.new(name: "a")
+            coloc69004.valid?
+            expect(coloc69004.errors[:name]).to include('is too short (minimum is 2 characters)')
+        end
+        it "is invalid with a too long name" do
+            coloc69004 = Coloc.new(name: "Unsuperlongdecolocmaisvraimenttrèstrèstrèslong")
+            coloc69004.valid?
+            expect(coloc69004.errors[:name]).to include('is too long (maximum is 20 characters)')
+        end
+        it "is invalid with a space" do
+            coloc69004 = Coloc.new(name: "A space")
+            coloc69004.valid?
+            expect(coloc69004.errors[:name]).to include('only letters and digits')
+        end
+        
         it "is invalid without a leader" do
             leader = create(:leader)
             coloc69004 = Coloc.new(leader: nil)

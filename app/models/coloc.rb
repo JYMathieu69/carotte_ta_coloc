@@ -8,8 +8,16 @@ class Coloc < ApplicationRecord
   validates :name, presence: true
   validates :name, uniqueness: true
 
+  validates :name, format: { with: /\A[a-zA-Z0-9]+\z/,
+  message: "only letters and digits" }
+
+  validates :name, length: { minimum: 2 }
+  validates :name, length: { maximum: 20 }
+
   validates :leader, uniqueness: true
   validates :leader, presence: true
+
+
 
   before_create :set_invite_token
 
