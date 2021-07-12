@@ -13,7 +13,13 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  validates :name, presence: true
+
   before_create :set_default_avatar
+
+  def full_name
+    "toto"
+  end
 
   private
 
