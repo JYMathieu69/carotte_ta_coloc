@@ -1,6 +1,6 @@
 FactoryBot.define do
     factory :user, aliases: [:leader, :carotted_user] do
-        name     { 'Toto' }
+        username { 'Toto' }
         email    { 'toto@gmail.com' }
         password { 'azerty' }
     end

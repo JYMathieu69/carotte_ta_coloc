@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :ongoing_tasks
   has_many :carotted_tasks
+  has_many :unfinished_tasks
   has_many :helpers
   has_many :votes
 

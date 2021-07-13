@@ -32,10 +32,10 @@ describe Coloc, type: :model do
             coloc69004.valid?
             expect(coloc69004.errors[:name]).to include('is too long (maximum is 20 characters)')
         end
-        it "is invalid with a space" do
-            coloc69004 = Coloc.new(name: "A space")
-            coloc69004.valid?
-            expect(coloc69004.errors[:name]).to include('only letters and digits')
+        it "is valid with a space" do
+            leader = create(:leader)
+            coloc69004 = Coloc.new(name: "A space", leader: leader)
+            expect(coloc69004).to be_valid
         end
         
         it "is invalid without a leader" do

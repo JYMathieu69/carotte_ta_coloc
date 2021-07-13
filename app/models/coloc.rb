@@ -8,11 +8,10 @@ class Coloc < ApplicationRecord
   validates :name, presence: true
   validates :name, uniqueness: true
 
-  validates :name, format: { with: /\A[a-zA-Z0-9]+\z/,
+  validates :name, format: { with: /\A[a-zA-Z0-9\s]+\z/,
   message: "only letters and digits" }
 
-  validates :name, length: { minimum: 2 }
-  validates :name, length: { maximum: 20 }
+  validates :name, length: { in: 2..20 }
 
   validates :leader, uniqueness: true
   validates :leader, presence: true
@@ -28,5 +27,4 @@ class Coloc < ApplicationRecord
   def set_invite_token
     self.invite_token = SecureRandom.hex
   end
-
 end
