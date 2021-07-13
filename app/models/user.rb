@@ -20,7 +20,7 @@ class User < ApplicationRecord
   message: "only letters and digits" }
 
   validates :username, length: { minimum: 3 }
-  validates :username, length: { maximum: 12 }
+  validates :username, length: { maximum: 15 }
 
   validates :email, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
