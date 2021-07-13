@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe User, type: :model do
     context 'Associations' do
-        it { should have_many(:colocs) }
+        it { should belong_to(:coloc) }
         it { should have_many(:ongoing_tasks) }
         it { should have_many(:carotted_tasks) }
         it { should have_many(:unfinished_tasks) }
