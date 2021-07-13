@@ -19,8 +19,7 @@ class User < ApplicationRecord
   validates :username, format: { with: /\A[a-zA-Z0-9]+\z/,
   message: "only letters and digits" }
 
-  validates :username, length: { minimum: 3 }
-  validates :username, length: { maximum: 15 }
+  validates :username, length: { in: 3..15 }
 
   validates :email, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
