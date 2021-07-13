@@ -17,8 +17,6 @@ class Coloc < ApplicationRecord
   validates :leader, uniqueness: true
   validates :leader, presence: true
 
-
-
   before_create :set_invite_token
 
   def full_invite_token

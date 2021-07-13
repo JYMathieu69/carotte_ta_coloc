@@ -1,10 +1,9 @@
 require 'rails_helper'
 describe Coloc, type: :model do
     context 'Associations' do
-         it { should have_many(:users) } 
-         it { should have_many(:coloc_tasks) } 
-         it { should have_many(:ongoing_tasks) } 
-         
+            it { should have_many(:users) } 
+            it { should have_many(:coloc_tasks) } 
+            it { should have_many(:ongoing_tasks) } 
     end
     context 'Validations' do
         it "is valid with a name and a leader" do
@@ -62,8 +61,8 @@ describe Coloc, type: :model do
 
     context 'methods' do 
         it "is suppose to respond to full_invite_token" do 
-          coloc = create(:coloc)
-          expect(coloc.full_invite_token).to eq("#{coloc.id}-#{coloc.invite_token}")
+            coloc = create(:coloc)
+            expect(coloc.full_invite_token).to eq("#{coloc.id}-#{coloc.invite_token}")
         end
     end
 end

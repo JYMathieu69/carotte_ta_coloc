@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+        :recoverable, :rememberable, :validatable
 
   belongs_to :coloc, optional: true
 
@@ -13,13 +13,19 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
-  validates :name, presence: true
+  validates :username, presence: true
+  validates :username, uniqueness: true
+
+  validates :username, format: { with: /\A[a-zA-Z0-9]+\z/,
+  message: "only letters and digits" }
+
+  validates :username, length: { minimum: 3 }
+  validates :username, length: { maximum: 12 }
+
+  validates :email, presence: true
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   before_create :set_default_avatar
-
-  def full_name
-    "toto"
-  end
 
   private
 
