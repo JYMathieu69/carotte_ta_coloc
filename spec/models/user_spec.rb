@@ -11,7 +11,7 @@ describe User, type: :model do
     end
 
     context 'Validations' do
-        it "is valid with a username, email, and a password" do
+        it "is valid with a username, email, and password" do
             user = User.create(username: "Toto", email: "toto@gmail.com", password: "azerty")
             expect(user).to be_valid
         end
