@@ -13,7 +13,8 @@ class OngoingTask < ApplicationRecord
   has_many :carotted_tasks
   has_many :positive_votes, -> { where(validated: true) }, class_name: 'Vote'
   has_many :unfinished_tasks
-
+  
+  validates :done, inclusion: { in: [true, false] }
   validates :points_ratio, presence: true
   validates :points_ratio, numericality: { only_float: true }
   validates :points_ratio, numericality: { greater_than_or_equal_to: 1 }
