@@ -55,25 +55,32 @@ recurrence: "Hebdomadaire", auto_assigned: true,  default_difficulty: 3)
 vitre           = Task.create!(name: "Vitres",            description: "Faire les vitres pour voir à travers, c'est cool",
 recurrence: "Hebdomadaire", auto_assigned: true,  default_difficulty: 4)
 
-serpillere      = Task.create!(name: "Serpillère",         description: "Passer la serpillère et marcher pied nu, c'est cool",recurrence: "Hebdomadaire", auto_assigned: true,  default_difficulty: 2)
+serpillere      = Task.create!(name: "Serpillère",         description: "Passer la serpillère et marcher pied nu, c'est cool",
+recurrence: "Hebdomadaire", auto_assigned: true,  default_difficulty: 2)
 
 sortir_poubelle = Task.create!(name: "Sortir la poubelle", description: "Sortir la poubelle, c'est cool",
 recurrence: "Journalière",  auto_assigned: false, default_difficulty: 1)
 
-lessive         = Task.create!(name: "Lessive",            description: "Faire une machine et s'habiller propre, c'est cool",recurrence: "Journalière",  auto_assigned: false, default_difficulty: 1)
+lessive         = Task.create!(name: "Lessive",            description: "Faire une machine et s'habiller propre, c'est cool",
+recurrence: "Journalière",  auto_assigned: false, default_difficulty: 1)
 
-toilettes       = Task.create!(name: "Toilettes",          description: "Faire les toilettes c'est important, oui c'est cool",recurrence: "Hebdomadaire", auto_assigned: true,  default_difficulty: 3)
+toilettes       = Task.create!(name: "Toilettes",          description: "Faire les toilettes c'est important, oui c'est cool",
+recurrence: "Hebdomadaire", auto_assigned: true,  default_difficulty: 3)
 
 salle_de_bain   = Task.create!(name: "Salle de bain",      description: "Etre propre comme la salle de bain, c'est cool",
 recurrence: "Hebdomadaire", auto_assigned: true,  default_difficulty: 4)
 
-linge           = Task.create!(name: "Linge",              description: "etendre le linge pour des habits secs, c'est cool", recurrence: "Journalière",  auto_assigned: false, default_difficulty: 1)
+linge           = Task.create!(name: "Linge",              description: "etendre le linge pour des habits secs, c'est cool",
+recurrence: "Journalière",  auto_assigned: false, default_difficulty: 1)
 
-courses         = Task.create!(name: "Courses",            description: "Faire les courses et avoir un frigo plein, c'est cool",recurrence: "Journalière",  auto_assigned: false, default_difficulty: 2)
+courses         = Task.create!(name: "Courses",            description: "Faire les courses et avoir un frigo plein, c'est cool",
+recurrence: "Journalière",  auto_assigned: false, default_difficulty: 2)
 
-plantes         = Task.create!(name: "Plantes",            description: "Arroser les plantes pour leurs bien-être, c'est cool",recurrence: "Journalière",  auto_assigned: false, default_difficulty: 1)
+plantes         = Task.create!(name: "Plantes",            description: "Arroser les plantes pour leurs bien-être, c'est cool",
+recurrence: "Journalière",  auto_assigned: false, default_difficulty: 1)
 
-verre           = Task.create!(name: "Verre",              description: "Faire une machine pour avoir des habits propres, c'est cool",recurrence: "Hebdomadaire", auto_assigned: true,  default_difficulty: 2)
+verre           = Task.create!(name: "Verre",              description: "Faire une machine pour avoir des habits propres, c'est cool",
+recurrence: "Hebdomadaire", auto_assigned: true,  default_difficulty: 2)
 
 cuisiner        = Task.create!(name: "Cuisiner",           description: "Cuisiner pour les autres, c'est cool",
 recurrence: "Journalière",  auto_assigned: false, default_difficulty: 2)
@@ -93,7 +100,8 @@ recurrence: "Journalière",  auto_assigned: false, default_difficulty: 2)
 four            = Task.create!(name: "Four",               description: "Nettoyer le four, c'est cool, ou pas...",
 recurrence: "Hebdomadaire", auto_assigned: true,  default_difficulty: 4)
 
-siphon          = Task.create!(name: "Siphon",             description: "Nettoyer le siphon pour éviter les bouchons, c'est cool",recurrence: "Hebdomadaire", auto_assigned: true,  default_difficulty: 3)
+siphon          = Task.create!(name: "Siphon",             description: "Nettoyer le siphon pour éviter les bouchons, c'est cool",
+recurrence: "Hebdomadaire", auto_assigned: true,  default_difficulty: 3)
 
 placard         = Task.create!(name: "Placard",            description: "Nettoyer le placard, c'est cool",
 recurrence: "Journalière",  auto_assigned: false, default_difficulty: 3)
@@ -113,7 +121,8 @@ recurrence: "Journalière",  auto_assigned: false, default_difficulty: 2)
 poignée         = Task.create!(name: "Poignées de porte",  description: "Nettoyer les poignées de portes, c'est cool",
 recurrence: "Hebdomadaire", auto_assigned: true,  default_difficulty: 2)
 
-piece_commune   = Task.create!(name: "Pièce commune",      description: "Ranger la pièce commune pour circuler détente, c'est cool",recurrence: "Journalière",  auto_assigned: false, default_difficulty: 2)
+piece_commune   = Task.create!(name: "Pièce commune",      description: "Ranger la pièce commune pour circuler détente, c'est cool",
+recurrence: "Journalière",  auto_assigned: false, default_difficulty: 2)
 
 cendrier        = Task.create!(name: "Cendrier",           description: "Vider le cendrier, c'est cool",
 recurrence: "Hebdomadaire", auto_assigned: true,  default_difficulty: 1)
