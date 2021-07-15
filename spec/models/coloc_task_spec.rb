@@ -11,22 +11,22 @@ describe ColocTask, type: :model do
             coloc_task = ColocTask.new(task: task, coloc: coloc, difficulty: 2, points: 30)
             expect(coloc_task).to be_valid
         end
-        it "is invalid withouth a coloc" do
+        it "is invalid without a coloc" do
             coloc_task = ColocTask.new(coloc: nil)
             coloc_task.valid?
             expect(coloc_task.errors[:coloc]).to include('must exist')
         end
-        it "is invalid withouth a task" do
+        it "is invalid without a task" do
             coloc_task = ColocTask.new(task: nil)
             coloc_task.valid?
             expect(coloc_task.errors[:task]).to include('must exist')
         end
-        it "is invalid withouth a difficulty" do
+        it "is invalid without a difficulty" do
             coloc_task = ColocTask.new(difficulty: nil)
             coloc_task.valid?
             expect(coloc_task.errors[:difficulty]).to include('can\'t be blank')
         end
-        it "is invalid withouth points" do
+        it "is invalid without points" do
             coloc_task = ColocTask.new(points: nil)
             coloc_task.valid?
             expect(coloc_task.errors[:points]).to include('can\'t be blank')
