@@ -3,7 +3,7 @@ class Task < ApplicationRecord
 
     has_one_attached :image
 
-    RECURRENCE = %w(Journalière Hebdomadaire)
+    RECURRENCE = %w(daily weekly)
 
     validates :name, presence: true
     validates :name, uniqueness: true
@@ -12,10 +12,8 @@ class Task < ApplicationRecord
     validates :description, uniqueness: true
 
     validates :recurrence, presence: true
-    validates :recurrence, inclusion: { in: RECURRENCE,
-    message: "%{value} is not a valid recurrence" }
+    validates :recurrence, inclusion: { in: RECURRENCE }
 
-    validates :auto_assigned, presence: true
     validates :auto_assigned, inclusion: { in: [true, false],
     message: "%{value} is not a boolean" }
 

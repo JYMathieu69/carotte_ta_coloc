@@ -1,7 +1,5 @@
 require 'rails_helper'
 
-# RECURRENCE = %w(Journalière Hebdomadaire)
-
 describe Task, type: :model do
     context 'Associations' do
         it { should have_many(:coloc_tasks) }
@@ -26,14 +24,11 @@ describe Task, type: :model do
             task.valid?
             expect(task.errors[:recurrence]).to include('can\'t be blank')
         end
-        # RECURRENCE.each do |valid_recurrence|
-        #     it "is valid with '#{valid_recurrence}' recurrence" do
-        #         expect(build(:task, recurrence: valid_status)).to be_valid
-        #     end
-        # end
-        # it "is invalid without 'Journalière' or 'Hebdomadaire'" do
-        #     expect(build(:task, recurrence: 'Mensuelle')).to_not be_valid
-        # end
+        it "is invalid if not 'daily' or 'weekly'" do
+            newtask = Task.new(recurrence: "mensuelle")
+            newtask.valid?
+            expect(newtask.errors[:recurrence]).to include("is not included in the list")
+        end
         it "is invalid without a auto_assigned" do
             task = Task.new(auto_assigned: nil)
             task.valid?
@@ -44,15 +39,5 @@ describe Task, type: :model do
             task.valid?
             expect(task.errors[:default_difficulty]).to include('can\'t be blank')
         end
-        # it "is invalid if default_difficulty is a string" do
-        #     task = Task.new(default_difficulty: "two")
-        #     task.valid?
-        #     expect(task.errors[:default_difficulty]).to include('is not a number')
-        # end
-        # it "is invalid if default_difficulty is a float " do
-        #     task = Task.new(default_difficulty: 2.2)
-        #     task.valid?
-        #     expect(task.errors[:default_difficulty]).to include('must be an integer')
-        # end
     end
 end

@@ -8,7 +8,7 @@ FactoryBot.define do
     factory :task do
         name               { 'Vaisselle' }
         description        { 'Faire la vaisselle, c\'est cool' }
-        recurrence         { 'Journalière' }
+        recurrence         { 'daily' }
         auto_assigned      { false } 
         default_difficulty { 1 }
     end
