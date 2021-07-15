@@ -8,8 +8,8 @@ FactoryBot.define do
     factory :task do
         name               { 'Vaisselle' }
         description        { 'Faire la vaisselle, c\'est cool' }
-        recurence          { 'Journalière' }
-        auto_assigned      { false } 
+        recurrence         { 'Journalière' }
+        auto_assigned      { false }
         default_difficulty { 1 }
     end
 
@@ -24,5 +24,12 @@ FactoryBot.define do
         task
         difficulty { 2 }
         points     { difficulty * 15 }
+    end
+
+    factory :ongoing_task do
+        coloc_task
+        done          { false }
+        points_ratio  { 1 }
+        final_points  { coloc_task.points * points_ratio }
     end
 end
