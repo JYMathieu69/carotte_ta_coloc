@@ -62,3 +62,4 @@ gem 'devise'
 gem 'awesome_print'
 gem 'cloudinary'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'faker'

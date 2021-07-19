@@ -1,7 +1,7 @@
 FactoryBot.define do
     factory :user, aliases: [:leader, :carotted_user] do
-        username { 'Toto' }
-        email    { 'toto@gmail.com' }
+        username { Faker::Name.first_name }
+        email    { Faker::Internet.safe_email }
         password { 'azerty' }
     end
 
