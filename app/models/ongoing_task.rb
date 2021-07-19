@@ -21,4 +21,8 @@ class OngoingTask < ApplicationRecord
   validates :final_points, presence: true
   validates :final_points, numericality: { only_integer: true }
   validates :final_points, numericality: { greater_than_or_equal_to: 1 }
+
+  def assigned?
+    return self.user
+  end
 end
