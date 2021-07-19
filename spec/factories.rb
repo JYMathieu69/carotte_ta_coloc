@@ -1,7 +1,7 @@
 FactoryBot.define do
     factory :user, aliases: [:leader, :carotted_user] do
-        username { 'Toto' }
-        email    { 'toto@gmail.com' }
+        username { Faker::Name.first_name }
+        email    { Faker::Internet.safe_email }
         password { 'azerty' }
     end
 
@@ -9,7 +9,7 @@ FactoryBot.define do
         name               { 'Vaisselle' }
         description        { 'Faire la vaisselle, c\'est cool' }
         recurrence         { 'daily' }
-        auto_assigned      { false } 
+        auto_assigned      { false }
         default_difficulty { 1 }
     end
 
@@ -31,5 +31,11 @@ FactoryBot.define do
         done          { false }
         points_ratio  { 1 }
         final_points  { coloc_task.points * points_ratio }
+    end
+
+    factory :carotted_task do
+        ongoing_task
+        user
+        carotted_user
     end
 end
