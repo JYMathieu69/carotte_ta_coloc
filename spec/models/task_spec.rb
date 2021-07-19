@@ -6,7 +6,7 @@ describe Task, type: :model do
     end
     context 'Validations' do
         it "is valid with a name, description, recurrence, auto_assigned, and default_difficulty" do
-            task = Task.create(name: "Aspi", description: "Aspi is good for the health", recurrence: "Hebdomadaire", auto_assigned: true, default_difficulty: 3)
+            task = Task.create(name: "Aspi", description: "Aspi is good for the health", recurrence: "weekly", auto_assigned: true, default_difficulty: 3)
             expect(task).to be_valid
         end
         it "is invalid without a name" do
@@ -32,7 +32,7 @@ describe Task, type: :model do
         it "is invalid without a auto_assigned" do
             task = Task.new(auto_assigned: nil)
             task.valid?
-            expect(task.errors[:auto_assigned]).to include('can\'t be blank')
+            expect(task.errors[:auto_assigned]).to include('is not a boolean')
         end
         it "is invalid without a default_difficulty" do
             task = Task.new(default_difficulty: nil)

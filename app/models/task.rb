@@ -15,7 +15,7 @@ class Task < ApplicationRecord
     validates :recurrence, inclusion: { in: RECURRENCE }
 
     validates :auto_assigned, inclusion: { in: [true, false],
-    message: "%{value} is not a boolean" }
+    message: "is not a boolean" }
 
     validates :default_difficulty, presence: true
     validates :default_difficulty, numericality: { only_integer: true }
