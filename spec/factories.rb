@@ -25,4 +25,11 @@ FactoryBot.define do
         difficulty { 2 }
         points     { difficulty * 15 }
     end
+
+    factory :ongoing_task do
+        coloc_task
+        done          { false }
+        points_ratio  { 1 }
+        final_points  { coloc_task.points * points_ratio }
+    end
 end
