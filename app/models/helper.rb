@@ -4,6 +4,8 @@ class Helper < ApplicationRecord
 
   validate :ongoing_task_is_assigned?, :helper_is_not_ongoing_task_user?
 
+  validates :user, uniqueness: { scope: :ongoing_task, message: "you can only help once for a task!" }
+
   private
 
   def helper_is_not_ongoing_task_user?
