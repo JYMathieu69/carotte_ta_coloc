@@ -12,7 +12,7 @@ require 'rails_helper'
     context 'Validations' do
       it "is valid with a coloc_task, a points ratio and final points" do
         coloc_task = create(:coloc_task)
-        ongoing_task = OngoingTask.new(coloc_task: coloc_task, points_ratio: 1, final_points: 30)
+        ongoing_task = OngoingTask.create(coloc_task: coloc_task, points_ratio: 1, final_points: 30, done: false)
         expect(ongoing_task).to be_valid
       end
       it "is invalid without a coloc_task" do
