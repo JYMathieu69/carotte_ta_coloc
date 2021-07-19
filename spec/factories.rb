@@ -33,6 +33,12 @@ FactoryBot.define do
         final_points  { coloc_task.points * points_ratio }
     end
 
+    factory :vote do
+        ongoing_task
+        user
+        validated { false }
+    end
+
     factory :carotted_task do
         ongoing_task
         user
