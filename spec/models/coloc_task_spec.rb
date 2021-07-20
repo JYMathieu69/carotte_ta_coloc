@@ -1,8 +1,8 @@
 require 'rails_helper'
 describe ColocTask, type: :model do
     context 'Associations' do
-            it { should belong_to(:task) } 
-            it { should belong_to(:coloc) } 
+            it { should belong_to(:task) }
+            it { should belong_to(:coloc) }
     end
     context 'Validations' do
         it "is valid with a coloc, task, difficulty and points" do
@@ -44,7 +44,6 @@ describe ColocTask, type: :model do
         it "is invalid if points are less than 0 " do
             coloc_task = ColocTask.new(points: -1)
             coloc_task.valid?
-            p coloc_task.errors[:points]
             expect(coloc_task.errors[:points]).to include('must be greater than or equal to 1')
         end
         it "is invalid if difficulty is greater than 4 " do
@@ -57,7 +56,7 @@ describe ColocTask, type: :model do
             coloc_task.valid?
             expect(coloc_task.errors[:difficulty]).to include('must be greater than or equal to 1')
         end
-        
+
         it "is invalid if difficulty is a string" do
             coloc_task = ColocTask.new(difficulty: "4a")
             coloc_task.valid?
