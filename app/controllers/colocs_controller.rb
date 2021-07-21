@@ -1,6 +1,6 @@
 class ColocsController < ApplicationController
 
-  before_action :set_coloc, only: [:edit, :update, :recap]
+  before_action :set_coloc, only: [:edit, :update, :recap, :invitation]
 
  def new
     @coloc = Coloc.new
@@ -21,6 +21,9 @@ class ColocsController < ApplicationController
  end
 
  def recap
+ end
+
+ def invitation
  end
 
  def update

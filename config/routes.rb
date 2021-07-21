@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :colocs_tasks, only: [:new, :create], as: 'tasks'
   end
   get '/colocs/:id/recap', to: 'colocs#recap'
+  get '/colocs/:id/invitation', to: 'colocs#invitation'
 
   scope do
     resources :ongoing_tasks, path: 'dashboard', only: [:index, :update] do
