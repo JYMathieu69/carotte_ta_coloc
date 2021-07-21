@@ -1,0 +1,2 @@
+module ColocsHelper
+end

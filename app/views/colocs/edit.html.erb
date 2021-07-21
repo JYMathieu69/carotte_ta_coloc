@@ -1,0 +1,13 @@
+
+<div class="input check_boxes optional coloc_coloc_tasks">
+<%= simple_form_for @coloc do |form| %>
+ Tâches:
+     <% @tasks.each do |task|%>
+     <label class="form-check-label" for="flexSwitchCheckDefault"><%= task.name %></label>
+    <input class="check_boxes optional" type="checkbox" value="<%= task.id %>" name="coloc[coloc_tasks][]" id="coloc_coloc_tasks_<%= task.id %>">
+    <img data-title="Aspirateur" src="https://image.flaticon.com/icons/png/512/1748/1748922.png" width="48" height="48">
+    
+    <% end %>
+    <%= form.submit %>
+<% end %>
+</div>
