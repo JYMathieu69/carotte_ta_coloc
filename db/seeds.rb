@@ -6,40 +6,51 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.all.each do |user|
+    user.coloc = nil    
+    user.save!
+end
+
 Helper.delete_all
 UnfinishedTask.delete_all
 Vote.delete_all
 CarottedTask.delete_all
 OngoingTask.delete_all
 ColocTask.delete_all
-Coloc.delete_all
 Task.delete_all
+Coloc.delete_all
 User.delete_all
 
-# USERS
 
-mickael   = User.create!(name: "Mickael",   email: "mickael@coloc.com",   password: "azerty", coloc_id: coloc69004.id)
-lucas     = User.create!(name: "Lucas",     email: "lucas@coloc.com",     password: "azerty", coloc_id: coloc69004.id)
-fanny     = User.create!(name: "Fanny",     email: "fanny@coloc.com",     password: "azerty", coloc_id: coloc69004.id)
-mathieu   = User.create!(name: "Mathieu",   email: "mathieu@coloc.com",   password: "azerty", coloc_id: coloc69004.id)
-samuel    = User.create!(name: "Samuel",    email: "samuel@coloc.com",    password: "azerty", coloc_id: coloc69003.id)
-jeanro    = User.create!(name: "Jeanro",    email: "jeanro@coloc.com",    password: "azerty", coloc_id: coloc69003.id)
-clement   = User.create!(name: "Clement",   email: "clement@coloc.com",   password: "azerty", coloc_id: coloc69003.id)
-joseph    = User.create!(name: "Joseph",    email: "joseph@coloc.com",    password: "azerty", coloc_id: coloc69002.id)
-juliette  = User.create!(name: "Juliette",  email: "juliette@coloc.com",  password: "azerty", coloc_id: coloc69002.id)
-anna      = User.create!(name: "Anna",      email: "anna@coloc.com",      password: "azerty", coloc_id: coloc69006.id)
-guillaume = User.create!(name: "Guillaume", email: "guillaume@coloc.com", password: "azerty", coloc_id: coloc69006.id)
-laure     = User.create!(name: "Laure",     email: "laure@coloc.com",     password: "azerty", coloc_id: coloc69006.id)
-louis     = User.create!(name: "Louis",     email: "louis@coloc.com",     password: "azerty", coloc_id: coloc69006.id)
-melin     = User.create!(name: "Melin",     email: "melin@coloc.com",     password: "azerty", coloc_id: coloc69006.id)
-delphine  = User.create!(name: "Delphine",  email: "delphine@coloc.com",  password: "azerty", coloc_id: coloc69006.id)
+# USERS + COLOCS
 
-# COLOCS
+mickael   = User.create!(username: "Mickael",   email: "mickael@coloc.com",   password: "azerty")
+coloc69004 = Coloc.create!(name: "coloc69004", leader_id: mickael.id)
 
-coloc69007 = Coloc.create!(name: "coloc69004", leader_id: mickael.id)
-coloc69006 = Coloc.create!(name: "coloc69003", leader_id: samuel.id)
-coloc69004 = Coloc.create!(name: "coloc69002", leader_id: joseph.id)
-coloc69002 = Coloc.create!(name: "coloc69006", leader_id: anna.id)
+lucas     = User.create!(username: "Lucas",     email: "lucas@coloc.com",     password: "azerty", coloc_id: coloc69004.id)
+fanny     = User.create!(username: "Fanny",     email: "fanny@coloc.com",     password: "azerty", coloc_id: coloc69004.id)
+mathieu   = User.create!(username: "Mathieu",   email: "mathieu@coloc.com",   password: "azerty", coloc_id: coloc69004.id)
+mickael   = User.update(coloc_id: coloc69004.id)
+
+samuel    = User.create!(username: "Samuel",    email: "samuel@coloc.com",    password: "azerty")
+coloc69003 = Coloc.create!(name: "coloc69003", leader_id: samuel.id)
+
+jeanro    = User.create!(username: "Jeanro",    email: "jeanro@coloc.com",    password: "azerty", coloc_id: coloc69003.id)
+clement   = User.create!(username: "Clement",   email: "clement@coloc.com",   password: "azerty", coloc_id: coloc69003.id)
+
+joseph    = User.create!(username: "Joseph",    email: "joseph@coloc.com",    password: "azerty")
+coloc69002 = Coloc.create!(name: "coloc69002", leader_id: joseph.id)
+
+juliette  = User.create!(username: "Juliette",  email: "juliette@coloc.com",  password: "azerty", coloc_id: coloc69002.id)
+
+anna      = User.create!(username: "Anna",      email: "anna@coloc.com",      password: "azerty")
+coloc69006 = Coloc.create!(name: "coloc69006", leader_id: anna.id)
+
+guillaume = User.create!(username: "Guillaume", email: "guillaume@coloc.com", password: "azerty", coloc_id: coloc69006.id)
+laure     = User.create!(username: "Laure",     email: "laure@coloc.com",     password: "azerty", coloc_id: coloc69006.id)
+louis     = User.create!(username: "Louis",     email: "louis@coloc.com",     password: "azerty", coloc_id: coloc69006.id)
+melin     = User.create!(username: "Melin",     email: "melin@coloc.com",     password: "azerty", coloc_id: coloc69006.id)
+delphine  = User.create!(username: "Delphine",  email: "delphine@coloc.com",  password: "azerty", coloc_id: coloc69006.id)
 
 # TASKS
 
@@ -150,17 +161,17 @@ recurrence: "weekly", auto_assigned: true,  default_difficulty: 3)
 
 # COLOC_TASKS
 
-coloc_task1 = ColocTask.create!(coloc_id: coloc1.id, task_id: task1.id)
+# coloc_task1 = ColocTask.create!(coloc_id: coloc1.id, task_id: task1.id)
 
 # ONGOING_TASKS
 
-ongoing_task1 = OngoingTask.create!(coloc_task_id: coloc_task1.id, user_id: user1.id)
+# ongoing_task1 = OngoingTask.create!(coloc_task_id: coloc_task1.id, user_id: user1.id)
 
 # CAROTTED_TASKS
 
-carotted_task1 = CarottedTask.create!(ongoing_task_id: ongoing_task1.id, user_id: user1.id, carotted_user_id: user1.id)
+# carotted_task1 = CarottedTask.create!(ongoing_task_id: ongoing_task1.id, user_id: user1.id, carotted_user_id: user1.id)
 
 # VOTES
 
-vote1 = Vote.create!(validated: true, ongoing_task_id: ongoing_task1.id, user_id: user1.id)
-vote2 = Vote.create!(validated: false, ongoing_task_id: ongoing_task1.id, user_id: user1.id)
+# vote1 = Vote.create!(validated: true, ongoing_task_id: ongoing_task1.id, user_id: user1.id)
+# vote2 = Vote.create!(validated: false, ongoing_task_id: ongoing_task1.id, user_id: user1.id)
