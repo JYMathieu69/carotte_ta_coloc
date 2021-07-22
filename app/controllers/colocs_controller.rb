@@ -36,22 +36,12 @@ class ColocsController < ApplicationController
    else
       render :edit
    end
-   #  chosen_tasks_id = params["coloc"]["coloc_tasks"]
-   #  chosen_tasks_id.each do |task_id|
-   #    create_coloc_task(task_id, @coloc)
-   #  end
-   
  end
 
  private 
 
  def coloc_params
     params.require(:coloc).permit(:name, coloc_tasks_attributes: [:task_id, :difficulty, :coloc_task_ids])
- end
-
- def create_coloc_task(task_id, coloc)
-    task = Task.find(task_id)
-    coloc_task = ColocTask.create(task: task, coloc: coloc, difficulty: task.default_difficulty)
  end
 
  def set_coloc
