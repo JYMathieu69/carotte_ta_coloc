@@ -7,6 +7,7 @@ class ColocsController < ApplicationController
  end
 
  def create
+   
     @coloc = Coloc.new(coloc_params)
     @coloc.leader = current_user
     if @coloc.save!
@@ -18,6 +19,9 @@ class ColocsController < ApplicationController
 
  def edit
     @tasks = Task.all
+    @tasks.each do |task|
+      @coloc.coloc_tasks.build(task: task, difficulty: task.default_difficulty)
+    end
  end
 
  def recap
@@ -27,17 +31,22 @@ class ColocsController < ApplicationController
  end
 
  def update
-    chosen_tasks_id = params["coloc"]["coloc_tasks"]
-    chosen_tasks_id.each do |task_id|
-      create_coloc_task(task_id, @coloc)
-    end
-    redirect_to "/colocs/#{@coloc.id}/recap"
+   if @coloc.update(coloc_params)
+      redirect_to "/colocs/#{@coloc.id}/recap"
+   else
+      render :edit
+   end
+   #  chosen_tasks_id = params["coloc"]["coloc_tasks"]
+   #  chosen_tasks_id.each do |task_id|
+   #    create_coloc_task(task_id, @coloc)
+   #  end
+   
  end
 
  private 
 
  def coloc_params
-    params.require(:coloc).permit(:name, :coloc_tasks)
+    params.require(:coloc).permit(:name, coloc_tasks_attributes: [:task_id, :difficulty, :coloc_task_ids])
  end
 
  def create_coloc_task(task_id, coloc)

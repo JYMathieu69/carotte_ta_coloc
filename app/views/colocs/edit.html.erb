@@ -1,13 +1,18 @@
 
-<div class="input check_boxes optional coloc_coloc_tasks">
-<%= simple_form_for @coloc do |form| %>
- Tâches:
-     <% @tasks.each do |task|%>
-     <label class="form-check-label" for="flexSwitchCheckDefault"><%= task.name %></label>
-    <input class="check_boxes optional" type="checkbox" value="<%= task.id %>" name="coloc[coloc_tasks][]" id="coloc_coloc_tasks_<%= task.id %>">
-    <img data-title="Aspirateur" src="https://image.flaticon.com/icons/png/512/1748/1748922.png" width="48" height="48">
-    
+
+
+
+<%= form_with model: @coloc do |form| %>
+ Tasks:
+  <%= form.fields_for :coloc_tasks do |coloc_tasks_fields| %>
+      <li>
+        <%= coloc_tasks_fields.label coloc_tasks_fields.object.task.name %>
+        <%= coloc_tasks_fields.check_box :task_id, {} , coloc_tasks_fields.object.task.id %>
+        <%= coloc_tasks_fields.hidden_field :difficulty  %>
+
+      </li>
     <% end %>
-    <%= form.submit %>
+  </ul>
+  <%= form.submit %>
 <% end %>
-</div>
+  <ul>
