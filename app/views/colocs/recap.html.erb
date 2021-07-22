@@ -1,0 +1,12 @@
+<h1>Recapitulatif des tâches</h1>
+
+<% @coloc.coloc_tasks.each do |coloc_task| %>
+   <%= coloc_task.name %> 
+<% end %>
+
+<div>
+    En tant que leader, vous pourrez ajouter, modifier ou supprimer des tâches depuis le dashboard
+</div>
+<div>
+    <%= link_to "J'ai compris", "/colocs/#{@coloc.id}/invitation "%>
+</div>

@@ -3,6 +3,7 @@ class Coloc < ApplicationRecord
   
   has_many :users
   has_many :coloc_tasks
+  
   has_many :ongoing_tasks, through: :coloc_tasks
 
   validates :name, presence: true
