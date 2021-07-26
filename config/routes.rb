@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'ongoing_tasks#index'
 
   resources :colocs, only: [:new, :create, :edit, :update] do
-    resources :colocs_tasks, only: [:new, :create], as: 'tasks'
+    resources :coloc_tasks, only: [:new, :create], as: 'tasks'
   end
   get '/colocs/:id/recap', to: 'colocs#recap'
   get '/colocs/:id/invitation', to: 'colocs#invitation'
@@ -15,6 +15,4 @@ Rails.application.routes.draw do
     end
     resources :coloc_tasks, path: 'task_manager', only: [:index, :create, :update, :destroy]
   end
-
-
 end

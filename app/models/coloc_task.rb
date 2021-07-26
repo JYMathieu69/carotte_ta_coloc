@@ -1,12 +1,12 @@
 class ColocTask < ApplicationRecord
 
-  before_validation  :set_default_points
+  before_validation :set_default_difficulty
+  before_validation :set_default_points
 
   belongs_to :coloc
   belongs_to :task
 
   has_many :ongoing_tasks
-  
   
   validates :difficulty, presence: true
   validates :difficulty, numericality: { only_integer: true}
@@ -21,7 +21,11 @@ class ColocTask < ApplicationRecord
 
   private 
 
+  def set_default_difficulty
+    (self.difficulty = self.task.default_difficulty) if task.present?
+  end
+
   def set_default_points
-    self.points = self.difficulty * 15
+    (self.points = self.difficulty * 15) if difficulty.present?
   end
 end
