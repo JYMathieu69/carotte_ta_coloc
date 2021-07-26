@@ -15,6 +15,4 @@ Rails.application.routes.draw do
     end
     resources :coloc_tasks, path: 'task_manager', only: [:index, :create, :update, :destroy]
   end
-
-
 end

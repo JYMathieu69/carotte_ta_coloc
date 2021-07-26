@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_13_091800) do
+ActiveRecord::Schema.define(version: 2021_07_26_095746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,9 +85,9 @@ ActiveRecord::Schema.define(version: 2021_07_13_091800) do
   end
 
   create_table "ongoing_tasks", force: :cascade do |t|
-    t.boolean "done"
+    t.boolean "done", default: false
     t.datetime "finished_at"
-    t.float "points_ratio"
+    t.float "points_ratio", default: 1.0
     t.integer "final_points"
     t.bigint "coloc_task_id", null: false
     t.bigint "user_id"
