@@ -22,10 +22,10 @@ class ColocTask < ApplicationRecord
   private 
 
   def set_default_difficulty
-    self.difficulty = self.task.default_difficulty
+    (self.difficulty = self.task.default_difficulty) if task.present?
   end
 
   def set_default_points
-    self.points = self.difficulty * 15
+    (self.points = self.difficulty * 15) if difficulty.present?
   end
 end

@@ -24,6 +24,8 @@ User.delete_all
 
 # USERS + COLOCS
 
+puts "Creating Users and Colocs..."
+
 mickael   = User.create!(username: "Mickael",   email: "mickael@coloc.com",   password: "azerty")
 coloc69004 = Coloc.create!(name: "coloc69004", leader_id: mickael.id)
 
@@ -52,7 +54,11 @@ louis     = User.create!(username: "Louis",     email: "louis@coloc.com",     pa
 melin     = User.create!(username: "Melin",     email: "melin@coloc.com",     password: "azerty", coloc_id: coloc69006.id)
 delphine  = User.create!(username: "Delphine",  email: "delphine@coloc.com",  password: "azerty", coloc_id: coloc69006.id)
 
+puts "Users and Colocs created !"
+
 # TASKS
+
+puts "Creating Tasks..."
 
 vaisselle       = Task.create!(name: "Vaisselle",         description: "Faire la vaisselle, c'est cool",
 recurrence: "daily",  auto_assigned: false, default_difficulty: 1)
@@ -158,6 +164,8 @@ recurrence: "weekly", auto_assigned: true,  default_difficulty: 3)
 
 chat            = Task.create!(name: "Litière du chat",    description: "Changer la litière du chat, c'est cool",
 recurrence: "weekly", auto_assigned: true,  default_difficulty: 3)
+
+puts "Tasks created !"
 
 # COLOC_TASKS
 

@@ -32,6 +32,6 @@ class OngoingTask < ApplicationRecord
   private
 
   def set_final_points
-    self.final_points = (self.coloc_task.points * self.points_ratio).round
+    (self.final_points = (self.coloc_task.points * self.points_ratio).round) if coloc_task.present?
   end
 end
