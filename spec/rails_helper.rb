@@ -6,7 +6,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 
 require 'rspec/rails'
 require 'capybara'
-
+require 'support/features/sign_in'
 Dir[Rails.root.join("spec/support/**/*.rb")].sort.each { |file| require file }
 
 begin
@@ -44,5 +44,6 @@ RSpec.configure do |config|
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
-  Capybara.default_driver = :selenium_chrome
+  # Capybara.default_driver = :selenium_chrome
+  config.include Features, type: :feature
 end
