@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
   get '/colocs/:id/recap', to: 'colocs#recap'
   get '/colocs/:id/invitation', to: 'colocs#invitation'
+  get '/home', to: 'pages#home'
 
   scope do
     resources :ongoing_tasks, path: 'dashboard', only: [:index, :update] do
