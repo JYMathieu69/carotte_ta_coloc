@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'ongoing_tasks#index'
 
@@ -8,6 +11,7 @@ Rails.application.routes.draw do
   end
   get '/colocs/:id/recap', to: 'colocs#recap'
   get '/colocs/:id/invitation', to: 'colocs#invitation'
+  get '/home', to: 'pages#home'
 
   scope do
     resources :ongoing_tasks, path: 'dashboard', only: [:index, :update] do
