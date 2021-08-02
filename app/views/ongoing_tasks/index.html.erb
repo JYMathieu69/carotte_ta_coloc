@@ -3,23 +3,20 @@
 <h3>Mes tâches de la semaine</h3>
 
     <% @user_tasks.each do |task| %>
-        <img src="https://image.flaticon.com/icons/png/512/1748/1748922.png" width="48" height="48">
-        <!-- <%= task.image %> -->
+        <%= task.image %>
         <%= task.final_points %>
     <% end %>
 
     <h3>Tâches non assignées</h3>
 
     <% @unassigned_tasks.each do |task| %>
-        <img src="https://image.flaticon.com/icons/png/512/1748/1748922.png" width="48" height="48">
-        <!-- <%= task.image %> -->
+        <%= task.image %>
         <%= task.final_points %>
     <% end %>
 
     <h3>Les tâches de mes colocs</h3>
 
     <% @colocs_tasks.each do |task| %>
-        <img src="https://image.flaticon.com/icons/png/512/1748/1748922.png" width="48" height="48">   
-        <!-- <%= task.image %> -->
+        <%= task.image %>
         <%= task.user.avatar %>
     <% end %>
