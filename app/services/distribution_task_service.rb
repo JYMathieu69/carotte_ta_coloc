@@ -2,7 +2,7 @@ class DistributionTaskService
 
     def initialize(attributes = {})
         @coloc = attributes[:coloc]
-        @coloc_tasks_by_difficulty = @coloc.coloc_tasks.order(points: :desc).group_by { |coloc_task| coloc_task.points }.values
+        @coloc_tasks_by_difficulty = get_coloc_tasks_by_difficulty
     end
     
     def distribution
@@ -28,5 +28,11 @@ class DistributionTaskService
             OngoingTask.create!(user_id: user_with_less_points.id, coloc_task_id: task.id)
 
         end
+    end
+
+    private
+
+    def get_coloc_tasks_by_difficulty
+        @coloc.coloc_tasks.order(points: :desc).filter { |coloc_task| coloc_task.auto_assigned == true }.group_by { |coloc_task| coloc_task.points }.values
     end
 end
