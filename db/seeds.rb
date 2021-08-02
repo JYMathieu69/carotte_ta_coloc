@@ -91,13 +91,13 @@ linge           = Task.create!(name: "Linge",              description: "etendre
 recurrence: "daily",  auto_assigned: false, default_difficulty: 2)
 
 courses         = Task.create!(name: "Courses",            description: "Faire les courses et avoir un frigo plein, c'est cool",
-recurrence: "daily",  auto_assigned: false, default_difficulty: 2)
+recurrence: "daily",  auto_assigned: false, default_difficulty: 3)
 
 plantes         = Task.create!(name: "Plantes",            description: "Arroser les plantes pour leurs bien-être, c'est cool",
 recurrence: "daily",  auto_assigned: false, default_difficulty: 1)
 
 verre           = Task.create!(name: "Verre",              description: "Faire une machine pour avoir des habits propres, c'est cool",
-recurrence: "weekly", auto_assigned: true,  default_difficulty: 2)
+recurrence: "weekly", auto_assigned: true,  default_difficulty: 3)
 
 cuisiner        = Task.create!(name: "Cuisiner",           description: "Cuisiner pour les autres, c'est cool",
 recurrence: "daily",  auto_assigned: false, default_difficulty: 2)
@@ -109,16 +109,13 @@ frigo           = Task.create!(name: "Frigo",              description: "Laver l
 recurrence: "weekly", auto_assigned: true,  default_difficulty: 4)
 
 balai           = Task.create!(name: "Balai",              description: "Passer le balai, c'est cool",
-recurrence: "weekly", auto_assigned: true,  default_difficulty: 1)
+recurrence: "weekly", auto_assigned: true,  default_difficulty: 2)
 
 animal          = Task.create!(name: "Animal Domestique",  description: "Sortir l'animal, c'est cool",
 recurrence: "daily",  auto_assigned: false, default_difficulty: 2)
 
 four            = Task.create!(name: "Four",               description: "Nettoyer le four, c'est cool, ou pas...",
 recurrence: "weekly", auto_assigned: true,  default_difficulty: 4)
-
-siphon          = Task.create!(name: "Siphon",             description: "Nettoyer le siphon pour éviter les bouchons, c'est cool",
-recurrence: "weekly", auto_assigned: true,  default_difficulty: 2)
 
 placard         = Task.create!(name: "Placard",            description: "Nettoyer le placard, c'est cool",
 recurrence: "daily",  auto_assigned: false, default_difficulty: 3)
@@ -130,7 +127,7 @@ nettoyer_table  = Task.create!(name: "Nettoyer la table",  description: "Nettoye
 recurrence: "daily",  auto_assigned: false, default_difficulty: 1)
 
 pelouse         = Task.create!(name: "Pelouse",            description: "Tondre la pelouse, c'est cool",
-recurrence: "weekly", auto_assigned: true,  default_difficulty: 3)
+recurrence: "weekly", auto_assigned: true,  default_difficulty: 4)
 
 papier          = Task.create!(name: "Papiers",            description: "Gère les papiers de la coloc, c'est cool",
 recurrence: "daily",  auto_assigned: false, default_difficulty: 2)
@@ -157,13 +154,16 @@ mettre_table    = Task.create!(name: "Mettre la table",    description: "Mettre 
 recurrence: "daily",  auto_assigned: false, default_difficulty: 1)
 
 pq_sopalin      = Task.create!(name: "PQ / Sopalin",       description: "Eviter la panne, c'est cool",
-recurrence: "weekly", auto_assigned: true,  default_difficulty: 2)
+recurrence: "weekly", auto_assigned: true,  default_difficulty: 1)
 
 laver_poubelle  = Task.create!(name: "Laver la poubelle",  description: "Laver la poubelle, c'est cool",
 recurrence: "weekly", auto_assigned: true,  default_difficulty: 2)
 
 chat            = Task.create!(name: "Litière du chat",    description: "Changer la litière du chat, c'est cool",
 recurrence: "weekly", auto_assigned: true,  default_difficulty: 2)
+
+battre_tapis  = Task.create!(name: "Battre le tapis",  description: "Battre le tapis, c'est cool",
+recurrence: "daily", auto_assigned: true,  default_difficulty: 1)
 
 puts "Tasks created !"
 
