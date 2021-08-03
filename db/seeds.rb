@@ -60,7 +60,7 @@ toto      = User.create!(username: "Toto",      email: "toto@coloc.com",      pa
 toto_bro  = User.create!(username: "TotoBro",   email: "totobro@coloc.com",   password: "azerty")
 
 puts "Users and Colocs created !"
-
+puts " "
 # TASKS
 
 puts "Creating Tasks..."
@@ -276,33 +276,35 @@ battre_tapis.image.attach(io: battre_tapis_image, filename: 'tapis.png', content
 
 
 puts "Tasks created !"
+puts " "
 
 # COLOC_TASKS
 
 puts "Creating Coloc_tasks..."
 
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: vaisselle.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: aspirateur.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: poussiere.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: vitre.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: serpillere.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: sortir_poubelle.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: lessive.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: toilettes.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: salle_de_bain.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: linge.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: courses.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: plantes.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: verre.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: cuisiner.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: lave_vaisselle.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: nettoyer_table.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: papier.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: cendrier.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: mettre_table.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: laver_poubelle.id)
+coloc_task1  = ColocTask.create!(coloc_id: coloc69004.id, task_id: vaisselle.id)
+coloc_task2  = ColocTask.create!(coloc_id: coloc69004.id, task_id: aspirateur.id)
+coloc_task3  = ColocTask.create!(coloc_id: coloc69004.id, task_id: poussiere.id)
+coloc_task4  = ColocTask.create!(coloc_id: coloc69004.id, task_id: vitre.id)
+coloc_task5  = ColocTask.create!(coloc_id: coloc69004.id, task_id: serpillere.id)
+coloc_task6  = ColocTask.create!(coloc_id: coloc69004.id, task_id: sortir_poubelle.id)
+coloc_task7  = ColocTask.create!(coloc_id: coloc69004.id, task_id: lessive.id)
+coloc_task8  = ColocTask.create!(coloc_id: coloc69004.id, task_id: toilettes.id)
+coloc_task9  = ColocTask.create!(coloc_id: coloc69004.id, task_id: salle_de_bain.id)
+coloc_task10 = ColocTask.create!(coloc_id: coloc69004.id, task_id: linge.id)
+coloc_task11 = ColocTask.create!(coloc_id: coloc69004.id, task_id: courses.id)
+coloc_task12 = ColocTask.create!(coloc_id: coloc69004.id, task_id: plantes.id)
+coloc_task13 = ColocTask.create!(coloc_id: coloc69004.id, task_id: verre.id)
+coloc_task14 = ColocTask.create!(coloc_id: coloc69004.id, task_id: cuisiner.id)
+coloc_task15 = ColocTask.create!(coloc_id: coloc69004.id, task_id: lave_vaisselle.id)
+coloc_task16 = ColocTask.create!(coloc_id: coloc69004.id, task_id: nettoyer_table.id)
+coloc_task17 = ColocTask.create!(coloc_id: coloc69004.id, task_id: papier.id)
+coloc_task18 = ColocTask.create!(coloc_id: coloc69004.id, task_id: cendrier.id)
+coloc_task19 = ColocTask.create!(coloc_id: coloc69004.id, task_id: mettre_table.id)
+coloc_task20 = ColocTask.create!(coloc_id: coloc69004.id, task_id: laver_poubelle.id)
 
 puts "Coloc_tasks created !"
+puts " "
 
 # CAROTTED_TASKS
 
