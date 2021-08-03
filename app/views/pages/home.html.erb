@@ -1,7 +1,7 @@
-<h1>Carotte ta coloc</h1>
+<%= image_tag 'logo.png', alt: 'logo', class: 'logo-lg' %>
 
-<p>Gagne des carottes en faisant des tâches</p>
-<p>Utilise tes carottes pour réassigner une de tes tâches !</p>
+<p class="violet-100 p-small">Gagne des carottes en faisant des tâches</p>
+<p class="violet-100">Utilise tes carottes pour réassigner une de tes tâches !</p>
 
-<%= link_to "JE CRÉE MA COLOC",new_coloc_path %>
-<%= link_to "J'EN REJOINS UNE",join_coloc_path %>
+<%= link_to "JE CRÉE MA COLOC",new_coloc_path, class: 'btn-primary' %>
+<%= link_to "J'EN REJOINS UNE",join_coloc_path, class: 'btn-ghost' %>
