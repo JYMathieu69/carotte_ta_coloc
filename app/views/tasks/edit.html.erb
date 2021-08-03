@@ -1,0 +1,13 @@
+<h1>Edit the task "<%= @task.name %>"</h1>
+
+<%= simple_form_for @task do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :default_difficulty, collection: (1..4) %>
+  <%= f.input :recurrence, collection: Task::RECURRENCE %>
+  <%= f.input :auto_assigned %>
+  <%= f.input :image, as: :file %>
+  <%= f.submit "Update" %>
+<% end %>
+
+<%= link_to "Retour", tasks_path %>
