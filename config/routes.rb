@@ -11,12 +11,12 @@ Rails.application.routes.draw do
   get '/colocs/:id/recap', to: 'colocs#recap'
   get '/colocs/:id/invitation', to: 'colocs#invitation'
   get '/home', to: 'pages#home'
-  get '/admin', to: 'tasks#index'
 
   scope do
     resources :ongoing_tasks, path: 'dashboard', only: [:index, :update] do
       resources :votes, only: [:create]
     end
     resources :coloc_tasks, path: 'task_manager', only: [:index, :create, :update, :destroy]
+    resources :tasks, path: 'admin', except: [:show, :new]
   end
 end
