@@ -1,0 +1,37 @@
+<h1>Admin Dashboard</h1>
+<p style="font-size: 20px; font-style: italic;">"Falumami !"</p>
+
+<span style="text-decoration: underline; cursor: pointer">+ Add a task</span>
+
+<div>
+  <%= simple_form_for @new_task do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :default_difficulty, collection: (1..4) %>
+    <%= f.input :recurrence, collection: Task::RECURRENCE %>
+    <%= f.input :auto_assigned %>
+    <%= f.input :image, as: :file %>
+    <%= f.submit "Add" %>
+  <% end %>
+</div>
+
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+      <%= cl_image_tag task.image.key, height: 100, width: 100 %>
+      <div>
+        <h2><%= task.name %></h2>
+        <p><%= task.description %></p>
+      </div>
+      <div>
+        Default difficulty: <%= task.default_difficulty %>
+        Recurrence: <%= task.recurrence %>
+        Auto-assigned: <%= task.auto_assigned %>
+      </div>
+      <div>
+        <%= link_to "🖊️", edit_task_path(task) %>
+        <%= link_to "🗑️", task_path(task), method: :delete, data: { confirm: "Delete #{task.name}?" } %>
+      </div>
+    </li>
+  <% end %>
+</ul>
