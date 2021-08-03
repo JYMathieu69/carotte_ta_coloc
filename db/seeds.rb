@@ -190,7 +190,7 @@ micro_onde.image.attach(io: micro_onde_image, filename: 'micro_onde.png', conten
 
 nettoyer_table  = Task.create!(name: "Nettoyer la table",  description: "Nettoyer la table, c'est cool",
 recurrence: "daily",  auto_assigned: false, default_difficulty: 1)
-nettoyer_table_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1627986227/microondes_s9v4yx.png')
+nettoyer_table_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1627999840/NETTOYER_TABLE_ugarnz.png')
 nettoyer_table.image.attach(io: nettoyer_table_image, filename: 'nettoyer_table.png', content_type: 'image/png')
 
 
@@ -202,7 +202,7 @@ pelouse.image.attach(io: pelouse_image, filename: 'pelouse.png', content_type: '
 
 papier          = Task.create!(name: "Papiers",            description: "Gère les papiers de la coloc, c'est cool",
 recurrence: "daily",  auto_assigned: false, default_difficulty: 2)
-papier_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1627986226/papiers_tdcbvw.png')
+papier_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1627999845/PAPIERS_toeadz.png')
 papier.image.attach(io: papier_image, filename: 'papier.png', content_type: 'image/png')
 
 
@@ -238,7 +238,7 @@ café.image.attach(io: café_image, filename: 'café.png', content_type: 'image/
 
 evier           = Task.create!(name: "Evier",              description: "Nettoyer l'évier, c'est cool",
 recurrence: "weekly", auto_assigned: true,  default_difficulty: 1)
-evier_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1627986225/cafe_q3ixc1.png')
+evier_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1627999838/EVIER_gdo9ky.png')
 evier.image.attach(io: evier_image, filename: 'evier.png', content_type: 'image/png')
 
 
