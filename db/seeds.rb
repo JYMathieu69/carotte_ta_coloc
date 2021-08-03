@@ -56,6 +56,9 @@ louis     = User.create!(username: "Louis",     email: "louis@coloc.com",     pa
 melin     = User.create!(username: "Melin",     email: "melin@coloc.com",     password: "azerty", coloc_id: coloc69006.id)
 delphine  = User.create!(username: "Delphine",  email: "delphine@coloc.com",  password: "azerty", coloc_id: coloc69006.id)
 
+toto      = User.create!(username: "Toto",      email: "toto@coloc.com",      password: "azerty")
+toto_bro  = User.create!(username: "TotoBro",   email: "totobro@coloc.com",   password: "azerty")
+
 puts "Users and Colocs created !"
 
 # TASKS
