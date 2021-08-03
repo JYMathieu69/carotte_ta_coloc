@@ -147,7 +147,7 @@ cuisiner.image.attach(io: cuisiner_image, filename: 'cuisiner.png', content_type
 
 
 lave_vaisselle  = Task.create!(name: "Lave vaisselle",     description: "Faire tourner un lave vaisselle, c'est cool",
-recurrence: "daily",  auto_assigned: false, default_difficulty: 1)
+recurrence: "daily",  auto_assigned: false, default_difficulty: 2)
 lave_vaisselle_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1627986228/vider_lave_vaisselle_sx1ghl.png')
 lave_vaisselle.image.attach(io: lave_vaisselle_image, filename: 'lave_vaisselle.png', content_type: 'image/png')
 
@@ -274,15 +274,32 @@ battre_tapis.image.attach(io: battre_tapis_image, filename: 'tapis.png', content
 
 puts "Tasks created !"
 
-
-
 # COLOC_TASKS
 
-# coloc_task1 = ColocTask.create!(coloc_id: coloc1.id, task_id: task1.id)
+puts "Creating Coloc_tasks..."
 
-# ONGOING_TASKS
+coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: vaisselle.id)
+coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: aspirateur.id)
+coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: poussiere.id)
+coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: vitre.id)
+coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: serpillere.id)
+coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: sortir_poubelle.id)
+coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: lessive.id)
+coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: toilettes.id)
+coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: salle_de_bain.id)
+coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: linge.id)
+coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: courses.id)
+coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: plantes.id)
+coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: verre.id)
+coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: cuisiner.id)
+coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: lave_vaisselle.id)
+coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: nettoyer_table.id)
+coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: papier.id)
+coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: cendrier.id)
+coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: mettre_table.id)
+coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: laver_poubelle.id)
 
-# ongoing_task1 = OngoingTask.create!(coloc_task_id: coloc_task1.id, user_id: user1.id)
+puts "Coloc_tasks created !"
 
 # CAROTTED_TASKS
 
