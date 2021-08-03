@@ -28,6 +28,7 @@ class ColocsController < ApplicationController
    end
 
    def join
+      @user = current_user
    end
 
    def invitation

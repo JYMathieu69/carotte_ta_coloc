@@ -20,13 +20,9 @@ class Coloc < ApplicationRecord
 
   before_create :set_invite_token
 
-  def full_invite_token
-    "#{self.id}-#{self.invite_token}"
-  end
-
   private
 
   def set_invite_token
-    self.invite_token = SecureRandom.hex
+    self.invite_token = "#{self.id}-#{SecureRandom.hex}"
   end
 end
