@@ -27,6 +27,9 @@ class ColocsController < ApplicationController
    def recap
    end
 
+   def join
+   end
+
    def invitation
    end
 
