@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/colocs/:id/recap', to: 'colocs#recap'
   get '/colocs/:id/invitation', to: 'colocs#invitation'
   get '/home', to: 'pages#home'
-
+  get '/join', to: 'colocs#join', as: 'join_coloc'
   scope do
     resources :ongoing_tasks, path: 'dashboard', only: [:index, :update] do
       resources :votes, only: [:create]
