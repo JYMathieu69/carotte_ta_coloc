@@ -9,4 +9,8 @@ class OngoingTasksController < ApplicationController
 
     @tasks = Task.all
   end
+
+  def show
+    @ongoing_task = OngoingTask.find(params[:id])
+  end
 end

@@ -20,6 +20,7 @@ class Coloc < ApplicationRecord
 
   before_create :set_invite_token
 
+
   def full_invite_token
     "#{self.id}-#{self.invite_token}"
   end
