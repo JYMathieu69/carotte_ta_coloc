@@ -7,14 +7,19 @@
         <%= task.final_points %>
     <% end %>
 
-    <h3>Tâches non assignées</h3>
+
+    <% @tasks.each do |task| %>
+    <%= cl_image_tag task.image.key, height: 175, width: 175%>
+    <% end %>
+
+<h3>Tâches non assignées</h3>
 
     <% @unassigned_tasks.each do |task| %>
         <%= task.image %>
         <%= task.final_points %>
     <% end %>
 
-    <h3>Les tâches de mes colocs</h3>
+<h3>Les tâches de mes colocs</h3>
 
     <% @colocs_tasks.each do |task| %>
         <%= task.image %>
