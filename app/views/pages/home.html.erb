@@ -1,7 +1,21 @@
-<%= image_tag 'logo.png', alt: 'logo', class: 'logo-lg' %>
+<div class='text-center'>
+    <%= image_tag 'logo.png', alt: 'logo', class: 'logo-lg' %>
+</div>
 
-<p class="violet-100 p-small">Gagne des carottes en faisant des tâches</p>
-<p class="violet-100">Utilise tes carottes pour réassigner une de tes tâches !</p>
+<div class='text-center margin-b-64'>
+    <div class="margin-b-32">
+        <%= image_tag 'earn_carrots.png', alt: 'use_carrots'%>
+        <p class="violet-100 p-small">Gagne des carottes en faisant des tâches</p>
+    </div>
 
-<%= link_to "JE CRÉE MA COLOC",new_coloc_path, class: 'btn-primary' %>
-<%= link_to "J'EN REJOINS UNE",join_coloc_path, class: 'btn-ghost' %>
+    <div class="margin-b-32">
+        <%= image_tag 'credit_card.png', alt: 'use_carrots'%>
+        <p class="violet-100">Utilise tes carottes pour réassigner une de tes tâches !</p>   
+    </div>
+</div>
+
+<div class="text-center">
+    
+    <%= link_to "JE CRÉE MA COLOC'",new_coloc_path, class: 'btn-primary' %>
+    <%= link_to "J'EN REJOINS UNE",join_coloc_path, class: 'btn-ghost' %>
+</div>
