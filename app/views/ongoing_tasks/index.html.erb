@@ -20,3 +20,7 @@
         <%= task.image %>
         <%= task.user.avatar %>
     <% end %>
+
+    <div>
+        <%= link_to "Au revoir !", destroy_user_session_path, method: :delete %>
+    </div>
