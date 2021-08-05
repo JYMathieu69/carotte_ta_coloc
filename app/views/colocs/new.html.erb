@@ -1,4 +1,9 @@
-<%= simple_form_for @coloc do |f| %>
-  <%= f.input :name %>
-  <%= f.submit 'Etape suivante' %>
-<% end %>
+<div class="text-center">
+  <%= simple_form_for @coloc do |f| %>
+    <%= f.input :name, input_html: { class: 'margin-b-32 placeholder btn-border-purple-1', style: 'width: 282px;' }, placeholder: "Entre le nom de ta future Coloc'", label: false %>
+    <%= f.submit 'Etape suivante >', class: 'btn-border-purple-1' %>
+  <% end %>
+</div>
+
+
+
