@@ -34,18 +34,20 @@ coloc69004 = Coloc.create!(name: "coloc69004", leader_id: mickael.id)
 lucas     = User.create!(username: "Lucas",     email: "lucas@coloc.com",     password: "azerty", coloc_id: coloc69004.id)
 fanny     = User.create!(username: "Fanny",     email: "fanny@coloc.com",     password: "azerty", coloc_id: coloc69004.id)
 mathieu   = User.create!(username: "Mathieu",   email: "mathieu@coloc.com",   password: "azerty", coloc_id: coloc69004.id)
-mickael   = User.update(coloc_id: coloc69004.id)
+mickael.update(coloc_id: coloc69004.id)
 
 samuel    = User.create!(username: "Samuel",    email: "samuel@coloc.com",    password: "azerty")
 coloc69003 = Coloc.create!(name: "coloc69003", leader_id: samuel.id)
 
 jeanro    = User.create!(username: "Jeanro",    email: "jeanro@coloc.com",    password: "azerty", coloc_id: coloc69003.id)
 clement   = User.create!(username: "Clement",   email: "clement@coloc.com",   password: "azerty", coloc_id: coloc69003.id)
+samuel.update(coloc_id: coloc69003.id)
 
 joseph    = User.create!(username: "Joseph",    email: "joseph@coloc.com",    password: "azerty")
 coloc69002 = Coloc.create!(name: "coloc69002", leader_id: joseph.id)
 
 juliette  = User.create!(username: "Juliette",  email: "juliette@coloc.com",  password: "azerty", coloc_id: coloc69002.id)
+joseph.update(coloc_id: coloc69002.id)
 
 anna      = User.create!(username: "Anna",      email: "anna@coloc.com",      password: "azerty")
 coloc69006 = Coloc.create!(name: "coloc69006", leader_id: anna.id)
@@ -55,12 +57,14 @@ laure     = User.create!(username: "Laure",     email: "laure@coloc.com",     pa
 louis     = User.create!(username: "Louis",     email: "louis@coloc.com",     password: "azerty", coloc_id: coloc69006.id)
 melin     = User.create!(username: "Melin",     email: "melin@coloc.com",     password: "azerty", coloc_id: coloc69006.id)
 delphine  = User.create!(username: "Delphine",  email: "delphine@coloc.com",  password: "azerty", coloc_id: coloc69006.id)
+anna.update(coloc_id: coloc69006.id)
 
 toto      = User.create!(username: "Toto",      email: "toto@coloc.com",      password: "azerty")
 toto_bro  = User.create!(username: "TotoBro",   email: "totobro@coloc.com",   password: "azerty")
 
 puts "Users and Colocs created !"
 puts " "
+
 # TASKS
 
 puts "Creating Tasks..."
