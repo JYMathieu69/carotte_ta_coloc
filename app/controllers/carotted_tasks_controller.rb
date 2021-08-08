@@ -3,6 +3,8 @@ class CarottedTasksController < ApplicationController
   
   def create
     return unless user_has_enough_points 
+    return unless user_own_ongoing_task
+    
     carotted_user = pick_carroted_user
     CarottedTask.create(ongoing_task:  @ongoing_task , carotted_user: carotted_user, user: current_user)
     @ongoing_task.user = carotted_user
@@ -15,6 +17,10 @@ class CarottedTasksController < ApplicationController
 
   def set_ongoing_task
     @ongoing_task = OngoingTask.find(params[:ongoing_task_id])
+  end
+
+  def user_own_ongoing_task
+    current_user == @ongoing_task.user
   end
 
   def user_has_enough_points
