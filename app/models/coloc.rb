@@ -18,12 +18,11 @@ class Coloc < ApplicationRecord
   validates :leader, uniqueness: true
   validates :leader, presence: true
 
-
-  before_save :set_invite_token
+  after_save :set_invite_token
 
   private
 
   def set_invite_token
-    self.invite_token = "#{self.id}-#{SecureRandom.hex}"
+    self.update_column(:invite_token, "#{id}-#{SecureRandom.hex}")
   end
 end
