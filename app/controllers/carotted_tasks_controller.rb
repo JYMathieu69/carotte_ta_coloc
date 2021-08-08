@@ -3,11 +3,12 @@ class CarottedTasksController < ApplicationController
   
   def create
     return unless user_has_enough_points 
-    coloc = @ongoing_task.user.coloc
     carotted_user = pick_carroted_user
-    CarottedTask.create!(ongoing_task:  @ongoing_task , carotted_user: carotted_user, user: current_user)
+    CarottedTask.create(ongoing_task:  @ongoing_task , carotted_user: carotted_user, user: current_user)
     @ongoing_task.user = carotted_user
-    @ongoing_task.save!
+    @ongoing_task.save
+    substract_carrots
+    redirect_to ongoing_task_path(@ongoing_task)
   end
 
   private
@@ -17,15 +18,17 @@ class CarottedTasksController < ApplicationController
   end
 
   def user_has_enough_points
-    user.current_points > ongoing_task.final_points
+    return false if current_user.current_points.nil?
+    current_user.current_points >= @ongoing_task.final_points
   end
 
-  def substract_carrots(ongoing_task, user)
-    user.current_points = user.current_points - ongoing_task.final_points
-    user.save
+  def substract_carrots
+    current_user.current_points = current_user.current_points - @ongoing_task.final_points
+    current_user.save
   end      
 
   def pick_carroted_user
+    coloc = @ongoing_task.user.coloc
     colocs_expect_current_user = User.where(coloc_id: coloc.id).where.not(id: current_user.id)
     colocs_expect_current_user.sample
   end
