@@ -19,3 +19,11 @@
 @import "components/container";
 @import "components/text";
 @import "components/color";
+@import "components/button";
+@import "components/logo";
+@import "components/general_disposition";
+
+/* Padding and border added to the width and height of each element. */
+* {
+    box-sizing: border-box;
+  }

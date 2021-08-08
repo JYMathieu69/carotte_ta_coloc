@@ -1,0 +1,10 @@
+<h1>Rejoins tes colocs</h1>
+
+<p>Entre le code de la coloc:</p>
+
+<div>
+    <%= simple_form_for @user do |f| %>
+        <input type="text", value="", name="invite_token">
+        <%= f.submit "Je rejoins" %>
+    <% end %>
+</div>

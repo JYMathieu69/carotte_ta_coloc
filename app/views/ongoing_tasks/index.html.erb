@@ -7,11 +7,6 @@
         <%= task.final_points %>
     <% end %>
 
-
-    <% @tasks.each do |task| %>
-    <%= cl_image_tag task.image.key, height: 175, width: 175%>
-    <% end %>
-
 <h3>Tâches non assignées</h3>
 
     <% @unassigned_tasks.each do |task| %>
@@ -25,3 +20,7 @@
         <%= task.image %>
         <%= task.user.avatar %>
     <% end %>
+
+    <div>
+        <%= link_to "Au revoir !", destroy_user_session_path, method: :delete %>
+    </div>

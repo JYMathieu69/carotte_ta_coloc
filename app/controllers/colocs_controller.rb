@@ -10,7 +10,9 @@ class ColocsController < ApplicationController
       
       @coloc = Coloc.new(coloc_params)
       @coloc.leader = current_user
-      if @coloc.save!
+      current_user.coloc = @coloc
+
+      if @coloc.save && current_user.save
          redirect_to edit_coloc_path(@coloc)
       else
          render :new
@@ -28,6 +30,7 @@ class ColocsController < ApplicationController
    end
 
    def join
+      @user = current_user
    end
 
    def invitation

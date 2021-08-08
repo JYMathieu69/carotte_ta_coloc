@@ -34,18 +34,20 @@ coloc69004 = Coloc.create!(name: "coloc69004", leader_id: mickael.id)
 lucas     = User.create!(username: "Lucas",     email: "lucas@coloc.com",     password: "azerty", coloc_id: coloc69004.id)
 fanny     = User.create!(username: "Fanny",     email: "fanny@coloc.com",     password: "azerty", coloc_id: coloc69004.id)
 mathieu   = User.create!(username: "Mathieu",   email: "mathieu@coloc.com",   password: "azerty", coloc_id: coloc69004.id)
-mickael   = User.update(coloc_id: coloc69004.id)
+mickael.update(coloc_id: coloc69004.id)
 
 samuel    = User.create!(username: "Samuel",    email: "samuel@coloc.com",    password: "azerty")
 coloc69003 = Coloc.create!(name: "coloc69003", leader_id: samuel.id)
 
 jeanro    = User.create!(username: "Jeanro",    email: "jeanro@coloc.com",    password: "azerty", coloc_id: coloc69003.id)
 clement   = User.create!(username: "Clement",   email: "clement@coloc.com",   password: "azerty", coloc_id: coloc69003.id)
+samuel.update(coloc_id: coloc69003.id)
 
 joseph    = User.create!(username: "Joseph",    email: "joseph@coloc.com",    password: "azerty")
 coloc69002 = Coloc.create!(name: "coloc69002", leader_id: joseph.id)
 
 juliette  = User.create!(username: "Juliette",  email: "juliette@coloc.com",  password: "azerty", coloc_id: coloc69002.id)
+joseph.update(coloc_id: coloc69002.id)
 
 anna      = User.create!(username: "Anna",      email: "anna@coloc.com",      password: "azerty")
 coloc69006 = Coloc.create!(name: "coloc69006", leader_id: anna.id)
@@ -55,11 +57,13 @@ laure     = User.create!(username: "Laure",     email: "laure@coloc.com",     pa
 louis     = User.create!(username: "Louis",     email: "louis@coloc.com",     password: "azerty", coloc_id: coloc69006.id)
 melin     = User.create!(username: "Melin",     email: "melin@coloc.com",     password: "azerty", coloc_id: coloc69006.id)
 delphine  = User.create!(username: "Delphine",  email: "delphine@coloc.com",  password: "azerty", coloc_id: coloc69006.id)
+anna.update(coloc_id: coloc69006.id)
 
 toto      = User.create!(username: "Toto",      email: "toto@coloc.com",      password: "azerty")
 toto_bro  = User.create!(username: "TotoBro",   email: "totobro@coloc.com",   password: "azerty")
 
 puts "Users and Colocs created !"
+puts " "
 
 # TASKS
 
@@ -193,7 +197,7 @@ micro_onde.image.attach(io: micro_onde_image, filename: 'micro_onde.png', conten
 
 nettoyer_table  = Task.create!(name: "Nettoyer la table",  description: "Nettoyer la table, c'est cool",
 recurrence: "daily",  auto_assigned: false, default_difficulty: 1)
-nettoyer_table_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1627986227/microondes_s9v4yx.png')
+nettoyer_table_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1627999840/NETTOYER_TABLE_ugarnz.png')
 nettoyer_table.image.attach(io: nettoyer_table_image, filename: 'nettoyer_table.png', content_type: 'image/png')
 
 
@@ -205,7 +209,7 @@ pelouse.image.attach(io: pelouse_image, filename: 'pelouse.png', content_type: '
 
 papier          = Task.create!(name: "Papiers",            description: "Gère les papiers de la coloc, c'est cool",
 recurrence: "daily",  auto_assigned: false, default_difficulty: 2)
-papier_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1627986226/papiers_tdcbvw.png')
+papier_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1627999845/PAPIERS_toeadz.png')
 papier.image.attach(io: papier_image, filename: 'papier.png', content_type: 'image/png')
 
 
@@ -241,7 +245,7 @@ café.image.attach(io: café_image, filename: 'café.png', content_type: 'image/
 
 evier           = Task.create!(name: "Evier",              description: "Nettoyer l'évier, c'est cool",
 recurrence: "weekly", auto_assigned: true,  default_difficulty: 1)
-evier_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1627986225/cafe_q3ixc1.png')
+evier_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1627999838/EVIER_gdo9ky.png')
 evier.image.attach(io: evier_image, filename: 'evier.png', content_type: 'image/png')
 
 
@@ -276,33 +280,35 @@ battre_tapis.image.attach(io: battre_tapis_image, filename: 'tapis.png', content
 
 
 puts "Tasks created !"
+puts " "
 
 # COLOC_TASKS
 
 puts "Creating Coloc_tasks..."
 
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: vaisselle.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: aspirateur.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: poussiere.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: vitre.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: serpillere.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: sortir_poubelle.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: lessive.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: toilettes.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: salle_de_bain.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: linge.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: courses.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: plantes.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: verre.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: cuisiner.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: lave_vaisselle.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: nettoyer_table.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: papier.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: cendrier.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: mettre_table.id)
-coloc_task1 = ColocTask.create!(coloc_id: coloc69004.id, task_id: laver_poubelle.id)
+coloc_task1  = ColocTask.create!(coloc_id: coloc69004.id, task_id: vaisselle.id)
+coloc_task2  = ColocTask.create!(coloc_id: coloc69004.id, task_id: aspirateur.id)
+coloc_task3  = ColocTask.create!(coloc_id: coloc69004.id, task_id: poussiere.id)
+coloc_task4  = ColocTask.create!(coloc_id: coloc69004.id, task_id: vitre.id)
+coloc_task5  = ColocTask.create!(coloc_id: coloc69004.id, task_id: serpillere.id)
+coloc_task6  = ColocTask.create!(coloc_id: coloc69004.id, task_id: sortir_poubelle.id)
+coloc_task7  = ColocTask.create!(coloc_id: coloc69004.id, task_id: lessive.id)
+coloc_task8  = ColocTask.create!(coloc_id: coloc69004.id, task_id: toilettes.id)
+coloc_task9  = ColocTask.create!(coloc_id: coloc69004.id, task_id: salle_de_bain.id)
+coloc_task10 = ColocTask.create!(coloc_id: coloc69004.id, task_id: linge.id)
+coloc_task11 = ColocTask.create!(coloc_id: coloc69004.id, task_id: courses.id)
+coloc_task12 = ColocTask.create!(coloc_id: coloc69004.id, task_id: plantes.id)
+coloc_task13 = ColocTask.create!(coloc_id: coloc69004.id, task_id: verre.id)
+coloc_task14 = ColocTask.create!(coloc_id: coloc69004.id, task_id: cuisiner.id)
+coloc_task15 = ColocTask.create!(coloc_id: coloc69004.id, task_id: lave_vaisselle.id)
+coloc_task16 = ColocTask.create!(coloc_id: coloc69004.id, task_id: nettoyer_table.id)
+coloc_task17 = ColocTask.create!(coloc_id: coloc69004.id, task_id: papier.id)
+coloc_task18 = ColocTask.create!(coloc_id: coloc69004.id, task_id: cendrier.id)
+coloc_task19 = ColocTask.create!(coloc_id: coloc69004.id, task_id: mettre_table.id)
+coloc_task20 = ColocTask.create!(coloc_id: coloc69004.id, task_id: laver_poubelle.id)
 
 puts "Coloc_tasks created !"
+puts " "
 
 # CAROTTED_TASKS
 
