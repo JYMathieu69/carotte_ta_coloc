@@ -14,10 +14,13 @@ Rails.application.routes.draw do
   get '/home', to: 'pages#home'
   get '/join', to: 'colocs#join', as: 'join_coloc'
   scope do
-    resources :ongoing_tasks, path: 'dashboard', only: [:index, :update] do
+    resources :ongoing_tasks, path: 'dashboard', only: [:index, :update, :show] do
       resources :votes, only: [:create]
+      resources :carotted_tasks, only: [:create]
     end
     resources :coloc_tasks, path: 'task_manager', only: [:index, :create, :update, :destroy]
     resources :tasks, path: 'admin', except: [:show, :new]
   end
+
+  
 end

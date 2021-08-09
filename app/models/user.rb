@@ -25,9 +25,15 @@ class User < ApplicationRecord
 
   before_create :set_default_avatar
 
+  before_create :set_default_points
+
   private
 
   def set_default_avatar
     self.avatar.attach(io: File.open('app/assets/images/default_avatar.png'), filename: 'default_avatar.png', content_type: 'image/png')
+  end
+  
+  def set_default_points
+    self.current_points = 0
   end
 end
