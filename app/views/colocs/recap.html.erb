@@ -2,6 +2,7 @@
 
 <% @coloc.coloc_tasks.each do |coloc_task| %>
    <%= coloc_task.name %> 
+   <%= cl_image_tag coloc_task.image.key, height: 100, width: 100 %>
 <% end %>
 
 <div>
