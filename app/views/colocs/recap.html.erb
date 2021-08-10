@@ -1,8 +1,8 @@
-<h1>Recapitulatif des tâches</h1>
+<h1 class= "violet-100 text-center border-btm-purple margin-auto">Recapitulatif des tâches</h1>
 
 <% @coloc.coloc_tasks.each do |coloc_task| %>
-   <p><%= coloc_task.name %></p> 
-   <%= cl_image_tag coloc_task.image.key, height: 100, width: 100 %>
+    <%= cl_image_tag coloc_task.image.key, height: 100, width: 100 %>
+    <p><%= coloc_task.name %></p> 
 <% end %>
 
 <div class="info_bubble text-center">
