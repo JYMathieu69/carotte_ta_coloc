@@ -1,10 +1,9 @@
-<h3>VOTRE COLOC A BIEN ÉTÉ CRÉÉE !</h3>
+<h1 class="text-center">TA COLOC A BIEN ÉTÉ CRÉÉE !</h1>
 
-ENVOI CE TOKEN À TES COLOCS’
-<div>
-    <%= @coloc.invite_token %>
-</div>
+<h3 class="text-center">ENVOI CE TOKEN À TES COLOCS’</h3>
 
-<div>
-    <%= link_to "Accéder au Tach'Board", ongoing_tasks_path%>
+<h2 class="invit-token orange-100 text-center" style="letter-spacing: 2px;"><%= @coloc.invite_token %></h2>
+
+<div class="text-center">
+    <%= link_to " > Accéder au Tach'Board", ongoing_tasks_path, class: "btn-border-purple-1 text-deco-none"%>
 </div>
