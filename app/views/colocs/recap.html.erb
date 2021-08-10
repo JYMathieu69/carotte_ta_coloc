@@ -1,9 +1,14 @@
-<h1 class= "violet-100 text-center border-btm-purple margin-auto">Récapitulatif des tâches</h1>
+<h1 class= "violet-100 text-center border-btm-purple margin-auto margin-b-32">Récapitulatif des tâches</h1>
 
-<% @coloc.coloc_tasks.each do |coloc_task| %>
-    <%= cl_image_tag coloc_task.image.key, height: 100, width: 100 %>
-    <p><%= coloc_task.name %></p> 
-<% end %>
+<div class="grid text-center">
+    <% @coloc.coloc_tasks.each do |coloc_task| %>
+    <div class="grid-element">
+        <%= cl_image_tag coloc_task.image.key, height: 100, width: 100 %>
+        <p><%= coloc_task.name %></p> 
+    </div>
+    <% end %>
+</div>
+
 
 <div class="info_bubble text-center">
     <p class="violet-100 light">En tant que leader, vous pourrez ajouter, modifier ou supprimer des tâches depuis le dashboard</p>
