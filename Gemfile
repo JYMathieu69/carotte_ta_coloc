@@ -64,3 +64,5 @@ gem 'cloudinary'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'faker'
 gem 'simple_form'
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'

@@ -1,11 +1,11 @@
-class DistributionTaskService
+class DistributionTasksService
 
     def initialize(attributes = {})
         @coloc = attributes[:coloc]
         @coloc_tasks_by_difficulty = get_coloc_tasks_by_difficulty
     end
     
-    def distribution
+    def call
 
         @coloc_tasks_by_difficulty.each { |sub_array| sub_array.shuffle! }
         

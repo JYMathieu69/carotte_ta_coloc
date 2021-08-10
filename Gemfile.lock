@@ -83,6 +83,7 @@ GEM
       aws_cf_signer
       rest-client (>= 2.0.0)
     concurrent-ruby (1.1.9)
+    connection_pool (2.2.5)
     crass (1.0.6)
     devise (4.8.0)
       bcrypt (~> 3.0)
@@ -180,6 +181,7 @@ GEM
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (4.4.0)
     regexp_parser (2.1.1)
     responders (3.0.1)
       actionpack (>= 5.0)
@@ -223,6 +225,12 @@ GEM
     semantic_range (3.0.0)
     shoulda-matchers (5.0.0)
       activesupport (>= 5.2.0)
+    sidekiq (6.2.1)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
+    sidekiq-failures (1.0.1)
+      sidekiq (>= 4.0.0)
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -290,6 +298,8 @@ DEPENDENCIES
   sass-rails (>= 6)
   selenium-webdriver
   shoulda-matchers
+  sidekiq
+  sidekiq-failures (~> 1.0)
   simple_form
   spring
   turbolinks (~> 5)
