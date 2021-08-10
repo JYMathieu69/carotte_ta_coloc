@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get '/colocs/:id/invitation', to: 'colocs#invitation'
   get '/home', to: 'pages#home'
   get '/join', to: 'colocs#join', as: 'join_coloc'
+  post "start_ongoing_tasks", to: "ongoing_tasks#start_ongoing_tasks"
+
   scope do
     resources :ongoing_tasks, path: 'dashboard', only: [:index, :update, :show] do
       resources :votes, only: [:create]
@@ -25,6 +27,4 @@ Rails.application.routes.draw do
     resources :coloc_tasks, path: 'task_manager', only: [:index, :create, :update, :destroy]
     resources :tasks, path: 'admin', except: [:show, :new]
   end
-
-  
 end
