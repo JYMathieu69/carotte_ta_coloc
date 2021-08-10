@@ -25,6 +25,8 @@
             <%= cl_image_tag task.image.key, height: 100, width: 100 %>
         <% end %>
         <%= cl_image_tag task.user.avatar.key, height: 25, width: 25 %>
+        <%= task.user.username %>
+        <%= task.final_points %>
     <% end %>
 
     <div>
