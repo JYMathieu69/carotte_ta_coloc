@@ -22,6 +22,7 @@
 @import "components/button";
 @import "components/logo";
 @import "components/general_disposition";
+@import "components/info_bubble";
 
 /* Padding and border added to the width and height of each element. */
 * {

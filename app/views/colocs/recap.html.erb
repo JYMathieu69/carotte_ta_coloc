@@ -1,13 +1,14 @@
 <h1>Recapitulatif des tâches</h1>
 
 <% @coloc.coloc_tasks.each do |coloc_task| %>
-   <%= coloc_task.name %> 
+   <p><%= coloc_task.name %></p> 
    <%= cl_image_tag coloc_task.image.key, height: 100, width: 100 %>
 <% end %>
 
-<div>
-    En tant que leader, vous pourrez ajouter, modifier ou supprimer des tâches depuis le dashboard
+<div class="info_bubble text-center">
+    <p class="violet-100 light">En tant que leader, vous pourrez ajouter, modifier ou supprimer des tâches depuis le dashboard</p>
 </div>
-<div>
-    <%= link_to "J'ai compris", "/colocs/#{@coloc.id}/invitation "%>
+
+<div class="text-center margin-t-32">
+    <%= link_to "J'ai compris", "/colocs/#{@coloc.id}/invitation", class: "btn-primary"%>
 </div>
