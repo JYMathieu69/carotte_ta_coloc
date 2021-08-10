@@ -3,22 +3,28 @@
 <h3>Mes tâches de la semaine</h3>
 
     <% @user_tasks.each do |task| %>
-        <%= task.image %>
+        <%= link_to ongoing_task_path(task) do %>
+            <%= cl_image_tag task.image.key, height: 100, width: 100 %>
+        <% end %>
         <%= task.final_points %>
     <% end %>
 
 <h3>Tâches non assignées</h3>
 
     <% @unassigned_tasks.each do |task| %>
-        <%= task.image %>
+        <%= link_to ongoing_task_path(task) do %>
+            <%= cl_image_tag task.image.key, height: 100, width: 100 %>
+        <% end %>
         <%= task.final_points %>
     <% end %>
 
 <h3>Les tâches de mes colocs</h3>
 
     <% @colocs_tasks.each do |task| %>
-        <%= task.image %>
-        <%= task.user.avatar %>
+        <%= link_to ongoing_task_path(task) do %>
+            <%= cl_image_tag task.image.key, height: 100, width: 100 %>
+        <% end %>
+        <%= cl_image_tag task.user.avatar.key, height: 25, width: 25 %>
     <% end %>
 
     <div>

@@ -4,12 +4,21 @@ Nom de la tâche <%= @ongoing_task.name %>
 </p>
 
 <p>
+    <%= @ongoing_task.description %>
+</p>
+
+<p>
 Nombre de points <%= @ongoing_task.final_points %>
 </p>
 <p>
-Affecté à <%= @ongoing_task.user.username %>
+    <% if @ongoing_task.user_id.nil? %>
+        Affecté à personne...
+    <% else %>
+        Affecté à <%= @ongoing_task.user.username %>
+    <% end %>
 </p>
 <p>
 Nombre de points du current_user <%= current_user.current_points %>
 </p>
 <%= button_to "Assigner la tâche", ongoing_task_carotted_tasks_path(@ongoing_task), method: :post %>
+<%= link_to "Revenir", ongoing_tasks_path %>
