@@ -1,0 +1,12 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 32px;
+    grid-auto-rows: minmax(100px, auto);
+    place-items: center;
+}
+
+// .grid-element {
+//     grid-column: 1 / 3;
+//     grid-row: 1;
+// }

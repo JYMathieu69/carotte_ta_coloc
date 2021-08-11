@@ -22,7 +22,11 @@
 @import "components/button";
 @import "components/logo";
 @import "components/general_disposition";
+@import "components/info_bubble";
+@import "components/grid";
+@import "components/token-invite";
 @import "components/switch";
+
 
 /* Padding and border added to the width and height of each element. */
 * {
