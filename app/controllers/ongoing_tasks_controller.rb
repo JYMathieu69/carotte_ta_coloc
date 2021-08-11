@@ -1,4 +1,5 @@
 class OngoingTasksController < ApplicationController
+  before_action :set_ongoing_task, only: [:validate_task, :update]
   def index
     redirect_to '/home' and return if current_user.coloc.nil?
 
@@ -12,6 +13,26 @@ class OngoingTasksController < ApplicationController
     @ongoing_task = OngoingTask.find(params[:id])
   end
 
+  def update
+    @ongoing_task.helpers.destroy_all if @ongoing_task.helpers
+    if @ongoing_task.update(ongoing_task_params)
+      redirect_to ongoing_tasks_path
+    else
+      redirect_to validate_task_path(@ongoing_task)
+    end
+ end
+
+  def validate_task
+    
+    potential_helpers = User.where(coloc_id: current_user.coloc.id).where.not(id: current_user.id)
+    helpers_ids_array = user_ids_from_ongoing_task_helpers
+    potential_helpers.each do |potential_helper|
+      unless helpers_ids_array.include? potential_helper.id
+        @ongoing_task.helpers.build(user: potential_helper, ongoing_task_id: @ongoing_task.id )
+      end
+    end
+  end
+
   def start_ongoing_tasks
     coloc = current_user.coloc
     StartUnassignedTasksJob.perform_now(coloc)
@@ -23,4 +44,19 @@ class OngoingTasksController < ApplicationController
       @error = "Veuillez réessayer." # A modifier...
     end
   end
+
+  private
+
+  def user_ids_from_ongoing_task_helpers
+    @ongoing_task.helpers.map do |helper|
+      helper.user_id
+    end 
+  end
+  def set_ongoing_task
+    @ongoing_task = OngoingTask.find(params[:id])
+  end
+
+  def ongoing_task_params
+    params.require(:ongoing_task).permit(:name, :photo_after, :photo_before, helpers_attributes: [ :ongoing_task_id, :user_id])
+ end
 end
