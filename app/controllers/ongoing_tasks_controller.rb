@@ -1,5 +1,5 @@
 class OngoingTasksController < ApplicationController
-  before_action :set_ongoing_task, only: [:validate_task, :validation_update, :update]
+  before_action :set_ongoing_task, only: [:validate_task, :validation_update, :assign_task, :assign_task_update,  :update]
   def index
     redirect_to '/home' and return if current_user.coloc.nil?
 
@@ -38,6 +38,18 @@ class OngoingTasksController < ApplicationController
       unless helpers_ids_array.include? potential_helper.id
         @ongoing_task.helpers.build(user: potential_helper, ongoing_task_id: @ongoing_task.id )
       end
+    end
+  end
+
+  def assign_task
+  end
+
+  def assign_task_update
+    @ongoing_task.user = current_user
+    if @ongoing_task.update(ongoing_task_params)
+      redirect_to ongoing_tasks_path
+    else
+      redirect_to assign_task_update(@ongoing_task)
     end
   end
 
