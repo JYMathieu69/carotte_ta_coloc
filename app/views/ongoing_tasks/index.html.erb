@@ -1,24 +1,7 @@
 <h1>Tach'board</h1>
 
-<h3>Mes tâches de la semaine</h3>
-
-    <% @user_tasks.each do |task| %>
-        <%= link_to ongoing_task_path(task) do %>
-            <%= cl_image_tag task.image.key, height: 100, width: 100 %>
-        <% end %>
-        <%= task.final_points %>
-    <% end %>
-
-<h3>Tâches non assignées</h3>
-
-    <% @unassigned_tasks.each do |task| %>
-        <%= link_to ongoing_task_path(task) do %>
-            <%= cl_image_tag task.image.key, height: 100, width: 100 %>
-        <% end %>
-        <%= task.final_points %>
-    <% end %>
-
-<h3>Les tâches de mes colocs</h3>
+<div id="ColocTab" class="tabcontent">
+    <h3>Les tâches de mes colocs</h3>
 
     <% @colocs_tasks.each do |task| %>
         <%= link_to ongoing_task_path(task) do %>
@@ -28,7 +11,38 @@
         <%= task.user.username %>
         <%= task.final_points %>
     <% end %>
+</div>
 
-    <div>
-        <%= link_to "Au revoir !", destroy_user_session_path, method: :delete %>
-    </div>
+<div id="MyTasksTab" class="tabcontent">
+    <h3>Mes tâches de la semaine</h3>
+
+    <% @user_tasks.each do |task| %>
+        <%= link_to ongoing_task_path(task) do %>
+            <%= cl_image_tag task.image.key, height: 100, width: 100 %>
+        <% end %>
+        <%= task.final_points %>
+    <% end %>
+
+    <h3>Tâches non assignées</h3>
+
+    <% @unassigned_tasks.each do |task| %>
+        <%= link_to ongoing_task_path(task) do %>
+            <%= cl_image_tag task.image.key, height: 100, width: 100 %>
+        <% end %>
+        <%= task.final_points %>
+    <% end %>
+</div>
+
+<div id="StatsTab" class="tabcontent">
+    <h1>Hello</h1>
+</div>
+
+<div class="tab">
+    <button class="tablinks" data-tabname="ColocTab">La Coloc'</button>
+    <button class="tablinks" data-tabname="MyTasksTab">Mes Tâches</button>
+    <button class="tablinks" data-tabname="StatsTab">Stats</button>
+</div>
+
+<div>
+    <%= link_to "Au revoir !", destroy_user_session_path, method: :delete %>
+</div>
