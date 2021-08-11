@@ -33,7 +33,7 @@ class OngoingTasksController < ApplicationController
 
   def validate_task
     potential_helpers = User.where(coloc_id: current_user.coloc.id).where.not(id: current_user.id)
-    helpers_ids_array = user_ids_from_ongoing_task_helpers
+    helpers_ids_array = helpers_that_where_already_selected
     potential_helpers.each do |potential_helper|
       unless helpers_ids_array.include? potential_helper.id
         @ongoing_task.helpers.build(user: potential_helper, ongoing_task_id: @ongoing_task.id )
@@ -55,7 +55,7 @@ class OngoingTasksController < ApplicationController
 
   private
 
-  def user_ids_from_ongoing_task_helpers
+  def helpers_that_where_already_selected
     @ongoing_task.helpers.map do |helper|
       helper.user_id
     end 
