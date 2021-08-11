@@ -1,18 +1,30 @@
+<h1>Tach'board</h1>
+
 <% if (current_user.coloc.assignment_day.nil?) && (current_user.id == current_user.coloc.leader_id) %>
-    <h1>Tach'board</h1>
     <p> Tes colocs sont tous là ? </p>
     <%= button_to "Créer et distribuer les tâches", start_ongoing_tasks_path %>
     <%= @error %>
-
 <% elsif (current_user.coloc.assignment_day.nil?)%>
     <h1>Tach'board</h1>
     <p> En attentant les autres colocs... </p>
     <%= link_to "Essaye de rentrer !", ongoing_tasks_path %>
 <% else %>
-    <h1>Tach'board</h1>
 
+  <div id="ColocTab" class="tabcontent">
+    <h3>Les tâches de mes colocs</h3>
+      <% @colocs_tasks.each do |task| %>
+        <%= link_to ongoing_task_path(task) do %>
+            <%= cl_image_tag task.image.key, height: 100, width: 100 %>
+        <% end %>
+        <%= cl_image_tag task.user.avatar.key, height: 25, width: 25 %>
+        <%= task.user.username %>
+        <%= task.final_points %>
+      <% end %>
+  </div>
+   
+
+<div id="MyTasksTab" class="tabcontent">
     <h3>Mes tâches de la semaine</h3>
-
     <% @user_tasks.each do |task| %>
         <%= link_to ongoing_task_path(task) do %>
             <%= cl_image_tag task.image.key, height: 100, width: 100 %>
@@ -21,26 +33,25 @@
     <% end %>
 
     <h3>Tâches non assignées</h3>
-
     <% @unassigned_tasks.each do |task| %>
         <%= link_to ongoing_task_path(task) do %>
             <%= cl_image_tag task.image.key, height: 100, width: 100 %>
         <% end %>
         <%= task.final_points %>
     <% end %>
+</div>
 
-    <h3>Les tâches de mes colocs</h3>
+<div id="StatsTab" class="tabcontent">
+    <h1>Hello</h1>
+</div>
 
-    <% @colocs_tasks.each do |task| %>
-        <%= link_to ongoing_task_path(task) do %>
-            <%= cl_image_tag task.image.key, height: 100, width: 100 %>
-        <% end %>
-        <%= cl_image_tag task.user.avatar.key, height: 25, width: 25 %>
-        <%= task.user.username %>
-        <%= task.final_points %>
-    <% end %>
+<div class="tab">
+    <button class="tablinks" data-tabname="ColocTab">La Coloc'</button>
+    <button class="tablinks" data-tabname="MyTasksTab">Mes Tâches</button>
+    <button class="tablinks" data-tabname="StatsTab">Stats</button>
+</div>
 
-    <div>
-        <%= link_to "Au revoir !", destroy_user_session_path, method: :delete %>
-    </div>
+<div>
+    <%= link_to "Au revoir !", destroy_user_session_path, method: :delete %>
+</div>
 <% end %>

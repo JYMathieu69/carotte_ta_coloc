@@ -7,7 +7,19 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import { displayTabs } from '../plugins/display_tabs.js';
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+document.addEventListener('turbolinks:load', () => {
+    const allTabs = document.querySelectorAll('.tablinks')
+    if (allTabs) {
+        allTabs.forEach((tab) => {
+            tab.addEventListener('click', ((event) => {
+                displayTabs(event, tab.dataset.tabname)
+            }))
+        })
+    }
+});
