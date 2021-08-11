@@ -62,6 +62,12 @@ anna.update(coloc_id: coloc69006.id)
 toto      = User.create!(username: "Toto",      email: "toto@coloc.com",      password: "azerty")
 toto_bro  = User.create!(username: "TotoBro",   email: "totobro@coloc.com",   password: "azerty")
 
+titi      = User.create!(username: "Titi",      email: "titi@coloc.com",      password: "azerty")
+titi_bro  = User.create!(username: "TitiBro",   email: "titibro@coloc.com",   password: "azerty")
+
+tata      = User.create!(username: "Tata",      email: "tata@coloc.com",      password: "azerty")
+tata_bro  = User.create!(username: "TataBra",   email: "tatabra@coloc.com",   password: "azerty")
+
 puts "Users and Colocs created !"
 puts " "
 
@@ -313,31 +319,31 @@ puts " "
 
 # ONGOING_TASKS
 
-# puts "Creating Ongoing_tasks..."
+puts "Creating Ongoing_tasks..."
 
-# ongoing_task1  = OngoingTask.create!(coloc_task_id: coloc_task1.id)
+ongoing_task1  = OngoingTask.create!(coloc_task_id: coloc_task1.id)
 # ongoing_task2  = OngoingTask.create!(coloc_task_id: coloc_task2.id, user_id: mathieu.id)
 # ongoing_task3  = OngoingTask.create!(coloc_task_id: coloc_task3.id, user_id: mickael.id)
 # ongoing_task4  = OngoingTask.create!(coloc_task_id: coloc_task4.id, user_id: fanny.id)
 # ongoing_task5  = OngoingTask.create!(coloc_task_id: coloc_task5.id, user_id: lucas.id)
-# ongoing_task6  = OngoingTask.create!(coloc_task_id: coloc_task6.id)
-# ongoing_task7  = OngoingTask.create!(coloc_task_id: coloc_task7.id)
+ongoing_task6  = OngoingTask.create!(coloc_task_id: coloc_task6.id)
+ongoing_task7  = OngoingTask.create!(coloc_task_id: coloc_task7.id)
 # ongoing_task8  = OngoingTask.create!(coloc_task_id: coloc_task8.id, user_id: mathieu.id)
 # ongoing_task9  = OngoingTask.create!(coloc_task_id: coloc_task9.id, user_id: mickael.id)
-# ongoing_task10 = OngoingTask.create!(coloc_task_id: coloc_task10.id)
-# ongoing_task11 = OngoingTask.create!(coloc_task_id: coloc_task11.id)
-# ongoing_task12 = OngoingTask.create!(coloc_task_id: coloc_task12.id)
+ongoing_task10 = OngoingTask.create!(coloc_task_id: coloc_task10.id)
+ongoing_task11 = OngoingTask.create!(coloc_task_id: coloc_task11.id)
+ongoing_task12 = OngoingTask.create!(coloc_task_id: coloc_task12.id)
 # ongoing_task13 = OngoingTask.create!(coloc_task_id: coloc_task13.id, user_id: fanny.id)
-# ongoing_task14 = OngoingTask.create!(coloc_task_id: coloc_task14.id)
-# ongoing_task15 = OngoingTask.create!(coloc_task_id: coloc_task15.id)
-# ongoing_task16 = OngoingTask.create!(coloc_task_id: coloc_task16.id)
-# ongoing_task17 = OngoingTask.create!(coloc_task_id: coloc_task17.id)
-# ongoing_task18 = OngoingTask.create!(coloc_task_id: coloc_task18.id)
-# ongoing_task19 = OngoingTask.create!(coloc_task_id: coloc_task19.id)
+ongoing_task14 = OngoingTask.create!(coloc_task_id: coloc_task14.id)
+ongoing_task15 = OngoingTask.create!(coloc_task_id: coloc_task15.id)
+ongoing_task16 = OngoingTask.create!(coloc_task_id: coloc_task16.id)
+ongoing_task17 = OngoingTask.create!(coloc_task_id: coloc_task17.id)
+ongoing_task18 = OngoingTask.create!(coloc_task_id: coloc_task18.id)
+ongoing_task19 = OngoingTask.create!(coloc_task_id: coloc_task19.id)
 # ongoing_task20 = OngoingTask.create!(coloc_task_id: coloc_task20.id, user_id: lucas.id)
 
-# puts "Ongoing_tasks created !"
-# puts " "
+puts "Ongoing_tasks created !"
+puts " "
 
 # CAROTTED_TASKS
 
