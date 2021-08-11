@@ -1,5 +1,5 @@
 <h3> Un coloc t'a aidé?</h3>
-<%= form_with model: @ongoing_task do |form| %>
+<%= form_with model: @ongoing_task, url: validation_update_path(@ongoing_task) do |form| %>
     
         <%= form.fields_for :helpers do |helpers_fields| %>
              <%= helpers_fields.object.user.username %>
