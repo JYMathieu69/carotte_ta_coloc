@@ -5,7 +5,10 @@
       <li>
         <img data-title="<%= coloc_tasks_fields.object.task.name %>" src="https://image.flaticon.com/icons/png/512/1748/1748922.png" width="48" height="48">
         <%= coloc_tasks_fields.label coloc_tasks_fields.object.task.name %>
-        <%= coloc_tasks_fields.check_box  :task_id, { checked: false } , coloc_tasks_fields.object.task.id %>
+        <label class="switch">
+          <%= coloc_tasks_fields.check_box  :task_id, { checked: false } , coloc_tasks_fields.object.task.id %>
+          <span class="slider round"></span>
+        </label>
         <%= coloc_tasks_fields.hidden_field :difficulty  %>
       </li>
     <% end %>
