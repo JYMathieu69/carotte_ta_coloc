@@ -10,48 +10,64 @@
     <%= link_to "Essaye de rentrer !", ongoing_tasks_path %>
 <% else %>
 
-  <div id="ColocTab" class="tabcontent">
-    <h3>Les tâches de mes colocs</h3>
-      <% @colocs_tasks.each do |task| %>
-        <%= link_to ongoing_task_path(task) do %>
-            <%= cl_image_tag task.image.key, height: 100, width: 100 %>
+    <div id="ColocTab" class="tabcontent">
+        <h3>Les tâches de mes colocs</h3>
+        <% @colocs_tasks.each do |task| %>
+            <%= link_to ongoing_task_path(task) do %>
+                <%= cl_image_tag task.image.key, height: 100, width: 100 %>
+            <% end %>
+            <%= cl_image_tag task.user.avatar.key, height: 25, width: 25 %>
+            <%= task.user.username %>
+            <%= task.final_points %>
         <% end %>
-        <%= cl_image_tag task.user.avatar.key, height: 25, width: 25 %>
-        <%= task.user.username %>
-        <%= task.final_points %>
-      <% end %>
-  </div>
-   
+    </div>
 
-<div id="MyTasksTab" class="tabcontent">
-    <h3>Mes tâches de la semaine</h3>
-    <% @user_tasks.each do |task| %>
-        <%= link_to ongoing_task_path(task) do %>
-            <%= cl_image_tag task.image.key, height: 100, width: 100 %>
+    <div id="MyTasksTab" class="tabcontent">
+        <h3>Mes tâches de la semaine</h3>
+        <% @user_tasks.each do |task| %>
+            <%= link_to ongoing_task_path(task) do %>
+                <%= cl_image_tag task.image.key, height: 100, width: 100 %>
+            <% end %>
+            <%= task.final_points %>
         <% end %>
-        <%= task.final_points %>
-    <% end %>
 
     <h3>Tâches non assignées</h3>
-    <% @unassigned_tasks.each do |task| %>
-        <%= link_to ongoing_task_path(task) do %>
-            <%= cl_image_tag task.image.key, height: 100, width: 100 %>
-        <% end %>
+    <% @unassigned_tasks.each_with_index do |task, index| %>
+        <%= cl_image_tag task.image.key, class:"task-content", height: 100, width: 100 %>
         <%= task.final_points %>
+
+                <!-- Modal Section -->
+
+        <div class="bg-modal" id="modal-task<%= index %>">
+            <div class="modal-content">
+                <div class="close">+</div>
+                <h1><%= task.name %></h1>
+                <h3>* <%= task.description %> *</h3>
+                <p>Nombre de carottes : <%= task.final_points %></p>              
+                <p>
+                    <% if task.user_id.nil? %>
+                        Affecté à personne...
+                    <% else %>
+                        Affecté à <%= task.user.username %>
+                    <% end %>
+                </p>
+            </div>
+        </div>
+
     <% end %>
-</div>
+    </div>
 
-<div id="StatsTab" class="tabcontent">
-    <h1>Hello</h1>
-</div>
+    <div id="StatsTab" class="tabcontent">
+        <h1>Hello</h1>
+    </div>
 
-<div class="tab">
-    <button class="tablinks" data-tabname="ColocTab">La Coloc'</button>
-    <button class="tablinks" data-tabname="MyTasksTab">Mes Tâches</button>
-    <button class="tablinks" data-tabname="StatsTab">Stats</button>
-</div>
+    <div class="tab">
+        <button class="tablinks" data-tabname="ColocTab">La Coloc'</button>
+        <button class="tablinks" data-tabname="MyTasksTab">Mes Tâches</button>
+        <button class="tablinks" data-tabname="StatsTab">Stats</button>
+    </div>
 
-<div>
-    <%= link_to "Au revoir !", destroy_user_session_path, method: :delete %>
-</div>
+    <div>
+        <%= link_to "Au revoir !", destroy_user_session_path, method: :delete %>
+    </div>
 <% end %>

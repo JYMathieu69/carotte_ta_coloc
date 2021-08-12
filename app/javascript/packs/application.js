@@ -22,4 +22,14 @@ document.addEventListener('turbolinks:load', () => {
             }))
         })
     }
+    document.querySelectorAll('.task-content').forEach((task, index) => {
+        task.addEventListener('click', function () {
+            document.getElementById("modal-task" + index).style.display = 'flex';
+        })
+    });
+    document.querySelectorAll('.close').forEach((task, index) => {
+        task.addEventListener('click', function () {
+            document.getElementById("modal-task" + index).style.display = 'none';
+        })
+    });
 });
