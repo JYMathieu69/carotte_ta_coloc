@@ -24,37 +24,14 @@
 
     <div id="MyTasksTab" class="tabcontent">
         <h3>Mes tâches de la semaine</h3>
-        <% @user_tasks.each do |task| %>
-            <%= link_to ongoing_task_path(task) do %>
-                <%= cl_image_tag task.image.key, height: 100, width: 100 %>
-            <% end %>
-            <%= task.final_points %>
+        <% @user_tasks.each_with_index do |task, index| %>
+            <%= render "ongoing_tasks/user_tasks", task: task, index: index %>
         <% end %>
 
-    <h3>Tâches non assignées</h3>
-    <% @unassigned_tasks.each_with_index do |task, index| %>
-        <%= cl_image_tag task.image.key, class:"task-content", height: 100, width: 100 %>
-        <%= task.final_points %>
-
-                <!-- Modal Section -->
-
-        <div class="bg-modal" id="modal-task<%= index %>">
-            <div class="modal-content">
-                <div class="close">+</div>
-                <h1><%= task.name %></h1>
-                <h3>* <%= task.description %> *</h3>
-                <p>Nombre de carottes : <%= task.final_points %></p>              
-                <p>
-                    <% if task.user_id.nil? %>
-                        Affecté à personne...
-                    <% else %>
-                        Affecté à <%= task.user.username %>
-                    <% end %>
-                </p>
-            </div>
-        </div>
-
-    <% end %>
+        <h3>Tâches non assignées</h3>
+        <% @unassigned_tasks.each_with_index do |task, index| %>
+            <%= render "ongoing_tasks/unassigned_tasks", task: task, index: index %>
+        <% end %>
     </div>
 
     <div id="StatsTab" class="tabcontent">

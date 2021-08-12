@@ -22,14 +22,24 @@ document.addEventListener('turbolinks:load', () => {
             }))
         })
     }
-    document.querySelectorAll('.task-content').forEach((task, index) => {
+    document.querySelectorAll('.unassigned-task-content').forEach((task, index) => {
         task.addEventListener('click', function () {
-            document.getElementById("modal-task" + index).style.display = 'flex';
+            document.getElementById("unassigned-task" + index).style.display = 'flex';
         })
     });
-    document.querySelectorAll('.close').forEach((task, index) => {
+    document.querySelectorAll('.close-unassigned-task').forEach((task, index) => {
         task.addEventListener('click', function () {
-            document.getElementById("modal-task" + index).style.display = 'none';
+            document.getElementById("unassigned-task" + index).style.display = 'none';
+        })
+    });
+    document.querySelectorAll('.user-task-content').forEach((task, index) => {
+        task.addEventListener('click', function () {
+            document.getElementById("user-task" + index).style.display = 'flex';
+        })
+    });
+    document.querySelectorAll('.close-user-task').forEach((task, index) => {
+        task.addEventListener('click', function () {
+            document.getElementById("user-task" + index).style.display = 'none';
         })
     });
 });
