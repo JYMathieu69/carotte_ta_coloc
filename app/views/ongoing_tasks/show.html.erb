@@ -21,4 +21,6 @@ Nombre de points <%= @ongoing_task.final_points %>
 Nombre de points du current_user <%= current_user.current_points %>
 </p>
 <%= button_to "Assigner la tâche", ongoing_task_carotted_tasks_path(@ongoing_task), method: :post %>
+
+<%= button_to "Valider la tâche", validate_task_path(@ongoing_task), method: :get %>
 <%= link_to "Revenir", ongoing_tasks_path %>
