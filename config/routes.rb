@@ -18,7 +18,11 @@ Rails.application.routes.draw do
   get '/home', to: 'pages#home'
   get '/join', to: 'colocs#join', as: 'join_coloc'
   post "start_ongoing_tasks", to: "ongoing_tasks#start_ongoing_tasks"
-
+  get '/dashboard/:id/validate_task', to: 'ongoing_tasks#validate_task', as: 'validate_task'
+  patch '/dashboard/:id/validation_update', to: 'ongoing_tasks#validation_update', as: 'validation_update'
+  
+  get '/dashboard/:id/assign_task', to: 'ongoing_tasks#assign_task', as: 'assign_task'
+  patch '/dashboard/:id/assign_task_update', to: 'ongoing_tasks#assign_task_update', as: 'assign_task_update'
   scope do
     resources :ongoing_tasks, path: 'dashboard', only: [:index, :update, :show] do
       resources :votes, only: [:create]
