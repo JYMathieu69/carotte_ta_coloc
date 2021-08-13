@@ -24,13 +24,13 @@
 
     <div id="MyTasksTab" class="tabcontent">
         <h3>Mes tâches de la semaine</h3>
-        <% @user_tasks.each_with_index do |task, index| %>
-            <%= render "ongoing_tasks/user_tasks", task: task, index: index %>
+        <% @user_tasks.each do |task| %>
+            <%= render "ongoing_tasks/ongoing_tasks", task: task, unassigned: false %>
         <% end %>
 
         <h3>Tâches non assignées</h3>
-        <% @unassigned_tasks.each_with_index do |task, index| %>
-            <%= render "ongoing_tasks/unassigned_tasks", task: task, index: index %>
+        <% @unassigned_tasks.each do |task| %>
+            <%= render "ongoing_tasks/ongoing_tasks", task: task, unassigned: true %>
         <% end %>
     </div>
 
