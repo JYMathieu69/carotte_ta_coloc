@@ -23,12 +23,12 @@ document.addEventListener('turbolinks:load', () => {
         })
     }
     document.querySelectorAll('.task-content').forEach((task) => {
-        task.addEventListener('click', function () {
+        task.addEventListener('click', () => {
             document.getElementById("task" + task.dataset.taskId).classList.add("open");
         })
     });
     document.querySelectorAll('.close').forEach((task) => {
-        task.addEventListener('click', function () {
+        task.addEventListener('click', () => {
             document.getElementById("task" + task.dataset.taskId).classList.remove("open");
         })
     });
