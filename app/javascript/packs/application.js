@@ -22,24 +22,21 @@ document.addEventListener('turbolinks:load', () => {
             }))
         })
     }
-    document.querySelectorAll('.unassigned-task-content').forEach((task, index) => {
+    document.querySelectorAll('.task-content').forEach((task) => {
         task.addEventListener('click', function () {
-            document.getElementById("unassigned-task" + index).style.display = 'flex';
+            document.getElementById("task" + task.dataset.taskId).classList.add("open");
         })
     });
-    document.querySelectorAll('.close-unassigned-task').forEach((task, index) => {
+    document.querySelectorAll('.close').forEach((task) => {
         task.addEventListener('click', function () {
-            document.getElementById("unassigned-task" + index).style.display = 'none';
+            document.getElementById("task" + task.dataset.taskId).classList.remove("open");
         })
     });
-    document.querySelectorAll('.user-task-content').forEach((task, index) => {
-        task.addEventListener('click', function () {
-            document.getElementById("user-task" + index).style.display = 'flex';
-        })
-    });
-    document.querySelectorAll('.close-user-task').forEach((task, index) => {
-        task.addEventListener('click', function () {
-            document.getElementById("user-task" + index).style.display = 'none';
-        })
+    document.addEventListener('click', (event) => {
+        const openedModal = document.querySelector(".open")
+        const modalContent = document.querySelector(".open .modal-content")
+        if (openedModal && !event.target.classList.contains("task-content") && !event.path.includes(modalContent)) {
+            openedModal.classList.remove("open");
+        }
     });
 });
