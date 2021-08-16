@@ -7,6 +7,8 @@ class OngoingTasksController < ApplicationController
     @user_tasks = all_ongoing_tasks.where(user: current_user)
     @colocs_tasks = all_ongoing_tasks.where.not(user: current_user).order(:user_id)
     @unassigned_tasks = all_ongoing_tasks.where(user: nil)
+    all_users = current_user.coloc.users
+    @users_coloc = all_users.filter { |user| user != current_user }
   end
 
   def show

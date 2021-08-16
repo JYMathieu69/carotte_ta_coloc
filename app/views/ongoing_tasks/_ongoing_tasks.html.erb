@@ -3,22 +3,31 @@
 <%= cl_image_tag task.image.key, class:"task-content", data: { task_id: task.id }, height: 100, width: 100 %>
 <%= task.final_points %>
 
-    <!-- Modal Section -->
+<!-- Modal Section -->
 
-    <div class="bg-modal" id="task<%= task.id %>">
-        <div class="modal-content">
-            <div class="close" data-task-id="<%= task.id %>">+</div>
-            <h1><%= task.name %></h1>
-            <h3>* <%= task.description %> *</h3>
-            <p>Nombre de carottes : <%= task.final_points %></p>              
-            <% if unassigned %>
+<div class="bg-modal" id="task<%= task.id %>">
+    <div class="modal-content">
+        <div class="close" data-task-id="<%= task.id %>">+</div>
+        <h1><%= task.name %></h1>
+        <h3>* <%= task.description %> *</h3>
+        <p>Nombre de carottes : <%= task.final_points %></p>              
+        <% if assignment %>
             <p>
                 <% if task.user_id.nil? %>
                     Affecté à personne...
                 <% else %>
-                    Affecté à <%= task.user.username %>
+                    Affecté à <%= task.user.username %>,
+                    il possède <%= pluralize(task.user.current_points, 'carotte') %>.
                 <% end %>
             </p>
-            <% end %>
-        </div>
+        <% end %>
+        <% if validation %>
+            <div>
+                <%= button_to "Carotte tes colocs !", ongoing_task_carotted_tasks_path(task), method: :post %>
+            </div>
+            <div>
+                <%= button_to "Valide ta tâche", validate_task_path(task), method: :get %>
+            </div>
+        <% end %>
     </div>
+</div>
