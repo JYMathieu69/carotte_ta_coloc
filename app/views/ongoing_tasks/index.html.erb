@@ -10,6 +10,7 @@
     <%= link_to "Essaye de rentrer !", ongoing_tasks_path %>
 <% else %>
 
+<div class="tab-bar">
     <div id="ColocTab" class="tabcontent">
         <h3>Les tâches de mes colocs</h3>
         <% @colocs_tasks.each do |task| %>
@@ -43,6 +44,7 @@
         <button class="tablinks" data-tabname="MyTasksTab">Mes Tâches</button>
         <button class="tablinks" data-tabname="StatsTab">Stats</button>
     </div>
+</div>
 
     <div>
         <%= link_to "Au revoir !", destroy_user_session_path, method: :delete %>
