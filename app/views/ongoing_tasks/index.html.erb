@@ -4,34 +4,41 @@
     <p> Tes colocs sont tous là ? </p>
     <%= button_to "Créer et distribuer les tâches", start_ongoing_tasks_path %>
     <%= @error %>
+
 <% elsif (current_user.coloc.assignment_day.nil?)%>
     <h1>Tach'board</h1>
-    <p> En attentant les autres colocs... </p>
+    <p> En attendant les autres colocs... </p>
     <%= link_to "Essaye de rentrer !", ongoing_tasks_path %>
+
 <% else %>
 
 <div class="tab-bar">
     <div id="ColocTab" class="tabcontent">
-        <h3>Les tâches de mes colocs</h3>
-        <% @colocs_tasks.each do |task| %>
-            <%= link_to ongoing_task_path(task) do %>
-                <%= cl_image_tag task.image.key, height: 100, width: 100 %>
-            <% end %>
-            <%= cl_image_tag task.user.avatar.key, height: 25, width: 25 %>
-            <%= task.user.username %>
-            <%= task.final_points %>
+        <h3><%= current_user.coloc.name %></h3>
+        <% @users_coloc.each do |user| %>
+            <div>
+                <%= cl_image_tag user.avatar.key, height: 25, width: 25 %>
+            </div>
+            <div>
+                <%= user.username %>
+            </div>
+            <div>
+                <% user.ongoing_tasks.each do |task| %>
+                    <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false %>
+                <% end %>
+            </div>
         <% end %>
     </div>
 
     <div id="MyTasksTab" class="tabcontent">
         <h3>Mes tâches de la semaine</h3>
         <% @user_tasks.each do |task| %>
-            <%= render "ongoing_tasks/ongoing_tasks", task: task, unassigned: false %>
+            <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: false, validation: true %>
         <% end %>
 
         <h3>Tâches non assignées</h3>
         <% @unassigned_tasks.each do |task| %>
-            <%= render "ongoing_tasks/ongoing_tasks", task: task, unassigned: true %>
+            <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false %>
         <% end %>
     </div>
 
