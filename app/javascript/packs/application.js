@@ -7,7 +7,7 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import { displayTabs } from '../plugins/display_tabs.js';
+import { displayTabs } from '../channels/display_tabs.js';
 
 Rails.start()
 Turbolinks.start()
