@@ -1,0 +1,6 @@
+fr:
+  counts:
+    points:
+      zero: 0 carotte
+      one: 1 carotte
+      other: "%{count} carottes"
