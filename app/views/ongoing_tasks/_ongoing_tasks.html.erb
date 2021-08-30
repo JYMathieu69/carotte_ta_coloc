@@ -14,10 +14,10 @@
         <% if assignment %>
             <p>
                 <% if task.user_id.nil? %>
-                    Affecté à personne...
+                    Affectée à personne...
                 <% else %>
-                    Affecté à <%= task.user.username %>,
-                    il possède <%= t('counts.points', count: task.user.current_points) %>.
+                    Affectée à <%= task.user.username %>
+                    (<%= t('counts.points', count: task.user.current_points) %>).
                 <% end %>
             </p>
         <% end %>
