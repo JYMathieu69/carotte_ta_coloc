@@ -27,6 +27,7 @@
 @import "components/token-invite";
 @import "components/switch";
 @import "components/modal";
+@import "components/carrots";
 
 /* Padding and border added to the width and height of each element. */
 * {
