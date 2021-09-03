@@ -1,15 +1,14 @@
-<h3> Un coloc t'a aidé?</h3>
+<h3> Un coloc t'a aidé ?</h3>
 <%= form_with model: @ongoing_task, url: validation_update_path(@ongoing_task) do |form| %>
-    
-        <%= form.fields_for :helpers do |helpers_fields| %>
-             <%= helpers_fields.object.user.username %>
-             <%= helpers_fields.check_box  :user_id, { checked: false } , helpers_fields.object.user.id %>
-             <label for="<%= helpers_fields.object.user.id %>">
-               <%= cl_image_tag helpers_fields.object.user.avatar.key, height: 300, width: 400, crop: :fill  %>
-             </label>
-             <%= helpers_fields.hidden_field :ongoing_task_id  %>
-        <%end %>
-    <h3>Prouve le à tes colocs!</h3>
-    <%= form.file_field :photo_after, as: :file %>
-    <%= form.submit %>
-<%end %>
+  <%= form.fields_for :helpers do |helpers_fields| %>
+    <%= helpers_fields.object.user.username %>
+    <%= helpers_fields.check_box :user_id, { checked: false }, helpers_fields.object.user.id %>
+    <label for="<%= helpers_fields.object.user.id %>">
+     <%= cl_image_tag helpers_fields.object.user.avatar.key, height: 300, width: 400, crop: :fill  %>
+    </label>
+    <%= helpers_fields.hidden_field :ongoing_task_id  %>
+  <% end %>
+  <h3>Prouve-le à tes colocs !</h3>
+  <%= form.file_field :photo_after, as: :file %>
+  <%= form.submit %>
+<% end %>

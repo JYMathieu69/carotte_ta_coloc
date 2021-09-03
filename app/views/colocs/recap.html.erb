@@ -4,14 +4,14 @@
     <% @coloc.coloc_tasks.each do |coloc_task| %>
     <div class="grid-element">
         <%= cl_image_tag coloc_task.image.key, height: 100, width: 100 %>
-        <p><%= coloc_task.name %></p> 
+        <p><%= coloc_task.name %></p>
     </div>
     <% end %>
 </div>
 
 
 <div class="info_bubble text-center">
-    <p class="violet-100 light">En tant que leader, vous pourrez ajouter, modifier ou supprimer des tâches depuis le dashboard</p>
+    <p class="violet-100 light">En tant que leader, tu pourras ajouter, modifier ou supprimer des tâches depuis le tach'board</p>
 </div>
 
 <div class="text-center margin-t-32">

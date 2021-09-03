@@ -10,14 +10,14 @@
         <div class="close" data-task-id="<%= task.id %>">+</div>
         <h1><%= task.name %></h1>
         <h3>* <%= task.description %> *</h3>
-        <p>Nombre de carottes : <%= task.final_points %></p>              
+        <p>Nombre de carottes : <%= task.final_points %></p>
         <% if assignment %>
             <p>
                 <% if task.user_id.nil? %>
-                    Affecté à personne...
+                    Affectée à personne...
                 <% else %>
-                    Affecté à <%= task.user.username %>,
-                    il possède <%= pluralize(task.user.current_points, 'carotte') %>.
+                    Affectée à <%= task.user.username %>
+                    (<%= t('counts.points', count: task.user.current_points) %>).
                 <% end %>
             </p>
         <% end %>

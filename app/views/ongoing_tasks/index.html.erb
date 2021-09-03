@@ -1,59 +1,57 @@
 <h1>Tach'board</h1>
 
 <% if (current_user.coloc.assignment_day.nil?) && (current_user.id == current_user.coloc.leader_id) %>
-    <p> Tes colocs sont tous là ? </p>
-    <%= button_to "Créer et distribuer les tâches", start_ongoing_tasks_path %>
-    <%= @error %>
+  <p>Tes colocs sont tous là ?</p>
+  <%= button_to "Créer et distribuer les tâches", start_ongoing_tasks_path %>
+  <%= @error %>
 
 <% elsif (current_user.coloc.assignment_day.nil?)%>
-    <h1>Tach'board</h1>
-    <p> En attendant les autres colocs... </p>
-    <%= link_to "Essaye de rentrer !", ongoing_tasks_path %>
+  <p>La coloc n'est pas encore au complet, réessaie plus tard !</p>
+  <%= link_to "Réessayer", ongoing_tasks_path %>
 
 <% else %>
-
-<div class="tab-bar">
+  <div class="tab-bar">
     <div id="ColocTab" class="tabcontent">
-        <h3><%= current_user.coloc.name %></h3>
-        <% @users_coloc.each do |user| %>
-            <div>
-                <%= cl_image_tag user.avatar.key, height: 25, width: 25 %>
-            </div>
-            <div>
-                <%= user.username %>
-            </div>
-            <div>
-                <% user.ongoing_tasks.each do |task| %>
-                    <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false %>
-                <% end %>
-            </div>
-        <% end %>
+      <h3><%= current_user.coloc.name %></h3>
+      <% @users_coloc.each do |user| %>
+        <div>
+          <%= cl_image_tag user.avatar.key, height: 25, width: 25 %>
+        </div>
+        <div>
+          <%= user.username %>
+        </div>
+        <div>
+          <% user.ongoing_tasks.each do |task| %>
+            <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
 
     <div id="MyTasksTab" class="tabcontent">
-        <h3>Mes tâches de la semaine</h3>
-        <% @user_tasks.each do |task| %>
-            <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: false, validation: true %>
-        <% end %>
+      <h3>Mes tâches de la semaine</h3>
+      <% @user_tasks.each do |task| %>
+        <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: false, validation: true %>
+      <% end %>
 
-        <h3>Tâches non assignées</h3>
-        <% @unassigned_tasks.each do |task| %>
-            <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false %>
-        <% end %>
+      <h3>Tâches non assignées</h3>
+      <% @unassigned_tasks.each do |task| %>
+        <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false %>
+      <% end %>
     </div>
 
     <div id="StatsTab" class="tabcontent">
-        <h1>Hello</h1>
+      <h1>Hello</h1>
     </div>
 
     <div class="tab">
-        <button class="tablinks" data-tabname="ColocTab">La Coloc'</button>
-        <button class="tablinks" data-tabname="MyTasksTab">Mes Tâches</button>
-        <button class="tablinks" data-tabname="StatsTab">Stats</button>
+      <button class="tablinks" data-tabname="ColocTab">La Coloc'</button>
+      <button class="tablinks" data-tabname="MyTasksTab">Mes Tâches</button>
+      <button class="tablinks" data-tabname="StatsTab">Stats</button>
     </div>
-</div>
+  </div>
 
-    <div>
-        <%= link_to "Au revoir !", destroy_user_session_path, method: :delete %>
-    </div>
+  <div>
+    <%= link_to "Au revoir !", destroy_user_session_path, method: :delete %>
+  </div>
 <% end %>
