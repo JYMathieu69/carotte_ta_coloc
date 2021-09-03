@@ -1,10 +1,12 @@
 
 <%= form_with model: @coloc do |form| %>
- <h2>Choisis les tâches de ta Coloc'</h2>
+
+ <h3 class="text-center">Choisis les tâches de ta Coloc'</h3>
+
   <%= form.fields_for :coloc_tasks do |coloc_tasks_fields| %>
       <li>
         <img data-title="<%= coloc_tasks_fields.object.task.name %>" src="https://image.flaticon.com/icons/png/512/1748/1748922.png" width="48" height="48">
-        <%= coloc_tasks_fields.label coloc_tasks_fields.object.task.name %>
+        <h3 class="violet-100"> <%= coloc_tasks_fields.label coloc_tasks_fields.object.task.name %> </h3>
         <label class="switch">
           <%= coloc_tasks_fields.check_box  :task_id, { checked: false } , coloc_tasks_fields.object.task.id %>
           <span class="slider round"></span>
@@ -13,6 +15,6 @@
       </li>
     <% end %>
   </ul>
-  <%= form.submit %>
+  <%= form.submit 'Je valide mes tâches', class: 'btn-primary' %>
 <% end %>
   <ul>

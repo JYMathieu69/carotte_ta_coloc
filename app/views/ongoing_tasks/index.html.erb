@@ -1,4 +1,4 @@
-<h1>Tach'board</h1>
+<h1 class="text-center">Tach'board</h1>
 
 <% if (current_user.coloc.assignment_day.nil?) && (current_user.id == current_user.coloc.leader_id) %>
   <p>Tes colocs sont tous là ?</p>
@@ -6,8 +6,14 @@
   <%= @error %>
 
 <% elsif (current_user.coloc.assignment_day.nil?)%>
+
+    <h1 class="text-center">Tach'board</h1>
+    <p> En attendant les autres colocs... </p>
+    <%= link_to "Essaye de rentrer !", ongoing_tasks_path %>
+
   <p>La coloc n'est pas encore au complet, réessaie plus tard !</p>
   <%= link_to "Réessayer", ongoing_tasks_path %>
+
 
 <% else %>
   <div class="tab-bar">
@@ -29,15 +35,17 @@
     </div>
 
     <div id="MyTasksTab" class="tabcontent">
-      <h3>Mes tâches de la semaine</h3>
-      <% @user_tasks.each do |task| %>
-        <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: false, validation: true %>
-      <% end %>
+        <div class="my-task-card">
+            <h3 class="violet-100 upcase">Mes tâches</h3>
+            <% @user_tasks.each do |task| %>
+                <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: false, validation: true %>
+            <% end %>
+        </div>
 
-      <h3>Tâches non assignées</h3>
-      <% @unassigned_tasks.each do |task| %>
-        <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false %>
-      <% end %>
+            <h3 class="orange-100 upcase">Tâches non assignées</h3>
+            <% @unassigned_tasks.each do |task| %>
+                <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false %>
+            <% end %>
     </div>
 
     <div id="StatsTab" class="tabcontent">

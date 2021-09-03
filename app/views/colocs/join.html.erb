@@ -1,10 +1,14 @@
-<h1>Rejoins tes colocs</h1>
+<h1 class="text-center margin-b-64 upcase">Rejoins tes colocs !</h1>
 
-<p>Entre le code de la coloc :</p>
+<h3 class="text-center upcase">Entre le code de la coloc :</h3>
 
-<div>
+<div class="text-center">
     <%= simple_form_for @user do |f| %>
-        <input type="text", value="", name="invite_token">
-        <%= f.submit "Je rejoins" %>
+        <div>
+            <input type="text", value="", name="invite_token", class="invit-token">
+        </div>
+        <div>
+            <%= f.submit "Je rejoins", class: 'btn-primary' %>
+        </div>
     <% end %>
 </div>
