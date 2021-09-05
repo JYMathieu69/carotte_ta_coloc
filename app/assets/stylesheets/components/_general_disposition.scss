@@ -55,3 +55,10 @@ li {
 .d-flex {
     display: flex;
 }
+
+.dashed {
+    width: 30%;
+    border: 2px dashed;
+    border-style: none none dashed;
+    color: rgba(127, 68, 227, 0.5);
+}

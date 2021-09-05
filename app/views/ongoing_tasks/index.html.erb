@@ -1,5 +1,6 @@
-<h1 class="text-center">Tach'board</h1>
-
+<div>
+  <h1 class="text-center">Tach'board</h1>
+</div> 
 <% if (current_user.coloc.assignment_day.nil?) && (current_user.id == current_user.coloc.leader_id) %>
   <h2 class="text-center violet-100">Tes colocs sont tous là ?</h2>
   <div class="text-center">
@@ -37,17 +38,27 @@
     </div>
 
     <div id="MyTasksTab" class="tabcontent">
-        <div class="my-task-card">
+        <div class="my-task-card margin-b-64">
             <h3 class="violet-100 upcase">Mes tâches</h3>
-            <% @user_tasks.each do |task| %>
+            <div class="grid-5">
+              <% @user_tasks.each do |task| %>
+              <div class="grid-element">
                 <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: false, validation: true %>
-            <% end %>
+              </div>
+              <% end %>    
+            </div>
         </div>
 
+        <hr class="dashed margin-b-64">
+
             <h3 class="orange-100 upcase">Tâches non assignées</h3>
-            <% @unassigned_tasks.each do |task| %>
-                <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false %>
-            <% end %>
+            <div class="grid-5">
+              <% @unassigned_tasks.each do |task| %>
+                <div class="grid-element">
+                  <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false %>
+                </div>
+              <% end %>
+            </div>
     </div>
 
     <div id="StatsTab" class="tabcontent">
