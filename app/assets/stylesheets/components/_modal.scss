@@ -1,7 +1,7 @@
 .bg-modal {
     width: 100%;
     height: 100%;
-    background-color: rgba($color: #000000, $alpha: 0.75);
+    background-color: none;
     position: absolute;
     top: 0;
     left: 0;
@@ -12,13 +12,16 @@
 }
 
 .modal-content {
-    width: 30%;
-    height: 60%;
-    background-color: white;
-    border-radius: 8px;
+    background-color: #FFFCF8;
+    border: solid 5px #7f44e3;
+    border-bottom: none;
+    border-radius: 32px;
     text-align: center;
     padding: 24px;
-    position: relative;
+    position: absolute;
+    height: 60VH;
+    bottom: 0px;
+    width: 100%;
 }
 
 .close {
@@ -32,4 +35,10 @@
 
 .open {
     display: flex;
+}
+
+.modal-img {
+    position: absolute;
+    top: -120px;
+    left: 44VW;
 }
