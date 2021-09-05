@@ -1,8 +1,10 @@
 <h1 class="text-center">Tach'board</h1>
 
 <% if (current_user.coloc.assignment_day.nil?) && (current_user.id == current_user.coloc.leader_id) %>
-  <p>Tes colocs sont tous là ?</p>
-  <%= button_to "Créer et distribuer les tâches", start_ongoing_tasks_path %>
+  <h2 class="text-center violet-100">Tes colocs sont tous là ?</h2>
+  <div class="text-center">
+    <%= button_to "Créer et distribuer les tâches", start_ongoing_tasks_path, class: "btn-primary" %>
+  </div>
   <%= @error %>
 
 <% elsif (current_user.coloc.assignment_day.nil?)%>

@@ -28,8 +28,12 @@
 @import "components/switch";
 @import "components/modal";
 @import "components/carrots";
+@import "components/form";
 
 /* Padding and border added to the width and height of each element. */
 * {
   box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+  color: black;
 }
