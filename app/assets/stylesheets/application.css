@@ -29,6 +29,7 @@
 @import "components/modal";
 @import "components/carrots";
 @import "components/form";
+@import "components/banner";
 
 /* Padding and border added to the width and height of each element. */
 * {
