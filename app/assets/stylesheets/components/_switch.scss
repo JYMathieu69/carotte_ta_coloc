@@ -60,3 +60,26 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+.switch-task {
+    display: flex;
+    border: solid 1px rgb(127, 68, 227);
+    border-radius: 16px;
+    padding: 16px 24px;
+    margin-bottom: 16px;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    width: 40VW;
+    margin: 16px auto;
+}
+
+.toggle-name {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    align-content: center;
+    flex-grow: 2;
+    margin-left: 40px;
+}
