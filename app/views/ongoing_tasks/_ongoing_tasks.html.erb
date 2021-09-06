@@ -7,10 +7,10 @@
 
 <div class="bg-modal" id="task<%= task.id %>">
     <div class="modal-content">
+        <%= cl_image_tag task.image.key, height: 200, width: 200, class: 'modal-img' %>
         <div class="close" data-task-id="<%= task.id %>">+</div>
-        <h1><%= task.name %></h1>
-        <h3>* <%= task.description %> *</h3>
-        <p>Nombre de carottes : <%= task.final_points %></p>
+        <h1 class="violet-100 margin-t-64"><%= task.name %></h1>
+        <h3 class="carrot-circle margin-auto margin-b-64"><%= task.final_points %></h3>
         <% if assignment %>
             <p>
                 <% if task.user_id.nil? %>
@@ -22,11 +22,18 @@
             </p>
         <% end %>
         <% if validation %>
-            <div>
-                <%= button_to "Carotte tes colocs !", ongoing_task_carotted_tasks_path(task), method: :post %>
-            </div>
-            <div>
-                <%= button_to "Valide ta tâche", validate_task_path(task), method: :get %>
+            <div class="modal-validate">
+                <div>
+                    <%= link_to image_tag("task_done.png") %>
+                    <p>Je valide cette tâche</p>
+                    <%= button_to "Valide ta tâche", validate_task_path(task), method: :get %>
+                </div>
+                
+                <div>
+                    <%= link_to image_tag("task_carrot.png") %>
+                    <p>J'assigne cette tâche</p>
+                    <%= button_to "Carotte tes colocs !", ongoing_task_carotted_tasks_path(task), method: :post %>
+                </div>
             </div>
         <% end %>
     </div>
