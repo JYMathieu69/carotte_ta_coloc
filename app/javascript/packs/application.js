@@ -8,6 +8,8 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import { displayTabs } from '../channels/display_tabs.js';
+import { initPictureInput } from '../channels/preview_picture.js';
+
 
 Rails.start()
 Turbolinks.start()
@@ -39,4 +41,5 @@ document.addEventListener('turbolinks:load', () => {
             openedModal.classList.remove("open");
         }
     });
+    initPictureInput()
 });

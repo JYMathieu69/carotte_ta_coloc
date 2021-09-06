@@ -1,0 +1,16 @@
+.bigger_img {
+    width: 272px;
+}
+
+.adapt_heigh {
+height: calc(100vh - 436px);
+}
+
+.container-photo {
+    padding: 60px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: calc(100vh - 336px);
+}

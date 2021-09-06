@@ -1,4 +1,5 @@
-<h3> Un coloc t'a aidé ?</h3>
+<h3 class="border-btm-purple violet-100 upcase"> Un coloc t'a aidé ?</h3>
+
 <%= form_with model: @ongoing_task, url: validation_update_path(@ongoing_task) do |form| %>
   <%= form.fields_for :helpers do |helpers_fields| %>
     <%= helpers_fields.object.user.username %>
@@ -8,7 +9,20 @@
     </label>
     <%= helpers_fields.hidden_field :ongoing_task_id  %>
   <% end %>
-  <h3>Prouve-le à tes colocs !</h3>
-  <%= form.file_field :photo_after, as: :file %>
-  <%= form.submit %>
+
+  <hr class="dashed">
+
+  <h3 class="border-btm-purple violet-100 upcase">Prouve-le à tes colocs !</h3>
+
+  <div class="container-photo">
+    <div class="text-center form-group file optional user_task_photo">
+      <label class="file optional" for="user_task_photo">
+        <%= image_tag 'camera.png', alt: 'camera', class: "preview_img camera_img"%>
+        <p class="orange-100 light">Je prends une photo</p>
+      </label>
+      <input class="form-control-file file optional" type="file" name="user_task[photo]" id="user_task_photo" style="display: none;">
+    </div>
+
+    <%= form.submit 'Je valide mes tâches', class: 'btn-primary margin-t-32'%>
+  </div>
 <% end %>
