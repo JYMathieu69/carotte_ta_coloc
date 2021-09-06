@@ -1,6 +1,5 @@
-<div>
-  <h1 class="text-center">Tach'board</h1>
-</div> 
+<h1 class="text-center">Tach'board</h1>
+
 <% if (current_user.coloc.assignment_day.nil?) && (current_user.id == current_user.coloc.leader_id) %>
   <h2 class="text-center violet-100">Tes colocs sont tous là ?</h2>
   <div class="text-center">
@@ -43,7 +42,7 @@
             <div class="grid-5">
               <% @user_tasks.each do |task| %>
               <div class="grid-element">
-                <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: false, validation: true %>
+                <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: false, validation: true%>
               </div>
               <% end %>    
             </div>

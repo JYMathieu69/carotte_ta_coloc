@@ -1,7 +1,7 @@
 <!-- partial ongoing_tasks/index.html.erb -->
 
 <%= cl_image_tag task.image.key, class:"task-content", data: { task_id: task.id }, height: 100, width: 100 %>
-<%= task.final_points %>
+<p class="carrot-circle"><%= task.final_points %></p>
 
 <!-- Modal Section -->
 
@@ -24,15 +24,14 @@
         <% if validation %>
             <div class="modal-validate">
                 <div>
-                    <%= link_to image_tag("task_done.png") %>
+                    <%= link_to image_tag("task_done.png"), validate_task_path(task) %>
                     <p>Je valide cette tâche</p>
-                    <%= button_to "Valide ta tâche", validate_task_path(task), method: :get %>
                 </div>
                 
                 <div>
-                    <%= link_to image_tag("task_carrot.png") %>
+                    <%= link_to image_tag("task_carrot.png"), ongoing_task_carotted_tasks_path(task) %>
                     <p>J'assigne cette tâche</p>
-                    <%= button_to "Carotte tes colocs !", ongoing_task_carotted_tasks_path(task), method: :post %>
+                    <!-- <%= button_to "Carotte tes colocs !", ongoing_task_carotted_tasks_path(task), method: :post %> -->
                 </div>
             </div>
         <% end %>
