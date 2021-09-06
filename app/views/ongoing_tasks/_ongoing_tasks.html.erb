@@ -1,16 +1,33 @@
 <!-- partial ongoing_tasks/index.html.erb -->
 
 <%= cl_image_tag task.image.key, class:"task-content", data: { task_id: task.id }, height: 100, width: 100 %>
-<p class="carrot-circle"><%= task.final_points %></p>
+<div class="d-flex carrot-circle-big align-center">
+    <div>
+        <h3 class="white"><%= task.final_points %></h3>
+    </div>
+    <div>
+        <%= image_tag 'carrot_icon.png', alt: 'carrot_price', class: 'carrot-icon padding-l-5'%>
+    </div>
+</div>
+
 
 <!-- Modal Section -->
 
 <div class="bg-modal" id="task<%= task.id %>">
     <div class="modal-content">
-        <%= cl_image_tag task.image.key, height: 200, width: 200, class: 'modal-img' %>
         <div class="close" data-task-id="<%= task.id %>">+</div>
-        <h1 class="violet-100 margin-t-64"><%= task.name %></h1>
-        <h3 class="carrot-circle margin-auto margin-b-64"><%= task.final_points %></h3>
+
+            <div class="d-flex carrot-circle-big align-center" style="margin: 64px auto">
+                <%= cl_image_tag task.image.key, height: 200, width: 200, class: 'modal-img' %>
+
+                <div>
+                    <h3 class="white"><%= task.final_points %></h3>
+                </div>
+            <div>
+
+                <%= image_tag 'carrot_icon.png', alt: 'carrot_price', class: 'carrot-icon padding-l-5'%>
+            </div>
+        </div>
         <% if assignment %>
             <p>
                 <% if task.user_id.nil? %>
