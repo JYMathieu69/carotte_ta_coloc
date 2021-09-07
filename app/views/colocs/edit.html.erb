@@ -1,28 +1,27 @@
+<h1>Gestion de la coloc</h1>
 
-<%= form_with model: @coloc do |form| %>
+<p>Pour qu'un utilisateur rejoigne ta coloc, envoie-lui ce code : <%= @coloc.invite_token %></p>
 
- <h2 class="text-center margin-b-64">Choisis les tâches de ta Coloc'</h2>
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= cl_image_tag user.avatar.key, height: 25, width: 25 %>
+      <%= user.username %>
+      <%= link_to "X", remove_coloc_user_path(@coloc, user), method: :delete, data: { confirm: "Retirer #{user.username} de la coloc ?" } %>
+    </li>
+  <% end %>
+</ul>
 
-  <%= form.fields_for :coloc_tasks do |coloc_tasks_fields| %>
-        <li>
-          <div class="switch-task">
-            <div>
-              <%= cl_image_tag coloc_tasks_fields.object.task.image.key, class:"task-content", height: 130, width: 130 %>
-            </div>
-            <div class="toggle-name">
-              <h3 class="violet-100"> <%= coloc_tasks_fields.label coloc_tasks_fields.object.task.name %> </h3>
-              <label class="switch">
-                <%= coloc_tasks_fields.check_box  :task_id, { checked: false } , coloc_tasks_fields.object.task.id %>
-                <span class="slider round"></span>
-              </label>
-              <%= coloc_tasks_fields.hidden_field :difficulty  %>
-            </div>
-          </div>
-        </li>
-    <% end %>
-  </ul>
-  <div class="text-center margin-t-64">
-    <%= form.submit 'Je valide mes tâches', class: 'btn-primary' %>
-  </div>
+<ul>
+  <% @coloc_tasks.each do |task| %>
+    <li>
+      <%= cl_image_tag task.image.key, class:"task-content", height: 130, width: 130 %>
+      <%= task.name %>
+    </li>
+  <% end %>
+</ul>
+
+<%= simple_form_for @coloc do |f| %>
+  <%= f.input :name %>  
+  <%= f.submit %>  
 <% end %>
-  <ul>
