@@ -11,7 +11,7 @@
     </li>
   <% end %>
 </ul>
-  
+
 <ul>
   <% @coloc_tasks.each do |task| %>
     <li>
@@ -20,3 +20,8 @@
     </li>
   <% end %>
 </ul>
+
+<%= simple_form_for @coloc do |f| %>
+  <%= f.input :name %>  
+  <%= f.submit %>  
+<% end %>
