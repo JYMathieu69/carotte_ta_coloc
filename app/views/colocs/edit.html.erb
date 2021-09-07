@@ -1,0 +1,15 @@
+<h1>Gestion de la coloc</h1>
+
+<p>Pour qu'un utilisateur rejoigne ta coloc, envoie-lui ce code : <%= @coloc.invite_token %></p>
+<!-- users -->
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= cl_image_tag user.avatar.key, height: 25, width: 25 %>
+      <%= user.username %>
+      <%= link_to "X", remove_coloc_user_path(@coloc, user), method: :delete, data: { confirm: "Retirer #{user.username} de la coloc ?" } %>
+    </li>
+<% end %>
+</ul>
+<!-- nom de la coloc -->
+<!-- tâches -->

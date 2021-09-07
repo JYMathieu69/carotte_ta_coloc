@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/colocs/:id/choose_tasks', to: 'colocs#choose_tasks', as: 'choose_tasks'
   get '/colocs/:id/recap', to: 'colocs#recap', as: 'recap'
   get '/colocs/:id/invitation', to: 'colocs#invitation'
+  delete '/colocs/:id/:user_id/remove_coloc_user', to: 'colocs#remove_coloc_user', as: 'remove_coloc_user'
   get '/home', to: 'pages#home'
   get '/join', to: 'colocs#join', as: 'join_coloc'
   post "start_ongoing_tasks", to: "ongoing_tasks#start_ongoing_tasks"

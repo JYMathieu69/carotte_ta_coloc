@@ -1,5 +1,5 @@
 class ColocsController < ApplicationController
-  before_action :set_coloc, only: [:edit, :update, :recap, :invitation, :choose_tasks]
+  before_action :set_coloc, only: [:edit, :update, :recap, :invitation, :choose_tasks, :remove_coloc_user]
 
   def new
     @coloc = Coloc.new
@@ -24,7 +24,9 @@ class ColocsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @users = @coloc.users
+  end
 
   def recap; end
 
@@ -39,6 +41,16 @@ class ColocsController < ApplicationController
       redirect_to is_completed? ? root_path : recap_path(@coloc)
     else
       render is_completed? ? :edit : :choose_tasks
+    end
+  end
+
+  def remove_coloc_user
+    user = User.find(params[:user_id])
+    user.coloc = nil
+    if user.save
+      redirect_to edit_coloc_path(@coloc)
+    else
+      render :edit
     end
   end
 
