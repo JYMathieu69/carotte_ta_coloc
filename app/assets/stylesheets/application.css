@@ -30,6 +30,7 @@
 @import "components/carrots";
 @import "components/form";
 @import "components/banner";
+@import "components/img-preview";
 
 /* Padding and border added to the width and height of each element. */
 * {
