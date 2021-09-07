@@ -28,7 +28,6 @@ Rails.application.routes.draw do
       resources :votes, only: [:create]
       resources :carotted_tasks, only: [:create]
     end
-    resources :coloc_tasks, path: 'task_manager', only: [:index, :create, :update, :destroy]
     resources :tasks, path: 'admin', except: [:show, :new]
   end
 end

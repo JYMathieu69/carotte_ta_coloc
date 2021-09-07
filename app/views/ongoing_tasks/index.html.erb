@@ -12,12 +12,8 @@
   <%= @error %>
 
 <% elsif (current_user.coloc.assignment_day.nil?)%>
-
-    <h1 class="text-center">Tach'board</h1>
     <p>La coloc n'est pas encore au complet, réessaie plus tard !</p>
     <%= link_to "Réessayer", ongoing_tasks_path %>
-
-
 <% else %>
   <div class="tab-bar">
     <div id="ColocTab" class="tabcontent">

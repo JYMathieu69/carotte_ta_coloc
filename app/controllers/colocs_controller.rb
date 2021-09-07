@@ -26,6 +26,7 @@ class ColocsController < ApplicationController
 
   def edit
     @users = @coloc.users
+    @coloc_tasks = @coloc.coloc_tasks
   end
 
   def recap; end
