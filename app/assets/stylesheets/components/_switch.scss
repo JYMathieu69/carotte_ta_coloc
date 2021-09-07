@@ -1,4 +1,45 @@
 /* The switch - the box around the slider */
+@media screen and (min-width: 270px) and (max-width: 540px) {
+    .switch-task {
+        min-width: 250px;
+    }
+    
+    .toggle-name {
+        margin-left: 10px;
+    }
+
+    .toggle-name h3 {
+        font-size: 16px;
+    }
+
+    img {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media screen and (min-width: 540px) and (max-width: 800px) {
+    .toggle-name {
+        margin-left: 20px; 
+    }
+}
+
+@media screen and (min-width: 540px) {
+
+    .switch-task {
+        min-width: 330px;
+    }
+
+}
+
+@media screen and (min-width: 800px) {
+    .toggle-name{
+        margin-left: 20px;
+    }
+}
+
+
+
 .switch {
     position: relative;
     display: inline-block;
@@ -81,5 +122,4 @@ input:checked + .slider:before {
     justify-content: center;
     align-content: center;
     flex-grow: 2;
-    margin-left: 40px;
 }
