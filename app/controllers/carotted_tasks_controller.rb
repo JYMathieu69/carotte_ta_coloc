@@ -14,7 +14,7 @@ class CarottedTasksController < ApplicationController
   end
 
   def show
-    @carroted_task = CarottedTask.find(params[:id])
+    @carroted_task = CarottedTask.includes(:carotted_user).find(params[:id])
   end
 
   private
