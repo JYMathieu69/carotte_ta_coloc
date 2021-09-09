@@ -1,5 +1,5 @@
 class ColocsController < ApplicationController
-  before_action :set_coloc, only: [:edit, :update, :recap, :invitation, :choose_tasks, :remove_coloc_user, :remove_coloc_task]
+  before_action :set_coloc, only: [:edit, :update, :recap, :invitation, :choose_tasks, :remove_coloc_user]
 
   def new
     @coloc = Coloc.new
