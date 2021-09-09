@@ -32,6 +32,7 @@
             <p>
                 <% if task.user_id.nil? %>
                     Affectée à personne...
+                    <%= link_to "J'vais l'faire !", assign_task_path(task) %>
                 <% else %>
                     Affectée à <%= task.user.username %>
                     (<%= pluralize(task.user.current_points, 'carotte') %>).
@@ -50,6 +51,13 @@
                     <p>J'assigne cette tâche</p>
                     <!-- <%= button_to "Carotte tes colocs !", ongoing_task_carotted_tasks_path(task), method: :post %> -->
                 </div>
+                
+                <% if !task.auto_assigned %>
+                  <div>
+                    <%= link_to "En fait, j'vais pas l'faire", unassign_task_path(task), method: 'patch' %>
+                  </div>
+                <% end %>
+                
             </div>
         <% end %>
     </div>
