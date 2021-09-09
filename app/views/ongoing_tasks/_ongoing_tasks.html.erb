@@ -32,6 +32,7 @@
             <p>
                 <% if task.user_id.nil? %>
                     Affectée à personne...
+                    <%= link_to "J'vais l'faire !", assign_task_path(task) %>
                 <% else %>
                     Affectée à <%= task.user.username %>
                     (<%= t('counts.points', count: task.user.current_points) %>).
