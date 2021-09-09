@@ -1,5 +1,5 @@
 class ColocsController < ApplicationController
-  before_action :set_coloc, only: [:edit, :update, :recap, :invitation, :choose_tasks, :remove_coloc_user]
+  before_action :set_coloc, only: [:edit, :update, :recap, :invitation, :choose_tasks, :remove_coloc_user, :remove_coloc_task]
 
   def new
     @coloc = Coloc.new
@@ -26,7 +26,6 @@ class ColocsController < ApplicationController
 
   def edit
     @users = @coloc.users
-    @coloc_tasks = @coloc.coloc_tasks
   end
 
   def recap; end
@@ -38,7 +37,7 @@ class ColocsController < ApplicationController
   def invitation; end
 
   def update
-    if @coloc.update(coloc_params) && @coloc.save
+    if @coloc.update(coloc_params)
       redirect_to is_completed? ? root_path : recap_path(@coloc)
     else
       render is_completed? ? :edit : :choose_tasks
@@ -58,7 +57,7 @@ class ColocsController < ApplicationController
   private
 
   def coloc_params
-    params.require(:coloc).permit(:name, coloc_tasks_attributes: [:task_id, :difficulty, :id])
+    params.require(:coloc).permit(:name, coloc_tasks_attributes: [:task_id, :difficulty, :id, :_destroy])
   end
 
   def set_coloc

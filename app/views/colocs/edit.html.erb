@@ -1,5 +1,7 @@
 <h1>Gestion de la coloc</h1>
 
+<%= link_to "Revenir au Tach'board", ongoing_tasks_path %>
+
 <p>Pour qu'un utilisateur rejoigne ta coloc, envoie-lui ce code : <%= @coloc.invite_token %></p>
 
 <%= simple_form_for @coloc do |f| %>
@@ -19,19 +21,9 @@
   <% end %>
 </ul>
 
-<!-- <ul>
-  <% @coloc_tasks.each do |task| %>
-    <li>
-      <%= cl_image_tag task.image.key, class:"task-content", height: 130, width: 130 %>
-      <%= task.name %>
-    </li>
-  <% end %>
-</ul> -->
-
-
-<%= form_with model: @coloc, method: 'patch' do |form| %>
+<%= form_with model: @coloc do |form| %>
   <ul>
-    <%= form.fields_for :coloc_tasks do |coloc_tasks_fields| %>
+    <%= form.fields_for :coloc_tasks, form.object.coloc_tasks.order(:id) do |coloc_tasks_fields| %>
       <li>
         <div>
           <%= cl_image_tag coloc_tasks_fields.object.task.image.key, class:"task-content", height: 70, width: 70 %>
@@ -41,6 +33,7 @@
           <label>
             <%= coloc_tasks_fields.select :difficulty, Task::DIFFICULTIES %>
           </label>
+          Supprimer la tâche ? <%= coloc_tasks_fields.check_box :_destroy %>
           <%= coloc_tasks_fields.hidden_field :task_id  %>
         </div>
       </li>

@@ -6,7 +6,7 @@ class ColocTask < ApplicationRecord
   belongs_to :coloc
   belongs_to :task
 
-  has_many :ongoing_tasks
+  has_many :ongoing_tasks, dependent: :destroy
   
   validates :difficulty, presence: true
   validates :difficulty, numericality: { only_integer: true}

@@ -3,7 +3,7 @@ class Coloc < ApplicationRecord
   
   has_many :users
   has_many :coloc_tasks
-  accepts_nested_attributes_for :coloc_tasks, reject_if: lambda {|attributes| attributes['task_id'].eql? "0"}
+  accepts_nested_attributes_for :coloc_tasks, reject_if: lambda {|attributes| attributes['task_id'].eql? "0"}, allow_destroy: true
 
   has_many :ongoing_tasks, through: :coloc_tasks
   
