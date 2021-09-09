@@ -34,7 +34,7 @@
                     Affectée à personne...
                 <% else %>
                     Affectée à <%= task.user.username %>
-                    (<%= t('counts.points', count: task.user.current_points) %>).
+                    (<%= pluralize(task.user.current_points, 'carotte') %>).
                 <% end %>
             </p>
         <% end %>
