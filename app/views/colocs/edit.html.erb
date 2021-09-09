@@ -7,7 +7,9 @@
     <li>
       <%= cl_image_tag user.avatar.key, height: 25, width: 25 %>
       <%= user.username %>
-      <%= link_to "X", remove_coloc_user_path(@coloc, user), method: :delete, data: { confirm: "Retirer #{user.username} de la coloc ?" } %>
+      <% if user != @coloc.leader %>
+        <%= link_to "X", remove_coloc_user_path(@coloc, user), method: :delete, data: { confirm: "Retirer #{user.username} de la coloc ?" } %>
+      <% end %>
     </li>
   <% end %>
 </ul>
