@@ -1,0 +1,17 @@
+<div class="container">
+
+  <div class="carott_card" >
+    <h4 class="carotted_title"> <strong> Bravo ! <br> Tu as carotté :</strong></h4>
+      <div class="carotted_avatar" id="carot_card_select">
+        <p><%= image_tag @carroted_task.carotted_user.avatar, class: 'avatar-x-large' %></p>
+      </div>
+     <h4 class="carotted_user_name"><%= @carroted_task.carotted_user.username %></h4>
+  </div>
+
+   <div>
+
+     <%= link_to '> Retour au Tach\'Board', root_path, class:"btn_coloc" %>
+
+   </div>
+
+</div>

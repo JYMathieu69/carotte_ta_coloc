@@ -6,11 +6,15 @@ class CarottedTasksController < ApplicationController
     return unless user_own_ongoing_task
     
     carotted_user = pick_carroted_user
-    CarottedTask.create(ongoing_task:  @ongoing_task , carotted_user: carotted_user, user: current_user)
+    carroted_task = CarottedTask.create(ongoing_task:  @ongoing_task , carotted_user: carotted_user, user: current_user)
     @ongoing_task.user = carotted_user
     @ongoing_task.save
     substract_carrots
-    redirect_to ongoing_task_path(@ongoing_task)
+    redirect_to carotted_task_path(carroted_task)
+  end
+
+  def show
+    @carroted_task = CarottedTask.includes(:carotted_user).find(params[:id])
   end
 
   private

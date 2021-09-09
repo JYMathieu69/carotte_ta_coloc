@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:update]
   resources :colocs, only: [:new, :create, :edit, :update]
+  resources :carotted_tasks, only: [:show]
 
   get '/colocs/:id/choose_tasks', to: 'colocs#choose_tasks', as: 'choose_tasks'
   get '/colocs/:id/recap', to: 'colocs#recap', as: 'recap'
