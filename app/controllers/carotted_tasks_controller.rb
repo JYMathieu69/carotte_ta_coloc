@@ -10,7 +10,7 @@ class CarottedTasksController < ApplicationController
     @ongoing_task.user = carotted_user
     @ongoing_task.save
     substract_carrots
-    redirect_to ongoing_task_path(@ongoing_task)
+    redirect_to root_path
   end
 
   private
