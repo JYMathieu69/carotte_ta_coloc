@@ -2,6 +2,11 @@
 
 <p>Pour qu'un utilisateur rejoigne ta coloc, envoie-lui ce code : <%= @coloc.invite_token %></p>
 
+<%= simple_form_for @coloc do |f| %>
+  <%= f.input :name, label: false %>  
+  <%= f.submit "Sauvegarder" %>  
+<% end %>
+
 <ul>
   <% @users.each do |user| %>
     <li>
@@ -22,8 +27,3 @@
     </li>
   <% end %>
 </ul>
-
-<%= simple_form_for @coloc do |f| %>
-  <%= f.input :name %>  
-  <%= f.submit %>  
-<% end %>
