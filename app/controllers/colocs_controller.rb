@@ -38,7 +38,7 @@ class ColocsController < ApplicationController
   def invitation; end
 
   def update
-    if @coloc.update(coloc_params)
+    if @coloc.update(coloc_params) && @coloc.save
       redirect_to is_completed? ? root_path : recap_path(@coloc)
     else
       render is_completed? ? :edit : :choose_tasks
@@ -58,7 +58,7 @@ class ColocsController < ApplicationController
   private
 
   def coloc_params
-    params.require(:coloc).permit(:name, coloc_tasks_attributes: [:task_id, :difficulty, :coloc_task_ids])
+    params.require(:coloc).permit(:name, coloc_tasks_attributes: [:task_id, :difficulty, :id])
   end
 
   def set_coloc

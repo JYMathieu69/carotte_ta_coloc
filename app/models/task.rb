@@ -24,6 +24,8 @@ class Task < ApplicationRecord
 
     before_create :set_default_image
     
+    DIFFICULTIES = [1, 2, 3, 4]
+    
     private
 
     def set_default_image

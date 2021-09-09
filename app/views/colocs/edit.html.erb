@@ -19,11 +19,34 @@
   <% end %>
 </ul>
 
-<ul>
+<!-- <ul>
   <% @coloc_tasks.each do |task| %>
     <li>
       <%= cl_image_tag task.image.key, class:"task-content", height: 130, width: 130 %>
       <%= task.name %>
     </li>
   <% end %>
-</ul>
+</ul> -->
+
+
+<%= form_with model: @coloc, method: 'patch' do |form| %>
+  <ul>
+    <%= form.fields_for :coloc_tasks do |coloc_tasks_fields| %>
+      <li>
+        <div>
+          <%= cl_image_tag coloc_tasks_fields.object.task.image.key, class:"task-content", height: 70, width: 70 %>
+        </div>
+        <div>
+          <h3><%= coloc_tasks_fields.label coloc_tasks_fields.object.task.name %></h3>
+          <label>
+            <%= coloc_tasks_fields.select :difficulty, Task::DIFFICULTIES %>
+          </label>
+          <%= coloc_tasks_fields.hidden_field :task_id  %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+  <div>
+    <%= form.submit 'Sauvegarder', class: 'btn-primary' %>
+  </div>
+<% end %>
