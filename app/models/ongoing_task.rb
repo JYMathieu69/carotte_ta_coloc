@@ -25,10 +25,14 @@ class OngoingTask < ApplicationRecord
   validates :final_points, numericality: { only_integer: true }
   validates :final_points, numericality: { greater_than_or_equal_to: 1 }
 
-  accepts_nested_attributes_for :helpers, reject_if: lambda {|attributes| attributes['user_id'].eql? "0"}
+  accepts_nested_attributes_for :helpers, reject_if: lambda { |attributes| attributes['user_id'].eql? "0"}
 
   def assigned?
-    return self.user
+    self.user
+  end
+
+  def finished?
+    self.finished_at
   end
 
   private

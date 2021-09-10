@@ -1,11 +1,11 @@
 <!-- partial ongoing_tasks/index.html.erb -->
 
-<%= cl_image_tag task.image.key, class:"task-content", data: { task_id: task.id }, height: 100, width: 100 %>
-<div class="d-flex carrot-circle-big align-center">
+<%= cl_image_tag task.image.key, class: finished_task_img_class?(task), data: { task_id: task.id }, height: 100, width: 100 %>
+<div class="<%= finished_carrot_img_class?(task) %>">
     <div>
         <h3 class="white"><%= task.final_points %></h3>
     </div>
-    <div>
+    <div >
         <%= image_tag 'carrot_icon.png', alt: 'carrot_price', class: 'carrot-icon padding-l-5'%>
     </div>
 </div>
