@@ -18,9 +18,12 @@ class ColocsController < ApplicationController
   end
 
   def choose_tasks
+    tasks_ids_array = tasks_that_where_already_selected
     @tasks = Task.all
     @tasks.each do |task|
-      @coloc.coloc_tasks.build(task: task, difficulty: task.default_difficulty)
+      unless tasks_ids_array.include? task.id
+        @coloc.coloc_tasks.build(task: task, difficulty: task.default_difficulty)
+      end
     end
   end
 
@@ -38,6 +41,8 @@ class ColocsController < ApplicationController
   def invitation; end
 
   def update
+    @coloc.coloc_tasks.destroy_all if @coloc.coloc_tasks
+
     if @coloc.update(coloc_params)
       redirect_to is_completed? ? root_path : recap_path(@coloc)
     else
@@ -67,5 +72,11 @@ class ColocsController < ApplicationController
 
   def is_completed?
     @coloc.assignment_day
+  end
+
+  def tasks_that_where_already_selected
+    @coloc.coloc_tasks.map do |coloc_task|
+      coloc_task.task.id
+    end
   end
 end
