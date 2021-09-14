@@ -11,11 +11,11 @@ class OngoingTask < ApplicationRecord
   has_one :task, through: :coloc_task
   delegate :name, :description, :image, :auto_assigned, to: :task
 
-  has_many :votes
-  has_many :helpers
-  has_many :carotted_tasks
+  has_many :votes, dependent: :destroy
+  has_many :helpers, dependent: :destroy
+  has_many :carotted_tasks, dependent: :destroy
   has_many :positive_votes, -> { where(validated: true) }, class_name: 'Vote'
-  has_many :unfinished_tasks
+  has_many :unfinished_tasks, dependent: :destroy
   
   validates :done, inclusion: { in: [true, false] }
   validates :points_ratio, presence: true
