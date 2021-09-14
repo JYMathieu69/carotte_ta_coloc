@@ -29,7 +29,6 @@ class ColocsController < ApplicationController
 
   def edit
     @users = @coloc.users
-    @coloc_tasks = @coloc.coloc_tasks
   end
 
   def recap; end
@@ -63,7 +62,7 @@ class ColocsController < ApplicationController
   private
 
   def coloc_params
-    params.require(:coloc).permit(:name, coloc_tasks_attributes: [:task_id, :difficulty, :coloc_task_ids])
+    params.require(:coloc).permit(:name, coloc_tasks_attributes: [:task_id, :difficulty, :id, :_destroy])
   end
 
   def set_coloc
