@@ -31,7 +31,7 @@
 @import "components/form";
 @import "components/banner";
 @import "components/img-preview";
-
+@import "components/ongoing_tasks";
 /* Padding and border added to the width and height of each element. */
 * {
   box-sizing: border-box;

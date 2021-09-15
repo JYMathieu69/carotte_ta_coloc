@@ -1,5 +1,6 @@
 class OngoingTasksController < ApplicationController
   before_action :set_ongoing_task, only: [:validate_task, :validation_update, :assign_task, :assign_task_update,  :update, :unassign_task]
+
   def index
     redirect_to '/home' and return if current_user.coloc.nil?
 
@@ -22,11 +23,14 @@ class OngoingTasksController < ApplicationController
     else
       redirect_to :edit
     end
- end
+  end
 
   def validation_update
     @ongoing_task.helpers.destroy_all if @ongoing_task.helpers
     if @ongoing_task.update(ongoing_task_params)
+      @ongoing_task.finished_at = DateTime.now
+      @ongoing_task.save
+      add_task_points_to_user_current_points(@ongoing_task.final_points)
       redirect_to ongoing_tasks_path
     else
       redirect_to validation_update(@ongoing_task)
@@ -68,16 +72,21 @@ class OngoingTasksController < ApplicationController
   def start_ongoing_tasks
     coloc = current_user.coloc
     StartUnassignedTasksJob.perform_now(coloc)
-    coloc.assignment_day = Time.now.strftime("%A")
+    coloc.assignment_day = Time.now.strftime('%A')
     WeeklyDistributionJob.perform_now(coloc)
     if coloc.save
       redirect_to ongoing_tasks_path
     else
-      @error = "Veuillez réessayer." # A modifier...
+      @error = 'Veuillez réessayer.' # A modifier...
     end
   end
 
   private
+
+  def add_task_points_to_user_current_points(ongoing_task_final_points)
+    current_user.current_points += ongoing_task_final_points
+    current_user.save
+  end
 
   def helpers_that_where_already_selected
     @ongoing_task.helpers.map do |helper|
