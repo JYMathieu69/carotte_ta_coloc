@@ -23,6 +23,6 @@ class Coloc < ApplicationRecord
   private
 
   def set_invite_token
-    self.update_column(:invite_token, "#{id}-#{SecureRandom.hex}")
+    self.update_column(:invite_token, "#{id}-#{SecureRandom.hex(4)}")
   end
 end
