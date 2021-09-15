@@ -18,7 +18,7 @@ class ColocsController < ApplicationController
   end
 
   def choose_tasks
-    tasks_ids_array = tasks_that_where_already_selected
+    tasks_ids_array = tasks_already_selected
     @tasks = Task.all
     @tasks.each do |task|
       unless tasks_ids_array.include? task.id
@@ -74,7 +74,7 @@ class ColocsController < ApplicationController
     @coloc.assignment_day
   end
 
-  def tasks_that_where_already_selected
+  def tasks_already_selected
     @coloc.coloc_tasks.map do |coloc_task|
       coloc_task.task.id
     end
