@@ -1,6 +1,6 @@
 class ColocTask < ApplicationRecord
 
-  before_create :set_default_difficulty
+  before_validation :set_default_difficulty, on: :create
   before_validation :set_default_points
 
   belongs_to :coloc

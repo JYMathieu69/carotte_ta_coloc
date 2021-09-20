@@ -18,6 +18,7 @@ class ColocsController < ApplicationController
   end
 
   def choose_tasks
+    @coloc.coloc_tasks.destroy_all if @coloc.coloc_tasks
     tasks_ids_array = tasks_already_selected
     @tasks = Task.all
     @tasks.each do |task|
@@ -40,8 +41,6 @@ class ColocsController < ApplicationController
   def invitation; end
 
   def update
-    @coloc.coloc_tasks.destroy_all if @coloc.coloc_tasks
-
     if @coloc.update(coloc_params)
       redirect_to is_completed? ? root_path : recap_path(@coloc)
     else
