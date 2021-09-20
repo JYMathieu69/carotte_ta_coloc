@@ -20,6 +20,6 @@ class DailyTasksService
   private
 
   def daily_not_done_ongoing_tasks
-    @coloc.ongoing_tasks.auto_assigned_tasks.not_done
+    @coloc.ongoing_tasks.unassigned_tasks.not_done
   end
 end
