@@ -33,7 +33,7 @@
           <label>
             <%= coloc_tasks_fields.select :difficulty, Task::DIFFICULTIES %>
           </label>
-          Supprimer la tâche ? <%= coloc_tasks_fields.check_box :_destroy %>
+          <%= link_to "🗑️", coloc_task_path(coloc_tasks_fields.object), method: :delete, data: { confirm: "Retirer '#{coloc_tasks_fields.object.task.name}' de la coloc ? Tout l'historique sera définitivement supprimé." } %>
           <%= coloc_tasks_fields.hidden_field :task_id  %>
         </div>
       </li>
