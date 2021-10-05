@@ -7,9 +7,9 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-// import { displayTabs } from '../channels/display_tabs.js';
-import { initPictureInput } from '../channels/preview_picture.js';
-
+// import { displayTabs } from '../plugins/display_tabs.js';
+import { initPictureInput } from '../plugins/preview_picture.js';
+import { initClickableTasks, initCloseTaskClickOutside, initCloseTaskModal } from '../plugins/modals';
 
 Rails.start()
 Turbolinks.start()
@@ -26,22 +26,8 @@ document.addEventListener('turbolinks:load', () => {
     //         }))
     //     })
     // }
-    document.querySelectorAll('.task-content').forEach((task) => {
-        task.addEventListener('click', () => {
-            document.getElementById("task" + task.dataset.taskId).classList.add("open");
-        })
-    });
-    document.querySelectorAll('.close').forEach((task) => {
-        task.addEventListener('click', () => {
-            document.getElementById("task" + task.dataset.taskId).classList.remove("open");
-        })
-    });
-    document.addEventListener('click', (event) => {
-        const openedModal = document.querySelector(".open")
-        const modalContent = document.querySelector(".open .modal-content")
-        if (openedModal && !event.target.classList.contains("task-content") && !event.path.includes(modalContent)) {
-            openedModal.classList.remove("open");
-        }
-    });
+    initClickableTasks();
+    initCloseTaskClickOutside();
+    initCloseTaskModal();
     initPictureInput()
 });
