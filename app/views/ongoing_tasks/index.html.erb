@@ -6,68 +6,60 @@
   <%= link_to "Gérer la coloc", edit_coloc_path(current_user.coloc) %>
 <% end %>
 
+<%# écran avant 1ère répartition des tâches selon user %>
 <% if (current_user.coloc.assignment_day.nil?) && (current_user.id == current_user.coloc.leader_id) %>
   <h2 class="text-center violet-100">Tes colocs sont tous là ?</h2>
   <div class="text-center">
     <%= button_to "Créer et distribuer les tâches", start_ongoing_tasks_path, class: "btn-primary" %>
   </div>
   <%= @error %>
-
 <% elsif (current_user.coloc.assignment_day.nil?)%>
-    <p>La coloc n'est pas encore au complet, réessaie plus tard !</p>
-    <%= link_to "Réessayer", ongoing_tasks_path %>
+  <p>La coloc n'est pas encore au complet, réessaie plus tard !</p>
+  <%= link_to "Réessayer", ongoing_tasks_path %>
+  
+<%# écran après 1ère répartition des tâches %>
 <% else %>
-  <div class="tab-bar">
-    <div id="ColocTab" class="tabcontent">
-      <h3><%= current_user.coloc.name %></h3>
-      <% @users_coloc.each do |user| %>
-        <div>
-          <%= cl_image_tag user.avatar.key, height: 25, width: 25 %>
+  <h3><%= current_user.coloc.name %></h3>
+
+  <%# tâches du current user %>
+  <div class="my-task-card margin-b-64">
+    <h3 class="violet-100 upcase">Mes tâches</h3>
+    <div class="grid-5">
+      <% @user_tasks.each do |task| %>
+        <div class="grid-element">
+          <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: false, validation: true%>
         </div>
-        <div>
-          <%= user.username %>
-        </div>
-        <div>
-          <% user.ongoing_tasks.each do |task| %>
-            <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false %>
-          <% end %>
+      <% end %>    
+    </div>
+  </div>
+  
+  <%# tâches non assignées %>
+  <div class="my-task-card margin-b-64">
+    <h3 class="orange-100 upcase">Tâches non assignées</h3>
+    <div class="grid-5">
+      <% @unassigned_tasks.each do |task| %>
+        <div class="grid-element">
+          <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false %>
         </div>
       <% end %>
     </div>
+  </div>
 
-    <div id="MyTasksTab" class="tabcontent">
-        <div class="my-task-card margin-b-64">
-            <h3 class="violet-100 upcase">Mes tâches</h3>
-            <div class="grid-5">
-              <% @user_tasks.each do |task| %>
-              <div class="grid-element">
-                <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: false, validation: true%>
-              </div>
-              <% end %>    
-            </div>
-        </div>
-
-        <hr class="dashed margin-b-64">
-
-            <h3 class="orange-100 upcase">Tâches non assignées</h3>
-            <div class="grid-5">
-              <% @unassigned_tasks.each do |task| %>
-                <div class="grid-element">
-                  <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false %>
-                </div>
-              <% end %>
-            </div>
-    </div>
-
-    <div id="StatsTab" class="tabcontent">
-      <h1>Hello</h1>
-    </div>
-
-    <div class="tab">
-      <button class="tablinks" data-tabname="ColocTab">La Coloc'</button>
-      <button class="tablinks" data-tabname="MyTasksTab">Mes Tâches</button>
-      <button class="tablinks" data-tabname="StatsTab">Stats</button>
-    </div>
+  <%# tâches des colocs %>
+  <div class="my-task-card margin-b-64">
+    <% @users_coloc.each do |user| %>
+      <div>
+        <%= cl_image_tag user.avatar.key, height: 25, width: 25 %>
+      </div>
+      <div>
+        <%= user.username %>
+      </div>
+      <div class="grid-5">
+        <% user.ongoing_tasks.each do |task| %>
+          <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false %>
+        <% end %>
+      </div>
+    <% end %> 
   </div>
 
   <div>
