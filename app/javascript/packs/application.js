@@ -7,7 +7,7 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import { displayTabs } from '../channels/display_tabs.js';
+// import { displayTabs } from '../channels/display_tabs.js';
 import { initPictureInput } from '../channels/preview_picture.js';
 
 
@@ -18,14 +18,14 @@ ActiveStorage.start()
 import "stylesheets/application";
 
 document.addEventListener('turbolinks:load', () => {
-    const allTabs = document.querySelectorAll('.tablinks')
-    if (allTabs) {
-        allTabs.forEach((tab) => {
-            tab.addEventListener('click', ((event) => {
-                displayTabs(event, tab.dataset.tabname)
-            }))
-        })
-    }
+    // const allTabs = document.querySelectorAll('.tablinks')
+    // if (allTabs) {
+    //     allTabs.forEach((tab) => {
+    //         tab.addEventListener('click', ((event) => {
+    //             displayTabs(event, tab.dataset.tabname)
+    //         }))
+    //     })
+    // }
     document.querySelectorAll('.task-content').forEach((task) => {
         task.addEventListener('click', () => {
             document.getElementById("task" + task.dataset.taskId).classList.add("open");
