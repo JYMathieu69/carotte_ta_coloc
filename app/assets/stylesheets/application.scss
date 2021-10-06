@@ -1,42 +1,42 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+// /*
+//  * This is a manifest file that'll be compiled into application.css, which will include all the files
+//  * listed below.
+//  *
+//  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+//  * vendor/assets/stylesheets directory can be referenced here using a relative path.
+//  *
+//  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+//  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+//  * files in this directory. Styles in this file should be added after the last require_* statement.
+//  * It is generally better to create a new file per style scope.
+//  *
+//  *= require_tree .
+//  *= require_self
+//  */
 
-/* CSS Partials */
-@import "components/container";
-@import "components/text";
-@import "components/color";
-@import "components/button";
-@import "components/logo";
-@import "components/general_disposition";
-@import "components/tab";
-@import "components/info_bubble";
-@import "components/grid";
-@import "components/token-invite";
-@import "components/switch";
-@import "components/modal";
-@import "components/carrots";
-@import "components/form";
-@import "components/banner";
-@import "components/img-preview";
-@import "components/ongoing_tasks";
-/* Padding and border added to the width and height of each element. */
-* {
-  box-sizing: border-box;
-  outline: none;
-  text-decoration: none;
-  color: black;
-}
+// /* CSS Partials */
+// @import "components/container";
+// @import "components/text";
+// @import "components/color";
+// @import "components/button";
+// @import "components/logo";
+// @import "components/general_disposition";
+// @import "components/tab";
+// @import "components/info_bubble";
+// @import "components/grid";
+// @import "components/token-invite";
+// @import "components/switch";
+// @import "components/modal";
+// @import "components/carrots";
+// @import "components/form";
+// @import "components/banner";
+// @import "components/img-preview";
+// @import "components/ongoing_tasks";
+// /* Padding and border added to the width and height of each element. */
+// * {
+//   box-sizing: border-box;
+//   outline: none;
+//   text-decoration: none;
+//   color: black;
+// }
 

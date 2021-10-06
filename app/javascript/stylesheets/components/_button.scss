@@ -1,0 +1,11 @@
+.btn-primary {
+    @apply text-white bg-primary-200 p-4 no-underline font-default rounded-2xl cursor-pointer mb-4 text-lg hover:bg-primary-100;
+}
+
+.btn-ghost {
+    @apply text-primary-200 font-default text-lg px-8 py-16 font-medium ml-6;
+}
+
+.btn-border-purple {
+    @apply bg-transparent border-b-2 border-secondary-200 border-solid font-default font-normal text-secondary-200 font-normal cursor-pointer;
+}
