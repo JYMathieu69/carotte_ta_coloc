@@ -15,11 +15,11 @@
  */
 
 /* CSS Partials */
-@import "components/container";
-@import "components/text";
-@import "components/color";
-@import "components/button";
-@import "components/logo";
+/* @import "components/container"; */
+/* @import "components/text"; */
+/* @import "components/color"; */
+/* @import "components/button"; */
+/* @import "components/logo";
 @import "components/general_disposition";
 @import "components/tab";
 @import "components/info_bubble";
@@ -31,12 +31,7 @@
 @import "components/form";
 @import "components/banner";
 @import "components/img-preview";
-@import "components/ongoing_tasks";
+@import "components/ongoing_tasks"; */
 /* Padding and border added to the width and height of each element. */
-* {
-  box-sizing: border-box;
-  outline: none;
-  text-decoration: none;
-  color: black;
-}
+
 

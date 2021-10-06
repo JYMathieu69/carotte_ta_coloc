@@ -1,3 +1,18 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+//import pages & components design
+@import 'index.scss';
+
+* {
+    box-sizing: border-box;
+    outline: none;
+    text-decoration: none;
+    color: black;
+}
+
+// p {
+//     @apply 
+// }
+

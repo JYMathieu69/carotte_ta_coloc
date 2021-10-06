@@ -1,0 +1,15 @@
+.log-in-form {
+    @apply text-center
+}
+
+.input-form-border-purple {
+    @apply border-2 border-secondary-100 px-2 py-4 rounded-2xl w-1/3 mb-8 text-center;
+}
+
+.remember-me {
+    @apply flex justify-center items-center mb-4 ;
+}
+
+.placeholder {
+    @apply font-default font-medium text-base opacity-50;
+}

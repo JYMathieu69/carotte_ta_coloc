@@ -15,7 +15,7 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-import "stylesheets/application";
+import ("../stylesheets/application.scss");
 
 document.addEventListener('turbolinks:load', () => {
     const allTabs = document.querySelectorAll('.tablinks')
