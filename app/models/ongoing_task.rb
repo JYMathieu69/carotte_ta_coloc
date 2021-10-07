@@ -25,12 +25,19 @@ class OngoingTask < ApplicationRecord
   validates :final_points, numericality: { only_integer: true }
   validates :final_points, numericality: { greater_than_or_equal_to: 1 }
 
+  validates_each :photo_after, :photo_before do |record, attr, value|
+    if value.content_type && %w[image/jpeg image/jpg image/gif image/png].exclude?(value.content_type)
+      record.errors.add(attr, 'must be an image')
+    end
+  end
+
   accepts_nested_attributes_for :helpers, reject_if: lambda { |attributes| attributes['user_id'].eql? "0"}
 
   scope :unassigned_tasks, -> { joins(:task).where(task: { auto_assigned: false}) }
   scope :not_done, -> { where(done: false) }
   scope :done, -> { where(done: true) }
-  
+
+
   def assigned?
     self.user
   end
