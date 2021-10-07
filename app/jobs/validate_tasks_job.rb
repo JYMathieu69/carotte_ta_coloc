@@ -6,3 +6,4 @@ class ValidateTasksJob < ApplicationJob
   end
 end
 
+

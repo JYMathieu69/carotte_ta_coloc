@@ -33,10 +33,11 @@ class OngoingTask < ApplicationRecord
 
   accepts_nested_attributes_for :helpers, reject_if: lambda { |attributes| attributes['user_id'].eql? "0"}
 
-  scope :unassigned_tasks, -> { joins(:task).where(task: { auto_assigned: false}) }
+  scope :unassigned_tasks, -> { joins(:task).where(task: { auto_assigned: false} ) }
   scope :not_done, -> { where(done: false) }
+  scope :not_finished, -> { where(finished_at: nil) }
   scope :done, -> { where(done: true) }
-
+  scope :daily_not_finished_unassigned_tasks, -> { unassigned_tasks.not_finished }
 
   def assigned?
     self.user
@@ -49,7 +50,6 @@ class OngoingTask < ApplicationRecord
   def done?
     done
   end
-
 
   private
 
