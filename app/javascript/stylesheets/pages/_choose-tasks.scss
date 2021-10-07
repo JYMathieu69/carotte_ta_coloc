@@ -1,0 +1,46 @@
+.switch-task {
+    @apply flex border-solid border-2 border-secondary-200 rounded-xl py-4 px-8 mb-4 justify-between items-center content-center w-1/2 mx-auto;
+}
+
+.toggle-name {
+    @apply flex flex-col items-start content-center justify-center flex-grow;
+}
+
+.switch {
+    @apply relative inline-block w-16 h-8;
+}
+
+.switch input {
+    @apply opacity-0 w-0 h-0;
+}
+
+.slider.round {
+    @apply rounded-2xl
+}
+
+.slider.round:before {
+    @apply rounded-2xl
+}
+
+.slider {
+    @apply absolute cursor-pointer top-0 left-0 right-0 bottom-0 bg-secondary-100 transition duration-500;
+}
+
+.slider:before {
+    @apply absolute h-5 w-5 left-2 bottom-1.5 bg-white transition duration-500;
+    content: "";
+}
+
+input:checked + .slider {
+    @apply bg-secondary-200;
+}
+
+input:focus + .slider {
+    @apply shadow;
+}
+
+input:checked + .slider:before {
+    @apply translate-x-16;
+    -ms-transform: translateX(26px);
+    -webkit-transform: translateX(26px);
+}

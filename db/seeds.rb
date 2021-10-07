@@ -80,7 +80,6 @@ recurrence: "daily",  auto_assigned: false, default_difficulty: 2)
 vaisselle_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1627986228/vaisselle_deeouz.png')
 vaisselle.image.attach(io: vaisselle_image, filename: 'vaisselle.png', content_type: 'image/png')
 
-
 aspirateur      = Task.create!(name: "Aspirateur",        description: "Passer l'aspirateur, c'est cool",
 recurrence: "weekly", auto_assigned: true,  default_difficulty: 3)
 aspirateur_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1627986225/aspi_wihfwu.png')
