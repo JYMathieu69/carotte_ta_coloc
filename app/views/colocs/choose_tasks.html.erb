@@ -1,6 +1,6 @@
 <%= form_with model: @coloc do |form| %>
   <h2 class="text-center mb-8 font-default font-medium text-2xl">Choisis les tâches de ta Coloc'</h2>
-  <ul>
+  <ul class="task-list">
     <%= form.fields_for :coloc_tasks do |coloc_tasks_fields| %>
       <li>
         <div class="switch-task">
@@ -19,7 +19,7 @@
       </li>
     <% end %>
   </ul>
-  <div class="text-center margin-t-64">
+  <div class="validate_tasks">
     <%= form.submit 'Je valide mes tâches', class: 'btn-primary' %>
   </div>
 <% end %>
