@@ -41,10 +41,20 @@ class ColocsController < ApplicationController
   def invitation; end
 
   def update
+    previousPath = Rails.application.routes.recognize_path(request.referrer)
+
     if @coloc.update(coloc_params)
-      redirect_to is_completed? ? root_path : recap_path(@coloc)
+      if user_comes_from_choose_tasks?(previousPath)
+        redirect_to recap_path(@coloc)
+      else
+        redirect_to edit_coloc_path(@coloc)
+      end
     else
-      render is_completed? ? :edit : :choose_tasks
+      if user_comes_from_choose_tasks?(previousPath)
+        render :choose_tasks
+      else
+        render :edit
+      end
     end
   end
 
@@ -68,8 +78,8 @@ class ColocsController < ApplicationController
     @coloc = Coloc.find(params[:id])
   end
 
-  def is_completed?
-    @coloc.assignment_day
+  def user_comes_from_choose_tasks?(path)
+    path[:controller] == "colocs" && path[:action] == "choose_tasks"
   end
 
   def tasks_already_selected
