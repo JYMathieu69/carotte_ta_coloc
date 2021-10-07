@@ -1,0 +1,12 @@
+.info_bubble {
+    @apply border-2 border-solid border-secondary-200 rounded-xl px-4 py-8 w-3/4 mx-auto mt-16 relative;
+}
+
+.info-icon {
+    @apply absolute -inset-4 w-10 h-10;
+    // position: absolute;
+    // top: -25px;
+    // left: 13px;
+    // width: 50px;
+    // height: 50px;
+}

@@ -1,0 +1,14 @@
+.grid-layout {
+    @apply grid grid-cols-5 gap-16 auto-rows-auto place-items-center;
+}
+
+.grid-image {
+    @apply mb-6;
+}
+// .grid-5 {
+//     display: grid;
+//     grid-template-columns: repeat(5, 1fr);
+//     grid-gap: 32px;
+//     grid-auto-rows: minmax(100px, auto);
+//     place-items: center;
+// }
