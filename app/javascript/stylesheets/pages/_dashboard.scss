@@ -1,0 +1,16 @@
+.primary-title {
+    @apply mb-2 font-medium text-3xl text-primary-200;
+}
+
+.secondary-title {
+    @apply mb-8 text-secondary-200 font-medium text-xl;
+}
+
+.tertiary-title {
+    @apply mb-8 text-primary-200 font-medium text-xl uppercase;
+}
+
+.my-task-card {
+    @apply bg-offwhite-200 border-solid border-secondary-200 border-2 rounded-xl px-8 py-4 mx-8;
+}
+

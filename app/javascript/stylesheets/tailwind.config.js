@@ -31,6 +31,9 @@ module.exports = {
         'sandy': {
           50: '#FEF8F8'
         },
+        'offwhite': {
+          200: '#fffcf7'
+        },
         "code-400": "#fefcf9",
         "code-600": "#3c455b",
       },

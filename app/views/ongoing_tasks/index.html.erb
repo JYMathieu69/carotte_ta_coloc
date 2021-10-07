@@ -1,14 +1,15 @@
-<div>
-  <h1 class="text-center">Tach'board</h1>
-</div> 
-
 <% if current_user.id == current_user.coloc.leader_id %>
-  <%= link_to "Gérer la coloc", edit_coloc_path(current_user.coloc) %>
+  <%= link_to "> Gérer la coloc", edit_coloc_path(current_user.coloc), class:"btn-border-purple ml-4" %>
 <% end %>
+
+<div class="text-center font-default">
+  <h1 class="primary-title">Tach'board</h1>
+  <h3 class="secondary-title"><%= current_user.coloc.name %></h3>
+</div> 
 
 <%# écran avant 1ère répartition des tâches selon user %>
 <% if (current_user.coloc.assignment_day.nil?) && (current_user.id == current_user.coloc.leader_id) %>
-  <h2 class="text-center violet-100">Tes colocs sont tous là ?</h2>
+  <h3 class="text-center mb-1 font-default text-medium">Tes colocs sont tous là ?</h3>
   <div class="text-center">
     <%= button_to "Créer et distribuer les tâches", start_ongoing_tasks_path, class: "btn-primary" %>
   </div>
@@ -19,23 +20,25 @@
   
 <%# écran après 1ère répartition des tâches %>
 <% else %>
-  <h3><%= current_user.coloc.name %></h3>
+
 
   <%# tâches du current user %>
-  <div class="my-task-card margin-b-64">
-    <h3 class="violet-100 upcase">Mes tâches</h3>
-    <div class="grid-5">
+  <div class="my-task-card mb-8">
+    <h3 class="secondary-title uppercase">Mes tâches</h3>
+    <div class="grid-layout">
       <% @user_tasks.each do |task| %>
-        <div class="grid-element">
+        <div>
           <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: false, validation: true%>
         </div>
       <% end %>    
     </div>
   </div>
+
+  <div class="dashed"></div>
   
   <%# tâches non assignées %>
-  <div class="my-task-card margin-b-64">
-    <h3 class="orange-100 upcase">Tâches non assignées</h3>
+  <div class="margin-b-64">
+    <h3 class="tertiary-title ml-8">Tâches non assignées</h3>
     <div class="grid-5">
       <% @unassigned_tasks.each do |task| %>
         <div class="grid-element">
@@ -44,6 +47,7 @@
       <% end %>
     </div>
   </div>
+
 
   <%# tâches des colocs %>
   <div class="my-task-card margin-b-64">
