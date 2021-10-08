@@ -176,7 +176,6 @@ recurrence: "weekly", auto_assigned: true,  default_difficulty: 2)
 balai_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1627986224/balai_apajuh.png')
 balai.image.attach(io: balai_image, filename: 'balai.png', content_type: 'image/png')
 
-
 animal          = Task.create!(name: "Animal Domestique",  description: "Sortir l'animal, c'est cool",
 recurrence: "daily",  auto_assigned: false, default_difficulty: 2)
 animal_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1627986224/animal_xu99j3.png')
