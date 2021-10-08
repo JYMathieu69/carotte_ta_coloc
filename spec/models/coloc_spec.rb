@@ -1,9 +1,9 @@
 require 'rails_helper'
 describe Coloc, type: :model do
   context 'Associations' do
-    it { should have_many(:users) } 
-    it { should have_many(:coloc_tasks) } 
-    it { should have_many(:ongoing_tasks) } 
+    it { should have_many(:users) }
+    it { should have_many(:coloc_tasks) }
+    it { should have_many(:ongoing_tasks) }
   end
 
   after(:each) do

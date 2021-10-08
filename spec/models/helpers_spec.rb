@@ -11,11 +11,11 @@ after(:each) do
 
   context 'Validations' do
     it 'is valid with and assigned ongoing_task and a user' do
-        helper_user = create(:user, username: 'helper', email: 'helper@gmail.com')
-        task_creator = create(:user, username: 'taskcreator', email: 'taskcreator@gmail.com')
-        ongoing_task = create(:ongoing_task, user: task_creator)
-        helper = Helper.new(user: helper_user, ongoing_task: ongoing_task)
-        expect(helper).to be_valid
+      helper_user = create(:user, username: 'helper', email: 'helper@gmail.com')
+      task_creator = create(:user, username: 'taskcreator', email: 'taskcreator@gmail.com')
+      ongoing_task = create(:ongoing_task, user: task_creator)
+      helper = Helper.new(user: helper_user, ongoing_task: ongoing_task)
+      expect(helper).to be_valid
     end
 
     it 'is invalid without user' do
