@@ -1,5 +1,5 @@
 class DistributionTasksService
-
+    
     def initialize(attributes = {})
         @coloc = attributes[:coloc]
         @coloc_tasks_by_difficulty = get_coloc_tasks_by_difficulty
