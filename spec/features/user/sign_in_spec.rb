@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 feature "user with coloc redirected to tachboard" do
+  after(:each) do
+    I18n.locale = :en
+  end
   scenario "successfully" do
     user_with_coloc = create(:user)
     coloc = create(:coloc)

@@ -1,11 +1,13 @@
 require 'rails_helper'
 describe Helper, type: :model do
-
-
     context 'Associations' do
             it { should belong_to(:ongoing_task) } 
             it { should belong_to(:user) } 
     end
+
+    after(:each) do
+        I18n.locale = :en
+      end
     
     context 'Validations' do
         it "is valid with and assigned ongoing_task and a user" do

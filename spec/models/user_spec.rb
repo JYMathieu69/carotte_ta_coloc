@@ -10,6 +10,10 @@ describe User, type: :model do
         it { should have_many(:helpers) }
     end
 
+    after(:each) do
+        I18n.locale = :en
+    end
+
     context 'Validations' do
         it "is valid with a username, email, and password" do
             user = User.create(username: "Toto", email: "toto@gmail.com", password: "azerty")
