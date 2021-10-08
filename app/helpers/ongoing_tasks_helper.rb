@@ -1,7 +1,7 @@
 module OngoingTasksHelper
   def finished_task_img_class?(task)
     if task.finished?
-      'finished'
+      'finished task-content'
     else
       'task-content'
     end
