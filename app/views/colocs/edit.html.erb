@@ -33,7 +33,7 @@
           <label>
             <%= coloc_tasks_fields.select :difficulty, Task::DIFFICULTIES %>
           </label>
-          <%= link_to "🗑️", coloc_task_path(coloc_tasks_fields.object), method: :delete, data: { confirm: "Retirer '#{coloc_tasks_fields.object.task.name}' de la coloc ? Tout l'historique sera définitivement supprimé." } %>
+          <%= link_to "🗑️", coloc_coloc_task_path(@coloc, coloc_tasks_fields.object), method: :delete, data: { confirm: "Retirer '#{coloc_tasks_fields.object.task.name}' de la coloc ? Tout l'historique sera définitivement supprimé." } %>
           <%= coloc_tasks_fields.hidden_field :task_id  %>
         </div>
       </li>
@@ -41,5 +41,29 @@
   </ul>
   <div>
     <%= form.submit 'Sauvegarder', class: 'btn-primary' %>
+  </div>
+<% end %>
+
+<h2>Ajouter des tâches à la coloc</h2>
+
+<%= simple_form_for [@coloc, @new_coloc_task] do |form| %>
+  <% @addable_tasks.each do |addable_task| %>
+    <%= fields_for "items[]", addable_task do |f| %>
+      <div class="switch-task">
+        <div>
+          <%= cl_image_tag f.object.image.key, height: 130, width: 130 %>
+        </div>
+        <div class="toggle-name">
+          <h3 class="violet-100"> <%= f.label f.object.name %> </h3>
+          <label class="switch">
+            <%= f.check_box  :task, { checked: false }, f.object.id %>
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="text-center margin-t-64">
+    <%= form.submit 'Ajouter les tâches sélectionnées', class: 'btn-primary' %>
   </div>
 <% end %>
