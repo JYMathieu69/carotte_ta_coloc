@@ -5,7 +5,7 @@
     <%= helpers_fields.object.user.username %>
     <%= helpers_fields.check_box :user_id, { checked: false }, helpers_fields.object.user.id %>
     <label for="<%= helpers_fields.object.user.id %>">
-     <%= cl_image_tag helpers_fields.object.user.avatar.key, height: 300, width: 400, crop: :fill  %>
+      <%= cl_image_tag helpers_fields.object.user.avatar.key, height: 300, width: 400, crop: :fill  %>
     </label>
     <%= helpers_fields.hidden_field :ongoing_task_id  %>
   <% end %>
