@@ -3,14 +3,26 @@
 }
 
 .secondary-title {
-    @apply mb-8 text-secondary-200 font-medium text-xl;
+    @apply mb-8 font-medium text-xl;
 }
 
 .tertiary-title {
-    @apply mb-8 text-primary-200 font-medium text-xl uppercase;
+    @apply font-medium text-xl;
 }
+
 
 .my-task-card {
-    @apply bg-offwhite-200 border-solid border-secondary-200 border-2 rounded-xl px-8 py-4 mx-8;
+    @apply shadow-md bg-white rounded-xl px-8 py-4 mx-8;
 }
 
+.coloc-avatar-name {
+    @apply flex flex-col mx-auto justify-center items-center mt-8 mb-4;
+}
+
+.potential-carrots-earned {
+    @apply mt-20 flex justify-center items-center text-primary-200 mb-14;
+}
+
+.potential-carrots-text {
+    @apply  text-2xl font-default;
+}

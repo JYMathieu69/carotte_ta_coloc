@@ -9,3 +9,7 @@
 .btn-border-purple {
     @apply bg-transparent border-b-2 border-secondary-200 border-solid font-default font-normal text-secondary-200 font-normal cursor-pointer;
 }
+
+.btn-border-primary {
+    @apply bg-transparent border-b-2 border-primary-200 border-solid font-default font-normal text-primary-200 font-normal cursor-pointer;
+}
