@@ -8,6 +8,9 @@ require 'rails_helper'
       it { should belong_to(:coloc_task) }
       it { should belong_to(:user).optional }
     end
+    after(:each) do
+      I18n.locale = :en
+    end
 
     context 'Validations' do
       it "is valid with a coloc_task, a points ratio and final points" do
