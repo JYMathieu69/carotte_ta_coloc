@@ -1,0 +1,28 @@
+.bg-modal {
+    @apply w-full h-full bg-none absolute top-0 left-0 flex justify-center items-center hidden;
+}
+
+.modal-content {
+    @apply bg-offwhite-200 border-solid border-4 border-secondary-200 border-b-0 rounded-2xl text-center p-8 fixed h-3/5 bottom-0 w-full;
+}
+
+.close {
+    @apply absolute top-2 right-4 text-xl transform rotate-45 cursor-pointer;
+}
+
+.open {
+    @apply flex;
+}
+
+.modal-img {
+    position: absolute;
+    top: -20%;
+}
+
+.modal-validate {
+    @apply flex content-center items-center justify-around;
+}
+
+.action-task {
+    @apply flex flex-col items-center content-center mt-16;
+}

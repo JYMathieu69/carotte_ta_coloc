@@ -3,6 +3,10 @@ const initClickableTasks = () => {
   if (ongoing_tasks) {
     ongoing_tasks.forEach((task) => {
       task.addEventListener('click', () => {
+        const currentOpenTabs = document.querySelector(".open");
+        if (currentOpenTabs) {
+          currentOpenTabs.classList.remove('open');
+        }
         document.getElementById("task" + task.dataset.taskId).classList.add("open");
       });
     });

@@ -1,6 +1,6 @@
 <%= form_with model: @coloc do |form| %>
-  <h2 class="text-center margin-b-64">Choisis les tâches de ta Coloc'</h2>
-  <ul>
+  <h2 class="text-center mb-8 font-default font-medium text-2xl">Choisis les tâches de ta Coloc'</h2>
+  <ul class="task-list">
     <%= form.fields_for :coloc_tasks do |coloc_tasks_fields| %>
       <li>
         <div class="switch-task">
@@ -8,7 +8,7 @@
             <%= cl_image_tag coloc_tasks_fields.object.task.image.key, height: 130, width: 130 %>
           </div>
           <div class="toggle-name">
-            <h3 class="violet-100"> <%= coloc_tasks_fields.label coloc_tasks_fields.object.task.name %> </h3>
+            <h3 class="font-default text-xl text-secondary-200 font-medium mb-4"> <%= coloc_tasks_fields.label coloc_tasks_fields.object.task.name %> </h3>
             <label class="switch">
               <%= coloc_tasks_fields.check_box  :task_id, { checked: false } , coloc_tasks_fields.object.task.id %>
               <span class="slider round"></span>
@@ -19,7 +19,7 @@
       </li>
     <% end %>
   </ul>
-  <div class="text-center margin-t-64">
+  <div class="validate_tasks">
     <%= form.submit 'Je valide mes tâches', class: 'btn-primary' %>
   </div>
 <% end %>

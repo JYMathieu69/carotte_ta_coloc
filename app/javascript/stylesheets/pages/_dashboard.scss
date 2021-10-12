@@ -1,0 +1,28 @@
+.primary-title {
+    @apply mb-2 font-medium text-3xl text-primary-200;
+}
+
+.secondary-title {
+    @apply mb-8 font-medium text-xl;
+}
+
+.tertiary-title {
+    @apply font-medium text-xl;
+}
+
+
+.my-task-card {
+    @apply shadow-md bg-white rounded-xl px-8 py-4 mx-8;
+}
+
+.coloc-avatar-name {
+    @apply flex flex-col mx-auto justify-center items-center mt-8 mb-4;
+}
+
+.potential-carrots-earned {
+    @apply mt-20 flex justify-center items-center text-primary-200 mb-14;
+}
+
+.potential-carrots-text {
+    @apply  text-2xl font-default;
+}

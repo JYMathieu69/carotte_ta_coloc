@@ -1,9 +1,11 @@
-<h1 class="text-center margin-b-64">TA COLOC A BIEN ÉTÉ CRÉÉE !</h1>
+<h1 class="text-center mb-2 upcase font-default text-3xl text-primary-200 font-medium uppercase">TA COLOC A BIEN ÉTÉ CRÉÉE !</h1>
 
-<h3 class="text-center margin-b-32">ENVOIE CE TOKEN À TES COLOCS</h3>
+<h3 class="text-center mb-8 font-default text-medium">ENVOIE CE TOKEN À TES COLOCS</h3>
 
-<h2 class="invit-token orange-100 text-center" style="letter-spacing: 2px;"><%= @coloc.invite_token %></h2>
+<div class="text-center mb-12">
+    <h2 class="invit-token text-2xl text-primary-200 tracking-wider"><%= @coloc.invite_token %></h2>
+</div>
 
 <div class="text-center">
-    <%= link_to " > Accéder au Tach'Board", ongoing_tasks_path, class: "btn-border-purple-1 text-deco-none"%>
+    <%= link_to " > Accéder au Tach'Board", ongoing_tasks_path, class: "btn-border-purple no-underline"%>
 </div>
