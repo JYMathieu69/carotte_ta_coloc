@@ -1,11 +1,7 @@
-<% if current_user.id == current_user.coloc.leader_id %>
-  <%= link_to "> Gérer la coloc", edit_coloc_path(current_user.coloc), class:"btn-border-purple ml-8" %>
-<% end %>
-
-<div class="text-center font-default">
-  <h1 class="primary-title">Tach'board</h1>
-  <h3 class="secondary-title text-secondary-200 text-center"><%= current_user.coloc.name %></h3>
-</div> 
+<!-- <div class="text-center font-default"> -->
+  <!-- <h1 class="primary-title">Tach'board</h1> -->
+  <!-- <h3 class="secondary-title text-secondary-200 text-center"><%= current_user.coloc.name %></h3> -->
+<!-- </div>  -->
 
 <%# écran avant 1ère répartition des tâches selon user %>
 <% if (current_user.coloc.assignment_day.nil?) && (current_user.id == current_user.coloc.leader_id) %>
@@ -24,7 +20,7 @@
 
   <%# tâches du current user %>
   <div class="my-task-card mb-8">
-    <h3 class="secondary-title text-darkGrey-50">Mes tâches</h3>
+    <h3 class="secondary-title text-secondary-200">MES TACHES</h3>
     <div class="grid-layout">
       <% @user_tasks.each do |task| %>
         <div>
@@ -36,7 +32,7 @@
   
   <%# tâches non assignées %>
   <div class="my-task-card mb-8">
-    <h3 class="secondary-title text-darkGrey-50 mb-8">Tâches non assignées</h3>
+    <h3 class="secondary-title text-tertiary-200 mb-8">TACHES NON ASSIGNEES</h3>
     <div class="grid-layout">
       <% @unassigned_tasks.each do |task| %>
         <div>
@@ -45,10 +41,10 @@
       <% end %>
     </div>
   </div>
- 
+
   <%# tâches des colocs %>
   <div class="my-task-card mb-12 ml-8">
-    <h3 class="tertiary-title text-darkGrey-50"> La Cooloc'</h3>
+    <h3 class="tertiary-title text-darkGrey-50"><%= current_user.coloc.name %></h3>
     <% @users_coloc.each do |user| %>
       <div class="coloc-avatar-name">
         <div>
@@ -71,5 +67,10 @@
 
   <div>
     <%= link_to "Au revoir !", destroy_user_session_path, method: :delete %>
+  </div>
+  <div>
+    <% if current_user.id == current_user.coloc.leader_id %>
+      <%= link_to "> Gérer la coloc", edit_coloc_path(current_user.coloc), class:"btn-border-purple ml-8" %>
+    <% end %>
   </div>
 <% end %>
