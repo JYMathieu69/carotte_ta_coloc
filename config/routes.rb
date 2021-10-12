@@ -9,9 +9,10 @@ Rails.application.routes.draw do
   root to: 'ongoing_tasks#index'
 
   resources :users, only: [:update]
-  resources :colocs, only: [:new, :create, :edit, :update]
+  resources :colocs, only: [:new, :create, :edit, :update] do
+    resources :coloc_tasks, only: [:create, :destroy]
+  end
   resources :carotted_tasks, only: [:show]
-  resources :coloc_tasks, only: [:destroy]
 
   get '/colocs/:id/choose_tasks', to: 'colocs#choose_tasks', as: 'choose_tasks'
   get '/colocs/:id/recap', to: 'colocs#recap', as: 'recap'
