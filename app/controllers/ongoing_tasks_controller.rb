@@ -27,7 +27,10 @@ class OngoingTasksController < ApplicationController
   end
 
   def validation_update
+    return if cannot_validate_done_task
+
     @ongoing_task.helpers.destroy_all if @ongoing_task.helpers
+
     if @ongoing_task.update(ongoing_task_params)
       @ongoing_task.finished_at = DateTime.now
       @ongoing_task.save
@@ -84,6 +87,16 @@ class OngoingTasksController < ApplicationController
   end
 
   private
+
+  def cannot_validate_done_task
+    if @ongoing_task.done || @ongoing_task.finished?
+      @message = 'Tu ne peux pas valider une tâche déjà effectuée!'
+      render :already_done
+      true
+    else
+      false
+    end
+  end
 
   def add_task_points_to_user_current_points(ongoing_task_final_points)
     current_user.current_points += ongoing_task_final_points
