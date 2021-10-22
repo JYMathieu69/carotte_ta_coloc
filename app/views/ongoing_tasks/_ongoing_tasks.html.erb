@@ -37,12 +37,12 @@
             <div class="modal-validate">
                 <div class="action-task">
                     <%= link_to image_tag("task_done.png"), validate_task_path(task) %>
-                    <p class="mt-4 font-medium font-default text-xl">Je valide cette tâche</p>
+                    <p class="mt-4 font-medium text-xl">Je valide cette tâche</p>
                 </div>
                 
                 <div class="action-task">
                     <%= link_to image_tag("task_carrot.png"), ongoing_task_carotted_tasks_path(task) , method: :post  %>
-                    <p class="mt-4 font-medium font-default text-xl">J'assigne cette tâche</p>
+                    <p class="mt-4 font-medium text-xl">J'assigne cette tâche</p>
                     <!-- <%= button_to "Carotte tes colocs !", ongoing_task_carotted_tasks_path(task), method: :post %> -->
                 </div>
                 
