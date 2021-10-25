@@ -1,24 +1,24 @@
-<h3 class="border-btm-purple violet-100 upcase"> Un coloc t'a aidé ?</h3>
+<h3 class="border-btm-purple mx-auto w-44 text-secondary-200"> T'AS RECU DE L'AIDE ?</h3>
 
 <%= form_with model: @ongoing_task, url: validation_update_path(@ongoing_task), multipart: true do |form| %>
   <%= form.fields_for :helpers do |helpers_fields| %>
     <%= helpers_fields.object.user.username %>
     <%= helpers_fields.check_box :user_id, { checked: false }, helpers_fields.object.user.id %>
     <label for="<%= helpers_fields.object.user.id %>">
-     <%= cl_image_tag helpers_fields.object.user.avatar.key, height: 300, width: 400, crop: :fill  %>
+      <%= cl_image_tag helpers_fields.object.user.avatar.key, height: 60, width: 60, crop: :fill  %>
     </label>
     <%= helpers_fields.hidden_field :ongoing_task_id  %>
   <% end %>
 
   <hr class="dashed">
 
-  <h3 class="border-btm-purple violet-100 upcase">Prouve-le à tes colocs !</h3>
-
+  <h3 class="border-btm-purple text-secondary-200 text-center">PROUVE-LE A TES COLOCS !</h3>
+  
   <div class="container-photo">
     <div class="text-center form-group file optional user_task_photo">
       <label class="file optional" for="user_task_photo">
         <%= image_tag 'camera.png', alt: 'camera', class: "preview_img camera_img"%>
-        <p class="orange-100 light">Je prends une photo</p>
+        <p class="text-tertiary-200">Je prends une photo</p>
       </label>
       <input class="form-control-file file optional" type="file" name="ongoing_task[photo_after]" id="user_task_photo" style="display: none;">
     </div>
