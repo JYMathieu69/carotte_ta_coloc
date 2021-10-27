@@ -1,16 +1,16 @@
 //components
-@import './components/button';
-@import './components/loginform';
-@import './components/logo';
 @import './components/borders';
+@import './components/button';
+@import './components/carrots';
 @import './components/grid';
 @import './components/info-bubble';
-@import './components/carrots';
-@import './components/separator';
+@import './components/loginform';
+@import './components/logo';
 @import './components/modal';
+@import './components/separator';
 
 //pages
-@import './pages/home';
-@import './pages/join-coloc';
 @import './pages/choose-tasks';
 @import './pages/dashboard';
+@import './pages/home';
+@import './pages/join-coloc';

@@ -3,11 +3,11 @@
 }
 
 .input-form-border-purple {
-    @apply border-2 border-secondary-100 px-2 py-4 rounded-2xl w-1/3 mb-8 text-center;
+    @apply border-2 border-secondary-100 px-2 py-4 rounded-2xl md:w-1/3 mb-8 text-center;
 }
 
-.remember-me {
-    @apply flex justify-center items-center mb-4;
+#user_remember_me {
+  @apply mr-3;
 }
 
 .placeholder {
