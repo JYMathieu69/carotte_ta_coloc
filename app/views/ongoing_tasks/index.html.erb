@@ -1,12 +1,3 @@
-<% if current_user.id == current_user.coloc.leader_id %>
-  <%= link_to "> Gérer la coloc", edit_coloc_path(current_user.coloc), class:"btn-border-purple ml-8" %>
-<% end %>
-
-<div class="text-center">
-  <h1 class="primary-title">Tach'board</h1>
-  <h3 class="secondary-title text-secondary-200 text-center"><%= current_user.coloc.name %></h3>
-</div> 
-
 <%# écran avant 1ère répartition des tâches selon user %>
 <% if (current_user.coloc.assignment_day.nil?) && (current_user.id == current_user.coloc.leader_id) %>
   <h3 class="text-center mb-1 text-medium">Tes colocs sont tous là ?</h3>
@@ -70,7 +61,7 @@
   </div>
 
   <div>
-    <%= link_to "Au revoir !", destroy_user_session_path, method: :delete %>
+    <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %>
   </div>
   <div>
     <% if current_user.id == current_user.coloc.leader_id %>
