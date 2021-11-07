@@ -9,8 +9,8 @@
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-    <p>Je suis un nouveau coloc' ? </p>
-    <p><%= link_to "Créer un compte", new_registration_path(resource_name), class: 'violet-100' %><br/></p>
+    <p class="font-default text-sm">Je suis un nouveau coloc' ? </p>
+    <p class="font-default text-sm"><%= link_to "Créer un compte", new_registration_path(resource_name), class: 'violet-100' %><br/></p>
 <% end %>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
