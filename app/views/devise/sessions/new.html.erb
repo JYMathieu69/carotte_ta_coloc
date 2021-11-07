@@ -1,27 +1,28 @@
-<!-- <%= image_tag 'background.svg', alt: 'background-purple', class: "banner"%> -->
+<div class="text-center mb-4">
+  <p>Pas encore de compte ?</p>
+  <%= link_to "S'inscrire", new_registration_path(resource_name), class: 'violet-100' %>
+</div>
 
 <div class="log-in-form">
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Entre ton adresse mail', class: "input-form-border-purple placeholder" %>
-    </div>
-  
-    <div class="field">
-      <%= f.password_field :password, autocomplete: "current-password", placeholder: 'Entre ton mot de passe', class: "input-form-border-purple placeholder"  %>
-    </div>
-  
-    <% if devise_mapping.rememberable? %>
-      <div class="remember-me">
-          <%= f.check_box :remember_me %>
-          <p><%= f.label :se_souvenir, class:"pl-4" %></p> 
-      </div>
-    <% end %>
-  
-    <div class="actions">
-      <%= f.submit "Je me connecte", class: 'btn-primary' %>
-    </div>
-  <% end %>
-  
-  <%= render "devise/shared/links" %>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= f.input :email,
+                autofocus: true,
+                input_html: { autocomplete: "email", class: "input-form-border-purple placeholder" },
+                label: false,
+                placeholder: 'Entre ton adresse mail' %>
 
+    <%= f.input :password,
+                input_html: { autocomplete: "current-password", class: "input-form-border-purple placeholder" },
+                label: false,
+                placeholder: 'Entre ton mot de passe' %>
+  
+    <%= f.input :remember_me,
+                as: :boolean,
+                label: "Se souvenir de moi",
+                input_html: { class: "mb-4" } if devise_mapping.rememberable? %>
+  
+    <%= f.submit "Je me connecte", class: 'btn-primary' %>
+  <% end %>
+
+  <%= link_to "Mot de passe oublié ?", new_password_path(resource_name), class: "violet-100" %>
 </div>
