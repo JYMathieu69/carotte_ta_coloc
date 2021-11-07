@@ -1,10 +1,10 @@
-<h1 class= "font-default text-xl text-secondary-200 text-center border-btm-purple mx-auto mb-12 w-64">Récapitulatif des tâches</h1>
+<h1 class= "text-xl text-secondary-200 text-center border-btm-purple mx-auto mb-12">Récapitulatif des tâches</h1>
 
 <div class="grid-layout text-center">
     <% @coloc.coloc_tasks.each do |coloc_task| %>
     <div>
         <%= cl_image_tag coloc_task.image.key, height: 100, width: 100, class:'grid-image' %>
-        <p class="font-default font-medium"><%= coloc_task.name %></p>
+        <p class="font-medium"><%= coloc_task.name %></p>
     </div>
     <% end %>
 </div>
