@@ -1,4 +1,4 @@
-<h1 class= "font-default text-xl text-secondary-200 text-center border-btm-purple mx-auto mb-12">Récapitulatif des tâches</h1>
+<h1 class= "font-default text-xl text-secondary-200 text-center border-btm-purple mx-auto mb-12 w-64">Récapitulatif des tâches</h1>
 
 <div class="grid-layout text-center">
     <% @coloc.coloc_tasks.each do |coloc_task| %>
@@ -15,7 +15,7 @@
     <p class="violet-100 light">En tant que leader, tu pourras ajouter, modifier ou supprimer des tâches depuis le tach'board</p>
 </div>
 
-<div class="text-center margin-t-32">
+<div class="text-center my-12">
     <%= link_to "J'ai compris", "/colocs/#{@coloc.id}/invitation", class: "btn-primary"%>
 </div>
 
