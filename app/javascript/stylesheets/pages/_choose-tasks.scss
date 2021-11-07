@@ -1,9 +1,9 @@
 .switch-task {
-    @apply flex border-solid border-2 border-secondary-200 rounded-xl py-4 px-8 justify-around items-center min-w-min text-xs h-24 mx-auto;
+    @apply flex border-solid border-2 border-secondary-200 rounded-xl py-4 px-8 justify-around items-center min-w-min text-xs h-24 mx-auto lg:w-64;
 }
 
 .toggle-name {
-    @apply flex flex-col items-start content-center;
+    @apply flex flex-col items-start content-center lg:text-base;
 }
 
 .switch {
