@@ -1,14 +1,22 @@
-// .grid-layout {
-//     @apply grid grid-cols-5 col-auto grid-flow-row gap-16 auto-rows-max place-items-center;
-// }
-
 .grid-layout {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 5fr));
-    grid-gap: 32px;
-    grid-auto-rows: minmax(100px, auto);
-    place-items: center;
+    @apply grid grid-cols-5 col-auto grid-flow-row gap-16 auto-rows-max place-items-center;
 }
+
+.grid-layout-3 {
+    @apply grid grid-cols-2 lg:grid-cols-5 grid-flow-row gap-8 place-items-center;
+}
+
+.grid-layout-2 {
+    @apply grid grid-cols-2 grid-flow-row gap-8 place-items-center;
+}
+
+// .grid-layout {
+//     display: grid;
+//     grid-template-columns: repeat(auto-fill, minmax(250px, 5fr));
+//     grid-gap: 32px;
+//     grid-auto-rows: minmax(100px, auto);
+//     place-items: center;
+// }
 
 .grid-image {
     @apply mb-6;

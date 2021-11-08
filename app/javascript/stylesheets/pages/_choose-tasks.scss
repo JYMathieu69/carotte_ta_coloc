@@ -1,13 +1,13 @@
 .switch-task {
-    @apply flex border-solid border-2 border-secondary-200 rounded-xl py-4 px-8 mb-4 justify-between items-center content-center w-1/2 mx-auto;
+    @apply flex border-solid border-2 border-secondary-200 rounded-xl py-4 px-8 justify-around items-center min-w-min text-xs h-24 mx-auto lg:w-64;
 }
 
 .toggle-name {
-    @apply flex flex-col items-start content-center justify-center flex-grow;
+    @apply flex flex-col items-start content-center lg:text-base;
 }
 
 .switch {
-    @apply relative inline-block w-16 h-8;
+    @apply relative inline-block w-12 h-6;
 }
 
 .switch input {
@@ -27,7 +27,7 @@
 }
 
 .slider:before {
-    @apply absolute h-5 w-5 left-2 bottom-1.5 bg-white transition duration-500;
+    @apply absolute h-4 w-4 left-1 bottom-1 bg-white transition duration-500;
     content: "";
 }
 
