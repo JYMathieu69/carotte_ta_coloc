@@ -10,7 +10,8 @@ import "channels"
 // import { displayTabs } from '../plugins/display_tabs.js';
 import { initPictureInput } from '../plugins/preview_picture.js';
 import { initClickableTasks, initCloseTaskClickOutside, initCloseTaskModal } from '../plugins/modals';
-
+import { coloredSwitchButtons } from '../plugins/toggle_switch_button.js'
+    
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
@@ -29,5 +30,6 @@ document.addEventListener('turbolinks:load', () => {
     initClickableTasks();
     initCloseTaskClickOutside();
     initCloseTaskModal();
-    initPictureInput()
+    initPictureInput();
+    coloredSwitchButtons();
 });

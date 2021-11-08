@@ -92,7 +92,7 @@
   <div class="change_difficulty_grid mx-4">
     <% @addable_tasks.each do |addable_task| %>
       <%= fields_for "items[]", addable_task do |f| %>
-        <div class="addable-switch-task">
+        <div class="addable-switch-task filter grayscale">
           <div>
             <%= cl_image_tag f.object.image.key, class:"w-12 h-12 lg:h-16 lg:w-16 mb-2" %>
           </div>
