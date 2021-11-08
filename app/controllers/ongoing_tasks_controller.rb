@@ -33,6 +33,7 @@ class OngoingTasksController < ApplicationController
 
     if @ongoing_task.update(ongoing_task_params)
       @ongoing_task.finished_at = DateTime.now
+      @ongoing_task.done = true
       @ongoing_task.save
       ValidateTasksJob.set(wait: 4.hours).perform_later(@ongoing_task) if @ongoing_task.task.recurrence == "daily" 
       add_task_points_to_user_current_points(@ongoing_task.final_points)
