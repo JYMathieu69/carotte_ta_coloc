@@ -2,58 +2,53 @@
 
 <%= cl_image_tag task.image.key, class: finished_task_img_class?(task), data: { task_id: task.id }, height: 100, width: 100 %>
 <div class="<%= finished_carrot_img_class?(task) %>">
-    <div>
-        <h3 class="text-white pr-1"><%= task.final_points %></h3>
-    </div>
-    <div >
-        <%= image_tag 'carrot_icon.png', alt: 'carrot_price'%>
-    </div>
+  <div>
+    <h3 class="text-white pr-1"><%= task.final_points %></h3>
+  </div>
+  <div >
+    <%= image_tag 'carrot_icon.png', alt: 'carrot_price'%>
+  </div>
 </div>
 
 
 <!-- Modal Section -->
 
 <div class="bg-modal" id="task<%= task.id %>">
-    <div class="modal-content">
-        <div class="close" data-task-id="<%= task.id %>">+</div>
-            <div class="flex justify-center items-center">
-                <%= cl_image_tag task.image.key, width: 200, height: 200, class: 'modal-img' %>
-            </div>
-            <div class="potential-carrots-earned">
-                <h3 class="potential-carrots-text">Cette tâche rapporte  <span class="font-bold"><%= task.final_points %></span></h3>
-                <%= image_tag 'carrot_icon.png', alt: 'carrot_price', class:"pl-2"%>
-            </div>
-        <% if assignment %>
-            <p>
-                <% if task.user_id.nil? %>
-                    <p class="mb-4 text-darkGrey-50">Cette tâche n'est malheureusement affectée à personne</p> 
-                    <%= link_to "J'vais l'faire !", assign_task_path(task), class:"btn-border-primary" %>
-                <% else %>
-                    <p class="mb-4 text-darkGrey-50"><%= task.user.username %> doit faire cette tâche cette semaine.</p>
-                <% end %>
-            </p>
-        <% end %>
-        <% if validation %>
-            <div class="modal-validate">
-                <div class="action-task">
-                    <%= link_to image_tag("task_done.png"), validate_task_path(task) %>
-                    <p class="mt-4 font-medium text-xl">Je valide cette tâche</p>
-                </div>
-                
-                <div class="action-task">
-                    <%= link_to image_tag("task_carrot.png"), ongoing_task_carotted_tasks_path(task) , method: :post  %>
-                    <p class="mt-4 font-medium text-xl">J'assigne cette tâche</p>
-                    <!-- <%= button_to "Carotte tes colocs !", ongoing_task_carotted_tasks_path(task), method: :post %> -->
-                </div>
-                
-                <% if !task.auto_assigned %>
-                    <div>
-                        <%= link_to "En fait, j'vais pas l'faire", unassign_task_path(task), method: 'patch' %>
-                    </div>
-                <% end %>
-                
-            </div>
-        <% end %>
+  <div class="modal-content">
+    <div class="close" data-task-id="<%= task.id %>">
+      +
     </div>
+    
+    <div class="flex justify-center items-center">
+      <%= cl_image_tag task.image.key, width: 200, height: 200, class: 'modal-img' %>
+    </div>
+    <div class="potential-carrots-earned">
+      <h3 class="potential-carrots-text">Cette tâche rapporte <span class="font-bold"><%= task.final_points %></span></h3>
+      <%= image_tag 'carrot_icon.png', alt: 'carrot_price', class:"pl-2"%>
+    </div>
+
+    <% if task.done %>
+      <p>Tâche faite <%= l(task.finished_at, format: '%A') %>.</p>
+    <% elsif assignment %>
+      <% if task.user_id.nil? %>
+        <p class="mb-4 text-darkGrey-50">Cette tâche n'est affectée à personne. Fais-la et récupère des carottes !</p> 
+        <%= link_to "J'ai fait cette tâche", assign_task_path(task), class:"btn-border-primary" %>
+      <% else %>
+        <p class="mb-4 text-darkGrey-50"><%= task.user.username %> doit faire cette tâche cette semaine.</p>
+      <% end %>
+    <% elsif validation %>
+      <div class="modal-validate">
+        <%= link_to validate_task_path(task), class:'action-task' do %>
+          <%= image_tag("task_done.png") %>
+          <%= content_tag :p, "Je valide cette tâche", class: "mt-4 font-medium text-xl" %>
+        <% end %>
+
+        <%= link_to ongoing_task_carotted_tasks_path(task), method: :post, class:'action-task' do %>
+          <%= image_tag("task_carrot.png") %>
+          <%= content_tag :p, "J'assigne cette tâche", class: "mt-4 font-medium text-xl" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
