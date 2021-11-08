@@ -1,69 +1,113 @@
-<h1>Gestion de la coloc</h1>
+<%= link_to "Revenir au Tach'board" , ongoing_tasks_path, class: "btn-border-purple ml-8 lg:ml-16" %>
 
-<%= link_to "Revenir au Tach'board", ongoing_tasks_path %>
+<h1 class="primary-title text-center mt-8 lg:mt-2">Gestion de la coloc</h1>
 
-<p>Pour qu'un utilisateur rejoigne ta coloc, envoie-lui ce code : <%= @coloc.invite_token %></p>
-
-<%= simple_form_for @coloc do |f| %>
-  <%= f.input :name, label: false %>  
-  <%= f.submit "Sauvegarder" %>  
-<% end %>
-
-<ul>
-  <% @users.each do |user| %>
-    <li>
-      <%= cl_image_tag user.avatar.key, height: 25, width: 25 %>
-      <%= user.username %>
-      <% if user != @coloc.leader %>
-        <%= link_to "X", remove_coloc_user_path(@coloc, user), method: :delete, data: { confirm: "Retirer #{user.username} de la coloc ?" } %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
-
-<%= form_with model: @coloc do |form| %>
-  <ul>
-    <%= form.fields_for :coloc_tasks, form.object.coloc_tasks.order(:id) do |coloc_tasks_fields| %>
-      <li>
-        <div>
-          <%= cl_image_tag coloc_tasks_fields.object.task.image.key, height: 70, width: 70 %>
-        </div>
-        <div>
-          <h3><%= coloc_tasks_fields.label coloc_tasks_fields.object.task.name %></h3>
-          <label>
-            <%= coloc_tasks_fields.select :difficulty, Task::DIFFICULTIES %>
-          </label>
-          <%= link_to "🗑️", coloc_coloc_task_path(@coloc, coloc_tasks_fields.object), method: :delete, data: { confirm: "Retirer '#{coloc_tasks_fields.object.task.name}' de la coloc ? Tout l'historique sera définitivement supprimé." } %>
-          <%= coloc_tasks_fields.hidden_field :task_id  %>
-        </div>
-      </li>
-    <% end %>
-  </ul>
+<div class="flex flex-wrap justify-around mt-8 mx-4 overflow-x-hidden">
   <div>
-    <%= form.submit 'Sauvegarder', class: 'btn-primary' %>
+    <div class='text-center card-infos'>
+      <h2 class="secondary-title">Change le nom de la coloc'</h2>
+      <%= simple_form_for @coloc do |f| %>
+        <%= f.input :name, label: false%>
+        <%= f.submit "Sauvegarder", class: "btn-border-primary mt-4" %>
+      <% end %>
+    </div>
+    
+    <div class="text-center card-infos mt-4 overflow-x-hidden">
+      <h2 class="secondary-title">Inviter un coloc'</h2>
+      <p class="mt-4 leading-7">Pour qu'un utilisateur rejoigne ta coloc, envoie-lui ce code :</p>
+      <p class="text-xl font-medium underline mt-2"><%= @coloc.invite_token %></p>
+    </div>
+
+    <div class="card-infos text-center mt-4 overflow-x-hidden mb-4">
+      <h2 class="secondary-title">Gestions des colocataires</h2>
+      <ul>
+        <% @users.each do |user| %>
+          <li>
+            <div class="flex mb-4 align-center">
+              <div class="mr-4">
+                <%= cl_image_tag user.avatar.key, class:"rounded-full h-16 w-16 lg:h-20 lg:w-20" %>
+              </div>
+              <div class="flex">
+                <p class="font-medium mr-4"><%= user.username %></p>
+                <p>
+                  <% if user !=@coloc.leader %>
+                    <%= link_to "X" , remove_coloc_user_path(@coloc, user), method: :delete, data: {
+                      confirm: "Retirer #{user.username} de la coloc ?" } %>
+                      <% end %> 
+                </p>
+              </div>
+            </div>
+          </li>
+          <% end %>
+      </ul>
+    </div>
   </div>
-<% end %>
 
-<h2>Ajouter des tâches à la coloc</h2>
+  <div class="card-infos justify-around mx-4">
+    <h2 class='secondary-title text-center'>Changer la difficulté des tâches</h2>
+    <div class="flex flex-wrap items-center justify-center">
+      <div class="mr-4">
+        <p>1 : 15 carottes</p>
+        <p>2 : 30 carottes</p>
+      </div> 
+      <div>
+        <p>3 : 45 carottes</p>
+        <p>4 : 60 carottes</p>
+      </div>
+    </div>
 
-<%= simple_form_for [@coloc, @new_coloc_task] do |form| %>
-  <% @addable_tasks.each do |addable_task| %>
-    <%= fields_for "items[]", addable_task do |f| %>
-      <div class="switch-task">
-        <div>
-          <%= cl_image_tag f.object.image.key, height: 130, width: 130 %>
-        </div>
-        <div class="toggle-name">
-          <h3 class="violet-100"> <%= f.label f.object.name %> </h3>
-          <label class="switch">
-            <%= f.check_box  :task, { checked: false }, f.object.id %>
-            <span class="slider round"></span>
-          </label>
-        </div>
+    <div class="dashed"></div>
+
+    <%= form_with model: @coloc do |form| %>
+      <ul class="grid-layout-3">
+        <%= form.fields_for :coloc_tasks, form.object.coloc_tasks.order(:id) do |coloc_tasks_fields| %>
+          <li class="flex flex-col justify-between items-center h-44 lg:justify-start lg:h-36 lg:mb-4">
+              <div>
+                <%= cl_image_tag coloc_tasks_fields.object.task.image.key, class:"h-16 w-16 lg:h-20 lg:w-20"%>
+              </div>
+              <div>
+                <p class="text-sm mt-2 text-center lg:mt-4 lg:mb-2"><%= coloc_tasks_fields.label coloc_tasks_fields.object.task.name %></p>
+              </div>
+              <div>
+                <label>
+                  <%= coloc_tasks_fields.select :difficulty, Task::DIFFICULTIES %>
+                </label>
+                <%= link_to "🗑️", coloc_coloc_task_path(@coloc, coloc_tasks_fields.object), method: :delete, data: { confirm: "Retirer '#{coloc_tasks_fields.object.task.name}' de la coloc ? Tout l'historique sera définitivement supprimé." } %>
+                <%= coloc_tasks_fields.hidden_field :task_id  %>
+              </div>
+        <% end %>
+      </ul>
+      <div class="text-center mt-8">
+        <%= form.submit 'Sauvegarder', class: 'btn-primary mx-auto' %>
       </div>
     <% end %>
-  <% end %>
-  <div class="text-center margin-t-64">
+  </div>
+</div>
+
+<div class="dashed"></div>
+
+<h2 class="secondary-title text-center">Ajouter des tâches à la coloc</h2>
+
+<%= simple_form_for [@coloc, @new_coloc_task] do |form| %>
+  <div class="grid-layout-3 mx-4">
+    <% @addable_tasks.each do |addable_task| %>
+      <%= fields_for "items[]", addable_task do |f| %>
+        <div class="switch-task">
+          <div class="mr-2">
+            <%= cl_image_tag f.object.image.key, height: 80, width: 80 %>
+          </div>
+          <div class="toggle-name text-xs">
+            <p class="text-secondary-200 mb-2"> <%= f.label f.object.name %> </p>
+            <label class="switch">
+              <%= f.check_box  :task, { checked: false }, f.object.id %>
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="text-center mt-6">
     <%= form.submit 'Ajouter les tâches sélectionnées', class: 'btn-primary' %>
   </div>
 <% end %>

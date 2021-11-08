@@ -1,6 +1,6 @@
 <h3 class="border-btm-purple mx-auto w-44 text-secondary-200"> T'AS RECU DE L'AIDE ?</h3>
 
-<%= form_with model: @ongoing_task, url: validation_update_path(@ongoing_task), multipart: true do |form| %>
+<%= form_with model: @ongoing_task, url: validation_update_path(@ongoing_task) do |form| %>
   <%= form.fields_for :helpers do |helpers_fields| %>
     <%= helpers_fields.object.user.username %>
     <%= helpers_fields.check_box :user_id, { checked: false }, helpers_fields.object.user.id %>
@@ -20,7 +20,7 @@
         <%= image_tag 'camera.png', alt: 'camera', class: "preview_img camera_img"%>
         <p class="text-tertiary-200">Je prends une photo</p>
       </label>
-      <input class="form-control-file file optional" type="file" name="ongoing_task[photo_after]" id="user_task_photo" style="display: none;">
+      <input class="form-control-file file optional" type="file" name="user_task[photo]" id="user_task_photo" style="display: none;">
     </div>
 
     <%= form.submit 'Je valide mes tâches', class: 'btn-primary margin-t-32'%>

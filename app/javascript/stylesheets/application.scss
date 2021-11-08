@@ -5,6 +5,7 @@
 @import './index.scss';
 
 * {
+      @apply font-default;
       box-sizing: border-box;
       outline: none;
       text-decoration: none;

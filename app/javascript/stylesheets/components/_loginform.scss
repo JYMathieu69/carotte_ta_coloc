@@ -12,10 +12,10 @@
 
 .remember-me {
     @apply flex justify-center items-center mb-4;
+}
 
-    #user_remember_me {
-        @apply mr-3;
-    }
+#user_remember_me {
+    @apply mr-3;
 }
 
 .placeholder {
