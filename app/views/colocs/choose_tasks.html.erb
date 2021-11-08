@@ -1,8 +1,8 @@
 <%= form_with model: @coloc do |form| %>
   <h2 class="text-center mb-8 font-medium text-xl lg:text-2xl">Choisis les tâches de ta Coloc'</h2>
-  <ul class="change_difficulty_grid mx-4 mb-32 lg:mb-40">
+  <ul class="task_grid mx-4 mb-32 lg:mb-40">
     <%= form.fields_for :coloc_tasks do |coloc_tasks_fields| %>
-      <li class="addable-switch-task filter grayscale">
+      <li class="switch-task filter grayscale">
         <div>
           <%= cl_image_tag coloc_tasks_fields.object.task.image.key, class:"w-12 h-12 lg:h-16 lg:w-16 mb-2" %>
         </div>

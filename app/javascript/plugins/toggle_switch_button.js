@@ -3,7 +3,7 @@ const coloredSwitchButtons = () => {
     
     if (switchButtons) {
         switchButtons.forEach((switchButton) => {
-            switchButton.addEventListener("input", () => { switchButton.closest(".addable-switch-task").classList.toggle("grayscale") })
+            switchButton.addEventListener("input", () => { switchButton.closest(".switch-task").classList.toggle("grayscale") })
         })
     }
 }

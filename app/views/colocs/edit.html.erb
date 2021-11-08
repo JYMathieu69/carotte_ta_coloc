@@ -59,7 +59,7 @@
     <div class="dashed"></div>
 
     <%= form_with model: @coloc do |form| %>
-      <ul class="change_difficulty_grid">
+      <ul class="task_grid">
         <%= form.fields_for :coloc_tasks, form.object.coloc_tasks.order(:id) do |coloc_tasks_fields| %>
           <li class="flex flex-col justify-between items-center h-44 mb-4 lg:justify-start lg:h-36 lg:mb-4">
               <div>
@@ -89,10 +89,10 @@
 <h2 class="secondary-title text-center">Ajouter des tâches à la coloc</h2>
 
 <%= simple_form_for [@coloc, @new_coloc_task] do |form| %>
-  <div class="change_difficulty_grid mx-4">
+  <div class="task_grid mx-4">
     <% @addable_tasks.each do |addable_task| %>
       <%= fields_for "items[]", addable_task do |f| %>
-        <div class="addable-switch-task filter grayscale">
+        <div class="switch-task filter grayscale">
           <div>
             <%= cl_image_tag f.object.image.key, class:"w-12 h-12 lg:h-16 lg:w-16 mb-2" %>
           </div>
