@@ -28,11 +28,11 @@
     </div>
 
     <% if task.done %>
-      <p>Tâche faite <%= l(task.finished_at, format: '%A') %>.</p>
+      <p>Tâche faite <%= l(task.finished_at, format: '%A') %> par <%= task.user.username %>.</p>
     <% elsif assignment %>
       <% if task.user_id.nil? %>
         <p class="mb-4 text-darkGrey-50">Cette tâche n'est affectée à personne. Fais-la et récupère des carottes !</p> 
-        <%= link_to "J'ai fait cette tâche", assign_task_path(task), class:"btn-border-primary" %>
+        <%= link_to "J'ai fait cette tâche", validate_task_path(task), class:"btn-border-primary" %>
       <% else %>
         <p class="mb-4 text-darkGrey-50"><%= task.user.username %> doit faire cette tâche cette semaine.</p>
       <% end %>

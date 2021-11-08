@@ -6,9 +6,9 @@ class OngoingTasksController < ApplicationController
     redirect_to choose_tasks_path(current_user.coloc) and return if current_user.coloc.coloc_tasks.empty?
 
     all_ongoing_tasks = current_user.coloc.ongoing_tasks
-    @user_tasks = all_ongoing_tasks.where(user: current_user)
+    @user_tasks = all_ongoing_tasks.joins(:task).where(task: { auto_assigned: true}).where(user: current_user)
     @colocs_tasks = all_ongoing_tasks.where.not(user: current_user).order(:user_id)
-    @unassigned_tasks = all_ongoing_tasks.where(user: nil)
+    @unassigned_tasks = all_ongoing_tasks.unassigned_tasks
     all_users = current_user.coloc.users
     @users_coloc = all_users.filter { |user| user != current_user }
   end
@@ -34,9 +34,12 @@ class OngoingTasksController < ApplicationController
     if @ongoing_task.update(ongoing_task_params)
       @ongoing_task.finished_at = DateTime.now
       @ongoing_task.done = true
+      @ongoing_task.user = current_user if !@ongoing_task.user
       @ongoing_task.save
+
       ValidateTasksJob.set(wait: 4.hours).perform_later(@ongoing_task) if @ongoing_task.task.recurrence == "daily" 
       add_task_points_to_user_current_points(@ongoing_task.final_points)
+
       redirect_to ongoing_tasks_path
     else
       redirect_to validation_update(@ongoing_task)
