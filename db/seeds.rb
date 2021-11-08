@@ -189,7 +189,7 @@ four.image.attach(io: four_image, filename: 'four.png', content_type: 'image/png
 
 placard         = Task.create!(name: "Placard",            description: "Nettoyer le placard, c'est cool",
 recurrence: "daily",  auto_assigned: false, default_difficulty: 3)
-placard_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1627986224/balai_apajuh.png')
+placard_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1636356345/PLACARD_agqblq.png')
 placard.image.attach(io: placard_image, filename: 'placard.png', content_type: 'image/png')
 
 
@@ -201,7 +201,7 @@ micro_onde.image.attach(io: micro_onde_image, filename: 'micro_onde.png', conten
 
 nettoyer_table  = Task.create!(name: "Nettoyer la table",  description: "Nettoyer la table, c'est cool",
 recurrence: "daily",  auto_assigned: false, default_difficulty: 1)
-nettoyer_table_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1627999840/NETTOYER_TABLE_ugarnz.png')
+nettoyer_table_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1636356161/NETTOYER_TABLE_2_w6z2lh.png')
 nettoyer_table.image.attach(io: nettoyer_table_image, filename: 'nettoyer_table.png', content_type: 'image/png')
 
 
@@ -213,7 +213,7 @@ pelouse.image.attach(io: pelouse_image, filename: 'pelouse.png', content_type: '
 
 papier          = Task.create!(name: "Papiers",            description: "Gère les papiers de la coloc, c'est cool",
 recurrence: "daily",  auto_assigned: false, default_difficulty: 2)
-papier_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1627999845/PAPIERS_toeadz.png')
+papier_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1636356160/VIDER_LE_VERRE_etdevf.png')
 papier.image.attach(io: papier_image, filename: 'papier.png', content_type: 'image/png')
 
 
@@ -249,7 +249,7 @@ café.image.attach(io: café_image, filename: 'café.png', content_type: 'image/
 
 evier           = Task.create!(name: "Evier",              description: "Nettoyer l'évier, c'est cool",
 recurrence: "weekly", auto_assigned: true,  default_difficulty: 1)
-evier_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1627999838/EVIER_gdo9ky.png')
+evier_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1636356160/EVIER_lfberg.png')
 evier.image.attach(io: evier_image, filename: 'evier.png', content_type: 'image/png')
 
 
