@@ -1,3 +1,9 @@
+<div class="text-center mb-8 lg:mb-12">
+  <p class="font-default text-xl mb-4 text-primary-200 font-medium lg:text-2xl lg:mb-8">S'inscrire</p>
+  <p class="font-default text-sm lg:text-base">Déjà un compte ?</p>
+  <%= link_to "Se connecter" , new_session_path(resource_name), class: "text-secondary-200 text-sm btn-border-purple lg:text-base"%>
+</div>
+
 <div class="log-in-form">
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
@@ -17,9 +23,9 @@
     </div>
     
     <div class="actions">
-      <%= f.submit "S'inscrire", class: "btn-primary margin-b-32" %>
+      <%= f.submit "S'inscrire", class: "btn-primary" %>
     </div>
   <% end %>
   
-  <p class="violet-100"><%= render "devise/shared/links"%></p> 
+  
 </div>
