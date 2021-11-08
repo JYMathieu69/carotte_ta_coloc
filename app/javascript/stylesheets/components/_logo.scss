@@ -1,11 +1,11 @@
 .logo-sm {
-    @apply w-40;
+    @apply w-28 lg:w-40;
 }
 
 .logo-md {
-    @apply w-64;
+    @apply w-40 lg:w-64;
 }
 
 .logo-lg {
-    @apply w-96;
+    @apply w-64 lg:w-96;
 }

@@ -1,5 +1,5 @@
 .rules {
-    @apply text-center mb-20;
+    @apply text-center mb-4;
 }
 
 .earn-carrots {
@@ -11,9 +11,9 @@
 }
 
 .rules-icons {
-    @apply m-auto mb-4;
+    @apply m-auto lg:mb-4 lg:w-24 lg:h-24;
 }
 
 .rules-text {
-    @apply text-secondary-200 text-base;
+    @apply text-secondary-200 text-sm mx-4 lg:text-base;
 }
