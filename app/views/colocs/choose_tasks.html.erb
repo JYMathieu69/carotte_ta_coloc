@@ -3,7 +3,7 @@
   <ul class="choose_task_grid mx-4 mb-32 lg:mb-40">
     <%= form.fields_for :coloc_tasks do |coloc_tasks_fields| %>
       <li class="switch-task h-44">
-        <div class="flex flex-col justify-start items-center h-44 lg:justify-start lg:mb-4">
+        <div class="flex flex-col justify-between items-center h-44 lg:justify-start lg:mb-4">
           <div>
             <%= cl_image_tag coloc_tasks_fields.object.task.image.key, class:"w-12 h-12 mb-4 lg:mb-2 lg:w-16 lg:h-16" %>
           </div>
