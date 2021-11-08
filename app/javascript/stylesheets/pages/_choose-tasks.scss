@@ -1,5 +1,5 @@
 .switch-task {
-    @apply flex border-solid border-2 border-secondary-200 rounded-xl py-4 px-8 mb-4 justify-between items-center content-center w-1/2 mx-auto;
+    @apply flex flex-col border-solid border-2 border-secondary-200 rounded-xl py-2 px-8 mb-4 justify-between items-center;
 }
 
 .toggle-name {
@@ -49,6 +49,6 @@ input:checked + .slider:before {
     @apply flex justify-center items-center bg-white pb-4 pt-8 fixed bottom-0 w-full rounded-t-full;
 }
 
-.task-list {
-    @apply mb-48;
+.choose_task_grid{
+    @apply grid grid-cols-3 gap-3
 }

@@ -2,12 +2,19 @@
 //     @apply grid grid-cols-5 col-auto grid-flow-row gap-16 auto-rows-max place-items-center;
 // }
 
-.grid-layout {
+.grid-layout-5 {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 5fr));
     grid-gap: 32px;
     grid-auto-rows: minmax(100px, auto);
     place-items: center;
+}
+
+.grid-layout-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 3fr));
+    grid-gap: 32px;
+    // grid-auto-rows: minmax(100px, auto);
 }
 
 .grid-image {

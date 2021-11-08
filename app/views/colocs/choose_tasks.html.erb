@@ -1,14 +1,14 @@
 <%= form_with model: @coloc do |form| %>
-  <h2 class="text-center mb-8 font-medium text-2xl">Choisis les tâches de ta Coloc'</h2>
-  <ul class="task-list">
+  <h2 class="text-center mb-8 font-medium text-xl lg:text-2xl">Choisis les tâches de ta Coloc'</h2>
+  <ul class="choose_task_grid mx-4 mb-32 lg:mb-40">
     <%= form.fields_for :coloc_tasks do |coloc_tasks_fields| %>
-      <li>
-        <div class="switch-task">
+      <li class="switch-task h-44">
+        <div class="flex flex-col justify-start items-center h-44 lg:justify-start lg:mb-4">
           <div>
-            <%= cl_image_tag coloc_tasks_fields.object.task.image.key, height: 130, width: 130 %>
+            <%= cl_image_tag coloc_tasks_fields.object.task.image.key, class:"w-12 h-12 mb-4 lg:mb-2 lg:w-16 lg:h-16" %>
           </div>
-          <div class="toggle-name">
-            <h3 class="text-xl text-secondary-200 font-medium mb-4"> <%= coloc_tasks_fields.label coloc_tasks_fields.object.task.name %> </h3>
+          <div class="flex flex-col items-center justify-center">
+            <h3 class="text-xs text-secondary-200 font-medium mb-4 lg:mb-2 lg:text-base lg:mt-4"> <%= coloc_tasks_fields.label coloc_tasks_fields.object.task.name %> </h3>
             <label class="switch">
               <%= coloc_tasks_fields.check_box  :task_id, { checked: false } , coloc_tasks_fields.object.task.id %>
               <span class="slider round"></span>
