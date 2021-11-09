@@ -15,7 +15,7 @@
     <div class="text-center card-infos mt-4 overflow-x-hidden">
       <h2 class="secondary-title">Inviter un coloc'</h2>
       <p class="mt-4 leading-7">Pour qu'un utilisateur rejoigne ta coloc, envoie-lui ce code :</p>
-      <p class="text-xl font-medium underline mt-2"><%= @coloc.invite_token %></p>
+      <p class="text-xl font-medium underline mt-2 "><%= @coloc.invite_token %></p>
     </div>
 
     <div class="card-infos text-center mt-4 overflow-x-hidden mb-4">
@@ -23,7 +23,7 @@
       <ul>
         <% @users.each do |user| %>
           <li>
-            <div class="flex mb-4 align-center">
+            <div class="flex justify-around mb-4 items-center">
               <div class="mr-4">
                 <%= cl_image_tag user.avatar.key, class:"rounded-full h-16 w-16 lg:h-20 lg:w-20" %>
               </div>
@@ -43,7 +43,7 @@
     </div>
   </div>
 
-  <div class="card-infos justify-around mx-4">
+  <div class="card-infos justify-around lg:w-1/2">
     <h2 class='secondary-title text-center'>Changer la difficulté des tâches</h2>
     <div class="flex flex-wrap items-center justify-center">
       <div class="mr-4">
@@ -59,14 +59,14 @@
     <div class="dashed"></div>
 
     <%= form_with model: @coloc do |form| %>
-      <ul class="grid-layout-3">
+      <ul class="task_grid">
         <%= form.fields_for :coloc_tasks, form.object.coloc_tasks.order(:id) do |coloc_tasks_fields| %>
-          <li class="flex flex-col justify-between items-center h-44 lg:justify-start lg:h-36 lg:mb-4">
+          <li class="flex flex-col justify-between items-center h-44 mb-4 lg:justify-start lg:h-36 lg:mb-4">
               <div>
                 <%= cl_image_tag coloc_tasks_fields.object.task.image.key, class:"h-16 w-16 lg:h-20 lg:w-20"%>
               </div>
               <div>
-                <p class="text-sm mt-2 text-center lg:mt-4 lg:mb-2"><%= coloc_tasks_fields.label coloc_tasks_fields.object.task.name %></p>
+                <p class="text-sm mt-1 text-center lg:text-base lg:mt-4 lg:mb-2"><%= coloc_tasks_fields.label coloc_tasks_fields.object.task.name %></p>
               </div>
               <div>
                 <label>
@@ -89,16 +89,16 @@
 <h2 class="secondary-title text-center">Ajouter des tâches à la coloc</h2>
 
 <%= simple_form_for [@coloc, @new_coloc_task] do |form| %>
-  <div class="grid-layout-3 mx-4">
+  <div class="task_grid mx-4">
     <% @addable_tasks.each do |addable_task| %>
       <%= fields_for "items[]", addable_task do |f| %>
-        <div class="switch-task">
-          <div class="mr-2">
-            <%= cl_image_tag f.object.image.key, height: 80, width: 80 %>
+        <div class="switch-task filter grayscale">
+          <div>
+            <%= cl_image_tag f.object.image.key, class:"w-12 h-12 lg:h-16 lg:w-16 mb-2" %>
           </div>
-          <div class="toggle-name text-xs">
-            <p class="text-secondary-200 mb-2"> <%= f.label f.object.name %> </p>
-            <label class="switch">
+          <div class="toggle-name">
+            <p class="text-secondary-200 mb-2 text-xs text-center lg:text-base"> <%= f.label f.object.name %> </p>
+            <label class="switch mx-auto">
               <%= f.check_box  :task, { checked: false }, f.object.id %>
               <span class="slider round"></span>
             </label>
@@ -108,6 +108,6 @@
     <% end %>
   </div>
   <div class="text-center mt-6">
-    <%= form.submit 'Ajouter les tâches sélectionnées', class: 'btn-primary' %>
+    <%= form.submit 'Ajouter les tâches sélectionnées', class: 'btn-primary mb-8' %>
   </div>
 <% end %>

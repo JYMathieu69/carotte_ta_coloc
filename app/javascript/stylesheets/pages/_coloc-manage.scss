@@ -1,3 +1,16 @@
 .card-infos {
     @apply bg-white px-4 py-8 rounded-xl shadow;
 }
+
+.task_grid {
+    @apply grid grid-cols-3 lg:grid-cols-4 gap-8 lg:gap-12;
+}
+
+.switch-task {
+    @apply flex flex-col border-solid border-2 border-secondary-200 rounded-xl py-2 px-2 mb-4 justify-between items-center;
+}
+
+.switch-task-without-border {
+    @apply flex flex-col py-2 px-2 mb-4 justify-between items-center;
+}
+

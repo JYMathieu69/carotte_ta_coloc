@@ -37,6 +37,12 @@ module.exports = {
         'offwhite': {
           200: '#F7F7F4'
         },
+        'lightGrey': {
+          200: '#d1ccc0'
+        },
+        'green': {
+          200: '#26c281'
+        },
         "code-400": "#fefcf9",
         "code-600": "#3c455b",
       },

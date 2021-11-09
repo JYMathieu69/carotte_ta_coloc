@@ -148,7 +148,7 @@ plantes.image.attach(io: plantes_image, filename: 'plantes.png', content_type: '
 
 verre           = Task.create!(name: "Verre",              description: "Faire une machine pour avoir des habits propres, c'est cool",
 recurrence: "weekly", auto_assigned: true,  default_difficulty: 3)
-verre_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1636383957/VIDER_LE_VERRE-1_rlvp26.png')
+verre_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1636383957/VIDER_LE_VERRE_ezdy84.png')
 verre.image.attach(io: verre_image, filename: 'verre.png', content_type: 'image/png')
 
 
