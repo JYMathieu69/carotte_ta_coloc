@@ -1,5 +1,5 @@
 class OngoingTasksController < ApplicationController
-  before_action :set_ongoing_task, only: [:validate_task, :validation_update, :update]
+  before_action :set_ongoing_task, only: [:validate_task, :validation_update, :update, :show]
 
   def index
     redirect_to '/home' and return if current_user.coloc.nil?
@@ -13,17 +13,12 @@ class OngoingTasksController < ApplicationController
     @users_coloc = all_users.filter { |user| user != current_user }
   end
 
-  def show
-    @ongoing_task = OngoingTask.find(params[:id])
-  end
+  def show; end
 
   def update
     @ongoing_task.helpers.destroy_all if @ongoing_task.helpers
-    if @ongoing_task.update(ongoing_task_params)
-      redirect_to ongoing_tasks_path
-    else
-      redirect_to :edit
-    end
+
+    redirect_to @ongoing_task.update(ongoing_task_params) ? ongoing_tasks_path : :edit
   end
 
   def validation_update
@@ -69,6 +64,14 @@ class OngoingTasksController < ApplicationController
   end
 
   private
+  
+  def set_ongoing_task
+    @ongoing_task = OngoingTask.find(params[:id])
+  end
+
+  def ongoing_task_params
+    params.require(:ongoing_task).permit(:name, :photo_after, :photo_before, helpers_attributes: [ :ongoing_task_id, :user_id])
+  end
 
   def cannot_validate_done_task
     if @ongoing_task.done || @ongoing_task.finished?
@@ -89,13 +92,5 @@ class OngoingTasksController < ApplicationController
     @ongoing_task.helpers.map do |helper|
       helper.user_id
     end 
-  end
-
-  def set_ongoing_task
-    @ongoing_task = OngoingTask.find(params[:id])
-  end
-
-  def ongoing_task_params
-    params.require(:ongoing_task).permit(:name, :photo_after, :photo_before, helpers_attributes: [ :ongoing_task_id, :user_id])
   end
 end
