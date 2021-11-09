@@ -1,9 +1,0 @@
-
-  <%= simple_form_for @ongoing_task, url: assign_task_update_path(@ongoing_task) do |f| %>
-  <div>
-    <%= f.input :photo_before, as: :file, required: true, label: "Prends une photo de l'état avant de t'assigner la tâche " %>
-  </div>
-  <div>
-    <%= f.submit "M'assigner cette tâche", class: 'btn-border-purple-1' %>
-  </div>
-<% end %>

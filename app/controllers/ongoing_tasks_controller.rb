@@ -1,5 +1,5 @@
 class OngoingTasksController < ApplicationController
-  before_action :set_ongoing_task, only: [:validate_task, :validation_update, :assign_task, :assign_task_update,  :update, :unassign_task]
+  before_action :set_ongoing_task, only: [:validate_task, :validation_update, :update, :show]
 
   def index
     redirect_to '/home' and return if current_user.coloc.nil?
@@ -13,17 +13,12 @@ class OngoingTasksController < ApplicationController
     @users_coloc = all_users.filter { |user| user != current_user }
   end
 
-  def show
-    @ongoing_task = OngoingTask.find(params[:id])
-  end
+  def show; end
 
   def update
     @ongoing_task.helpers.destroy_all if @ongoing_task.helpers
-    if @ongoing_task.update(ongoing_task_params)
-      redirect_to ongoing_tasks_path
-    else
-      redirect_to :edit
-    end
+
+    redirect_to @ongoing_task.update(ongoing_task_params) ? ongoing_tasks_path : :edit
   end
 
   def validation_update
@@ -56,28 +51,6 @@ class OngoingTasksController < ApplicationController
     end
   end
 
-  def assign_task
-  end
-
-  def assign_task_update
-    @ongoing_task.user = current_user
-    if @ongoing_task.update(ongoing_task_params)
-      redirect_to ongoing_tasks_path
-    else
-      render :assign_task
-    end
-  end
-
-  def unassign_task
-    @ongoing_task.user = nil
-    @ongoing_task.photo_before = nil
-    if @ongoing_task.save
-      redirect_to ongoing_tasks_path
-    else
-      render :index
-    end
-  end
-
   def start_ongoing_tasks
     coloc = current_user.coloc
     StartUnassignedTasksJob.perform_now(coloc)
@@ -91,6 +64,14 @@ class OngoingTasksController < ApplicationController
   end
 
   private
+  
+  def set_ongoing_task
+    @ongoing_task = OngoingTask.find(params[:id])
+  end
+
+  def ongoing_task_params
+    params.require(:ongoing_task).permit(:name, :photo_after, :photo_before, helpers_attributes: [ :ongoing_task_id, :user_id])
+  end
 
   def cannot_validate_done_task
     if @ongoing_task.done || @ongoing_task.finished?
@@ -111,13 +92,5 @@ class OngoingTasksController < ApplicationController
     @ongoing_task.helpers.map do |helper|
       helper.user_id
     end 
-  end
-
-  def set_ongoing_task
-    @ongoing_task = OngoingTask.find(params[:id])
-  end
-
-  def ongoing_task_params
-    params.require(:ongoing_task).permit(:name, :photo_after, :photo_before, helpers_attributes: [ :ongoing_task_id, :user_id])
   end
 end
