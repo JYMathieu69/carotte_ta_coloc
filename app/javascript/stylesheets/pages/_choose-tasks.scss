@@ -42,7 +42,7 @@ input:checked + .slider:before {
 }
 
 .validate_tasks {
-    @apply flex justify-center items-center bg-white pb-4 pt-8 fixed bottom-0 w-full rounded-t-full;
+    @apply flex justify-center items-center bg-white pb-2 pt-4 lg:pb-4 lg:pt-8 fixed bottom-0 w-full rounded-t-3xl lg:rounded-t-full;
 }
 
 .choose_task_grid{
