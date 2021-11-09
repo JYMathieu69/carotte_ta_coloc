@@ -1,5 +1,5 @@
 const initPictureInput = () => {
-const input = document.querySelector('#user_task_photo')
+const input = document.querySelector('#ongoing_task_photo_after')
 
 if(input) {
     input.addEventListener('input', (event) => {
