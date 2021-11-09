@@ -20,7 +20,7 @@
     </div>
     
     <div class="flex justify-center items-center">
-      <%= cl_image_tag task.image.key, width: 200, height: 200, class: 'modal-img' %>
+      <%= cl_image_tag task.image.key, width: 200, height: 200, class: 'modal-img w-32 h-32 lg:w-52 lg:h-52' %>
     </div>
     <div class="potential-carrots-earned">
       <h3 class="potential-carrots-text">Cette tâche rapporte <span class="font-bold"><%= task.final_points %></span></h3>
@@ -41,13 +41,13 @@
     <% elsif validation %>
       <div class="modal-validate">
         <%= link_to validate_task_path(task), class:'action-task' do %>
-          <%= image_tag("task_done.png") %>
-          <%= content_tag :p, "Je valide cette tâche", class: "mt-4 font-medium text-xl" %>
+          <%= image_tag("task_done.png"), class:"w-16 h-16 lg:h-20 lg:w-20" %>
+          <%= content_tag :p, "Je valide cette tâche", class: "mt-4 font-medium text-xs lg:text-xl" %>
         <% end %>
 
         <%= link_to ongoing_task_carotted_tasks_path(task), method: :post, class:'action-task' do %>
-          <%= image_tag("task_carrot.png") %>
-          <%= content_tag :p, "J'assigne cette tâche", class: "mt-4 font-medium text-xl" %>
+          <%= image_tag("task_carrot.png"), class:"w-16 h-16 lg:h-20 lg:w-20" %>
+          <%= content_tag :p, "J'assigne cette tâche", class: "mt-4 font-medium text-xs lg:text-xl" %>
         <% end %>
       </div>
     <% end %>

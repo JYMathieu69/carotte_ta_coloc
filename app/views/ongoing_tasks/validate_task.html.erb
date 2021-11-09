@@ -1,18 +1,22 @@
-<h3 class="border-btm-purple mx-auto w-44 text-secondary-200"> T'AS RECU DE L'AIDE ?</h3>
+<h3 class="mx-auto text-secondary-200 text-center upcase">Quelqu'un t'a aidé ?</h3>
 
 <%= form_with model: @ongoing_task, url: validation_update_path(@ongoing_task) do |form| %>
+<div class="choose_task_grid mt-8">
   <%= form.fields_for :helpers do |helpers_fields| %>
-    <%= helpers_fields.object.user.username %>
-    <%= helpers_fields.check_box :user_id, { checked: false }, helpers_fields.object.user.id %>
-    <label for="<%= helpers_fields.object.user.id %>">
-      <%= cl_image_tag helpers_fields.object.user.avatar.key, height: 60, width: 60, crop: :fill  %>
-    </label>
-    <%= helpers_fields.hidden_field :ongoing_task_id  %>
+    <div class="flex flex-col justify-center items-center">
+      <label for="<%= helpers_fields.object.user.id %>">
+        <%= cl_image_tag helpers_fields.object.user.avatar.key, height: 60, width: 60, crop: :fill, class:"rounded-full mb-2"  %>
+      </label>
+      <%= helpers_fields.object.user.username %>
+      <%= helpers_fields.check_box :user_id, { checked: false }, helpers_fields.object.user.id %>
+      <%= helpers_fields.hidden_field :ongoing_task_id  %>
+    </div>
   <% end %>
+</div>
 
   <hr class="dashed">
 
-  <h3 class="border-btm-purple text-secondary-200 text-center">PROUVE-LE A TES COLOCS !</h3>
+  <h3 class="text-secondary-200 text-center">PROUVE-LE A TES COLOCS !</h3>
   
   <div class="container-photo">
     <%= form.label :photo_after do %>
@@ -20,7 +24,6 @@
       <%= content_tag :p, 'Je prends une photo', class: 'text-tertiary-200' %>
       <%= form.file_field :photo_after, class: 'hidden' %>
     <% end %>
-
     <%= form.submit 'Je valide mes tâches', class: 'btn-primary margin-t-32' %>
   </div>
 <% end %>
