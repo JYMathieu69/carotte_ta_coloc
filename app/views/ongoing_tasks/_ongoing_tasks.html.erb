@@ -29,6 +29,8 @@
 
     <% if task.done %>
       <p>Tâche faite <%= l(task.finished_at, format: '%A') %> par <%= task.user.username %>.</p>
+      <p>Preuve photo :</p>
+      <%= cl_image_tag task.photo_after.key, width: 100, height: 100, crop: :fill %>
     <% elsif assignment %>
       <% if task.user_id.nil? %>
         <p class="mb-4 text-darkGrey-50">Cette tâche n'est affectée à personne. Fais-la et récupère des carottes !</p> 
