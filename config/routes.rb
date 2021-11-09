@@ -24,10 +24,6 @@ Rails.application.routes.draw do
   get '/dashboard/:id/validate_task', to: 'ongoing_tasks#validate_task', as: 'validate_task'
   patch '/dashboard/:id/validation_update', to: 'ongoing_tasks#validation_update', as: 'validation_update'
 
-  patch '/dashboard/:id/assign_task_update', to: 'ongoing_tasks#assign_task_update', as: 'assign_task_update'
-  get '/dashboard/:id/assign_task', to: 'ongoing_tasks#assign_task', as: 'assign_task'
-  patch '/dashboard/:id/unassign_task', to: 'ongoing_tasks#unassign_task', as: 'unassign_task'
-  
   scope do
     resources :ongoing_tasks, path: 'dashboard', only: [:index, :update, :show] do
       resources :votes, only: [:create]

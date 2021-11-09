@@ -19,14 +19,11 @@
   <h3 class="text-secondary-200 text-center">PROUVE-LE A TES COLOCS !</h3>
   
   <div class="container-photo">
-    <div class="text-center file optional user_task_photo">
-      <label class="file optional" for="user_task_photo">
-        <%= image_tag 'camera.png', alt: 'camera', class: "preview_img camera_img"%>
-        <p class="text-tertiary-200">Je prends une photo</p>
-      </label>
-      <input class="form-control-file file optional" type="file" name="user_task[photo]" id="user_task_photo" style="display: none;">
-    </div>
-
-    <%= form.submit 'Je valide mes tâches', class: 'btn-primary margin-t-32'%>
+    <%= form.label :photo_after do %>
+      <%= image_tag 'camera.png', alt: 'camera', class: 'preview_img camera_img' %>
+      <%= content_tag :p, 'Je prends une photo', class: 'text-tertiary-200' %>
+      <%= form.file_field :photo_after, class: 'hidden' %>
+    <% end %>
+    <%= form.submit 'Je valide mes tâches', class: 'btn-primary margin-t-32' %>
   </div>
 <% end %>
