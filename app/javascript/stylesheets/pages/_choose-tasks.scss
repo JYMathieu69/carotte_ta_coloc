@@ -28,7 +28,7 @@
 }
 
 input:checked + .slider {
-    @apply bg-green-200;
+    @apply bg-secondary-200;
 }
 
 input:focus + .slider {

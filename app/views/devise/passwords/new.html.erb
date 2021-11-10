@@ -1,20 +1,17 @@
-<div class="logincard">
-  <h2 class="text-center mb-16 font-default text-xl text-darkGrey-50">Mot de passe oublié ?</h2>
-  <div class="log-in-form">
-    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
-    
-      <div class="field mb-4">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:'Votre mail', class:"input-form-border-purple-small font-default text-sm min-w-full" %>
-      </div>
-    
-      <div class="actions mt-6 text-secondary-200 text-center">
-        <%= f.submit "Mettre à jour mon mot de passe", class:"text-center font-default text-md bg-transparent cursor-pointer border-btm-purple"%>
-      </div>
-    <% end %>
-  </div>
+<h2 class="text-center mb-4 font-default text-base text-darkGrey-50">Mot de passe oublié ?</h2>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
   
-  <div class="text-center mt-16">
-    <%= render "devise/shared/links" %>
-  </div>
+<div class="log-in-form">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:'Votre mail', class:"input-form-border-purple placeholder font-default text-sm" %>
 </div>
+    <div class="actions mt-2 text-secondary-200 text-center">
+      <%= f.submit "Mettre à jour mon mot de passe", class:"text-center text-sm font-default bg-transparent cursor-pointer border-btm-purple"%>
+    </div>
+  <% end %>
+
+<div class="text-center mt-16">
+    <%= link_to "> Revenir à l'écran de connexion" , new_session_path(resource_name),
+      class: "text-secondary-200 text-sm lg:text-base" %>
+</div>
+
