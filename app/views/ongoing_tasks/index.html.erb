@@ -14,7 +14,7 @@
 <% else %>
   <%# tâches du current user %>
   <div class="my-task-card mb-8">
-    <h3 class="secondary-title text-secondary-200">MES TACHES</h3>
+    <h3 class="text-secondary-200 text-sm lg:text-xl">Mes tâches de la semaine</h3>
     <div class="grid-layout">
       <% @user_tasks.each do |task| %>
         <div>
@@ -26,7 +26,7 @@
   
   <%# tâches non assignées %>
   <div class="my-task-card mb-8">
-    <h3 class="secondary-title text-tertiary-200 mb-8">TACHES NON ASSIGNEES</h3>
+    <h3 class="text-tertiary-200 text-sm lg:text-xl">Tâches non assignées</h3>
     <div class="grid-layout">
       <% @unassigned_tasks.each do |task| %>
         <div>
@@ -38,6 +38,7 @@
 
   <%# tâches des colocs %>
   <div class="my-task-card mb-12 ml-8">
+
     <h3 class="tertiary-title text-darkGrey-50"><%= current_user.coloc.name %></h3>
     <% @users_coloc.each do |user| %>
       <div class="coloc-avatar-name">
