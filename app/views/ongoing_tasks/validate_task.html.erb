@@ -21,7 +21,7 @@
   <div class="container-photo mt-8">
     <%= form.label :photo_after do %>
       <%= image_tag 'camera.png', alt: 'camera', class: 'preview_img camera_img mx-auto' %>
-      <%= content_tag :p, 'Je prends une photo', class: 'text-tertiary-200 mt-2' %>
+      <%= content_tag :p, 'Je prends une photo', class: 'text-tertiary-200 mt-2 text-center' %>
       <%= form.file_field :photo_after, class: 'hidden' %>
     <% end %>
     <%= form.submit 'Je valide ma tâche', class: 'btn-primary mb-4 lg:mb-8 mt-8' %>
