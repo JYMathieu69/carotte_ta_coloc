@@ -12,9 +12,18 @@
   
 <%# écran après 1ère répartition des tâches %>
 <% else %>
+  <% if @user_tasks.all? { |task| task.done }  %>
+    <div class="bg-tertiary-100 rounded-xl py-4 px-4 lg:py-6 mx-8 mb-2"> <p class="text-darkGrey-50 text-sm text-center lg:text-xl ">T'as fait toutes tes tâches, bravo ! 🎉</p> </div>
+  <% end %>
   <%# tâches du current user %>
   <div class="my-task-card mb-8">
-    <h3 class="text-secondary-200 text-sm lg:text-xl">Mes tâches de la semaine</h3>
+    <div class="dropdown">
+      <div class="flex items-center">
+        <h2 class="text-secondary-200 text-base lg:text-xl pr-2">Mes tâches de la semaine</h2>
+        <%= image_tag 'info.png' , alt: 'info' , class:"hovered_icon info-icon-home"%>
+      </div>
+      <div class="info-icon-text hide h-12">👉🏻 Voici les tâches que tu dois faire cette semaine !</div>
+    </div>
     <div class="grid-layout">
       <% @user_tasks.each do |task| %>
         <div>
@@ -26,7 +35,13 @@
   
   <%# tâches non assignées %>
   <div class="my-task-card mb-8">
-    <h3 class="text-tertiary-200 text-sm lg:text-xl">Tâches non assignées</h3>
+      <div class="dropdown">
+        <div class="flex items-center">
+          <h2 class="text-tertiary-200 text-base lg:text-xl pr-2">Tâches bonus</h2>
+          <%= image_tag 'info.png' , alt: 'info' , class:"hovered_icon info-icon-home"%>
+        </div>
+        <div class="info-icon-text hide h-12">👉🏻 Les tâches bonus peuvent être réalisées plusieurs fois dans la semaine et par n'importe qui !</div>
+      </div>
     <div class="grid-layout">
       <% @unassigned_tasks.each do |task| %>
         <div>

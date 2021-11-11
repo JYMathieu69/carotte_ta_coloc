@@ -5,3 +5,27 @@
 .info-icon {
     @apply absolute -inset-4 w-10 h-10;
 }
+
+.hovered_icon {
+    @apply w-4 h-4 lg:w-6 lg:h-6;
+}
+
+.dropdown {
+    @apply relative	
+}
+
+.hide {
+    @apply hidden
+}
+
+.info-icon-text {
+    @apply text-xs lg:text-base text-darkGrey-50 mt-2 mb-2 ml-2
+}
+
+.dropdown:hover .info-icon-text {
+    @apply block
+}
+
+// .info-icon-home:hover + .hide {
+//   @apply block text-sm
+// }
