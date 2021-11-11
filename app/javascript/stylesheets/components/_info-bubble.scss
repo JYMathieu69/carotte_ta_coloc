@@ -10,20 +10,16 @@
     @apply w-4 h-4 lg:w-6 lg:h-6;
 }
 
-.dropdown {
-    @apply relative	
-}
-
 .hide {
-    @apply hidden
+    @apply invisible
 }
 
 .info-icon-text {
-    @apply text-xs lg:text-base text-darkGrey-50 mt-2 mb-2 ml-2
+    @apply text-xs lg:text-base text-darkGrey-50 -translate-y-10 transition-all duration-1000 ease-in
 }
 
-.dropdown:hover .info-icon-text {
-    @apply block
+.dropdown:hover + .info-icon-text {
+    @apply visible translate-y-0
 }
 
 // .info-icon-home:hover + .hide {
