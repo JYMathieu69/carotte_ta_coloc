@@ -1,0 +1,35 @@
+.bnr {
+  @apply -mt-24 fixed w-full z-50;
+}
+
+.bnr-side-content {
+  @apply pt-24;
+}
+
+.banner-divider {
+  @apply flex justify-between;
+
+  :last-child {
+    transform: scaleX(-1);
+  }
+}
+
+.title-banner {
+  @apply bg-secondary-100 flex justify-between items-center p-2 text-white uppercase text-center;
+
+  p {
+    @apply sm:text-xl w-2/3;
+  }
+
+  .carrot-counter {
+    @apply bg-white flex items-center rounded-xl py-1 px-2 text-secondary-200 text-sm;
+  }
+}
+
+.logo-banner {
+  @apply bg-secondary-100 p-2;
+
+  > * {
+    @apply mx-auto;
+  }
+}
