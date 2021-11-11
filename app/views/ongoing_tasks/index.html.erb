@@ -1,18 +1,3 @@
-<div class="bnr">
-  <div class="title-banner">
-    <div class="carrot-counter">
-      <%= image_tag 'carrot_icon.png' %>
-      <span><%= current_user.current_points %></span>
-    </div>
-    <p>Tach'Board</p>
-    <%= cl_image_tag current_user.avatar.key, class:'avatar avatar-md' %>
-  </div>
-  <div class="banner-divider">
-    <%= image_tag 'divider.svg' %>
-    <%= image_tag 'divider.svg' %>
-  </div>
-</div>
-
 <%# écran avant 1ère répartition des tâches selon user %>
 <% if (current_user.coloc.assignment_day.nil?) && (current_user.id == current_user.coloc.leader_id) %>
   <h3 class="text-center mb-8 text-sm">Avant de continuer,<br>assure toi que le logement soit au complet</h3>

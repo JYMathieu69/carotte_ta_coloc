@@ -16,6 +16,12 @@
 
   <body class="bg-offwhite-200">
     <div class="mx-auto mt-24">
+      <% logo_pages = { pages: "home", colocs: "join" } %>
+      <% is_devise_screen = controller_path.gsub(/\/.*/, '') == "devise" %>
+      <% is_logo_page = logo_pages[controller_name.to_sym] && logo_pages[controller_name.to_sym] == action_name %>
+
+      <%= render "shared/banner" if !is_devise_screen && !is_logo_page %>
+
       <%= yield %>
     </div>
   </body>
