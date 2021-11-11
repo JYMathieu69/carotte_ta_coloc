@@ -34,7 +34,7 @@ class OngoingTasksController < ApplicationController
 
       ValidateTasksJob.set(wait: 4.hours).perform_later(@ongoing_task) if @ongoing_task.task.recurrence == "daily" 
       add_task_points_to_user_current_points(@ongoing_task.final_points)
-
+      
       redirect_to ongoing_tasks_path
     else
       redirect_to validation_update(@ongoing_task)
