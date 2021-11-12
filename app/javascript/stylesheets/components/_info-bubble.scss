@@ -5,3 +5,23 @@
 .info-icon {
     @apply absolute -inset-4 w-10 h-10;
 }
+
+.hovered_icon {
+    @apply w-4 h-4 lg:w-6 lg:h-6;
+}
+
+.hide {
+    @apply invisible
+}
+
+.info-icon-text {
+    @apply text-xs lg:text-base text-darkGrey-50 -translate-y-10 transition-all duration-1000 ease-in
+}
+
+.dropdown:hover + .info-icon-text {
+    @apply visible translate-y-0
+}
+
+// .info-icon-home:hover + .hide {
+//   @apply block text-sm
+// }
