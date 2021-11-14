@@ -1,0 +1,14 @@
+<div class="bnr">
+  <div class="logo-banner">
+    <%= image_tag 'logo.png', class:'w-52' %>
+  </div>
+  
+  <% if current_user %>
+    <%= cl_image_tag current_user.avatar.key, class:'avatar avatar-md absolute top-1 right-1' %>
+  <% end %>
+  
+  <div class="banner-divider">
+    <%= image_tag 'divider.svg' %>
+    <%= image_tag 'divider.svg' %>
+  </div>
+</div>

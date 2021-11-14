@@ -1,0 +1,14 @@
+<div class="bnr">
+  <div class="title-banner">
+    <div class="carrot-counter">
+      <%= image_tag 'carrot_icon.png' %>
+      <span><%= current_user.current_points %></span>
+    </div>
+    <p>Tach'Board</p>
+    <%= cl_image_tag current_user.avatar.key, class:'avatar avatar-md' %>
+  </div>
+  <div class="banner-divider">
+    <%= image_tag 'divider.svg' %>
+    <%= image_tag 'divider.svg' %>
+  </div>
+</div>
