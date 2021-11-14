@@ -21,12 +21,12 @@
       <h2 class="text-secondary-200 text-base lg:text-xl pr-1 inline-block">Mes tâches de la semaine</h2>
       <%= image_tag 'info.png' , alt: 'info' , class:"hovered_icon info-icon-home inline-block dropdown mb-1"%>
         <p class="info-icon-text hide">
-          👉🏻 Voici les tâches que tu dois faire cette semaine.
+          👉🏻 Voici les tâches que tu dois faire cette semaine. Elles ne peuvent être validées qu'une seule fois.
         </p>
     </div>
-    <div class="grid-layout mt-4 lg:mt-8">
+    <div class="task_grid mt-4 lg:mt-8">
       <% @user_tasks.each do |task| %>
-        <div>
+        <div class="flex flex-col items-center justify-center relative">
           <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: false, validation: true%>
         </div>
       <% end %> 
@@ -43,7 +43,7 @@
       </p>
     </div>
     
-    <div class="grid-layout mt-4 lg:mt-8">
+    <div class="task_grid mt-4 lg:mt-8">
       <% @unassigned_tasks.each do |task| %>
         <div>
           <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false %>
@@ -72,7 +72,7 @@
             <%= user.username %>
           </div>
         </div>
-        <div class="grid-layout">
+        <div class="task_grid">
           <% user.ongoing_tasks.each do |task| %>
           <div>
             <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false %>
@@ -82,13 +82,13 @@
       <% end %> 
     </div>
   </div>
-
-  <div>
-    <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %>
-  </div>
+  
   <div>
     <% if current_user.id == current_user.coloc.leader_id %>
       <%= link_to "> Gérer la coloc", edit_coloc_path(current_user.coloc), class:"btn-border-purple ml-8" %>
     <% end %>
+  </div>
+  <div>
+    <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"ml-8" %>
   </div>
 <% end %>

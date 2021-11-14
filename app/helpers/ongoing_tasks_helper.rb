@@ -9,9 +9,9 @@ module OngoingTasksHelper
 
   def finished_carrot_img_class?(task)
     if task.finished?
-      'flex carrot-circle-big align-center finished'
+      'carrot_price_circle finished'
     else
-      'flex carrot-circle-big align-center'
+      'carrot_price_circle'
     end
   end
 end
