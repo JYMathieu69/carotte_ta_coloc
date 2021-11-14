@@ -10,11 +10,6 @@
     @apply font-medium text-xl;
 }
 
-
-.my-task-card {
-    @apply shadow-md bg-white rounded-xl px-8 py-4 mx-8;
-}
-
 .coloc-avatar-name {
     @apply flex flex-col mx-auto justify-center items-center mt-8 mb-4;
 }
