@@ -1,4 +1,4 @@
-<%= form_with model: @coloc do |form| %>
+<%= form_with model: @coloc, class:'pt-12' do |form| %>
   <h2 class="text-center mb-8 font-medium text-xl lg:text-2xl">Choisis les tâches de ta Coloc'</h2>
   <ul class="task_grid mx-4 mb-32 lg:mb-40">
     <%= form.fields_for :coloc_tasks do |coloc_tasks_fields| %>
