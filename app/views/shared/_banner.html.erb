@@ -1,4 +1,8 @@
-<% onboarding = ["new", "choose_tasks", "recap", "invitation"] %>
+<%
+  onboarding = ["new", "choose_tasks", "recap", "invitation"]
+  third_checkpoint = action_name == "invitation"
+  second_checkpoint = action_name == "choose_tasks" || action_name == "recap" || third_checkpoint
+%>
 
 <div class="bnr">
   <div class="title-banner">
@@ -13,21 +17,22 @@
                     </div>
                     <div class="absolute top-0 -ml-10 text-center mt-9 w-28 text-xs md:text-sm font-medium uppercase">Initialisation</div>
                 </div>
-                <div class="flex-auto border-t-2 transition duration-500 ease-in-out border-white"></div>
-                <div class="flex items-center text-white relative">
-                    <div class="rounded-full transition duration-500 ease-in-out h-7 w-7 py-3 bg-white">
+                <div class="flex-auto border-t-2 transition duration-500 ease-in-out <%= second_checkpoint ? 'border-tertiary-200' : 'border-white' %>"></div>
+                <div class="flex items-center relative">
+                    <div class="rounded-full transition duration-500 ease-in-out h-7 w-7 py-3 <%= second_checkpoint ? 'bg-tertiary-200' : 'bg-white' %>">
                     </div>
                     <div class="absolute top-0 -ml-10 text-center mt-9 w-28 text-xs md:text-sm font-medium uppercase">Choix des tâches</div>
                 </div>
-                <div class="flex-auto border-t-2 transition duration-500 ease-in-out border-white"></div>
+                <div class="flex-auto border-t-2 transition duration-500 ease-in-out <%= third_checkpoint ? 'border-tertiary-200' : 'border-white' %>"></div>
                 <div class="flex items-center relative">
-                    <div class="rounded-full transition duration-500 ease-in-out h-7 w-7 py-3 bg-white">
+                    <div class="rounded-full transition duration-500 ease-in-out h-7 w-7 py-3 <%= third_checkpoint ? 'bg-tertiary-200' : 'bg-white' %>">
                     </div>
                     <div class="absolute top-0 -ml-10 text-center mt-9 w-28 text-xs md:text-sm font-medium uppercase">Invitation</div>
                 </div>
             </div>
         </div>
       </div>
+      
     <% else %>
       <!-- all the other screens, display number of carrots, title and user avatar -->
       <div class="carrot-counter">
