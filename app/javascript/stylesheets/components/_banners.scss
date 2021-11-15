@@ -2,8 +2,14 @@
   @apply -mt-24 fixed w-full z-50;
 }
 
+@media (min-width: 1024px) {
+  .bnr-logo-screen {
+    @apply static flex-1 justify-center h-full bg-secondary-100 flex flex-col mt-0;
+  }
+}
+
 .bnr-side-content {
-  @apply pt-24;
+  @apply pt-24 lg:flex-1 lg:pt-0;
 }
 
 .banner-divider {
