@@ -16,7 +16,7 @@
     <div class="bg-tertiary-100 rounded-xl py-4 px-4 lg:py-6 mx-8 mb-2"> <p class="text-darkGrey-50 text-sm text-center lg:text-xl ">T'as fait toutes tes tâches, bravo ! 🎉</p> </div>
   <% end %>
   <%# tâches du current user %>
-  <div class="my-task-card mb-8">
+  <div class="my-task-card mb-8 lg:mt-10">
     <div class="items-center">
       <h2 class="text-secondary-200 text-base lg:text-xl pr-1 inline-block">Mes tâches de la semaine</h2>
       <%= image_tag 'info.png' , alt: 'info' , class:"hovered_icon info-icon-home inline-block dropdown mb-1"%>
@@ -26,14 +26,14 @@
     </div>
     <div class="task_grid mt-4 lg:mt-8">
       <% @user_tasks.each do |task| %>
-        <div class="flex flex-col items-center justify-center relative">
+        <div class="flex flex-col items-center justify-center mb-4">
           <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: false, validation: true%>
         </div>
       <% end %> 
     </div>
   </div>
 
-  <div class="dashed"></div>
+  <div class="dashed lg:mt-16"></div>
   
   <%# tâches non assignées %>
   <div class="bonus-task-card mb-8">
@@ -47,12 +47,14 @@
     
     <div class="task_grid mt-4 lg:mt-8">
       <% @unassigned_tasks.each do |task| %>
-        <div class="flex flex-col items-center justify-center relative">
+        <div class="flex flex-col items-center justify-center">
           <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false %>
         </div>
       <% end %>
     </div>
   </div>
+
+  <div class="w-full bg-secondary-200 h-16 lg:h-32 lg:mt-16 lg:mb-16 text-white flex justify-center items-center text-xl mb-8 font-default lg:text-2xl"> <%= @current_user.coloc.name %> </div>
 
   <%# tâches des colocs %>
   <div class="coloc-task-card">
@@ -66,17 +68,21 @@
     <div>
       <% @users_coloc.each do |user| %>
         <div class="coloc-avatar-name">
+
+          <div class="dashed mt-0"></div>
+
           <div>
             <%= cl_image_tag user.avatar.key, height: 80, width: 80, class:"pr-2 rounded-full" %>
           </div>
-        
-          <div class="mt-2 uppercase">
+
+          <div class="mt-2 uppercase text-secondary-200">
             <%= user.username %>
           </div>
+
         </div>
         <div class="task_grid">
           <% user.ongoing_tasks.each do |task| %>
-          <div>
+          <div class="flex flex-col items-center justify-center">
             <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false %>
           </div>
           <% end %>
@@ -85,12 +91,14 @@
     </div>
   </div>
   
-  <div>
-    <% if current_user.id == current_user.coloc.leader_id %>
-      <%= link_to "> Gérer la coloc", edit_coloc_path(current_user.coloc), class:"btn-border-purple ml-8" %>
-    <% end %>
+  <div class="flex justify-around items-center my-8 text-sm lg:text-base lg:my-16">
+    <div>
+      <% if current_user.id == current_user.coloc.leader_id %>
+        <%= link_to "> Gérer la coloc", edit_coloc_path(current_user.coloc), class:"btn-border-purple" %>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %>
+    </div>
+  <% end %>
   </div>
-  <div>
-    <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"ml-8" %>
-  </div>
-<% end %>
