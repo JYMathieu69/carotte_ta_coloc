@@ -40,6 +40,9 @@ module.exports = {
         'lightGrey': {
           200: '#d1ccc0'
         },
+        'lightWhite': {
+          200: '#FFFCF7'
+        },
         'green': {
           200: '#26c281'
         },
