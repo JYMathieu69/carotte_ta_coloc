@@ -1,5 +1,5 @@
 .carrot_price_circle {
-    @apply flex justify-center items-center rounded-full bg-secondary-200 w-10 h-10 mt-2 absolute bottom-9 -right-4  border-2 border-tertiary-200 lg:w-16 lg:h-16 lg:-right-8 lg:bottom-10
+    @apply flex justify-center items-center rounded-xl bg-white text-secondary-200 text-xs w-12 h-6 mt-2 lg:w-16 lg:h-8 lg:text-base
 }
 
 .my-task-card {

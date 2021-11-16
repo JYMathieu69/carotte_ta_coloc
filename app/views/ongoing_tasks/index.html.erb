@@ -26,7 +26,7 @@
     </div>
     <div class="task_grid mt-4 lg:mt-8">
       <% @user_tasks.each do |task| %>
-        <div class="flex flex-col items-center justify-center mb-4">
+        <div class="flex flex-col items-center justify-between mb-4">
           <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: false, validation: true%>
         </div>
       <% end %> 
@@ -45,9 +45,9 @@
       </p>
     </div>
     
-    <div class="task_grid mt-4 lg:mt-8">
+    <div class="task_grid mt-4 lg:mt-8 gap-4">
       <% @unassigned_tasks.each do |task| %>
-        <div class="flex flex-col items-center justify-center">
+        <div class="flex flex-col items-center justify-between">
           <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false %>
         </div>
       <% end %>
@@ -82,7 +82,7 @@
         </div>
         <div class="task_grid">
           <% user.ongoing_tasks.each do |task| %>
-          <div class="flex flex-col items-center justify-center">
+          <div class="flex flex-col items-center justify-between">
             <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false %>
           </div>
           <% end %>

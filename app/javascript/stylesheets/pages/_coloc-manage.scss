@@ -3,7 +3,7 @@
 }
 
 .task_grid {
-    @apply grid grid-cols-3 lg:grid-cols-4 gap-8 lg:gap-12;
+    @apply grid grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-12;
 }
 
 .switch-task {

@@ -1,16 +1,19 @@
 <!-- partial ongoing_tasks/index.html.erb -->
-<div class="relative">
-  <%= cl_image_tag task.image.key, class: finished_task_img_class?(task), data: { task_id: task.id }, class:"w-16 h-16 lg:h-32 lg:w-32"%>
-  <div class="<%= finished_carrot_img_class?(task) %>">
-    <div>
-      <h3 class="text-xs pr-1 text-white font-bold lg:text-base"><%= task.final_points %></h3>
-    </div>
-    <div>
-      <%= image_tag 'carrot_icon.png', alt: 'carrot_price', class: "w-3 h-5 lg:w-5 lg:h-8"%>
-    </div>
-  </div>
-  <p class="text-xs lg:text-base text-center mt-6"><%= task.name %></p> 
+<div class="lg:h-16 lg:w-16 h-12 w-12 mb-4">
+  <%= cl_image_tag task.image.key, class: finished_task_img_class?(task), data: { task_id: task.id }%>
 </div>
+<p class="text-xs lg:text-base text-center mb-2 <%= finished_carrot_img_class?(task) %>"">
+  <%= task.name %>
+</p>
+<div class="<%= finished_carrot_img_class?(task) %> carrot_price_circle ">
+  <div>
+    <%= image_tag 'carrot_icon.png' , alt: 'carrot_price', class:"w-4 h-6 pr-1" %>
+  </div>
+  <div>
+    <h3><%= task.final_points %></h3>
+  </div>
+</div>
+
 
 <!-- Modal Section -->
 
