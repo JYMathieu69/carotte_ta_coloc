@@ -25,19 +25,19 @@ class OngoingTasksController < ApplicationController
     return if cannot_validate_done_task
 
     @ongoing_task.helpers.destroy_all if @ongoing_task.helpers
+    @ongoing_task.user = current_user if !@ongoing_task.user
 
     if @ongoing_task.update(ongoing_task_params)
       @ongoing_task.finished_at = DateTime.now
       @ongoing_task.done = true
-      @ongoing_task.user = current_user if !@ongoing_task.user
       @ongoing_task.save
 
       ValidateTasksJob.set(wait: 4.hours).perform_later(@ongoing_task) if @ongoing_task.task.recurrence == "daily" 
       add_task_points_to_user_current_points(@ongoing_task.final_points)
-      
+
       redirect_to ongoing_tasks_path
     else
-      redirect_to validation_update(@ongoing_task)
+      render :validate_task
     end
   end
 
@@ -46,7 +46,7 @@ class OngoingTasksController < ApplicationController
     helpers_ids_array = helpers_that_where_already_selected
     potential_helpers.each do |potential_helper|
       unless helpers_ids_array.include? potential_helper.id
-        @ongoing_task.helpers.build(user: potential_helper, ongoing_task_id: @ongoing_task.id )
+        @ongoing_task.helpers.build(user: potential_helper, ongoing_task_id: @ongoing_task.id)
       end
     end
   end
@@ -89,8 +89,9 @@ class OngoingTasksController < ApplicationController
   end
 
   def helpers_that_where_already_selected
+    
     @ongoing_task.helpers.map do |helper|
       helper.user_id
-    end 
+    end
   end
 end
