@@ -1,20 +1,24 @@
-<%= render 'shared/logo_banner' %>
-
-<h1 class="text-center mb-2 upcase text-3xl text-primary-200 font-medium uppercase">Rejoins tes colocs</h1>
-
-<h3 class="text-center mb-8 text-medium">Entre le code de la coloc :</h3>
-
-<div class="text-center">
-    <%= simple_form_for @user do |f| %>
-        <div>
-            <input type="text", value="", name="invite_token", class="invit-token">
-        </div>
-        <div>
-            <%= f.submit "Je rejoins", class: 'btn-primary' %>
-        </div>
-    <% end %>
+<div class="lg:flex lg:-mt-24 lg:h-screen lg:items-center">
+  <%= render 'shared/logo_banner' %>
   
-    <p class="mt-8 text-sm lg:text-base">
-        <%= link_to "Retour à l'écran d'accueil",  home_path, class:"btn-border-purple"%>
-    </p> 
+  <div class="bnr-side-content">
+    <h1 class="text-center mb-2 upcase text-3xl text-primary-200 font-medium uppercase">Rejoins tes colocs</h1>
+
+    <h3 class="text-center mb-8 text-medium">Entre le code de la coloc :</h3>
+
+    <div class="text-center">
+        <%= simple_form_for @user do |f| %>
+            <div>
+                <input type="text", value="", name="invite_token", class="invit-token">
+            </div>
+            <div>
+                <%= f.submit "Je rejoins", class: 'btn-primary' %>
+            </div>
+        <% end %>
+      
+        <p class="mt-8 text-sm lg:text-base">
+            <%= link_to "Retour à l'écran d'accueil",  home_path, class:"btn-border-purple"%>
+        </p> 
+    </div>
+  </div>
 </div>

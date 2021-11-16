@@ -1,11 +1,48 @@
+<%
+  onboarding = ["new", "choose_tasks", "recap", "invitation"]
+  third_checkpoint = action_name == "invitation"
+  second_checkpoint = action_name == "choose_tasks" || action_name == "recap" || third_checkpoint
+%>
+
 <div class="bnr">
   <div class="title-banner">
-    <div class="carrot-counter">
-      <%= image_tag 'carrot_icon.png' %>
-      <span><%= current_user.current_points %></span>
-    </div>
-    <p>Tach'Board</p>
-    <%= cl_image_tag current_user.avatar.key, class:'avatar avatar-md' %>
+
+    <% if controller_name == "colocs" && onboarding.include?(action_name) %>
+      <!-- onboarding screens, display stepper -->
+      <div class="mb-8 w-11/12 md:w-2/3 mx-auto">
+        <div class="mx-4 p-4">
+            <div class="flex items-center">
+                <div class="flex items-center relative">
+                    <div class="rounded-full transition duration-500 ease-in-out h-7 w-7 py-3 bg-tertiary-200">
+                    </div>
+                    <div class="absolute top-0 -ml-10 text-center mt-9 w-28 text-xs md:text-sm font-medium uppercase">Initialisation</div>
+                </div>
+                <div class="flex-auto border-t-2 transition duration-500 ease-in-out <%= second_checkpoint ? 'border-tertiary-200' : 'border-white' %>"></div>
+                <div class="flex items-center relative">
+                    <div class="rounded-full transition duration-500 ease-in-out h-7 w-7 py-3 <%= second_checkpoint ? 'bg-tertiary-200' : 'bg-white' %>">
+                    </div>
+                    <div class="absolute top-0 -ml-10 text-center mt-9 w-28 text-xs md:text-sm font-medium uppercase">Choix des tâches</div>
+                </div>
+                <div class="flex-auto border-t-2 transition duration-500 ease-in-out <%= third_checkpoint ? 'border-tertiary-200' : 'border-white' %>"></div>
+                <div class="flex items-center relative">
+                    <div class="rounded-full transition duration-500 ease-in-out h-7 w-7 py-3 <%= third_checkpoint ? 'bg-tertiary-200' : 'bg-white' %>">
+                    </div>
+                    <div class="absolute top-0 -ml-10 text-center mt-9 w-28 text-xs md:text-sm font-medium uppercase">Invitation</div>
+                </div>
+            </div>
+        </div>
+      </div>
+      
+    <% else %>
+      <!-- all the other screens, display number of carrots, title and user avatar -->
+      <div class="carrot-counter">
+        <%= image_tag 'carrot_icon.png' %>
+        <span><%= current_user.current_points %></span>
+      </div>
+      <p>Tach'Board</p>
+      <%= cl_image_tag current_user.avatar.key, class:'avatar avatar-md' %>
+    <% end %>
+
   </div>
   <div class="banner-divider">
     <%= image_tag 'divider.svg' %>

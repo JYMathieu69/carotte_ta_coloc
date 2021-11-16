@@ -1,28 +1,32 @@
-<%= render 'shared/logo_banner' %>
+<div class="lg:flex lg:-mt-24 lg:h-screen lg:items-center">
+  <%= render 'shared/logo_banner' %>
 
-<div class='text-center text-lg text-primary-200 text-bold mb-12 lg:text-2xl lg:mb-16 font-medium'>
-    <h1>Quelques règles pour bien commencer</h1>
-</div>
-
-<div class='rules'>
-    <div class="earn-carrots">
-        <%= image_tag 'earn_carrots.png', alt: 'use_carrots', class:"rules-icons rounded-full h-16 w-16"%>
-        <p class="rules-text mt-4">1. Gagne des carottes en faisant des tâches</p>
+  <div class="bnr-side-content">
+    <div class='text-center text-lg text-primary-200 text-bold mb-12 lg:text-2xl lg:mb-16 font-medium'>
+        <h1>Quelques règles pour bien commencer</h1>
     </div>
 
-<div class="dashed"></div>
+    <div class='rules'>
+        <div class="earn-carrots">
+            <%= image_tag 'earn_carrots.png', alt: 'use_carrots', class:"rules-icons rounded-full h-16 w-16"%>
+            <p class="rules-text mt-4">1. Gagne des carottes en faisant des tâches</p>
+        </div>
 
-    <div class="mb-12 lg:mb-16">
-        <%= image_tag 'assign_task.png', alt: 'use_carrots', class:"rules-icons rounded-full mb-4 h-16 w-16"%>
-        <p class="rules-text mt-4">2. Utilise tes carottes pour réassigner une de tes tâches !</p>   
+    <div class="dashed"></div>
+
+        <div class="mb-12 lg:mb-16">
+            <%= image_tag 'assign_task.png', alt: 'use_carrots', class:"rules-icons rounded-full mb-4 h-16 w-16"%>
+            <p class="rules-text mt-4">2. Utilise tes carottes pour réassigner une de tes tâches !</p>   
+        </div>
     </div>
-</div>
 
-<div class="text-center flex items-center justify-around">
-    <%= link_to "JE CRÉE MA COLOC'",new_coloc_path, class: 'btn-primary' %>
-    <%= link_to "J'EN REJOINS UNE",join_coloc_path, class: 'btn-ghost' %>
-</div>
+    <div class="text-center flex items-center justify-around">
+        <%= link_to "JE CRÉE MA COLOC'",new_coloc_path, class: 'btn-primary' %>
+        <%= link_to "J'EN REJOINS UNE",join_coloc_path, class: 'btn-ghost' %>
+    </div>
 
-<div class="text-center text-sm mt-4 lg:mt-8">
-    <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"btn-border-purple" %>
+    <div class="text-center text-sm mt-4 lg:mt-8">
+        <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"btn-border-purple" %>
+    </div>
+  </div>
 </div>
