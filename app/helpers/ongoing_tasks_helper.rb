@@ -9,9 +9,9 @@ module OngoingTasksHelper
 
   def finished_carrot_img_class?(task)
     if task.finished?
-      'carrot_price_circle finished'
+      'finished mt-4'
     else
-      'carrot_price_circle'
+      'mt-4' 
     end
   end
 end
