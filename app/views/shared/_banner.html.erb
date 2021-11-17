@@ -39,7 +39,7 @@
         <%= image_tag 'carrot_icon.png' %>
         <span><%= current_user.current_points %></span>
       </div>
-      <p>Tach'Board</p>
+      <%= link_to "Tach'board" , ongoing_tasks_path %>
       <%= cl_image_tag current_user.avatar.key, class:'avatar avatar-md' %>
     <% end %>
 
