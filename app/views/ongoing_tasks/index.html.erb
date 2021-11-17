@@ -65,7 +65,7 @@
           👉🏻 Retrouve les tâches de tes colocs' et suit leurs avancées.
         </p>
     </div>
-    <div>
+    <div class="mb-8">
       <% @users_coloc.each do |user| %>
         <div class="coloc-avatar-name">
 
@@ -94,16 +94,6 @@
         </div>
       <% end %> 
     </div>
-  </div>
-  
-  <div class="flex justify-around items-center my-8 text-sm lg:text-base lg:my-16">
-    <div>
-      <% if current_user.id == current_user.coloc.leader_id %>
-        <%= link_to "> Gérer la coloc", edit_coloc_path(current_user.coloc), class:"btn-border-purple" %>
-      <% end %>
-    </div>
-    <div>
-      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %>
-    </div>
-  <% end %>
-  </div>
+  </div>  
+<% end %>
+
