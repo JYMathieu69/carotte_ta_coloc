@@ -79,6 +79,11 @@
             <%= user.username %>
           </div>
 
+          <div class="carrot_price_circle mb-4">
+            <%= image_tag 'carrot_icon.png' , alt: 'carrot_price' , class:"w-4 h-6 pr-1" %>
+            <p class="text-base"><%= user.current_points %></p> 
+          </div>
+
         </div>
         <div class="task_grid">
           <% user.ongoing_tasks.each do |task| %>
