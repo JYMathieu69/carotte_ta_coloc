@@ -1,20 +1,20 @@
 .carrot_price_circle {
-    @apply flex justify-center items-center rounded-xl bg-white text-secondary-200 text-xs w-12 h-6 mt-2 lg:w-16 lg:h-8 lg:text-base
+    @apply flex justify-center items-center rounded-xl bg-white text-secondary-200 text-xs w-12 h-6 mt-auto lg:w-16 lg:h-8 lg:text-base;
 }
 
 .my-task-card {
     @apply shadow-md bg-lightWhite-200 rounded-xl px-8 py-4 mx-8 border-2 border-solid border-secondary-200 text-secondary-200;
 }
 
-.bonus-task-card {
+.bonus-task-card, .coloc-task-card {
     @apply px-8 py-4 mx-2 text-primary-200
 }
 
-.my-task-card {
-    @apply shadow-md bg-lightWhite-200 rounded-xl px-8 py-4 mx-8 border-2 border-solid border-secondary-200 text-secondary-200;
-}
+.task-card {
+  @apply flex flex-col items-center justify-between rounded-xl py-4 px-2 bg-white;
+  box-shadow: 1px 1px 2px 1px #00000021;
 
-
-.coloc-task-card {
-    @apply px-8 py-4 mx-2 text-primary-200
+  p {
+    @apply mt-0;
+  }
 }
