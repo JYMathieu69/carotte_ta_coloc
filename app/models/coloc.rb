@@ -18,6 +18,8 @@ class Coloc < ApplicationRecord
   validates :leader, uniqueness: true
   validates :leader, presence: true
 
+  validates :number_of_people, presence: true
+
   after_create :set_invite_token
 
   private
