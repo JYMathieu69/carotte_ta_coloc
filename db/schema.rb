@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_03_091258) do
+ActiveRecord::Schema.define(version: 2021_11_17_064400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2021_08_03_091258) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "assignment_day"
+    t.integer "number_of_people"
     t.index ["leader_id"], name: "index_colocs_on_leader_id"
   end
 
