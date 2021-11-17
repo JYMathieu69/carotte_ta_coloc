@@ -32,9 +32,11 @@
     </div>
 
     <% if task.done %>
+    <div class="mb-4 lg:mb-8">
       <p>Tâche faite <%= l(task.finished_at, format: '%A') %> par <%= task.user.username %>.</p>
       <p>Preuve photo :</p>
-      <%= cl_image_tag task.photo_after.key, width: 100, height: 100, crop: :fill %>
+    </div>
+      <%= cl_image_tag task.photo_after.key, crop: :fill, class:"mx-auto w-24 h-24 lg:w-40 lg:h-40" %>
     <% elsif assignment %>
       <% if task.user_id.nil? %>
         <p class="mb-4 text-darkGrey-50">Cette tâche n'est affectée à personne. Fais-la et récupère des carottes !</p> 
