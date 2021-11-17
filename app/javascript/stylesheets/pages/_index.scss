@@ -7,14 +7,18 @@
 }
 
 .bonus-task-card, .coloc-task-card {
-    @apply px-8 py-4 mx-2 text-primary-200
+    @apply px-8 py-4 mx-2 text-primary-200;
 }
 
 .task-card {
-  @apply flex flex-col items-center justify-between rounded-xl py-4 px-2 bg-white;
+  @apply flex flex-col items-center justify-between rounded-xl py-4 px-2 bg-white relative;
   box-shadow: 1px 1px 2px 1px #00000021;
 
   p {
     @apply mt-0;
   }
+}
+
+.finished {
+  @apply opacity-80 filter grayscale;
 }
