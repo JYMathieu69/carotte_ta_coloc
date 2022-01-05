@@ -33,7 +33,8 @@ class OngoingTasksController < ApplicationController
       @ongoing_task.save
 
       ValidateTasksJob.set(wait: 4.hours).perform_later(@ongoing_task) if @ongoing_task.task.recurrence == "daily" 
-      add_task_points_to_user_current_points(@ongoing_task.final_points)
+      add_task_points_to_colocs_points(@ongoing_task)
+
 
       redirect_to ongoing_tasks_path
     else
@@ -83,9 +84,20 @@ class OngoingTasksController < ApplicationController
     end
   end
 
-  def add_task_points_to_user_current_points(ongoing_task_final_points)
-    current_user.current_points += ongoing_task_final_points
-    current_user.save
+  def add_task_points_to_colocs_points(ongoing_task)
+    helpers = ongoing_task.helpers
+    if helpers.empty?
+       current_user.current_points += ongoing_task.final_points
+    else
+      participants = ongoing_task.helpers.count + 1
+      points_to_add = (ongoing_task.final_points / participants).round
+      current_user.current_points += points_to_add
+      helpers.each do |helper|
+       helper.user.current_points += points_to_add
+       helper.user.save
+      end
+    end
+      current_user.save
   end
 
   def helpers_that_where_already_selected
