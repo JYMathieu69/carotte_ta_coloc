@@ -31,3 +31,8 @@ en:
 
 en:
   hello: "Hello world"
+  errors:
+    messages:
+      must_be_image: "The file must be an image!"
+  
+

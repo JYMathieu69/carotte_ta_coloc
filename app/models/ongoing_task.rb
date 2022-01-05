@@ -27,7 +27,7 @@ class OngoingTask < ApplicationRecord
 
   validates_each :photo_after, :photo_before do |record, attr, value|
     if value.content_type && %w[image/jpeg image/jpg image/gif image/png].exclude?(value.content_type)
-      record.errors.add(attr, 'must be an image')
+      record.errors.add(attr, :must_be_image)
     end
   end
 

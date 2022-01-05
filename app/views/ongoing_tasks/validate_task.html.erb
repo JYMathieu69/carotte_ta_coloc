@@ -10,8 +10,10 @@
       <%= helpers_fields.object.user.username %>
       <%= helpers_fields.check_box :user_id, { checked: false }, helpers_fields.object.user.id %>
       <%= helpers_fields.hidden_field :ongoing_task_id  %>
+      
     </div>
   <% end %>
+
 </div>
 
   <hr class="dashed">
@@ -22,7 +24,8 @@
     <%= form.label :photo_after do %>
       <%= image_tag 'camera.png', alt: 'camera', class: 'preview_img camera_img mx-auto' %>
       <%= content_tag :p, 'Je prends une photo', class: 'text-tertiary-200 mt-2 text-center' %>
-      <%= form.file_field :photo_after, class: 'hidden' %>
+      <%= form.file_field :photo_after, class: 'hidden', accept: "image/jpeg, image/jpg,image/gif,image/png" %>
+      <%= @ongoing_task.errors.full_messages.first if @ongoing_task.errors.any? %>
     <% end %>
     <%= form.submit 'Je valide ma tâche', class: 'btn-primary mb-4 lg:mb-8 mt-8' %>
   </div>
