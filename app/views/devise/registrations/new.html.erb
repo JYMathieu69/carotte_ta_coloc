@@ -20,7 +20,7 @@
         <%= f.input :username,
                       required: true,
                       label: false,
-                      input_html: { autocomplete: "username", class: 'input-form-border-purple placeholder', placeholder: "Pseudo" }%>
+                      input_html: { autocomplete: "off", class: 'input-form-border-purple placeholder', placeholder: "Pseudo" }%>
         </div>
         <div class="field">
           <%= f.input :password, autocomplete: "new-password", label: false, input_html: { class: 'input-form-border-purple placeholder', placeholder: "Mot de passe" } %>
