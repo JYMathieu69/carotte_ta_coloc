@@ -54,7 +54,7 @@ class CarottedTasksController < ApplicationController
   end
 
   def substract_carrots
-    current_user.current_points = current_user.current_points - @ongoing_task.final_points
+    current_user.current_points = current_user.current_points - CarottedTask.carroted_price(@ongoing_task.final_points)
     current_user.save
   end
 
