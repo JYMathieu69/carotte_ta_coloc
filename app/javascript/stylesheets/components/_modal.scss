@@ -1,9 +1,9 @@
 .bg-modal {
-    @apply w-full h-full bg-none absolute top-0 left-0 flex justify-center items-center hidden;
+    @apply bg-fixed h-screen w-full bg-secondary-100 bg-opacity-80 absolute top-0 left-0 flex justify-center items-center hidden ;
 }
 
 .modal-content {
-    @apply bg-offwhite-200 border-solid border-4 border-secondary-200 border-b-0 rounded-2xl text-center p-8 fixed h-1/2 lg:h-3/5 bottom-0 w-full z-50;
+    @apply bg-offwhite-200 border-solid border-4 border-secondary-200 border-b-0 rounded-2xl text-center p-8 fixed h-1/2 lg:h-3/5 bottom-0 w-9/12 z-50 ;
 }
 
 .close {

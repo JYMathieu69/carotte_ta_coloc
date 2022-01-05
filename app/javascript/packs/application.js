@@ -10,8 +10,8 @@ import "channels"
 // import { displayTabs } from '../plugins/display_tabs.js';
 import { initPictureInput } from '../plugins/preview_picture.js';
 import { initClickableTasks, initCloseTaskClickOutside, initCloseTaskModal } from '../plugins/modals';
-import { coloredSwitchButtons } from '../plugins/toggle_switch_button.js'
-import { displayTextIconHovered } from '../plugins/hovered_icon_text.js'
+import { coloredSwitchButtons } from '../plugins/toggle_switch_button.js';
+import { displayTextIconHovered } from '../plugins/hovered_icon_text.js';
 
 Rails.start()
 Turbolinks.start()
