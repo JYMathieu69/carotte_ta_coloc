@@ -37,4 +37,5 @@ document.addEventListener("turbolinks:load", () => {
   initCloseTaskModal();
   initPictureInput();
   coloredSwitchButtons();
+  // displayTextIconHovered();
 });

@@ -2,7 +2,7 @@
 <div class="lg:h-16 lg:w-16 h-12 w-12 mb-4">
   <%= cl_image_tag task.image.key, class: finished_task_img_class?(task), data: { task_id: task.id }%>
 </div>
-<p class="text-xs lg:text-base text-center mb-2 <%= finished_carrot_img_class?(task) %>"">
+<p class="text-xs lg:text-base text-center mb-4 <%= finished_carrot_img_class?(task) %>"">
   <%= task.name %>
 </p>
 <div class="<%= finished_carrot_img_class?(task) %> carrot_price_circle ">
@@ -14,6 +14,9 @@
   </div>
 </div>
 
+<% if task.finished? %>
+  <img src="https://img.icons8.com/office/80/000000/checked--v1.png" class="w-8 h-8 absolute top-1 right-1 sm:top-2 sm:right-2" />
+<% end %>
 
 <!-- Modal Section -->
 
