@@ -26,7 +26,7 @@
     </div>
     <div class="task_grid mt-4 lg:mt-8">
       <% @user_tasks.each do |task| %>
-        <div class="flex flex-col items-center justify-between mb-4">
+        <div class="task-card mb-4">
           <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: false, validation: true%>
         </div>
       <% end %> 
@@ -35,7 +35,7 @@
 
   <div class="dashed lg:mt-16"></div>
   
-  <%# tâches non assignées %>
+  <%# tâches bonus %>
   <div class="bonus-task-card mb-8">
     <div class="items-center">
       <h2 class="text-primary-200 text-base lg:text-xl pr-1 inline-block">Tâches bonus</h2>
@@ -47,7 +47,7 @@
     
     <div class="task_grid mt-4 lg:mt-8 gap-4">
       <% @unassigned_tasks.each do |task| %>
-        <div class="flex flex-col items-center justify-between">
+        <div class="task-card">
           <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false %>
         </div>
       <% end %>
@@ -75,14 +75,22 @@
             <%= cl_image_tag user.avatar.key, height: 80, width: 80, class:"pr-2 rounded-full" %>
           </div>
 
-          <div class="mt-2 uppercase text-secondary-200">
-            <%= user.username %>
+          <div class="flex items-center">
+
+            <div class="mt-2 uppercase text-secondary-200">
+              <%= user.username %>
+            </div>
+
+            <div class="flex items-center m-6 space-x-1">
+              <h3><%= user.current_points %></h3>
+              <%= image_tag 'carrot_icon.png' , alt: 'carrot_price', class:"w-4 h-6 pr-1" %>
+            </div>
           </div>
 
         </div>
         <div class="task_grid">
           <% user.ongoing_tasks.each do |task| %>
-          <div class="flex flex-col items-center justify-between">
+          <div class="task-card">
             <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false %>
           </div>
           <% end %>
