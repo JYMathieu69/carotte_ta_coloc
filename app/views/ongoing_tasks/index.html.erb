@@ -35,7 +35,7 @@
 
   <div class="dashed lg:mt-16"></div>
   
-  <%# tâches non assignées %>
+  <%# tâches bonus %>
   <div class="bonus-task-card mb-8">
     <div class="items-center">
       <h2 class="text-primary-200 text-base lg:text-xl pr-1 inline-block">Tâches bonus</h2>
@@ -75,8 +75,16 @@
             <%= cl_image_tag user.avatar.key, height: 80, width: 80, class:"pr-2 rounded-full" %>
           </div>
 
-          <div class="mt-2 uppercase text-secondary-200">
-            <%= user.username %>
+          <div class="flex items-center">
+
+            <div class="mt-2 uppercase text-secondary-200">
+              <%= user.username %>
+            </div>
+
+            <div class="flex items-center m-6 space-x-1">
+              <h3><%= user.current_points %></h3>
+              <%= image_tag 'carrot_icon.png' , alt: 'carrot_price', class:"w-4 h-6 pr-1" %>
+            </div>
           </div>
 
         </div>
