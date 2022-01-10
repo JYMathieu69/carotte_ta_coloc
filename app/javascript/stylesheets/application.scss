@@ -2,11 +2,15 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@import './index.scss';
+@import "./index.scss";
 
 * {
       @apply font-default;
       box-sizing: border-box;
       outline: none;
       text-decoration: none;
+}
+
+ul {
+      list-style: none;
 }

@@ -75,7 +75,7 @@ class ColocsController < ApplicationController
   private
 
   def coloc_params
-    params.require(:coloc).permit(:name, coloc_tasks_attributes: [:task_id, :difficulty, :id])
+    params.require(:coloc).permit(:name, :number_of_people, coloc_tasks_attributes: [:task_id, :difficulty, :id])
   end
 
   def set_coloc

@@ -1,5 +1,5 @@
 .bg-modal {
-    @apply w-full h-full bg-none absolute top-0 left-0 flex justify-center items-center hidden;
+    @apply bg-fixed h-screen w-full bg-secondary-100 bg-opacity-80 absolute top-0 left-0 flex justify-center items-center hidden ;
 }
 
 .modal-content {
