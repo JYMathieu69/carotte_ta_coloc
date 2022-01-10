@@ -6,9 +6,12 @@ class OngoingTasksController < ApplicationController
     redirect_to choose_tasks_path(current_user.coloc) and return if current_user.coloc.coloc_tasks.empty?
 
     all_ongoing_tasks = current_user.coloc.ongoing_tasks
-    @user_tasks = all_ongoing_tasks.joins(:task).where(task: { auto_assigned: true}).where(user: current_user)
-    @colocs_tasks = all_ongoing_tasks.where.not(user: current_user).order(:user_id)
-    @unassigned_tasks = all_ongoing_tasks.unassigned_tasks
+    previous_distrib_date = Time.now.prev_occurring(current_user.coloc.assignment_day.downcase.to_sym)
+    @user_tasks = all_ongoing_tasks.joins(:task).where(task: {auto_assigned: true}).where(user: current_user).where(created_at: previous_distrib_date)
+    @colocs_tasks = all_ongoing_tasks.where.not(user: current_user).order(:user_id).where(created_at: previous_distrib_date)
+    task_by_name = all_ongoing_tasks.unassigned_tasks.group_by{ |ongoing_task| ongoing_task.name }
+    @unassigned_tasks = task_by_name.map { |task_name, task| task.sort_by { |ongoing_task| ongoing_task.created_at }.last }
+    
     all_users = current_user.coloc.users
     @users_coloc = all_users.filter { |user| user != current_user }
   end
@@ -25,19 +28,20 @@ class OngoingTasksController < ApplicationController
     return if cannot_validate_done_task
 
     @ongoing_task.helpers.destroy_all if @ongoing_task.helpers
+    @ongoing_task.user = current_user if !@ongoing_task.user
 
     if @ongoing_task.update(ongoing_task_params)
       @ongoing_task.finished_at = DateTime.now
       @ongoing_task.done = true
-      @ongoing_task.user = current_user if !@ongoing_task.user
       @ongoing_task.save
 
       ValidateTasksJob.set(wait: 4.hours).perform_later(@ongoing_task) if @ongoing_task.task.recurrence == "daily" 
-      add_task_points_to_user_current_points(@ongoing_task.final_points)
-      
+      add_task_points_to_colocs_points(@ongoing_task)
+
+
       redirect_to ongoing_tasks_path
     else
-      redirect_to validation_update(@ongoing_task)
+      render :validate_task
     end
   end
 
@@ -46,7 +50,7 @@ class OngoingTasksController < ApplicationController
     helpers_ids_array = helpers_that_where_already_selected
     potential_helpers.each do |potential_helper|
       unless helpers_ids_array.include? potential_helper.id
-        @ongoing_task.helpers.build(user: potential_helper, ongoing_task_id: @ongoing_task.id )
+        @ongoing_task.helpers.build(user: potential_helper, ongoing_task_id: @ongoing_task.id)
       end
     end
   end
@@ -83,14 +87,26 @@ class OngoingTasksController < ApplicationController
     end
   end
 
-  def add_task_points_to_user_current_points(ongoing_task_final_points)
-    current_user.current_points += ongoing_task_final_points
-    current_user.save
+  def add_task_points_to_colocs_points(ongoing_task)
+    helpers = ongoing_task.helpers
+    if helpers.empty?
+       current_user.current_points += ongoing_task.final_points
+    else
+      participants = ongoing_task.helpers.count + 1
+      points_to_add = (ongoing_task.final_points / participants).round
+      current_user.current_points += points_to_add
+      helpers.each do |helper|
+       helper.user.current_points += points_to_add
+       helper.user.save
+      end
+    end
+      current_user.save
   end
 
   def helpers_that_where_already_selected
+    
     @ongoing_task.helpers.map do |helper|
       helper.user_id
-    end 
+    end
   end
 end
