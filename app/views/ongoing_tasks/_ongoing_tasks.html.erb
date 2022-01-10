@@ -29,6 +29,9 @@
     <div class="flex justify-center items-center">
       <%= cl_image_tag task.image.key, width: 200, height: 200, class: 'modal-img w-32 h-32 lg:w-52 lg:h-52' %>
     </div>
+    <div class="mt-12"> 
+      <%= task.name %>
+    </div>
     <div class="potential-carrots-earned">
       <h3 class="potential-carrots-text">Cette tâche rapporte <span class="font-bold"><%= task.final_points %></span></h3>
       <%= image_tag 'carrot_icon.png', alt: 'carrot_price', class:"pl-2"%>
