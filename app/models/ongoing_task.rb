@@ -7,7 +7,7 @@ class OngoingTask < ApplicationRecord
   has_one_attached :photo_before
   has_one_attached :photo_after
 
-  validate :photo_after
+  validate :photo_after?, on: :validation_update
 
   has_one :coloc, through: :coloc_task
   has_one :task, through: :coloc_task
@@ -41,7 +41,7 @@ class OngoingTask < ApplicationRecord
   scope :done, -> { where(done: true) }
   scope :daily_not_finished_unassigned_tasks, -> { unassigned_tasks.not_finished }
 
-  def photo_after
+  def photo_after?
     errors.add(:base, 'Veuillez valider avec une photo.') unless photo_after.attached?
   end
   
