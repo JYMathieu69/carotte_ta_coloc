@@ -1,4 +1,4 @@
-<h3 class="mx-auto text-secondary-200 text-center upcase">Quelqu'un t'a aidé ?</h3>
+<h3 class="mx-auto text-secondary-200 text-center upcase mt-4">Quelqu'un t'a aidé ?</h3>
 
 <%= form_with model: @ongoing_task, url: validation_update_path(@ongoing_task) do |form| %>
 <div class="choose_task_grid mt-8">
@@ -20,7 +20,7 @@
 
   <h3 class="text-secondary-200 text-center">PROUVE-LE A TES COLOCS !</h3>
   
-  <div class="container-photo mt-8">
+  <div class="container-photo mt-8 mb-4">
     <%= form.label :photo_after do %>
       <%= image_tag 'camera.png', alt: 'camera', class: 'preview_img camera_img mx-auto' %>
       <%= content_tag :p, 'Je prends une photo', class: 'text-tertiary-200 mt-2 text-center' %>
@@ -30,3 +30,5 @@
     <%= form.submit 'Je valide ma tâche', class: 'btn-primary mb-4 lg:mb-8 mt-8' %>
   </div>
 <% end %>
+<%= link_to " > Revenir au Tach'board" , ongoing_tasks_path, class: "btn-border-purple ml-8 lg:ml-16 text-sm" %>
+

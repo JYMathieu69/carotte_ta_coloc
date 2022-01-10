@@ -39,8 +39,24 @@
         <%= image_tag 'carrot_icon.png' %>
         <span><%= current_user.current_points %></span>
       </div>
-      <p>Tach'Board</p>
-      <%= cl_image_tag current_user.avatar.key, class:'avatar avatar-md' %>
+      <%= link_to "Tach'board" , ongoing_tasks_path %>
+
+      <div class="dropdown">
+        <%= cl_image_tag current_user.avatar.key, class:'dropbtn avatar avatar-md' %>
+        <div class="dropdown-content">
+          <div>
+              <p>Voir mon profil</p>
+          </div>
+          <div>
+            <% if current_user.id==current_user.coloc.leader_id %>
+              <p>Gérer la coloc</p>
+            <% end %>
+          </div>
+          <div>
+            <%= link_to "Se déconnecter" , destroy_user_session_path, method: :delete %>
+          </div>
+        </div>
+      </div>
     <% end %>
 
   </div>
