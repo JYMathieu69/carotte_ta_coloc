@@ -1,6 +1,6 @@
 <div class="lg:flex lg:-mt-24 lg:h-screen lg:items-center">
   <%= render 'shared/logo_banner' %>
-
+  
   <div class="bnr-side-content">
     <div class="text-center mb-8 lg:mb-12">
       <p class="font-default text-xl mb-4 text-primary-200 font-medium lg:text-2xl lg:mb-8">Connexion</p>
@@ -11,6 +11,9 @@
 
     <div class="log-in-form">
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
+        <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
+        <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
         <%= f.input :email,
                     autofocus: true,
                     input_html: { autocomplete: "email", class: "input-form-border-purple placeholder" },
