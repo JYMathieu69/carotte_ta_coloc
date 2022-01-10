@@ -7,7 +7,7 @@ class OngoingTask < ApplicationRecord
   has_one_attached :photo_before
   has_one_attached :photo_after
 
-  validate :photo_after?, on: :validation_update
+  validate :photo_after?, on: :update
 
   has_one :coloc, through: :coloc_task
   has_one :task, through: :coloc_task
