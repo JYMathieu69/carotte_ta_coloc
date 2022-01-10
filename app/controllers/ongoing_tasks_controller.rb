@@ -37,22 +37,15 @@ class OngoingTasksController < ApplicationController
 
       ValidateTasksJob.set(wait: 4.hours).perform_later(@ongoing_task) if @ongoing_task.task.recurrence == "daily" 
       add_task_points_to_colocs_points(@ongoing_task)
-
-
       redirect_to ongoing_tasks_path
     else
+      build_helpers
       render :validate_task
     end
   end
 
   def validate_task
-    potential_helpers = User.where(coloc_id: current_user.coloc.id).where.not(id: current_user.id)
-    helpers_ids_array = helpers_that_where_already_selected
-    potential_helpers.each do |potential_helper|
-      unless helpers_ids_array.include? potential_helper.id
-        @ongoing_task.helpers.build(user: potential_helper, ongoing_task_id: @ongoing_task.id)
-      end
-    end
+    build_helpers
   end
 
   def start_ongoing_tasks
@@ -75,6 +68,16 @@ class OngoingTasksController < ApplicationController
 
   def ongoing_task_params
     params.require(:ongoing_task).permit(:name, :photo_after, :photo_before, helpers_attributes: [ :ongoing_task_id, :user_id])
+  end
+
+  def build_helpers
+    potential_helpers = User.where(coloc_id: current_user.coloc.id).where.not(id: current_user.id)
+    helpers_ids_array = helpers_that_where_already_selected
+    potential_helpers.each do |potential_helper|
+      unless helpers_ids_array.include? potential_helper.id
+        @ongoing_task.helpers.build(user: potential_helper, ongoing_task_id: @ongoing_task.id)
+      end
+    end
   end
 
   def cannot_validate_done_task
