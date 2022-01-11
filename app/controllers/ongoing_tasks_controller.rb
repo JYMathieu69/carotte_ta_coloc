@@ -7,7 +7,7 @@ class OngoingTasksController < ApplicationController
 
     all_ongoing_tasks = current_user.coloc.ongoing_tasks
     previous_distrib_date = Time.now.prev_occurring(current_user.coloc.assignment_day.downcase.to_sym)
-    @user_tasks = all_ongoing_tasks.joins(:task).where(task: {auto_assigned: true}).where(user: current_user)
+    @user_tasks = all_ongoing_tasks.joins(:task).where(task: {auto_assigned: true}).where(user: current_user).where(created_at: previous_distrib_date)
     @colocs_tasks = all_ongoing_tasks.where.not(user: current_user).order(:user_id).where(created_at: previous_distrib_date)
     task_by_name = all_ongoing_tasks.unassigned_tasks.group_by{ |ongoing_task| ongoing_task.name }
     @unassigned_tasks = task_by_name.map { |task_name, task| task.sort_by { |ongoing_task| ongoing_task.created_at }.last }
@@ -26,6 +26,7 @@ class OngoingTasksController < ApplicationController
 
   def validation_update
     return if cannot_validate_done_task
+
     @ongoing_task.helpers.destroy_all if @ongoing_task.helpers
     @ongoing_task.user = current_user if !@ongoing_task.user
     @ongoing_task.validating = true
