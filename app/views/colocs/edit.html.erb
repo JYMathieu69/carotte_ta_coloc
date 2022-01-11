@@ -31,8 +31,10 @@
                 <p class="font-medium mr-4"><%= user.username %></p>
                 <p>
                   <% if user !=@coloc.leader %>
-                    <%= link_to "X" , remove_coloc_user_path(@coloc, user), method: :delete, data: {
+                  <p class="w-6">
+                    <%= link_to image_tag('close.png') , remove_coloc_user_path(@coloc, user), method: :delete, data: {
                       confirm: "Retirer #{user.username} de la coloc ?" } %>
+                  </p>
                       <% end %> 
                 </p>
               </div>
