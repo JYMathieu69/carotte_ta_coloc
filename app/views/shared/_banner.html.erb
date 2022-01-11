@@ -46,7 +46,7 @@
         <div class="dropdown-content">
           <div>
             <% if current_user.id == current_user.coloc.leader_id %>
-              <%= link_to "Gérer la coloc" %>
+              <%= link_to "Gérer la coloc", edit_coloc_path(current_user.coloc) %>
             <% end %>
           </div>
           <div>
