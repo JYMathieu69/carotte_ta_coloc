@@ -1,14 +1,38 @@
 <%# écran avant 1ère répartition des tâches selon user %>
 <% if (current_user.coloc.assignment_day.nil?) && (current_user.id == current_user.coloc.leader_id) %>
-  <h3 class="text-center mb-8 text-sm">Avant de continuer,<br>assure toi que le logement soit au complet</h3>
-  <div class="text-center">
-    <p class="text-base mb-4">On est tous là, c'est parti :</p>
-    <%= button_to "Créer et distribuer les tâches", start_ongoing_tasks_path, class: "btn-primary" %>
+<h3 class="text-center mb-8 font-medium"> Les colocs ayant rejoint :</h3>
+<div class='choose_task_grid mb-8 lg:mb-16'>
+<% current_user.coloc.users.each do |user| %>
+  <div class='flex flex-col justify-center items-center'>
+    <%= cl_image_tag user.avatar.key,class:"pr-2 rounded-full h-16 w-16" %>
+    <p class="mt-4 text-sm"><%= user.username %></p>
+  </div>
+  <% end %>
+</div>
+<div class="text-center">
+  <p class="text-base mb-4">Bravo 🎉 ! <br> tout tes colocs' sont présents</p>
+  <% if current_user.coloc.users.count == current_user.coloc.number_of_people %>
+  <%= button_to "Créer et distribuer les tâches", start_ongoing_tasks_path, class: "btn-primary" %>
+  <% else %>
+    <p> La Coloc n'est pas au complet! Nous attendons les autres </p>
+    <% end %>
   </div>
   <%= @error %>
 <% elsif (current_user.coloc.assignment_day.nil?)%>
-  <p>La coloc n'est pas encore au complet, réessaie plus tard !</p>
-  <%= link_to "Réessayer", ongoing_tasks_path %>
+<h3 class="text-center mb-8 font-medium"> Les colocs ayant rejoint :</h3>
+<div class='choose_task_grid mb-8 lg:mb-16'>
+<% current_user.coloc.users.each do |user| %>
+  <div class='flex flex-col justify-center items-center'>
+    <%= cl_image_tag user.avatar.key,class:"pr-2 rounded-full h-16 w-16" %>
+    <p class="mt-4 text-sm"><%= user.username %></p>
+  </div>
+  <% end %>
+</div>
+  <p class="text-center mb-4 lg:mb-8 text-sm">En attente du leader de la coloc (<%= current_user.coloc.leader_id %>)</p>
+  <p class="text-center btn-primary w-1/2 mx-auto"> <%= link_to "> Réessayer", ongoing_tasks_path %> </p>
+
+  <!-- Si je suis Leader : je vois tout le monde + j'ai accès au bouton si la coloc est complète, sinon j'ai "coloc incomplète" -->
+  <!-- Si je suis invité : je vois tout le monde + message "en attente du leader" -->
   
 <%# écran après 1ère répartition des tâches %>
 <% else %>
@@ -65,7 +89,7 @@
           👉🏻 Retrouve les tâches de tes colocs' et suit leurs avancées.
         </p>
     </div>
-    <div>
+    <div class="mb-8">
       <% @users_coloc.each do |user| %>
         <div class="coloc-avatar-name">
 
@@ -75,15 +99,15 @@
             <%= cl_image_tag user.avatar.key, height: 80, width: 80, class:"pr-2 rounded-full" %>
           </div>
 
-          <div class="flex items-center">
+          <div class="flex mt-4">
 
             <div class="mt-2 uppercase text-secondary-200">
               <%= user.username %>
             </div>
-
-            <div class="flex items-center m-6 space-x-1">
-              <h3><%= user.current_points %></h3>
-              <%= image_tag 'carrot_icon.png' , alt: 'carrot_price', class:"w-4 h-6 pr-1" %>
+            
+            <div class="carrot_price_circle mb-4">
+              <%= image_tag 'carrot_icon.png' , alt: 'carrot_price' , class:"w-4 h-6 pr-1" %>
+              <p class="text-base"><%= user.current_points %></p> 
             </div>
           </div>
 
@@ -97,16 +121,6 @@
         </div>
       <% end %> 
     </div>
-  </div>
-  
-  <div class="flex justify-around items-center my-8 text-sm lg:text-base lg:my-16">
-    <div>
-      <% if current_user.id == current_user.coloc.leader_id %>
-        <%= link_to "> Gérer la coloc", edit_coloc_path(current_user.coloc), class:"btn-border-purple" %>
-      <% end %>
-    </div>
-    <div>
-      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %>
-    </div>
-  <% end %>
-  </div>
+  </div>  
+<% end %>
+
