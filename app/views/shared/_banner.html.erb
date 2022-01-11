@@ -45,11 +45,8 @@
         <%= cl_image_tag current_user.avatar.key, class:'dropbtn avatar avatar-md' %>
         <div class="dropdown-content">
           <div>
-              <p>Voir mon profil</p>
-          </div>
-          <div>
-            <% if current_user.id==current_user.coloc.leader_id %>
-              <p>Gérer la coloc</p>
+            <% if current_user.id == current_user.coloc.leader_id %>
+              <%= link_to "Gérer la coloc", edit_coloc_path(current_user.coloc) %>
             <% end %>
           </div>
           <div>
