@@ -1,4 +1,6 @@
 class OngoingTask < ApplicationRecord
+  attr_accessor :validating
+
   before_validation :set_final_points
   
   belongs_to :coloc_task
@@ -7,7 +9,7 @@ class OngoingTask < ApplicationRecord
   has_one_attached :photo_before
   has_one_attached :photo_after
 
-  validate :photo_after?, on: :update
+  validate :photo_after?, on: :update, if: lambda { self.validating == true }
 
   has_one :coloc, through: :coloc_task
   has_one :task, through: :coloc_task

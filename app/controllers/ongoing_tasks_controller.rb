@@ -32,7 +32,7 @@ class OngoingTasksController < ApplicationController
 
     @ongoing_task.helpers.destroy_all if @ongoing_task.helpers
     @ongoing_task.user = current_user if !@ongoing_task.user
-
+    @ongoing_task.validating = true
     if @ongoing_task.update(ongoing_task_params)
       @ongoing_task.finished_at = DateTime.now
       @ongoing_task.done = true
