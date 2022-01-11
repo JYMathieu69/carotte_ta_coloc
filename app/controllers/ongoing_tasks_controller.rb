@@ -8,7 +8,7 @@ class OngoingTasksController < ApplicationController
     all_ongoing_tasks = current_user.coloc.ongoing_tasks
     coloc_assignment_day = current_user.coloc.assignment_day
     if coloc_assignment_day
-      previous_distrib_date = Time.current.prev_occurring(coloc_assignment_day.downcase.to_sym)
+      previous_distrib_date = Time.current.prev_occurring(coloc_assignment_day.downcase.to_sym).beginning_of_day
       @user_tasks = all_ongoing_tasks.joins(:task).where(task: {auto_assigned: true}).where(user: current_user).where("ongoing_tasks.created_at > ?", previous_distrib_date)
       @colocs_tasks = all_ongoing_tasks.where.not(user: current_user).order(:user_id).where("ongoing_tasks.created_at > ?", previous_distrib_date)
     end
