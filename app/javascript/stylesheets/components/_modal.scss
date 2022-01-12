@@ -1,5 +1,5 @@
 .bg-modal {
-    @apply bg-fixed h-screen w-full bg-secondary-100 bg-opacity-80 absolute top-0 left-0 flex justify-center items-center hidden ;
+    @apply bg-fixed h-screen w-full absolute top-0 left-0 flex justify-center items-center hidden ;
 }
 
 .modal-content {
@@ -20,9 +20,13 @@
 }
 
 .modal-validate {
-    @apply flex content-center items-center justify-around;
+    @apply flex content-center items-center justify-evenly;
 }
 
 .action-task {
     @apply flex flex-col items-center justify-center content-center mt-8 lg:mt-16;
+}
+
+.validate_unassigned_task {
+    @apply text-base bg-primary-200 shadow-lg p-2 text-white rounded-lg;
 }
