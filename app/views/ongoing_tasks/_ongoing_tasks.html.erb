@@ -32,7 +32,7 @@
       <p class="text-2xl p-2 text-primary-300 text-primary-200"><%= task.name %></p>
     </div>
     <div>
-      <p class="text-base p-1 text-secondary-200 text-darkGrey-50"><%= task.description %></p>
+      <p class="text-base p-1 text-secondary-200 text-darkGrey-50 lg:text-xl"><%= task.description %></p>
     </div>
     <div class="potential-carrots-earned">
       <h3 class="potential-carrots-text mt-4">Cette tâche rapporte <span class="font-bold"><%= task.final_points %></span></h3>
@@ -58,20 +58,20 @@
         <div>
           <%= link_to validate_task_path(task), class:'action-task' do %>
             <!-- <%= image_tag "task_done.png", class:"w-16 h-16 lg:h-20 lg:w-20" %> -->
-            <%= content_tag :p, "Valide cette tâche", class: "text-base bg-secondary-200 shadow-lg p-2 text-white rounded-lg mr-2" %>
+            <%= content_tag :p, "Valide cette tâche", class: "text-base bg-secondary-200 shadow-lg p-2 text-white rounded-lg mr-2 lg:text-xl lg:p-4" %>
           <% end %>
-          <div class="potential-carrots-earned mb-0">
-            <p class="text-secondary-100"> + <%= task.final_points %> </p>
+          <div class="potential-carrots-earned mb-0 lg:mt-4">
+            <p class="text-secondary-100 text-base"> + <%= task.final_points %> </p>
             <%= image_tag 'carrot_icon.png' , alt: 'carrot_price' , class:"pl-1 h-5 w-4"%>
           </div>
         </div>
         <div>
           <%= link_to ongoing_task_carotted_tasks_path(task), method: :post, class:'action-task' do %>
           <!-- <%= image_tag "task_carrot.png", class:"w-16 h-16 lg:h-20 lg:w-20" %> -->
-          <%= content_tag :p, "Carotte ton coloc", class: "text-base bg-primary-200 shadow-lg p-2 text-white rounded-lg ml-2" %>
+          <%= content_tag :p, "Carotte ton coloc", class: "text-base bg-primary-200 shadow-lg p-2 text-white rounded-lg ml-2 lg:text-xl lg:p-4" %>
           <% end %>
-          <div class="potential-carrots-earned mt-10">
-            <p> - <%= task.final_points + 10 %></p>
+          <div class="potential-carrots-earned mt-10 lg:mt-4">
+            <p class="text-base"> - <%= task.final_points + 10 %></p>
             <%= image_tag 'carrot_icon.png' , alt: 'carrot_price' , class:"pl-1 h-5 w-4"%>
           </div>
         </div>
