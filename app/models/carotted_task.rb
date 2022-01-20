@@ -10,9 +10,7 @@ class CarottedTask < ApplicationRecord
 
   validate :carotted_user_different_from_user
 
-  def self.carroted_price(ongoing_task_price)
-    ongoing_task_price + 10
-  end
+  
 
   private
 

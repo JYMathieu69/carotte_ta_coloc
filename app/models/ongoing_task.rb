@@ -59,6 +59,10 @@ class OngoingTask < ApplicationRecord
     done
   end
 
+  def carroted_price
+    final_points + 10
+  end
+
   private
 
   def set_final_points
