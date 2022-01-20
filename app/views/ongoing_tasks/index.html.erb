@@ -106,7 +106,7 @@
           </div>
         </div>
         <div class="task_grid">
-          <% @colocs_tasks.each do |task| %>
+          <% user.current_week_ongoing_tasks.each do |task| %>
             <div class="task-card">
               <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false %>
             </div>
