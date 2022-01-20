@@ -6,15 +6,9 @@ class OngoingTasksController < ApplicationController
     redirect_to choose_tasks_path(current_user.coloc) and return if current_user.coloc.coloc_tasks.empty?
 
     all_ongoing_tasks = current_user.coloc.ongoing_tasks
-    coloc_assignment_day = current_user.coloc.assignment_day
-    if coloc_assignment_day
-      previous_distrib_date = Time.current.prev_occurring(coloc_assignment_day.downcase.to_sym).beginning_of_day
-      @user_tasks = all_ongoing_tasks.joins(:task).where(task: {auto_assigned: true}).where(user: current_user).where("ongoing_tasks.created_at > ?", previous_distrib_date)
-      @colocs_tasks = all_ongoing_tasks.where.not(user: current_user).order(:user_id).where("ongoing_tasks.created_at > ?", previous_distrib_date)
-    end
+    @user_tasks = current_user.current_week_ongoing_tasks
     task_by_name = all_ongoing_tasks.unassigned_tasks.group_by{ |ongoing_task| ongoing_task.name }
     @unassigned_tasks = task_by_name.map { |task_name, task| task.sort_by { |ongoing_task| ongoing_task.created_at }.last }
-    
     all_users = current_user.coloc.users
     @users_coloc = all_users.filter { |user| user != current_user }
   end
