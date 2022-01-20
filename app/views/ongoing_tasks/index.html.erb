@@ -99,13 +99,13 @@
             <%= cl_image_tag user.avatar.key, height: 80, width: 80, class:"pr-2 rounded-full" %>
           </div>
 
-          <div class="flex mt-4">
+          <div class="flex mt-4 mb-4">
 
             <div class="mt-2 uppercase text-secondary-200">
               <%= user.username %>
             </div>
             
-            <div class="carrot_price_circle mb-4">
+            <div class="carrot_price_circle">
               <%= image_tag 'carrot_icon.png' , alt: 'carrot_price' , class:"w-4 h-6 pr-1" %>
               <p class="text-base"><%= user.current_points %></p> 
             </div>
