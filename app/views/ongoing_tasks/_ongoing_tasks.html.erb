@@ -43,7 +43,7 @@
       <div class="mb-4 lg:mb-8">
         <% if !task.auto_assigned %>
           <p>Tâche faite par <%= task.user.username %>.</p>
-          <p>Elle sera de nouveau disponible à <%= l(task.finished_at + 14400, format: '%k:%M') %>.</p>
+          <p>Elle sera de nouveau disponible à <%= l(task.finished_at + 18000, format: '%k:%M') %>.</p>
         <% else %>
           <p>Tâche faite <%= l(task.finished_at, format: '%A') %> par <%= task.user.username %>.</p>
         <% end %>
