@@ -59,6 +59,10 @@ class OngoingTask < ApplicationRecord
     done
   end
 
+  def carotted?
+    self.carotted_tasks.length >= 1
+  end
+
   private
 
   def set_final_points

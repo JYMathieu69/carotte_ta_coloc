@@ -1,0 +1,3 @@
+<% if task.carotted? %>
+    <p>Tâche carottée par <%= task.carotted_tasks.first.user.username %></p>
+<% end %>
