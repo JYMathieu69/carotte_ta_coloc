@@ -50,7 +50,7 @@
     </div>
     <div class="task_grid mt-4 lg:mt-8">
       <% @user_tasks.each do |task| %>
-        <div class="task-card mb-4">
+        <div class="task-card mb-4" data-task-id="<%= task.id %>"> 
           <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: false, validation: true%>
         </div>
       <% end %> 
@@ -71,7 +71,7 @@
     
     <div class="task_grid mt-4 lg:mt-8 gap-4">
       <% @unassigned_tasks.each do |task| %>
-        <div class="task-card">
+        <div class="task-card" data-task-id="<%= task.id %>">
           <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false%>
         </div>
       <% end %>
@@ -110,7 +110,7 @@
         </div>
         <div class="task_grid">
           <% user.current_week_ongoing_tasks.each do |task| %>
-            <div class="task-card">
+            <div class="task-card" data-task-id="<%= task.id %>">
               <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false%>
             </div>
           <% end %>
