@@ -50,11 +50,11 @@ class CarottedTasksController < ApplicationController
   def user_has_enough_points
     return false if current_user.current_points.nil?
 
-    current_user.current_points >= @ongoing_task.final_points
+    current_user.current_points >= @ongoing_task.carroted_price
   end
 
   def substract_carrots
-    current_user.current_points = current_user.current_points - CarottedTask.carroted_price(@ongoing_task.final_points)
+    current_user.current_points = current_user.current_points - @ongoing_task.carroted_price
     current_user.save
   end
 
