@@ -74,6 +74,10 @@
             <%= image_tag 'carrot_icon.png' , alt: 'carrot_price' , class:"pl-1 h-5 w-4"%>
           </div>
         </div>
+
+        <% if task.carotted? %>
+        
+        <% else %>
         <div>
           <%= link_to ongoing_task_carotted_tasks_path(task), method: :post, class:'action-task' do %>
           <!-- <%= image_tag "task_carrot.png", class:"w-16 h-16 lg:h-20 lg:w-20" %> -->
@@ -84,6 +88,8 @@
             <%= image_tag 'carrot_icon.png' , alt: 'carrot_price' , class:"pl-1 h-5 w-4"%>
           </div>
         </div>
+        <% end %>
+
       </div>
     <% end %>
   </div>
