@@ -67,16 +67,26 @@
         <% if task.carotted? %>
         
         <% else %>
-          <div>
-            <%= link_to ongoing_task_carotted_tasks_path(task), method: :post, class:'action-task' do %>
-            <!-- <%= image_tag "task_carrot.png", class:"w-16 h-16 lg:h-20 lg:w-20" %> -->
-            <%= content_tag :p, "Carotte ton coloc", class: "text-base bg-primary-200 shadow-lg p-2 text-white rounded-lg ml-2 lg:text-xl lg:p-4" %>
-            <% end %>
-            <div class="potential-carrots-earned mt-10 lg:mt-4">
-              <p class="text-base text-primary-200"> - <%= task.final_points + 10 %></p>
-              <%= image_tag 'carrot_icon.png' , alt: 'carrot_price' , class:"pl-1 h-5 w-4"%>
+          <% if task.user.current_points < task.final_points + 10 %>
+            <div class="action-task">
+              <p class="text-base bg-primary-200 opacity-25 shadow-lg p-2 text-white rounded-lg ml-2 lg:text-xl lg:p-4">Carotte ton coloc</p>
+              <div class="potential-carrots-earned mt-10 lg:mt-4">
+                <p class="text-base text-primary-200">⚠️ Il te manque <%= (task.final_points + 10) - task.user.current_points%> </p>
+                <%= image_tag 'carrot_icon.png' , alt: 'carrot_price' , class:"pl-1 h-5 w-4"%>
+              </div>
             </div>
-          </div>
+          <% else %>
+            <div>
+              <%= link_to ongoing_task_carotted_tasks_path(task), method: :post, class:'action-task' do %>
+              <!-- <%= image_tag "task_carrot.png", class:"w-16 h-16 lg:h-20 lg:w-20" %> -->
+              <%= content_tag :p, "Carotte ton coloc", class: "text-base bg-primary-200 shadow-lg p-2 text-white rounded-lg ml-2 lg:text-xl lg:p-4" %>
+              <% end %>
+              <div class="potential-carrots-earned mt-10 lg:mt-4">
+                <p class="text-base text-primary-200"> - <%= task.final_points + 10 %></p>
+                <%= image_tag 'carrot_icon.png' , alt: 'carrot_price' , class:"pl-1 h-5 w-4"%>
+              </div>
+            </div>
+          <% end %>
         <% end %>
           <div>
             <%= link_to validate_task_path(task), class:'action-task' do %>
