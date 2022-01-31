@@ -47,6 +47,8 @@ class OngoingTasksController < ApplicationController
 
   def start_ongoing_tasks
     coloc = current_user.coloc
+    return if coloc.users.count != coloc.number_of_people
+
     StartUnassignedTasksJob.perform_now(coloc)
     coloc.assignment_day = Time.now.strftime('%A')
     WeeklyDistributionJob.perform_now(coloc)
