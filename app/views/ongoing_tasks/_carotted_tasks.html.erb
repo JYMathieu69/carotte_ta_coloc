@@ -1,0 +1,4 @@
+<% if task.carotted? %>
+    <p>Tâche carottée par <%= task.carotted_tasks.first.user.username %></p>
+    <p class="font-medium">(Tu ne peux pas assigner cette tâche à nouveau)</p>
+<% end %>

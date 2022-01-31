@@ -13,7 +13,7 @@
 
 .task-card {
   @apply flex flex-col items-center justify-between rounded-xl py-4 px-2 bg-white relative;
-  transition-duration: 200ms;
+  // transition-duration: 200ms;
   border: 1px solid white;
   box-shadow: 1px 1px 2px 1px #00000021;
 
@@ -22,46 +22,46 @@
   }
 
   &:hover {
-    transition-duration: 450ms;
+    // transition-duration: 450ms;
     border: 1px solid #6320d5;
     box-shadow: 1px 1px 4px 1px #00000038;
   }
 
   &:active {
-    transition-duration: 200ms;
+    // transition-duration: 200ms;
     opacity: 0.2;
   }
 }
 
 .coloc-task-card {
-    @apply px-8 py-4 mx-2 text-primary-200
+  @apply px-8 py-4 mx-2 text-primary-200;
 }
 
 //Dropdown menu user avatar
 .dropbtn {
-    @apply border-0 cursor-pointer;
+  @apply border-0 cursor-pointer;
 }
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
-    @apply relative inline-block
+  @apply relative inline-block;
 }
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
-    @apply hidden absolute -left-20 bg-white shadow-md z-10 text-xs capitalize rounded-xl lg:text-sm lg:-left-24
+  @apply hidden absolute -left-20 bg-white shadow-md z-10 text-xs capitalize rounded-xl lg:text-sm lg:-left-24;
 }
 
 .dropdown:hover .dropdown-content {
-    @apply block
+  @apply block;
 }
 
 .dropdown-content a {
-    @apply text-secondary-200 p-3 no-underline block lg:p-5
+  @apply text-secondary-200 p-3 no-underline block lg:p-5;
 }
 
 .dropdown-content a:hover {
-    @apply bg-lightWhite-200 rounded-xl
+  @apply bg-lightWhite-200 rounded-xl;
 }
 
 .finished {
