@@ -15,12 +15,12 @@
 </div>
 
 <% if task.finished? %>
-  <img src="https://img.icons8.com/office/80/000000/checked--v1.png" class="w-8 h-8 absolute top-1 right-1 sm:top-2 sm:right-2" />
+<img src="https://img.icons8.com/office/80/000000/checked--v1.png" class="w-8 h-8 absolute top-1 right-1 sm:top-2 sm:right-2" />
 <% end %>
 
 <!-- Modal Section -->
 <div class="bg-modal fixed inset-0 bg-gray-500 bg-opacity-75 hidden z-50" id="task<%= task.id %>">
-  <div class="modal-content fixed inset-x-0 mx-8 top-1/4 lg:mx-16 rounded-xl text-center p-4">
+  <div class="modal-content fixed inset-x-0 mx-8 top-1/4 lg:mx-16 rounded-xl text-center p-4 lg:w-1/2 lg:mx-auto">
     <div class="close" data-task-id="<%= task.id %>">
       +
     </div>
@@ -34,9 +34,9 @@
     <div>
       <p class="text-base p-1 text-secondary-200 text-darkGrey-50 lg:text-xl"><%= task.description %></p>
     </div>
-    <div class="potential-carrots-earned">
-      <h3 class="potential-carrots-text mt-4">Cette tâche rapporte <span class="font-bold"><%= task.final_points %></span></h3>
-      <%= image_tag 'carrot_icon.png', alt: 'carrot_price', class:"pl-1 mt-2"%>
+    <div class="potential-carrots-earned bg-secondary-200 p-2 rounded-full w-12 h-12 lg:w-16 lg:h-16 mx-auto">
+      <h3 class="potential-carrots-text"><span class="font-bold"><%= task.final_points %></span></h3>
+      <%= image_tag 'carrot_icon.png', alt: 'carrot_price', class:"pl-1"%>
     </div>
     
     <% if task.done %>
@@ -54,30 +54,52 @@
         <p class="mb-4 text-darkGrey-50 text-sm lg:text-base lg:mb-8">Cette tâche n'est affectée à personne. <br> Fais-la et récupère des carottes !</p> 
         <%= link_to "J'ai fait cette tâche", validate_task_path(task), class:"validate_unassigned_task" %>
       <% else %>
-        <p class="mb-4 text-darkGrey-50"><%= task.user.username %> doit faire cette tâche cette semaine.</p>
+        <p class="mb-4 text-darkGrey-50 text-sm"><%= task.user.username %> doit faire cette tâche cette semaine.</p>
+        <div class="lg:absolute lg:top-4 lg:right-4 mb-2">
+          <%= render "ongoing_tasks/carotted_tasks" , task: task %>
+        </div>
       <% end %>
     <% elsif validation %>
+      <div class="">
+        <%= render "ongoing_tasks/carotted_tasks" , task: task %>
+      </div>
       <div class="modal-validate">
-        <div>
-          <%= link_to validate_task_path(task), class:'action-task' do %>
-            <!-- <%= image_tag "task_done.png", class:"w-16 h-16 lg:h-20 lg:w-20" %> -->
-            <%= content_tag :p, "Valide cette tâche", class: "text-base bg-secondary-200 shadow-lg p-2 text-white rounded-lg mr-2 lg:text-xl lg:p-4" %>
+        <% if task.carotted? %>
+        
+        <% else %>
+          <% if task.user.current_points < task.final_points + 10 %>
+            <div class="action-task">
+              <p class="text-base bg-primary-200 opacity-25 shadow-lg p-2 text-white rounded-lg ml-2 lg:text-xl lg:p-4">Carotte ton coloc</p>
+              <div class="potential-carrots-earned mt-10 lg:mt-4">
+                <p class="text-base text-primary-200">⚠️ Il te manque <%= (task.final_points + 10) - task.user.current_points%> </p>
+                <%= image_tag 'carrot_icon.png' , alt: 'carrot_price' , class:"pl-1 h-5 w-4"%>
+              </div>
+            </div>
+          <% else %>
+            <div>
+              <%= link_to ongoing_task_carotted_tasks_path(task), method: :post, class:'action-task' do %>
+              <!-- <%= image_tag "task_carrot.png", class:"w-16 h-16 lg:h-20 lg:w-20" %> -->
+              <%= content_tag :p, "Carotte ton coloc", class: "text-base bg-primary-200 shadow-lg p-2 text-white rounded-lg ml-2 lg:text-xl lg:p-4" %>
+              <% end %>
+              <div class="potential-carrots-earned mt-10 lg:mt-4">
+                <p class="text-base text-primary-200"> - <%= task.final_points + 10 %></p>
+                <%= image_tag 'carrot_icon.png' , alt: 'carrot_price' , class:"pl-1 h-5 w-4"%>
+              </div>
+            </div>
           <% end %>
-          <div class="potential-carrots-earned mb-0 lg:mt-4">
-            <p class="text-secondary-100 text-base"> + <%= task.final_points %> </p>
-            <%= image_tag 'carrot_icon.png' , alt: 'carrot_price' , class:"pl-1 h-5 w-4"%>
+        <% end %>
+          <div>
+            <%= link_to validate_task_path(task), class:'action-task' do %>
+              <!-- <%= image_tag "task_done.png", class:"w-16 h-16 lg:h-20 lg:w-20" %> -->
+            <%= content_tag :p, "Valide cette tâche" ,
+              class: "text-base bg-secondary-200 shadow-lg p-2 text-white rounded-lg mr-2 lg:text-xl lg:p-4" %>
+            <% end %>
+            <div class="potential-carrots-earned mb-0 lg:mt-4">
+              <p class="text-secondary-100 text-base"> + <%= task.final_points %>
+              </p>
+              <%= image_tag 'carrot_icon.png' , alt: 'carrot_price' , class:"pl-1 h-5 w-4"%>
+            </div>
           </div>
-        </div>
-        <div>
-          <%= link_to ongoing_task_carotted_tasks_path(task), method: :post, class:'action-task' do %>
-          <!-- <%= image_tag "task_carrot.png", class:"w-16 h-16 lg:h-20 lg:w-20" %> -->
-          <%= content_tag :p, "Carotte ton coloc", class: "text-base bg-primary-200 shadow-lg p-2 text-white rounded-lg ml-2 lg:text-xl lg:p-4" %>
-          <% end %>
-          <div class="potential-carrots-earned mt-10 lg:mt-4">
-            <p class="text-base"> - <%= task.final_points + 10 %></p>
-            <%= image_tag 'carrot_icon.png' , alt: 'carrot_price' , class:"pl-1 h-5 w-4"%>
-          </div>
-        </div>
       </div>
     <% end %>
   </div>
