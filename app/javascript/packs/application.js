@@ -15,7 +15,7 @@ import {
   initCloseTaskModal,
 } from "../plugins/modals";
 import { coloredSwitchButtons } from "../plugins/toggle_switch_button.js";
-
+import {initOnboarding} from "../channels/onboarding_channel"
 Rails.start();
 Turbolinks.start();
 ActiveStorage.start();
@@ -36,4 +36,5 @@ document.addEventListener("turbolinks:load", () => {
   initCloseTaskModal();
   initPictureInput();
   coloredSwitchButtons();
+  initOnboarding();
 });

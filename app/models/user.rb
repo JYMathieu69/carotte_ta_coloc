@@ -28,7 +28,7 @@ class User < ApplicationRecord
   before_create :set_default_points
 
   def current_week_ongoing_tasks
-    self.ongoing_tasks.where("ongoing_tasks.created_at > ?", Time.current.prev_occurring(self.coloc.assignment_day.downcase.to_sym).beginning_of_day)
+    self.ongoing_tasks.where("ongoing_tasks.created_at > ?", Time.current.prev_occurring(self.coloc.assignment_day.downcase.to_sym).beginning_of_day) if self.coloc.assignment_day
   end
   
   private

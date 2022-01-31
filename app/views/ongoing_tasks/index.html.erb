@@ -1,6 +1,7 @@
 <% if current_user.coloc.assignment_day.nil? %>
   <h3 class="text-center mb-8 font-medium"> Les colocs ayant rejoint :</h3>
-  <div class='choose_task_grid mb-8 lg:mb-16'>
+  
+  <div id="pending-users" data-coloc=<%= current_user.coloc_id %> class='choose_task_grid mb-8 lg:mb-16'>
     <% current_user.coloc.users.each do |user| %>
       <div class='flex flex-col justify-center items-center'>
         <%= cl_image_tag user.avatar.key,class:"pr-2 rounded-full h-16 w-16" %>
@@ -9,22 +10,16 @@
     <% end %>
   </div>
   
-  <!-- Si je suis Leader : je vois tout le monde + j'ai accès au bouton si la coloc est complète, sinon j'ai "coloc incomplète" -->
-  <!-- Si je suis invité : je vois tout le monde + message "en attente du leader" -->
-  <% if current_user == current_user.coloc.leader %>
-    <div class="text-center">
-      <% if current_user.coloc.users.count == current_user.coloc.number_of_people %>
-        <p class="text-base mb-4">Bravo 🎉 ! <br> tout tes colocs' sont présents</p>
-        <%= button_to "Créer et distribuer les tâches", start_ongoing_tasks_path, class: "btn-primary" %>
-      <% else %>
-        <p> La Coloc n'est pas au complet! Nous attendons les autres </p>
-      <% end %>
-    </div>
-    <%= @error %>
-  <% else %>
-    <p class="text-center mb-4 lg:mb-8 text-sm">En attente du leader de la coloc (<%= current_user.coloc.leader.username %>)</p>
-    <p class="text-center btn-primary w-1/2 mx-auto"> <%= link_to "> Réessayer", ongoing_tasks_path %> </p>
-  <% end %>
+  <div class="text-center">
+    <% if current_user == current_user.coloc.leader %>
+      <p class="mb-4 lg:mb-8 text-sm">Lance la distribution des tâches quand tous tes colocs sont là !</p>
+      <%= button_to "Distribuer les tâches", start_ongoing_tasks_path, class: "btn-primary" %>
+      <%= @error %>
+    <% else %>
+      <p class="mb-4 lg:mb-8 text-sm"><%= current_user.coloc.leader.username %> n'a pas encore lancé la distribution des tâches.</p>
+      <%= link_to "Réessayer", ongoing_tasks_path, class: "btn-primary" %>
+    <% end %>
+  </div>
   
 <%# écran après 1ère répartition des tâches %>
 <% else %>
