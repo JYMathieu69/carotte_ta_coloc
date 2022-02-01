@@ -1,3 +1,5 @@
+<%= link_to "< Retour", edit_coloc_path(@coloc), class: "btn-border-purple inline-block mb-8 ml-8 lg:ml-16" %>
+
 <%= simple_form_for [@new_coloc_task] do |form| %>
   <div class="task_grid mx-4">
     <% @addable_tasks.each do |addable_task| %>
