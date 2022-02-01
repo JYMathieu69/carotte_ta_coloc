@@ -1,0 +1,23 @@
+<%= simple_form_for [@new_coloc_task] do |form| %>
+  <div class="task_grid mx-4">
+    <% @addable_tasks.each do |addable_task| %>
+      <%= fields_for "items[]", addable_task do |f| %>
+        <div class="switch-task filter grayscale">
+          <div>
+            <%= cl_image_tag f.object.image.key, class:"w-12 h-12 lg:h-16 lg:w-16 mb-2" %>
+          </div>
+          <div class="toggle-name">
+            <p class="text-secondary-200 mb-2 text-xs text-center lg:text-base"> <%= f.label f.object.name %> </p>
+            <label class="switch mx-auto">
+              <%= f.check_box  :task, { checked: false }, f.object.id %>
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="text-center mt-6">
+    <%= form.submit 'Ajouter les tâches sélectionnées', class: 'btn-primary mb-8' %>
+  </div>
+<% end %>
