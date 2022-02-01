@@ -63,9 +63,9 @@
     <%= form_with model: @coloc do |form| %>
       <ul class="task_grid">
         <%= form.fields_for :coloc_tasks, form.object.coloc_tasks.order(:id) do |coloc_tasks_fields| %>
-          <li class="flex flex-col justify-between items-center h-44 mb-4 lg:justify-start lg:h-36 lg:mb-8">
+          <li class="flex flex-col items-center mb-8 relative">
             <div>
-              <p class="w-6 float-right">
+              <p class="w-6 absolute top-0 right-0">
                 <%= link_to image_tag('close.png'), 
                   coloc_coloc_task_path(@coloc, coloc_tasks_fields.object),
                   method: :delete,
@@ -75,9 +75,9 @@
               <%= cl_image_tag coloc_tasks_fields.object.task.image.key, class:"h-16 w-16 lg:h-20 lg:w-20"%>
             </div>
             <div>
-              <p class="text-sm mt-1 text-center lg:mt-4 lg:mb-2"><%= coloc_tasks_fields.label coloc_tasks_fields.object.task.name %></p>
+              <p class="text-sm my-4 text-center"><%= coloc_tasks_fields.label coloc_tasks_fields.object.task.name %></p>
             </div>
-            <div>
+            <div class="mt-auto">
               <label>
                 <%= coloc_tasks_fields.select :difficulty, Task::DIFFICULTIES %>
               </label>
