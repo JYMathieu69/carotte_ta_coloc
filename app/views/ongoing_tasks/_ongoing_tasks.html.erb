@@ -1,16 +1,18 @@
 <!-- partial ongoing_tasks/index.html.erb -->
-<div class="lg:h-16 lg:w-16 h-12 w-12 mb-4">
-  <%= cl_image_tag task.image.key, class: finished_task_img_class?(task), data: { task_id: task.id }%>
-</div>
-<p class="text-xs lg:text-base text-center mb-4 <%= finished_carrot_img_class?(task) %>"">
-  <%= task.name %>
-</p>
-<div class="<%= finished_carrot_img_class?(task) %> carrot_price_circle ">
-  <div>
-    <%= image_tag 'carrot_icon.png' , alt: 'carrot_price', class:"w-4 h-6 pr-1" %>
+<div class="task-card" data-task-id="<%= task.id %>">
+  <div class="lg:h-16 lg:w-16 h-12 w-12 mb-4">
+    <%= cl_image_tag task.image.key, class: finished_task_img_class?(task), data: { task_id: task.id }%>
   </div>
-  <div>
-    <h3><%= task.final_points %></h3>
+  <p class="text-xs lg:text-base text-center mb-4 <%= finished_carrot_img_class?(task) %>"">
+    <%= task.name %>
+  </p>
+  <div class="<%= finished_carrot_img_class?(task) %> carrot_price_circle ">
+    <div>
+      <%= image_tag 'carrot_icon.png' , alt: 'carrot_price', class:"w-4 h-6 pr-1" %>
+    </div>
+    <div>
+      <h3><%= task.final_points %></h3>
+    </div>
   </div>
 </div>
 
@@ -19,9 +21,9 @@
 <% end %>
 
 <!-- Modal Section -->
-<div class="bg-modal fixed inset-0 bg-gray-500 bg-opacity-75 hidden z-50" id="task<%= task.id %>">
+<div class="bg-modal fixed inset-0 bg-gray-500 bg-opacity-75 z-50" id="task<%= task.id %>">
   <div class="modal-content fixed inset-x-0 mx-8 top-1/4 lg:mx-16 rounded-xl text-center p-4 lg:w-1/2 lg:mx-auto">
-    <div class="close" data-task-id="<%= task.id %>">
+    <div class="closeButton" data-task-id="<%= task.id %>">
       +
     </div>
     
