@@ -71,7 +71,7 @@
             <div class="action-task">
               <p class="text-base bg-primary-200 opacity-25 shadow-lg p-2 text-white rounded-lg ml-2 lg:text-xl lg:p-4">Carotte ton coloc</p>
               <div class="potential-carrots-earned mt-10 lg:mt-4">
-                <p class="text-base text-primary-200">⚠️ Il te manque <%= (task.final_points + 10) - task.user.current_points%> </p>
+                <p class="text-base text-primary-200">⚠️ <%= (task.final_points + 10) %> </p>
                 <%= image_tag 'carrot_icon.png' , alt: 'carrot_price' , class:"pl-1 h-5 w-4"%>
               </div>
             </div>
