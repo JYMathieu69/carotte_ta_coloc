@@ -1,0 +1,6 @@
+<% flash.each do |type, msg| %>
+  <div class="alert alert-<%= type %> absolute top-1/4 mx-auto">
+    <%= msg %>
+    <button data-dismiss="alert">&times;</button>
+  </div>
+<% end %>

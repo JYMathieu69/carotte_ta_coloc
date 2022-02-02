@@ -20,7 +20,7 @@ class ColocTasksController < ApplicationController
       end
     end
     
-    redirect_to edit_coloc_path(@coloc)
+    redirect_to edit_coloc_path(@coloc), notice: "La/les nouvelles tâches ont bien été ajoutées à la coloc !"
   end
   
   def destroy
