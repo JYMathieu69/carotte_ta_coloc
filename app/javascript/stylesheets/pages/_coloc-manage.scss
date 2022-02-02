@@ -14,3 +14,8 @@
     @apply flex flex-col py-2 px-2 mb-4 justify-between items-center;
 }
 
+.add-task-card {
+  @apply text-center rounded p-2 text-sm flex flex-col justify-center items-center h-full text-secondary-100;
+
+  box-shadow: 1px 1px 2px 1px #00000021;
+}
