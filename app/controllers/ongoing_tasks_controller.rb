@@ -11,8 +11,6 @@ class OngoingTasksController < ApplicationController
     @unassigned_tasks = task_by_name.map { |task_name, task| task.sort_by { |ongoing_task| ongoing_task.created_at }.last }
     all_users = current_user.coloc.users
     @users_coloc = all_users.filter { |user| user != current_user }
-
-    flash.now[:notice] = "Ceci est une notification test."
   end
 
   def show; end
