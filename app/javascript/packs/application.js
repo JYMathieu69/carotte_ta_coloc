@@ -8,7 +8,10 @@ import {
   clickCrossToClose,
 } from "../plugins/modals";
 import { coloredSwitchButtons } from "../plugins/toggle_switch_button.js";
-import { initOnboarding } from "../channels/onboarding_channel"
+import { initAlertCloseBtn } from "../plugins/alertCloseBtn";
+
+import { initOnboarding } from "../channels/onboarding_channel";
+
 Rails.start();
 Turbolinks.start();
 ActiveStorage.start();
@@ -21,4 +24,5 @@ document.addEventListener("turbolinks:load", () => {
   initPictureInput();
   coloredSwitchButtons();
   initOnboarding();
+  initAlertCloseBtn();
 });

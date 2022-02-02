@@ -19,7 +19,7 @@
     </div>
 
     <div class="card-infos text-center mt-4 overflow-x-hidden mb-4">
-      <h2 class="secondary-title">Gestions des colocataires</h2>
+      <h2 class="secondary-title">Gestion des colocataires</h2>
       <ul>
         <% @users.each do |user| %>
           <li>
@@ -61,55 +61,41 @@
     <div class="dashed"></div>
     
     <%= form_with model: @coloc do |form| %>
-    <ul class="task_grid">
-      <%= form.fields_for :coloc_tasks, form.object.coloc_tasks.order(:id) do |coloc_tasks_fields| %>
-      <li class="flex flex-col justify-between items-center h-44 mb-4 lg:justify-start lg:h-36 lg:mb-8">
-        <div>
-                <p class="w-6 float-right"><%= link_to image_tag('close.png'), coloc_coloc_task_path(@coloc, coloc_tasks_fields.object), method: :delete, data: { confirm: "Retirer '#{coloc_tasks_fields.object.task.name}' de la coloc ? Tout l'historique sera définitivement supprimé." } %></p>
-                <%= cl_image_tag coloc_tasks_fields.object.task.image.key, class:"h-16 w-16 lg:h-20 lg:w-20"%>
-              </div>
-              <div>
-                <p class="text-sm mt-1 text-center lg:mt-4 lg:mb-2"><%= coloc_tasks_fields.label coloc_tasks_fields.object.task.name %></p>
-              </div>
-              <div>
-                <label>
-                  <%= coloc_tasks_fields.select :difficulty, Task::DIFFICULTIES %>
-                </label>
-                <%= coloc_tasks_fields.hidden_field :task_id  %>
-              </div>
+      <ul class="task_grid">
+        <%= form.fields_for :coloc_tasks, form.object.coloc_tasks.order(:id) do |coloc_tasks_fields| %>
+          <li class="flex flex-col items-center mb-8 relative">
+            <div>
+              <p class="w-6 absolute top-0 right-0">
+                <%= link_to image_tag('close.png'), 
+                  coloc_coloc_task_path(@coloc, coloc_tasks_fields.object),
+                  method: :delete,
+                  data: { confirm: "Retirer '#{coloc_tasks_fields.object.task.name}' de la coloc ? Tout l'historique sera définitivement supprimé." }
+                %>
+              </p>
+              <%= cl_image_tag coloc_tasks_fields.object.task.image.key, class:"h-16 w-16 lg:h-20 lg:w-20"%>
+            </div>
+            <div>
+              <p class="text-sm my-4 text-center"><%= coloc_tasks_fields.label coloc_tasks_fields.object.task.name %></p>
+            </div>
+            <div class="mt-auto">
+              <label>
+                <%= coloc_tasks_fields.select :difficulty, Task::DIFFICULTIES %>
+              </label>
+              <%= coloc_tasks_fields.hidden_field :task_id  %>
+            </div>
+          </li>
         <% end %>
+        <li class="mb-8">
+          <%= link_to new_coloc_coloc_task_path(@coloc), class: 'add-task-card' do %>
+            <p class="text-5xl md:mb-1">+</p>
+            <p>Ajouter des tâches</p>
+          <% end %>
+        </li>
       </ul>
       <div class="text-center mt-8">
         <%= form.submit 'Sauvegarder', class: 'btn-primary mx-auto' %>
       </div>
     <% end %>
+
   </div>
 </div>
-
-<div class="dashed"></div>
-
-<h2 class="secondary-title text-center">Ajouter des tâches à la coloc</h2>
-
-<%= simple_form_for [@coloc, @new_coloc_task] do |form| %>
-  <div class="task_grid mx-4">
-    <% @addable_tasks.each do |addable_task| %>
-      <%= fields_for "items[]", addable_task do |f| %>
-        <div class="switch-task filter grayscale">
-          <div>
-            <%= cl_image_tag f.object.image.key, class:"w-12 h-12 lg:h-16 lg:w-16 mb-2" %>
-          </div>
-          <div class="toggle-name">
-            <p class="text-secondary-200 mb-2 text-xs text-center lg:text-base"> <%= f.label f.object.name %> </p>
-            <label class="switch mx-auto">
-              <%= f.check_box  :task, { checked: false }, f.object.id %>
-              <span class="slider round"></span>
-            </label>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-  <div class="text-center mt-6">
-    <%= form.submit 'Ajouter les tâches sélectionnées', class: 'btn-primary mb-8' %>
-  </div>
-<% end %>

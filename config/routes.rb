@@ -10,8 +10,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:update, :edit]
   resources :colocs, only: [:new, :create, :edit, :update] do
-    resources :coloc_tasks, only: [:create, :destroy]
+    resources :coloc_tasks, only: [:new, :destroy]
   end
+  resources :coloc_tasks, only: :create
   resources :carotted_tasks, only: [:show]
 
   get '/colocs/:id/choose_tasks', to: 'colocs#choose_tasks', as: 'choose_tasks'

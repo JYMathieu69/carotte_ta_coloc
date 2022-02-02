@@ -30,10 +30,6 @@ class ColocsController < ApplicationController
 
   def edit
     @users = @coloc.users
-    existing_tasks = []
-    @coloc.coloc_tasks.each { |coloc_task| existing_tasks << coloc_task.task_id }
-    @addable_tasks = Task.where.not(id: existing_tasks)
-    @new_coloc_task = ColocTask.new
   end
 
   def recap; end
