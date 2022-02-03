@@ -3,8 +3,7 @@ class ColocTasksController < ApplicationController
   before_action :set_coloc, only: [:new, :create, :destroy]
 
   def new
-    existing_tasks = @coloc.coloc_tasks.map { |coloc_task| coloc_task.task_id }
-    @addable_tasks = Task.where.not(id: existing_tasks)
+    @addable_tasks = Task.where.not(id: @coloc.coloc_tasks.select(:task_id))
     @new_coloc_task = ColocTask.new
   end
   
