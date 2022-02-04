@@ -4,7 +4,7 @@
   <div id="pending-users" data-coloc=<%= current_user.coloc_id %> class='choose_task_grid mb-8 lg:mb-16'>
     <% current_user.coloc.users.each do |user| %>
       <div class='flex flex-col justify-center items-center'>
-        <%= cl_image_tag user.avatar.key,class:"pr-2 rounded-full h-16 w-16" %>
+        <%= cl_image_tag user.avatar.key,class:"rounded-full h-16 w-16" %>
         <p class="mt-4 text-sm"><%= user.username %></p>
       </div>
     <% end %>
@@ -17,7 +17,7 @@
       <%= @error %>
     <% else %>
       <p class="mb-4 lg:mb-8 text-sm"><%= current_user.coloc.leader.username %> n'a pas encore lancé la distribution des tâches.</p>
-      <%= link_to "Réessayer", ongoing_tasks_path, class: "btn-primary" %>
+      <%= link_to "Réessayer", ongoing_tasks_path, class: "btn-primary inline-block" %>
     <% end %>
   </div>
   

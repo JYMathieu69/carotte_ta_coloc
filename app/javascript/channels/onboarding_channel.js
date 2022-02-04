@@ -24,7 +24,7 @@ const initOnboarding = () => {
         const userAvatar = new CloudinaryImage(data.avatar_key, cloudConfig, urlConfig);
         pendingUsersElement.innerHTML += `
           <div class='flex flex-col justify-center items-center'>
-            <img src=${userAvatar.toURL()} class="pr-2 rounded-full h-16 w-16" />
+            <img src=${userAvatar.toURL()} class="rounded-full h-16 w-16" />
             <p class="mt-4 text-sm">${data.user.username}</p>
           </div>
           `;  
