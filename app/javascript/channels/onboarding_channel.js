@@ -3,7 +3,7 @@ import {URLConfig} from "@cloudinary/url-gen";
 import {CloudConfig} from "@cloudinary/url-gen";
 import {CloudinaryImage} from '@cloudinary/url-gen';
 
-const cloudConfig = new CloudConfig({cloudName: 'dxrzdlwnz'});
+const cloudConfig = new CloudConfig({cloudName: process.env.CLOUDINARY_NAME});
 const urlConfig = new URLConfig({secure: true});
 
 const initOnboarding = () => {
