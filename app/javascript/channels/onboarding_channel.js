@@ -3,13 +3,14 @@ import {URLConfig} from "@cloudinary/url-gen";
 import {CloudConfig} from "@cloudinary/url-gen";
 import {CloudinaryImage} from '@cloudinary/url-gen';
 
-const cloudConfig = new CloudConfig({cloudName: process.env.CLOUDINARY_NAME});
-const urlConfig = new URLConfig({secure: true});
 
 const initOnboarding = () => {
   const pendingUsersElement = document.getElementById('pending-users');
   
   if (pendingUsersElement) {
+    const cloudConfig = new CloudConfig({cloudName: process.env.CLOUDINARY_NAME});
+    const urlConfig = new URLConfig({secure: true});
+    
     consumer.subscriptions.create({channel: "OnboardingChannel", coloc: pendingUsersElement.dataset.coloc}, {
       connected() {
         // Called when the subscription is ready for use on the server
