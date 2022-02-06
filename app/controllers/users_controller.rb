@@ -1,13 +1,16 @@
 class UsersController < ApplicationController
+  before_action :set_user
     def update
+      if @user.update(user_params)
+        redirect_to edit_user_path(@user)
+      else 
+        render :edit
+      end
     end
     
-    def edit
-      @user = current_user
-    end
+    def edit; end
     
     def join_coloc
-      @user = current_user
       token = params[:invite_token]
       @user.coloc = Coloc.find_by(invite_token: token)
   
@@ -26,5 +29,15 @@ class UsersController < ApplicationController
       else
         render "colocs/join"
       end
+    end
+
+    private
+
+    def set_user
+      @user = current_user
+    end
+
+    def user_params
+      params.require(:user).permit(:username, :avatar)
     end
 end
