@@ -1,2 +1,24 @@
-<%= @user.username %>
-<%= @user.avatar %>
+<%= simple_form_for @user, html: { id: :edit_user_avatar } do |f| %>
+  <%= f.label :avatar do %>
+    <%= cl_image_tag @user.avatar.key, class: "avatar w-28 h-28" %>
+    <span>Changer ma photo</span>
+    <%= f.file_field :avatar, class: "hidden" %>
+  <% end %>
+<% end %>
+
+
+<%= simple_form_for @user do |f| %>
+  <%= f.label :username do %>
+    Pseudo
+    <%= f.input_field :username %>
+  <% end %>
+  <%= f.label :email do %>
+    Email
+    <%= f.input_field :email %>
+  <% end %>
+  <div>
+    Mot de passe
+    <%= link_to 'Modifier mon mot de passe', edit_user_password_path %>
+  </div>
+  <%= f.submit 'SAUVEGARDER' %>
+<% end %>
