@@ -1,4 +1,4 @@
-<%= simple_form_for @user, html: { class: 'flex flex-col justify-center items-center mx-4' } do |f| %>
+<%= simple_form_for @user, html: { id: 'edit_user_info', class: 'flex flex-col justify-center items-center mx-4' } do |f| %>
   <%= f.label :avatar do %>
     <%= cl_image_tag @user.avatar.key, class: "avatar w-28 h-28 mx-auto mb-2" %>
     <span class="underline cursor-pointer">Changer ma photo</span>
