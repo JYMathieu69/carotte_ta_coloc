@@ -8,6 +8,11 @@
 
     <div class="text-center">
         <%= simple_form_for @user, url: user_join_coloc_path(@user) do |f| %>
+            <% flash.each do |type, msg| %>
+                <div>
+                    <%= msg %>
+                </div>
+            <% end %>
             <div>
                 <input type="text", value="", name="invite_token", class="invit-token">
             </div>

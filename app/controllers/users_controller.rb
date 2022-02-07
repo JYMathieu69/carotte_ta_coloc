@@ -27,7 +27,7 @@ class UsersController < ApplicationController
         
         redirect_to ongoing_tasks_path
       else
-        render "colocs/join"
+        redirect_to join_coloc_path, notice: "Veuillez entrer un code valide"
       end
     end
 
