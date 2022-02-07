@@ -3,7 +3,7 @@ class OngoingTasksController < ApplicationController
 
   def index
     redirect_to '/home' and return if current_user.coloc.nil?
-    redirect_to choose_tasks_path(current_user.coloc) and return if current_user.coloc.coloc_tasks.empty?
+    redirect_to choose_tasks_path(current_user.coloc) and return if current_user.coloc.coloc_tasks.empty? && current_user == current_user.coloc.leader 
 
     all_ongoing_tasks = current_user.coloc.ongoing_tasks
     @user_tasks = current_user.current_week_ongoing_tasks
