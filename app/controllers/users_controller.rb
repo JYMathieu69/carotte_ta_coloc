@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   before_action :set_user
     def update
       if @user.update(user_params)
-        redirect_to edit_user_path(@user)
-      else 
+        redirect_to ongoing_tasks_path
+      else
         render :edit
       end
     end
