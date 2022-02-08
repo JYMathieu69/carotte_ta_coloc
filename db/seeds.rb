@@ -75,12 +75,12 @@ User.delete_all
 
 puts "Creating Tasks..."
 
-vaisselle       = Task.create!(name: "Faire la vaisselle",         description: "💦 Fais-la tremper en avance pour gagner du temps",
+vaisselle       = Task.create!(name: "Faire la vaisselle",         description: "💦 Fais-la tremper à l'avance pour gagner du temps",
 recurrence: "daily",  auto_assigned: false, default_difficulty: 2)
 vaisselle_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1636383954/FAIRE_LA_VAISSELLE_chxam7.png')
 vaisselle.image.attach(io: vaisselle_image, filename: 'vaisselle.png', content_type: 'image/png')
 
-aspirateur      = Task.create!(name: "Passer l'aspirateur",        description: "🔌 Un peu de canelle sur le sol pour parfumer ton appart'",
+aspirateur      = Task.create!(name: "Passer l'aspirateur",        description: "🔌 Un peu de cannelle sur le sol pour parfumer ton appart'",
 recurrence: "weekly", auto_assigned: true,  default_difficulty: 3)
 aspirateur_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1636383956/PASSER_LASPI_scfezm.png')
 aspirateur.image.attach(io: aspirateur_image, filename: 'aspirateur.png', content_type: 'image/png')
@@ -193,13 +193,13 @@ placard_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v163
 placard.image.attach(io: placard_image, filename: 'placard.png', content_type: 'image/png')
 
 
-micro_onde      = Task.create!(name: "Nettoyer le micro-onde",         description: "🍋 Fais chauffer un bol d'eau citronné pendant 2mn avant",
+micro_onde      = Task.create!(name: "Nettoyer le micro-onde",         description: "🍋 Fais chauffer un bol d'eau citronnée pendant 2mn avant",
 recurrence: "weekly", auto_assigned: true,  default_difficulty: 2)
 micro_onde_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1636383956/NETTOYER_MICRONDE_fsrqsy.png')
 micro_onde.image.attach(io: micro_onde_image, filename: 'micro_onde.png', content_type: 'image/png')
 
 
-nettoyer_table  = Task.create!(name: "Nettoyer la table",  description: "🧽 Un petit chiffon d'eau humidifié",
+nettoyer_table  = Task.create!(name: "Nettoyer la table",  description: "🧽 Un petit chiffon humidifié",
 recurrence: "daily",  auto_assigned: false, default_difficulty: 1)
 nettoyer_table_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1636383956/NETTOYER_TABLE_kouykm.png')
 nettoyer_table.image.attach(io: nettoyer_table_image, filename: 'nettoyer_table.png', content_type: 'image/png')
@@ -253,7 +253,7 @@ mettre_table_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload
 mettre_table.image.attach(io: mettre_table_image, filename: 'mettre_table.png', content_type: 'image/png')
 
 
-laver_poubelle  = Task.create!(name: "Laver la poubelle",  description: "🧂 Met un peu de sel au fond",
+laver_poubelle  = Task.create!(name: "Laver la poubelle",  description: "🧂 Mets un peu de sel au fond",
 recurrence: "weekly", auto_assigned: true,  default_difficulty: 2)
 laver_poubelle_image = URI.open('https://res.cloudinary.com/dxrzdlwnz/image/upload/v1636383955/LAVER_POUBELLES_pz5kq8.png')
 laver_poubelle.image.attach(io: laver_poubelle_image, filename: 'laver_poubelle.png', content_type: 'image/png')
