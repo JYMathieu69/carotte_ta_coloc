@@ -26,50 +26,50 @@ User.delete_all
 
 # USERS + COLOCS
 
-puts "Creating Users and Colocs..."
+# puts "Creating Users and Colocs..."
 
-mickael   = User.create!(username: "Mickael",   email: "mickael@coloc.com",   password: "azerty", admin: true)
-coloc69004 = Coloc.create!(name: "coloc69004", leader_id: mickael.id, assignment_day: Time.now.strftime("%A"))
+# mickael   = User.create!(username: "Mickael",   email: "mickael@coloc.com",   password: "azerty", admin: true)
+# coloc69004 = Coloc.create!(name: "coloc69004", leader_id: mickael.id, assignment_day: Time.now.strftime("%A"))
 
-lucas     = User.create!(username: "Lucas",     email: "lucas@coloc.com",     password: "azerty", coloc_id: coloc69004.id)
-fanny     = User.create!(username: "Fanny",     email: "fanny@coloc.com",     password: "azerty", coloc_id: coloc69004.id)
-mathieu   = User.create!(username: "Mathieu",   email: "mathieu@coloc.com",   password: "azerty", coloc_id: coloc69004.id)
-mickael.update(coloc_id: coloc69004.id)
+# lucas     = User.create!(username: "Lucas",     email: "lucas@coloc.com",     password: "azerty", coloc_id: coloc69004.id)
+# fanny     = User.create!(username: "Fanny",     email: "fanny@coloc.com",     password: "azerty", coloc_id: coloc69004.id)
+# mathieu   = User.create!(username: "Mathieu",   email: "mathieu@coloc.com",   password: "azerty", coloc_id: coloc69004.id)
+# mickael.update(coloc_id: coloc69004.id)
 
-samuel    = User.create!(username: "Samuel",    email: "samuel@coloc.com",    password: "azerty")
-coloc69003 = Coloc.create!(name: "coloc69003", leader_id: samuel.id, assignment_day: Time.now.strftime("%A"))
+# samuel    = User.create!(username: "Samuel",    email: "samuel@coloc.com",    password: "azerty")
+# coloc69003 = Coloc.create!(name: "coloc69003", leader_id: samuel.id, assignment_day: Time.now.strftime("%A"))
 
-jeanro    = User.create!(username: "Jeanro",    email: "jeanro@coloc.com",    password: "azerty", coloc_id: coloc69003.id)
-clement   = User.create!(username: "Clement",   email: "clement@coloc.com",   password: "azerty", coloc_id: coloc69003.id)
-samuel.update(coloc_id: coloc69003.id)
+# jeanro    = User.create!(username: "Jeanro",    email: "jeanro@coloc.com",    password: "azerty", coloc_id: coloc69003.id)
+# clement   = User.create!(username: "Clement",   email: "clement@coloc.com",   password: "azerty", coloc_id: coloc69003.id)
+# samuel.update(coloc_id: coloc69003.id)
 
-joseph    = User.create!(username: "Joseph",    email: "joseph@coloc.com",    password: "azerty")
-coloc69002 = Coloc.create!(name: "coloc69002", leader_id: joseph.id, assignment_day: Time.now.strftime("%A"))
+# joseph    = User.create!(username: "Joseph",    email: "joseph@coloc.com",    password: "azerty")
+# coloc69002 = Coloc.create!(name: "coloc69002", leader_id: joseph.id, assignment_day: Time.now.strftime("%A"))
 
-juliette  = User.create!(username: "Juliette",  email: "juliette@coloc.com",  password: "azerty", coloc_id: coloc69002.id)
-joseph.update(coloc_id: coloc69002.id)
+# juliette  = User.create!(username: "Juliette",  email: "juliette@coloc.com",  password: "azerty", coloc_id: coloc69002.id)
+# joseph.update(coloc_id: coloc69002.id)
 
-anna      = User.create!(username: "Anna",      email: "anna@coloc.com",      password: "azerty")
-coloc69006 = Coloc.create!(name: "coloc69006", leader_id: anna.id, assignment_day: Time.now.strftime("%A"))
+# anna      = User.create!(username: "Anna",      email: "anna@coloc.com",      password: "azerty")
+# coloc69006 = Coloc.create!(name: "coloc69006", leader_id: anna.id, assignment_day: Time.now.strftime("%A"))
 
-guillaume = User.create!(username: "Guillaume", email: "guillaume@coloc.com", password: "azerty", coloc_id: coloc69006.id)
-laure     = User.create!(username: "Laure",     email: "laure@coloc.com",     password: "azerty", coloc_id: coloc69006.id)
-louis     = User.create!(username: "Louis",     email: "louis@coloc.com",     password: "azerty", coloc_id: coloc69006.id)
-melin     = User.create!(username: "Melin",     email: "melin@coloc.com",     password: "azerty", coloc_id: coloc69006.id)
-delphine  = User.create!(username: "Delphine",  email: "delphine@coloc.com",  password: "azerty", coloc_id: coloc69006.id)
-anna.update(coloc_id: coloc69006.id)
+# guillaume = User.create!(username: "Guillaume", email: "guillaume@coloc.com", password: "azerty", coloc_id: coloc69006.id)
+# laure     = User.create!(username: "Laure",     email: "laure@coloc.com",     password: "azerty", coloc_id: coloc69006.id)
+# louis     = User.create!(username: "Louis",     email: "louis@coloc.com",     password: "azerty", coloc_id: coloc69006.id)
+# melin     = User.create!(username: "Melin",     email: "melin@coloc.com",     password: "azerty", coloc_id: coloc69006.id)
+# delphine  = User.create!(username: "Delphine",  email: "delphine@coloc.com",  password: "azerty", coloc_id: coloc69006.id)
+# anna.update(coloc_id: coloc69006.id)
 
-toto      = User.create!(username: "Toto",      email: "toto@coloc.com",      password: "azerty")
-toto_bro  = User.create!(username: "TotoBro",   email: "totobro@coloc.com",   password: "azerty")
+# toto      = User.create!(username: "Toto",      email: "toto@coloc.com",      password: "azerty")
+# toto_bro  = User.create!(username: "TotoBro",   email: "totobro@coloc.com",   password: "azerty")
 
-titi      = User.create!(username: "Titi",      email: "titi@coloc.com",      password: "azerty")
-titi_bro  = User.create!(username: "TitiBro",   email: "titibro@coloc.com",   password: "azerty")
+# titi      = User.create!(username: "Titi",      email: "titi@coloc.com",      password: "azerty")
+# titi_bro  = User.create!(username: "TitiBro",   email: "titibro@coloc.com",   password: "azerty")
 
-tata      = User.create!(username: "Tata",      email: "tata@coloc.com",      password: "azerty")
-tata_bro  = User.create!(username: "TataBra",   email: "tatabra@coloc.com",   password: "azerty")
+# tata      = User.create!(username: "Tata",      email: "tata@coloc.com",      password: "azerty")
+# tata_bro  = User.create!(username: "TataBra",   email: "tatabra@coloc.com",   password: "azerty")
 
-puts "Users and Colocs created !"
-puts " "
+# puts "Users and Colocs created !"
+# puts " "
 
 # TASKS
 
@@ -276,60 +276,60 @@ puts " "
 
 # COLOC_TASKS
 
-puts "Creating Coloc_tasks..."
+# puts "Creating Coloc_tasks..."
 
-coloc_task1  = ColocTask.create!(coloc_id: coloc69004.id, task_id: vaisselle.id)
-coloc_task2  = ColocTask.create!(coloc_id: coloc69004.id, task_id: aspirateur.id)
-coloc_task3  = ColocTask.create!(coloc_id: coloc69004.id, task_id: poussiere.id)
-coloc_task4  = ColocTask.create!(coloc_id: coloc69004.id, task_id: vitre.id)
-coloc_task5  = ColocTask.create!(coloc_id: coloc69004.id, task_id: serpillere.id)
-coloc_task6  = ColocTask.create!(coloc_id: coloc69004.id, task_id: sortir_poubelle.id)
-coloc_task7  = ColocTask.create!(coloc_id: coloc69004.id, task_id: lessive.id)
-coloc_task8  = ColocTask.create!(coloc_id: coloc69004.id, task_id: toilettes.id)
-coloc_task9  = ColocTask.create!(coloc_id: coloc69004.id, task_id: salle_de_bain.id)
-coloc_task10 = ColocTask.create!(coloc_id: coloc69004.id, task_id: linge.id)
-coloc_task11 = ColocTask.create!(coloc_id: coloc69004.id, task_id: courses.id)
-coloc_task12 = ColocTask.create!(coloc_id: coloc69004.id, task_id: plantes.id)
-coloc_task13 = ColocTask.create!(coloc_id: coloc69004.id, task_id: verre.id)
-coloc_task14 = ColocTask.create!(coloc_id: coloc69004.id, task_id: cuisiner.id)
-coloc_task15 = ColocTask.create!(coloc_id: coloc69004.id, task_id: lave_vaisselle.id)
-coloc_task16 = ColocTask.create!(coloc_id: coloc69004.id, task_id: nettoyer_table.id)
-coloc_task17 = ColocTask.create!(coloc_id: coloc69004.id, task_id: papier.id)
-coloc_task18 = ColocTask.create!(coloc_id: coloc69004.id, task_id: cendrier.id)
-coloc_task19 = ColocTask.create!(coloc_id: coloc69004.id, task_id: evier.id)
-coloc_task20 = ColocTask.create!(coloc_id: coloc69004.id, task_id: mettre_table.id)
-coloc_task21 = ColocTask.create!(coloc_id: coloc69004.id, task_id: laver_poubelle.id)
+# coloc_task1  = ColocTask.create!(coloc_id: coloc69004.id, task_id: vaisselle.id)
+# coloc_task2  = ColocTask.create!(coloc_id: coloc69004.id, task_id: aspirateur.id)
+# coloc_task3  = ColocTask.create!(coloc_id: coloc69004.id, task_id: poussiere.id)
+# coloc_task4  = ColocTask.create!(coloc_id: coloc69004.id, task_id: vitre.id)
+# coloc_task5  = ColocTask.create!(coloc_id: coloc69004.id, task_id: serpillere.id)
+# coloc_task6  = ColocTask.create!(coloc_id: coloc69004.id, task_id: sortir_poubelle.id)
+# coloc_task7  = ColocTask.create!(coloc_id: coloc69004.id, task_id: lessive.id)
+# coloc_task8  = ColocTask.create!(coloc_id: coloc69004.id, task_id: toilettes.id)
+# coloc_task9  = ColocTask.create!(coloc_id: coloc69004.id, task_id: salle_de_bain.id)
+# coloc_task10 = ColocTask.create!(coloc_id: coloc69004.id, task_id: linge.id)
+# coloc_task11 = ColocTask.create!(coloc_id: coloc69004.id, task_id: courses.id)
+# coloc_task12 = ColocTask.create!(coloc_id: coloc69004.id, task_id: plantes.id)
+# coloc_task13 = ColocTask.create!(coloc_id: coloc69004.id, task_id: verre.id)
+# coloc_task14 = ColocTask.create!(coloc_id: coloc69004.id, task_id: cuisiner.id)
+# coloc_task15 = ColocTask.create!(coloc_id: coloc69004.id, task_id: lave_vaisselle.id)
+# coloc_task16 = ColocTask.create!(coloc_id: coloc69004.id, task_id: nettoyer_table.id)
+# coloc_task17 = ColocTask.create!(coloc_id: coloc69004.id, task_id: papier.id)
+# coloc_task18 = ColocTask.create!(coloc_id: coloc69004.id, task_id: cendrier.id)
+# coloc_task19 = ColocTask.create!(coloc_id: coloc69004.id, task_id: evier.id)
+# coloc_task20 = ColocTask.create!(coloc_id: coloc69004.id, task_id: mettre_table.id)
+# coloc_task21 = ColocTask.create!(coloc_id: coloc69004.id, task_id: laver_poubelle.id)
 
-puts "Coloc_tasks created !"
-puts " "
+# puts "Coloc_tasks created !"
+# puts " "
 
 # ONGOING_TASKS
 
-puts "Creating Ongoing_tasks..."
+# puts "Creating Ongoing_tasks..."
 
-ongoing_task1  = OngoingTask.create!(coloc_task_id: coloc_task1.id)
-ongoing_task2  = OngoingTask.create!(coloc_task_id: coloc_task2.id, user_id: mathieu.id)
-ongoing_task3  = OngoingTask.create!(coloc_task_id: coloc_task3.id, user_id: mickael.id)
-ongoing_task4  = OngoingTask.create!(coloc_task_id: coloc_task4.id, user_id: fanny.id)
-ongoing_task5  = OngoingTask.create!(coloc_task_id: coloc_task5.id, user_id: lucas.id)
-ongoing_task6  = OngoingTask.create!(coloc_task_id: coloc_task6.id)
-ongoing_task7  = OngoingTask.create!(coloc_task_id: coloc_task7.id)
-ongoing_task8  = OngoingTask.create!(coloc_task_id: coloc_task8.id, user_id: mathieu.id)
-ongoing_task9  = OngoingTask.create!(coloc_task_id: coloc_task9.id, user_id: mickael.id)
-ongoing_task10 = OngoingTask.create!(coloc_task_id: coloc_task10.id)
-ongoing_task11 = OngoingTask.create!(coloc_task_id: coloc_task11.id)
-ongoing_task12 = OngoingTask.create!(coloc_task_id: coloc_task12.id)
-ongoing_task13 = OngoingTask.create!(coloc_task_id: coloc_task13.id, user_id: fanny.id)
-ongoing_task14 = OngoingTask.create!(coloc_task_id: coloc_task14.id)
-ongoing_task15 = OngoingTask.create!(coloc_task_id: coloc_task15.id)
-ongoing_task16 = OngoingTask.create!(coloc_task_id: coloc_task16.id)
-ongoing_task17 = OngoingTask.create!(coloc_task_id: coloc_task17.id)
-ongoing_task18 = OngoingTask.create!(coloc_task_id: coloc_task18.id)
-ongoing_task19 = OngoingTask.create!(coloc_task_id: coloc_task19.id)
-ongoing_task20 = OngoingTask.create!(coloc_task_id: coloc_task20.id, user_id: lucas.id)
+# ongoing_task1  = OngoingTask.create!(coloc_task_id: coloc_task1.id)
+# ongoing_task2  = OngoingTask.create!(coloc_task_id: coloc_task2.id, user_id: mathieu.id)
+# ongoing_task3  = OngoingTask.create!(coloc_task_id: coloc_task3.id, user_id: mickael.id)
+# ongoing_task4  = OngoingTask.create!(coloc_task_id: coloc_task4.id, user_id: fanny.id)
+# ongoing_task5  = OngoingTask.create!(coloc_task_id: coloc_task5.id, user_id: lucas.id)
+# ongoing_task6  = OngoingTask.create!(coloc_task_id: coloc_task6.id)
+# ongoing_task7  = OngoingTask.create!(coloc_task_id: coloc_task7.id)
+# ongoing_task8  = OngoingTask.create!(coloc_task_id: coloc_task8.id, user_id: mathieu.id)
+# ongoing_task9  = OngoingTask.create!(coloc_task_id: coloc_task9.id, user_id: mickael.id)
+# ongoing_task10 = OngoingTask.create!(coloc_task_id: coloc_task10.id)
+# ongoing_task11 = OngoingTask.create!(coloc_task_id: coloc_task11.id)
+# ongoing_task12 = OngoingTask.create!(coloc_task_id: coloc_task12.id)
+# ongoing_task13 = OngoingTask.create!(coloc_task_id: coloc_task13.id, user_id: fanny.id)
+# ongoing_task14 = OngoingTask.create!(coloc_task_id: coloc_task14.id)
+# ongoing_task15 = OngoingTask.create!(coloc_task_id: coloc_task15.id)
+# ongoing_task16 = OngoingTask.create!(coloc_task_id: coloc_task16.id)
+# ongoing_task17 = OngoingTask.create!(coloc_task_id: coloc_task17.id)
+# ongoing_task18 = OngoingTask.create!(coloc_task_id: coloc_task18.id)
+# ongoing_task19 = OngoingTask.create!(coloc_task_id: coloc_task19.id)
+# ongoing_task20 = OngoingTask.create!(coloc_task_id: coloc_task20.id, user_id: lucas.id)
 
-puts "Ongoing_tasks created !"
-puts " "
+# puts "Ongoing_tasks created !"
+# puts " "
 
 # CAROTTED_TASKS
 
