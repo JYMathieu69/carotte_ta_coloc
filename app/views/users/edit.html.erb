@@ -1,4 +1,6 @@
-<%= simple_form_for @user, html: { id: 'edit_user_info', class: 'flex flex-col justify-center items-center mx-4' } do |f| %>
+<%= link_to "< Revenir au Tach'board" , ongoing_tasks_path, class: "btn-border-purple ml-8 lg:ml-16" %>
+
+<%= simple_form_for @user, html: { id: 'edit_user_info', class: 'flex flex-col justify-center items-center mx-4 mt-8' } do |f| %>
   <%= f.label :avatar do %>
     <%= cl_image_tag @user.avatar.key, class: "avatar w-28 h-28 mx-auto mb-2" %>
     <span class="underline cursor-pointer">Changer ma photo</span>
