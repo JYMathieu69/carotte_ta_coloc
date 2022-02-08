@@ -23,7 +23,8 @@ class OngoingTasksController < ApplicationController
 
   def validation_update
     return if cannot_validate_done_task
-    if file_is_too_large(ongoing_task_params[:photo_after].size)
+    photo = ongoing_task_params[:photo_after]
+    if photo && file_is_too_large(photo.size)
       redirect_to validate_task_path(@ongoing_task), alert: "La taille de l'image ne peut pas dépasser 5Mb." and return
     end
 
