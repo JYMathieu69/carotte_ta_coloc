@@ -47,7 +47,9 @@ class OngoingTasksController < ApplicationController
 
   def start_ongoing_tasks
     coloc = current_user.coloc
-    return if coloc.users.count != coloc.number_of_people
+    if coloc.users.count != coloc.number_of_people
+      redirect_to ongoing_tasks_path, alert: "Tout le monde n'est pas encore arrivé, tu ne peux pas lancer la distribution des tâches maintenant !" and return
+    end
 
     StartUnassignedTasksJob.perform_now(coloc)
     coloc.assignment_day = Time.now.strftime('%A')
