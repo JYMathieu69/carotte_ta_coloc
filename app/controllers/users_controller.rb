@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     def edit; end
     
     def join_coloc
-      token = params[:invite_token]
+      token = params[:invite_token].strip
       @user.coloc = Coloc.find_by(invite_token: token)
   
       if @user.save && @user.coloc
