@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable
 
+  auto_strip_attributes :username, squish: true
+  auto_strip_attributes :email
+
   belongs_to :coloc, optional: true
 
   has_many :ongoing_tasks
