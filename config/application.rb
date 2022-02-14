@@ -21,5 +21,13 @@ module CarotteTaColoc
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
     config.i18n.default_locale = :fr
     # I18n.locale = :fr
+
+    #config for API
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*' #accept HTTP requests from any domain
+        resource '*', headers: :any, methods: [:get, :post, :put, :delete, :options] #access all of our ressources
+      end
+    end
   end
 end

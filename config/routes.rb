@@ -32,4 +32,7 @@ Rails.application.routes.draw do
     end
     resources :tasks, path: 'admin', except: [:show, :new]
   end
+
+  #routes for API
+  mount API::Base, at: "/"
 end
