@@ -13,7 +13,7 @@
 
 .task-card {
   @apply flex flex-col items-center justify-between rounded-xl py-4 px-2 bg-white relative;
-  // transition-duration: 200ms;
+  transition-duration: 200ms;
   border: 1px solid white;
   box-shadow: 1px 1px 2px 1px #00000021;
 
@@ -22,15 +22,15 @@
   }
 
   &:hover {
-    // transition-duration: 450ms;
+    transition-duration: 450ms;
     border: 1px solid #6320d5;
     box-shadow: 1px 1px 4px 1px #00000038;
   }
 
-  &:active {
-    // transition-duration: 200ms;
-    opacity: 0.2;
-  }
+  // &:active {
+  //   // transition-duration: 200ms;
+  //   opacity: 0.2;
+  // }
 }
 
 .coloc-task-card {

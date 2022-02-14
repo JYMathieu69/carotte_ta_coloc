@@ -13,7 +13,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PRN68QCSKY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-PRN68QCSKY');
+    </script>
+      </head>
 
   <body class="bg-white">
     <div class="mx-auto mt-24">
@@ -21,8 +31,11 @@
       <% is_devise_screen = controller_path.gsub(/\/.*/, '') == "devise" %>
       <% is_logo_page = logo_pages[controller_name.to_sym] && logo_pages[controller_name.to_sym] == action_name %>
 
-      <%= render "shared/banner" if !is_devise_screen && !is_logo_page %>
-
+      <% if !is_devise_screen && !is_logo_page %>
+        <%= render "shared/banner" %>
+        <%= render "shared/flash" %>
+      <% end %>
+      
       <%= yield %>
     </div>
   </body>

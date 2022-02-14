@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable
 
+  auto_strip_attributes :username, squish: true
+  auto_strip_attributes :email
+
   belongs_to :coloc, optional: true
 
   has_many :ongoing_tasks
@@ -15,12 +18,12 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   validates :username, presence: true
-  validates :username, uniqueness: true
   validates :username, length: { in: 3..15 }
-  validates :username, format: { with: /\A[a-zA-Z0-9\s]+\z/,
-  message: "only letters and digits" }
-
+  validates :username, format: { with: /[[:alnum:]]/,
+    message: "only letters and digits" }
+    
   validates :email, presence: true
+  validates :email, uniqueness: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   before_create :set_default_avatar

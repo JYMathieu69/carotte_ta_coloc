@@ -12,10 +12,13 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'ongoing_tasks#index'
 
-  resources :users, only: [:update]
-  resources :colocs, only: [:new, :create, :edit, :update] do
-    resources :coloc_tasks, only: [:create, :destroy]
+  resources :users, only: [:update, :edit] do
+    patch '/join_coloc', to: 'users#join_coloc'
   end
+  resources :colocs, only: [:new, :create, :edit, :update] do
+    resources :coloc_tasks, only: [:new, :destroy]
+  end
+  resources :coloc_tasks, only: :create
   resources :carotted_tasks, only: [:show]
 
   get '/colocs/:id/choose_tasks', to: 'colocs#choose_tasks', as: 'choose_tasks'
