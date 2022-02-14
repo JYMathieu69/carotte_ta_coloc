@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  authenticate :user, ->(user) { user.admin? } do
+    mount Blazer::Engine, at: 'blazer'
+  end
+
   require "sidekiq/web"
   authenticate :user, ->(user) { user.admin? } do
     mount Sidekiq::Web => '/sidekiq'

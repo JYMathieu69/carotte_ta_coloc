@@ -66,4 +66,5 @@ gem 'faker'
 gem 'simple_form'
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
+gem "blazer", "~> 2.5"
 gem 'auto_strip_attributes', '~> 2.6'
