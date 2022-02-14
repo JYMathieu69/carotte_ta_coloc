@@ -9,6 +9,7 @@ import {
 } from "../plugins/modals";
 import { coloredSwitchButtons } from "../plugins/toggle_switch_button.js";
 import { initAlertCloseBtn } from "../plugins/alertCloseBtn";
+import { initUpdatableAvatar } from "../plugins/updateUserAvatar";
 
 import { initOnboarding } from "../channels/onboarding_channel";
 
@@ -25,4 +26,5 @@ document.addEventListener("turbolinks:load", () => {
   coloredSwitchButtons();
   initOnboarding();
   initAlertCloseBtn();
+  initUpdatableAvatar();
 });

@@ -3,7 +3,7 @@ class OngoingTasksController < ApplicationController
 
   def index
     redirect_to '/home' and return if current_user.coloc.nil?
-    redirect_to choose_tasks_path(current_user.coloc) and return if current_user.coloc.coloc_tasks.empty?
+    redirect_to choose_tasks_path(current_user.coloc) and return if current_user.coloc.coloc_tasks.empty? && current_user == current_user.coloc.leader 
 
     all_ongoing_tasks = current_user.coloc.ongoing_tasks
     @user_tasks = current_user.current_week_ongoing_tasks
@@ -23,6 +23,10 @@ class OngoingTasksController < ApplicationController
 
   def validation_update
     return if cannot_validate_done_task
+    photo = ongoing_task_params[:photo_after]
+    if photo && file_is_too_large(photo.size)
+      redirect_to validate_task_path(@ongoing_task), alert: "La taille de l'image ne peut pas dépasser 5Mb." and return
+    end
 
     @ongoing_task.helpers.destroy_all if @ongoing_task.helpers
     @ongoing_task.user = current_user if !@ongoing_task.user
@@ -47,7 +51,9 @@ class OngoingTasksController < ApplicationController
 
   def start_ongoing_tasks
     coloc = current_user.coloc
-    return if coloc.users.count != coloc.number_of_people
+    if coloc.users.count != coloc.number_of_people
+      redirect_to ongoing_tasks_path, alert: "Tout le monde n'est pas encore arrivé, tu ne peux pas lancer la distribution des tâches maintenant !" and return
+    end
 
     StartUnassignedTasksJob.perform_now(coloc)
     coloc.assignment_day = Time.now.strftime('%A')
@@ -110,5 +116,9 @@ class OngoingTasksController < ApplicationController
     @ongoing_task.helpers.map do |helper|
       helper.user_id
     end
+  end
+
+  def file_is_too_large(file_size)
+    file_size > 5000000 # 5Mb max
   end
 end

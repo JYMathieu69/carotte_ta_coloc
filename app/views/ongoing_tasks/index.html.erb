@@ -1,4 +1,11 @@
 <% if current_user.coloc.assignment_day.nil? %>
+  <% flash.each do |type, msg| %>
+    <div class="alert">
+      <%= msg %>
+      <button data-dismiss="alert">&times;</button>
+    </div>
+  <% end %>
+
   <h3 class="text-center mb-8 font-medium"> Les colocs ayant rejoint :</h3>
 
   <div id="pending-users" data-coloc=<%=current_user.coloc_id %> class='choose_task_grid mb-8 lg:mb-16'>

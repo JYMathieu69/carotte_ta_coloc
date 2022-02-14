@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  authenticate :user, ->(user) { user.admin? } do
+    mount Blazer::Engine, at: 'blazer'
+  end
+
   require "sidekiq/web"
   authenticate :user, ->(user) { user.admin? } do
     mount Sidekiq::Web => '/sidekiq'
@@ -8,7 +12,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'ongoing_tasks#index'
 
-  resources :users, only: [:update, :edit]
+  resources :users, only: [:update, :edit] do
+    patch '/join_coloc', to: 'users#join_coloc'
+  end
   resources :colocs, only: [:new, :create, :edit, :update] do
     resources :coloc_tasks, only: [:new, :destroy]
   end
