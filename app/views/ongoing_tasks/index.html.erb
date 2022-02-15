@@ -7,105 +7,120 @@
   <% end %>
 
   <h3 class="text-center mb-8 font-medium"> Les colocs ayant rejoint :</h3>
-  
-  <div id="pending-users" data-coloc=<%= current_user.coloc_id %> class='choose_task_grid mb-8 lg:mb-16'>
+
+  <div id="pending-users" data-coloc=<%=current_user.coloc_id %> class='choose_task_grid mb-8 lg:mb-16'>
     <% current_user.coloc.users.each do |user| %>
       <div class='flex flex-col justify-center items-center'>
         <%= cl_image_tag user.avatar.key,class:"rounded-full h-16 w-16" %>
-        <p class="mt-4 text-sm"><%= user.username %></p>
+          <p class="mt-4 text-sm">
+            <%= user.username %>
+          </p>
       </div>
-    <% end %>
+      <% end %>
   </div>
-  
+
   <div class="text-center">
-    <% if current_user == current_user.coloc.leader %>
+    <% if current_user==current_user.coloc.leader %>
       <p class="mb-4 lg:mb-8 text-sm">Lance la distribution des tâches quand tous tes colocs sont là !</p>
-      <%= button_to "Distribuer les tâches", start_ongoing_tasks_path, class: "btn-primary" %>
-      <%= @error %>
+      <%= button_to "Distribuer les tâches" , start_ongoing_tasks_path, class: "btn-primary" %>
+        <%= @error %>
+          <% else %>
+            <p class="mb-4 lg:mb-8 text-sm">
+              <%= current_user.coloc.leader.username %> n'a pas encore lancé la distribution des tâches.
+            </p>
+            <%= link_to "Réessayer" , ongoing_tasks_path, class: "btn-primary inline-block" %>
+              <% end %>
+  </div>
+
+  <%# écran après 1ère répartition des tâches %>
     <% else %>
-      <p class="mb-4 lg:mb-8 text-sm"><%= current_user.coloc.leader.username %> n'a pas encore lancé la distribution des tâches.</p>
-      <%= link_to "Réessayer", ongoing_tasks_path, class: "btn-primary inline-block" %>
-    <% end %>
-  </div>
-  
-<%# écran après 1ère répartition des tâches %>
-<% else %>
-  <% if @user_tasks.all? { |task| task.done }  %>
-    <div class="bg-tertiary-100 rounded-xl py-4 px-4 lg:py-6 mx-8 mb-2"> <p class="text-darkGrey-50 text-sm text-center lg:text-xl ">T'as fait toutes tes tâches, bravo ! 🎉</p> </div>
-  <% end %>
-  <%# tâches du current user %>
-  <div class="my-task-card mb-8 lg:mt-10">
-    <div class="items-center">
-      <h2 class="text-secondary-200 text-base lg:text-xl pr-1 inline-block">Mes tâches de la semaine</h2>
-      <%= image_tag 'info.png' , alt: 'info' , class:"hovered_icon info-icon-home inline-block dropdown mb-1"%>
-      <p class="info-icon-text hide">
-        👉🏻 Voici les tâches que tu dois faire cette semaine. Elles ne peuvent être validées qu'une seule fois.
-      </p>
-    </div>
-    <div class="task_grid mt-4 lg:mt-8">
-      <% @user_tasks.each do |task| %>
-        <div> 
-          <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: false, validation: true%>
+      <% if @user_tasks.all? { |task| task.done } %>
+        <div class="bg-tertiary-100 rounded-xl py-4 px-4 lg:py-6 mx-8 mb-2">
+          <p class="text-darkGrey-50 text-sm text-center lg:text-xl ">T'as fait toutes tes tâches, bravo ! 🎉</p>
         </div>
-      <% end %> 
-    </div>
-  </div>
-
-  <div class="dashed lg:mt-16"></div>
-  
-  <%# tâches bonus %>
-  <div class="bonus-task-card mb-8">
-    <div class="items-center">
-      <h2 class="text-primary-200 text-base lg:text-xl pr-1 inline-block">Tâches bonus</h2>
-      <%= image_tag 'info.png' , alt: 'info' , class:"hovered_icon info-icon-home inline-block dropdown mb-1"%>
-      <p class="info-icon-text hide">
-        👉🏻 Les tâches bonus peuvent être réalisées plusieurs fois dans la semaine et par n'importe qui.
-      </p>
-    </div>
-    
-    <div class="task_grid mt-4 lg:mt-8 gap-4">
-      <% @unassigned_tasks.each do |task| %>
-          <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false%>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="w-full bg-secondary-200 h-16 lg:h-32 lg:mt-16 lg:mb-16 text-white flex justify-center items-center text-xl mb-8 font-default lg:text-2xl"> <%= @current_user.coloc.name %> </div>
-
-  <%# tâches des colocs %>
-  <div class="coloc-task-card">
-    <div class="items-center">
-      <h2 class="text-secondary-200 text-base lg:text-xl pr-1 inline-block">Les tâches de tes colocs</h2>
-      <%= image_tag 'info.png' , alt: 'info' , class:"hovered_icon info-icon-home inline-block dropdown mb-1"%>
-      <p class="info-icon-text hide">
-        👉🏻 Retrouve les tâches de tes colocs' et suit leurs avancées.
-      </p>
-    </div>
-    <div class="mb-8">
-      <% @users_coloc.each do |user| %>
-        <div class="coloc-avatar-name">
-          <div class="dashed mt-0"></div>
-          <div>
-            <%= cl_image_tag user.avatar.key, height: 80, width: 80, class:"pr-2 rounded-full" %>
-          </div>
-          <div class="flex mt-4 mb-4">
-
-            <div class="mt-2 uppercase text-secondary-200">
-              <%= user.username %>
+        <% end %>
+          <%# tâches du current user %>
+            <div class="my-task-card mb-8 lg:mt-10">
+              <div class="items-center">
+                <h2 class="text-secondary-200 text-base lg:text-xl pr-1 inline-block">Mes tâches de la semaine</h2>
+                <%= image_tag 'info.png' , alt: 'info' , class:"hovered_icon info-icon-home inline-block dropdown
+                  mb-1"%>
+                  <p class="info-icon-text hide">
+                    👉🏻 Voici les tâches que tu dois faire cette semaine. Elles ne peuvent être validées qu'une seule
+                    fois.
+                  </p>
+              </div>
+              <div class="task_grid mt-4 lg:mt-8">
+                <% @user_tasks.each do |task| %>
+                  <div>
+                    <%= render "ongoing_tasks/ongoing_tasks" , task: task, assignment: false, validation: true%>
+                  </div>
+                  <% end %>
+              </div>
             </div>
-            
-            <div class="carrot_price_circle">
-              <%= image_tag 'carrot_icon.png' , alt: 'carrot_price' , class:"w-4 h-6 pr-1" %>
-              <p class="text-base"><%= user.current_points %></p> 
-            </div>
-          </div>
-        </div>
-        <div class="task_grid">
-          <% user.current_week_ongoing_tasks.each do |task| %>
-              <%= render "ongoing_tasks/ongoing_tasks", task: task, assignment: true, validation: false%>
-          <% end %>
-        </div>
-      <% end %>
-    </div>  
-  </div>         
-<% end %>               
+
+            <div class="dashed lg:mt-16"></div>
+
+            <%# tâches bonus %>
+              <div class="bonus-task-card mb-8">
+                <div class="items-center">
+                  <h2 class="text-primary-200 text-base lg:text-xl pr-1 inline-block">Tâches bonus</h2>
+                  <%= image_tag 'info.png' , alt: 'info' , class:"hovered_icon info-icon-home inline-block dropdown
+                    mb-1"%>
+                    <p class="info-icon-text hide">
+                      👉🏻 Les tâches bonus peuvent être réalisées plusieurs fois dans la semaine et par n'importe qui.
+                    </p>
+                </div>
+
+                <div class="task_grid mt-4 lg:mt-8 gap-4">
+                  <% @unassigned_tasks.each do |task| %>
+                    <%= render "ongoing_tasks/ongoing_tasks" , task: task, assignment: true, validation: false%>
+                      <% end %>
+                </div>
+              </div>
+
+              <div
+                class="w-full bg-secondary-200 h-16 lg:h-32 lg:mt-16 lg:mb-16 text-white flex justify-center items-center text-xl mb-8 font-default lg:text-2xl">
+                <%= @current_user.coloc.name %>
+              </div>
+
+              <%# tâches des colocs %>
+                <div class="coloc-task-card">
+                  <div class="items-center">
+                    <h2 class="text-secondary-200 text-base lg:text-xl pr-1 inline-block">Les tâches de tes colocs</h2>
+                    <%= image_tag 'info.png' , alt: 'info' , class:"hovered_icon info-icon-home inline-block dropdown
+                      mb-1"%>
+                      <p class="info-icon-text hide">
+                        👉🏻 Retrouve les tâches de tes colocs' et suit leurs avancées.
+                      </p>
+                  </div>
+                  <div class="mb-8">
+                    <% @users_coloc.each do |user| %>
+                      <div class="coloc-avatar-name">
+                        <div class="dashed mt-0"></div>
+                        <div>
+                          <%= cl_image_tag user.avatar.key, height: 80, width: 80, class:"pr-2 rounded-full" %>
+                        </div>
+                        <div class="flex mt-4 mb-4">
+
+                          <div class="mt-2 uppercase text-secondary-200">
+                            <%= user.username %>
+                          </div>
+
+                          <div class="carrot_price_circle">
+                            <%= image_tag 'carrot_icon.png' , alt: 'carrot_price' , class:"w-4 h-6 pr-1" %>
+                              <p class="text-base">
+                                <%= user.current_points %>
+                              </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="task_grid">
+                        <% user.current_week_ongoing_tasks.each do |task| %>
+                          <%= render "ongoing_tasks/ongoing_tasks" , task: task, assignment: true, validation: false%>
+                            <% end %>
+                      </div>
+                      <% end %>
+                  </div>
+                </div>
+                <% end %>
